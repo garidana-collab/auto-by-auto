@@ -166,6 +166,7 @@ Assets/Imported_mini/
 # 클로드 관련
 /.claude/settings.local.json
 /.claude/CLAUDE.local.md
+Docs/**/metadata.json
 
 # Node.js / Vite
 node_modules/
