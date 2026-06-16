@@ -93,7 +93,7 @@ export default function App() {
   const [openModel, setOpenModel] = useState(null)
 
   // 비교 대상
-  const [compared, setCompared] = useState(['mt03-2023', 'z900-2021'])
+  const [compared, setCompared] = useState([])
 
   // 상세 보기 대상
   const [selectedBikeId, setSelectedBikeId] = useState('mt03-2023')
