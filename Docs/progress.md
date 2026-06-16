@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 15일 (2차 DEV 세션)
+> 마지막 업데이트: 2026년 6월 16일 (3차 DEV 세션)
 
 ---
 
@@ -38,7 +38,7 @@ auto-by-auto/
 │   └── Dev Note.md          ← 버전별 변경 이력
 ├── src/
 │   ├── main.jsx             ← React 진입점
-│   ├── App.jsx              ← 메인 UI 컴포넌트 (필터, 카드 뷰, 비교 뷰)
+│   ├── App.jsx              ← 메인 UI 컴포넌트 (필터, 카드 뷰, 상세 뷰, 비교 뷰)
 │   └── data/
 │       ├── bikes.js         ← 바이크 제원 데이터 (BRANDS, BIKES, ALL_CATEGORIES)
 │       └── specs.js         ← 제원 항목 정의, 색상, 포맷터
@@ -83,6 +83,17 @@ auto-by-auto/
 - **카드 뷰**: 카테고리별 색상 그라디언트, 편안/적합/발끝 적합 뱃지, `+ 비교` 버튼
 - **fit 뱃지**: 사이드바 연식 행과 카드 모두에 적합 등급 표시
 
+#### 5단계 — 단일 기종 상세 탭 추가 (3차 DEV 세션)
+- **상세 탭 추가**: 메인 뷰 모드를 `탐색 / 상세 / 비교` 3개 탭 구조로 확장
+- **단일 기종 선택 상태 추가**: `selectedBikeId` 기반으로 현재 상세 표시 대상을 관리
+- **탐색 → 상세 흐름**: 탐색 카드 클릭 시 선택한 기종의 상세 탭으로 이동
+- **비교 기능 분리 유지**: 카드 내부 `+ 비교` 버튼은 상세 이동 없이 비교 목록만 갱신하도록 이벤트 분리
+- **사이드바 연식 선택 개선**: 브랜드 → 모델 → 연식 목록에서 연식을 누르면 해당 기종 상세 화면으로 이동
+- **상세 화면 구성**: 브랜드/모델/연식/면허/가격, 체형 기준 적합도, 9개 핵심 제원, 동일 모델 연식, 비슷한 기종 추천 표시
+- **상세 화면 비교 연동**: 상세 탭에서도 `비교에 추가 / 비교에서 제거` 가능
+- **반응형 보완**: 상세 탭의 히어로 영역, 제원 그리드, 액션 버튼이 모바일에서 1열로 정리되도록 CSS 추가
+- **검증 완료**: `npm.cmd run build` 성공, 로컬 브라우저에서 상세 탭 전환 및 비교 버튼 동작 확인
+
 ---
 
 ## 현재 데이터 현황
@@ -93,7 +104,7 @@ auto-by-auto/
 ### 등록된 브랜드 (11개)
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa
 
-### 등록된 기종 (49개)
+### 등록된 기종 (66개)
 
 | 브랜드 | 모델 | 연식 | 카테고리 |
 |--------|------|------|----------|
@@ -112,14 +123,29 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | Yamaha | XSR700 | 2022 | 클래식 |
 | Yamaha | Tenere 700 | 2023 | 어드벤처 |
 | Yamaha | Tracer 9 GT | 2022 | 투어러 |
-| Kawasaki | Z125 PRO | 2022 | 미니/입문 |
+| Kawasaki | Z125 PRO | 2022, 2023 | 미니/입문 |
+| Kawasaki | Ninja 500 | 2025 | 스포츠 |
+| Kawasaki | Ninja 650 | 2022 | 스포츠 |
 | Kawasaki | Eliminator 500 | 2023 | 크루저 |
 | Kawasaki | Ninja 400 | 2023 | 스포츠 |
 | Kawasaki | Ninja ZX-4RR | 2023 | 스포츠 |
 | Kawasaki | Z650 | 2023 | 네이키드 |
-| Kawasaki | Z900 | 2019, 2021 | 네이키드 |
+| Kawasaki | Z650RS | 2022 | 클래식 |
+| Kawasaki | Z900 | 2019, 2021, 2025 | 네이키드 |
+| Kawasaki | Z900RS | 2022 | 클래식 |
+| Kawasaki | Z900RS SE | 2025 | 클래식 |
+| Kawasaki | Z500 | 2025 | 네이키드 |
+| Kawasaki | Z1100 | 2025 | 네이키드 |
 | Kawasaki | Versys 650 | 2023 | 어드벤처 |
-| Kawasaki | Ninja ZX-6R | 2023 | 스포츠 |
+| Kawasaki | Versys 1000 SE | 2023 | 어드벤처 |
+| Kawasaki | Ninja ZX-6R | 2023, 2025 | 스포츠 |
+| Kawasaki | Ninja ZX-10R | 2025 | 스포츠 |
+| Kawasaki | Ninja H2 SX SE | 2022 | 투어러 |
+| Kawasaki | Ninja 1100SX | 2025 | 투어러 |
+| Kawasaki | Vulcan S | 2023 | 크루저 |
+| Kawasaki | Eliminator | 2024 | 크루저 |
+| Kawasaki | W800 | 2022 | 클래식 |
+| Kawasaki | MEGURO S1 | 2025 | 클래식 |
 | BMW | G310R | 2022 | 네이키드 |
 | BMW | F900R | 2023 | 네이키드 |
 | BMW | R1250GS | 2022 | 어드벤처 |
@@ -152,13 +178,14 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 ### 단기 (바로 가능)
 - [ ] 실제 바이크 이미지 URL 수집 및 bikes.js에 추가
-- [ ] 브랜드 로고 이미지 추가
 - [ ] Vercel 배포 (GitHub 연동으로 빠르게 가능)
+- [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
 
 ### 중기
 - [ ] 데이터 정확성 검증 (제조사 공식 스펙시트 대조)
 - [ ] 기종 수 추가 확대 (국내 인기 모델 위주)
-- [ ] 모바일 반응형 레이아웃
+- [ ] 모바일 UI 세부 QA 및 터치 동선 개선
+- [ ] 상세 탭에서 같은 카테고리/비슷한 배기량 추천 기준 고도화
 
 ### 장기 (서비스화)
 - [ ] 백엔드 / 데이터베이스 연동
