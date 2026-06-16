@@ -1,17 +1,17 @@
 // ─── 브랜드 ───────────────────────────────────────────────────────────────────
 
 export const BRANDS = [
-  { id: 'honda',        name: 'Honda'           },
-  { id: 'yamaha',       name: 'Yamaha'          },
-  { id: 'kawasaki',     name: 'Kawasaki'        },
-  { id: 'bmw',          name: 'BMW Motorrad'    },
-  { id: 'harley',       name: 'Harley-Davidson' },
-  { id: 'suzuki',       name: 'Suzuki'          },
-  { id: 'ktm',          name: 'KTM'             },
-  { id: 'ducati',       name: 'Ducati'          },
-  { id: 'triumph',      name: 'Triumph'         },
-  { id: 'royalenfield', name: 'Royal Enfield'   },
-  { id: 'vespa',        name: 'Vespa'           },
+  { id: 'honda',        name: 'Honda',           logo: '/logos/honda.png'       },
+  { id: 'yamaha',       name: 'Yamaha',          logo: '/logos/yamaha.png'      },
+  { id: 'kawasaki',     name: 'Kawasaki',        logo: '/logos/kawasaki.png'    },
+  { id: 'bmw',          name: 'BMW Motorrad',    logo: '/logos/bmw.svg'             },
+  { id: 'harley',       name: 'Harley-Davidson', logo: '/logos/harley.png'},
+  { id: 'suzuki',       name: 'Suzuki',          logo: '/logos/suzuki.png'      },
+  { id: 'ktm',          name: 'KTM',             logo: '/logos/ktm.png'         },
+  { id: 'ducati',       name: 'Ducati',          logo: '/logos/ducati.png'      },
+  { id: 'triumph',      name: 'Triumph',         logo: '/logos/triumph.png'},
+  { id: 'royalenfield', name: 'Royal Enfield',   logo: '/logos/royal.png'},
+  { id: 'vespa',        name: 'Vespa',           logo: '/logos/vespa.png'},
 ]
 
 // ─── 바이크 제원 ──────────────────────────────────────────────────────────────

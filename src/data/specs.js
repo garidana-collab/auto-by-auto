@@ -25,6 +25,8 @@ export const COLORS = ['#FF5C00', '#1FB6A6', '#7C5CFF']
 
 // 제원 값 포맷터
 export function fmtVal(spec, v) {
+  if (v === null || v === undefined || Number.isNaN(v)) return '정보 없음'
+  if (spec.key === 'priceKRW' && v <= 0) return '정보 없음'
   if (spec.key === 'priceKRW') return Math.round(v / 10000).toLocaleString() + '만'
   return v.toLocaleString()
 }
