@@ -95,7 +95,10 @@ export default function App() {
   // 비교 대상
   const [compared, setCompared] = useState(['mt03-2023', 'z900-2021'])
 
-  // 뷰 모드: 'browse' | 'compare'
+  // 상세 보기 대상
+  const [selectedBikeId, setSelectedBikeId] = useState('mt03-2023')
+
+  // 뷰 모드: 'browse' | 'detail' | 'compare'
   const [viewMode, setViewMode] = useState('browse')
 
   // ── 인심 & 권장 시트고 계산
@@ -164,12 +167,41 @@ export default function App() {
     compared.map(id => BIKES.find(b => b.id === id)).filter(Boolean),
   [compared])
 
+  // ── 상세 보기 대상
+  const selectedBike = useMemo(() =>
+    BIKES.find(b => b.id === selectedBikeId) ?? sortedFiltered[0] ?? BIKES[0],
+  [selectedBikeId, sortedFiltered])
+
+  const selectedBrand = useMemo(() =>
+    BRANDS.find(br => br.id === selectedBike?.brand),
+  [selectedBike])
+
+  const sameModelBikes = useMemo(() => {
+    if (!selectedBike) return []
+    return BIKES
+      .filter(b => b.brand === selectedBike.brand && b.model === selectedBike.model)
+      .sort((a, b) => b.year - a.year)
+  }, [selectedBike])
+
+  const similarBikes = useMemo(() => {
+    if (!selectedBike) return []
+    return BIKES
+      .filter(b => b.id !== selectedBike.id && b.category === selectedBike.category)
+      .sort((a, b) => Math.abs(a.displacement - selectedBike.displacement) - Math.abs(b.displacement - selectedBike.displacement))
+      .slice(0, 4)
+  }, [selectedBike])
+
   function toggleCompare(id) {
     setCompared(prev =>
       prev.includes(id)  ? prev.filter(x => x !== id)
       : prev.length >= 3 ? prev
       : [...prev, id]
     )
+  }
+
+  function openBikeDetail(id) {
+    setSelectedBikeId(id)
+    setViewMode('detail')
   }
 
   // ── 제원 표 하이라이트
@@ -370,20 +402,19 @@ export default function App() {
                         )
                         if (!bike) return null
                         const isOn   = compared.includes(bike.id)
-                        const isFull = compared.length >= 3 && !isOn
                         const fit    = getFitLabel(bike.seatHeight, inseam)
                         return (
                           <button
                             key={yr}
-                            className={`year-row ${isOn ? 'on' : ''} ${isFull ? 'full' : ''}`}
-                            onClick={() => !isFull && toggleCompare(bike.id)}
+                            className={`year-row ${isOn ? 'on' : ''} ${selectedBike?.id === bike.id ? 'detail-on' : ''}`}
+                            onClick={() => openBikeDetail(bike.id)}
                           >
                             <span className="year-num">{yr}년식</span>
                             <span className={`fit-badge ${fit.cls}`}>{fit.text}</span>
                             <span className="year-price">
                               {formatPrice(bike.priceKRW)}
                             </span>
-                            <span className="year-check">{isOn ? '✓' : '+'}</span>
+                            <span className="year-check">{selectedBike?.id === bike.id ? '보기' : isOn ? '✓' : '>'}</span>
                           </button>
                         )
                       })}
@@ -415,6 +446,15 @@ export default function App() {
             탐색 <span className="tab-count">{totalCount}</span>
           </button>
           <button
+            className={`view-tab ${viewMode === 'detail' ? 'on' : ''}`}
+            onClick={() => setViewMode('detail')}
+          >
+            상세
+            {selectedBike && (
+              <span className="tab-detail">{selectedBike.model}</span>
+            )}
+          </button>
+          <button
             className={`view-tab ${viewMode === 'compare' ? 'on' : ''}`}
             onClick={() => setViewMode('compare')}
           >
@@ -441,7 +481,11 @@ export default function App() {
                 const isFull = compared.length >= 3 && !isOn
                 const fit    = getFitLabel(bike.seatHeight, inseam)
                 return (
-                  <div key={bike.id} className={`bike-card ${isOn ? 'selected' : ''}`}>
+                  <div
+                    key={bike.id}
+                    className={`bike-card ${isOn ? 'selected' : ''} ${selectedBike?.id === bike.id ? 'detail-selected' : ''}`}
+                    onClick={() => openBikeDetail(bike.id)}
+                  >
                     {/* 이미지 영역 */}
                     <div
                       className="card-img"
@@ -479,7 +523,8 @@ export default function App() {
                       <span className={`fit-badge ${fit.cls}`}>{fit.text}</span>
                       <button
                         className={`card-btn ${isOn ? 'on' : ''} ${isFull ? 'dim' : ''}`}
-                        onClick={() => {
+                        onClick={e => {
+                          e.stopPropagation()
                           if (isFull) return
                           toggleCompare(bike.id)
                         }}
@@ -492,6 +537,125 @@ export default function App() {
               })}
             </div>
           )
+        )}
+
+        {/* ── 상세 뷰: 단일 기종 정보 */}
+        {viewMode === 'detail' && selectedBike && (
+          <>
+            <section className="detail-hero">
+              <div
+                className="detail-img"
+                style={{ background: CAT_GRADIENT[selectedBike.category] }}
+              >
+                <span className="card-cat-label">{selectedBike.category}</span>
+                {selectedBike.image
+                  ? <img src={selectedBike.image} alt={selectedBike.model} className="card-photo" />
+                  : <span className="detail-emoji">🏍</span>
+                }
+              </div>
+
+              <div className="detail-summary">
+                <div className="detail-brand-row">
+                  <div className="brand-mark detail-mark" aria-label={`${selectedBrand?.name ?? '브랜드'} 로고 자리`}>
+                    {selectedBrand?.logo
+                      ? <img src={selectedBrand.logo} alt="" />
+                      : <span>{BRAND_MARKS[selectedBike.brand] ?? selectedBrand?.name?.slice(0, 2) ?? '?'}</span>
+                    }
+                  </div>
+                  <div>
+                    <div className="detail-brand">{selectedBrand?.name}</div>
+                    <h2 className="detail-title">{selectedBike.model}</h2>
+                    <div className="detail-meta">{selectedBike.year}년식 · {selectedBike.license}</div>
+                  </div>
+                </div>
+
+                <div className="detail-price">{formatPrice(selectedBike.priceKRW)}</div>
+
+                <div className="detail-actions">
+                  {(() => {
+                    const isOn = compared.includes(selectedBike.id)
+                    const isFull = compared.length >= 3 && !isOn
+                    return (
+                      <button
+                        className={`detail-action ${isOn ? 'on' : ''}`}
+                        disabled={isFull}
+                        onClick={() => toggleCompare(selectedBike.id)}
+                      >
+                        {isOn ? '비교에서 제거' : isFull ? '비교 최대 3개' : '비교에 추가'}
+                      </button>
+                    )
+                  })()}
+                  <button className="detail-action ghost" onClick={() => setViewMode('browse')}>
+                    탐색으로 돌아가기
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section className="detail-grid">
+              <div className="panel detail-fit">
+                <div className="panel-label">내 체형 기준</div>
+                {(() => {
+                  const fit = getFitLabel(selectedBike.seatHeight, inseam)
+                  return (
+                    <>
+                      <div className={`fit-large ${fit.cls}`}>{fit.text}</div>
+                      <div className="fit-copy">
+                        추정 인심 {inseam}mm 기준으로 시트고 {formatShortSpec('', selectedBike.seatHeight, 'mm')} 기종입니다.
+                      </div>
+                    </>
+                  )
+                })()}
+              </div>
+
+              <div className="panel">
+                <div className="panel-label">핵심 제원</div>
+                <div className="detail-spec-grid">
+                  {SPECS.map(spec => (
+                    <div key={spec.key} className="detail-spec">
+                      <span>{spec.label}</span>
+                      <strong>{fmtVal(spec, selectedBike[spec.key])}</strong>
+                      <em>{spec.unit}</em>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="panel">
+              <div className="panel-label">동일 모델 연식</div>
+              <div className="variant-row">
+                {sameModelBikes.map(b => (
+                  <button
+                    key={b.id}
+                    className={`variant-chip ${b.id === selectedBike.id ? 'on' : ''}`}
+                    onClick={() => openBikeDetail(b.id)}
+                  >
+                    {b.year}년식
+                    <span>{formatPrice(b.priceKRW)}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            {similarBikes.length > 0 && (
+              <section className="panel">
+                <div className="panel-label">비슷한 기종</div>
+                <div className="similar-grid">
+                  {similarBikes.map(b => {
+                    const br = BRANDS.find(item => item.id === b.brand)
+                    return (
+                      <button key={b.id} className="similar-card" onClick={() => openBikeDetail(b.id)}>
+                        <span className="similar-model">{b.model}</span>
+                        <span className="similar-meta">{br?.name} · {b.year}년식</span>
+                        <span className="similar-spec">{formatShortSpec('', b.displacement, 'cc')} · {formatPrice(b.priceKRW)}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </section>
+            )}
+          </>
         )}
 
         {/* ── 비교 뷰 */}
@@ -761,11 +925,12 @@ button { font-family: inherit; }
 }
 .year-row:hover:not(.full) { background: rgba(255,255,255,.04); }
 .year-row.on { background: rgba(255,92,0,.12); border-color: rgba(255,92,0,.3); }
+.year-row.detail-on { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.05); }
 .year-row.full { opacity: 0.3; cursor: not-allowed; }
 .year-num { flex: 1; font-size: 12px; color: var(--muted); }
 .year-row.on .year-num { color: var(--orange); font-weight: 600; }
 .year-price { font-size: 11px; color: var(--dim); }
-.year-check { font-size: 11px; color: var(--dim); width: 14px; text-align: center; }
+.year-check { font-size: 10px; color: var(--dim); min-width: 18px; text-align: center; }
 .year-row.on .year-check { color: var(--orange); font-weight: 700; }
 
 .fit-badge {
@@ -806,6 +971,10 @@ button { font-family: inherit; }
 .tab-count {
   font-size: 10px; font-weight: 700; opacity: 0.8;
 }
+.tab-detail {
+  max-width: 96px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 10px; font-weight: 700; opacity: 0.8;
+}
 .tab-badge {
   display: inline-flex; align-items: center; justify-content: center;
   width: 17px; height: 17px; border-radius: 50%;
@@ -824,10 +993,11 @@ button { font-family: inherit; }
 .bike-card {
   background: var(--panel); border: 1px solid var(--line);
   border-radius: 14px; overflow: hidden; transition: all .15s;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; cursor: pointer;
 }
 .bike-card:hover { border-color: rgba(255,92,0,.25); transform: translateY(-2px); }
 .bike-card.selected { border-color: var(--orange); }
+.bike-card.detail-selected { box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
 
 .card-img {
   height: 110px; position: relative;
@@ -873,6 +1043,81 @@ button { font-family: inherit; }
 .card-btn:hover:not(.dim) { border-color: var(--orange); color: var(--orange); }
 .card-btn.on { background: var(--orange); border-color: var(--orange); color: #fff; }
 .card-btn.dim { opacity: 0.3; cursor: not-allowed; }
+
+/* ── 상세 뷰 ── */
+.detail-hero {
+  display: grid; grid-template-columns: minmax(240px, 42%) 1fr;
+  gap: 18px; margin-bottom: 16px; align-items: stretch;
+}
+.detail-img {
+  min-height: 280px; border-radius: 18px; overflow: hidden; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line);
+}
+.detail-emoji { font-size: 70px; filter: drop-shadow(0 6px 18px rgba(0,0,0,.45)); }
+.detail-summary {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+  padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px;
+}
+.detail-brand-row { display: flex; gap: 14px; align-items: flex-start; }
+.detail-mark { position: static; flex-shrink: 0; width: 48px; height: 48px; }
+.detail-brand { font-size: 13px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+.detail-title { font-size: clamp(28px, 4vw, 44px); line-height: 1; font-weight: 900; letter-spacing: 0; }
+.detail-meta { margin-top: 8px; font-size: 13px; color: var(--muted); }
+.detail-price { font-size: 26px; font-weight: 900; color: var(--orange); }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.detail-action {
+  border: 1px solid var(--orange); background: var(--orange); color: #fff;
+  border-radius: 8px; padding: 9px 14px; font-size: 13px; font-weight: 800;
+  cursor: pointer; transition: all .12s;
+}
+.detail-action:hover:not(:disabled) { filter: brightness(1.08); }
+.detail-action:disabled { opacity: .4; cursor: not-allowed; }
+.detail-action.on { background: transparent; color: var(--orange); }
+.detail-action.ghost { background: transparent; border-color: var(--line); color: var(--muted); }
+.detail-action.ghost:hover { border-color: #3a3a3f; color: var(--text); }
+
+.detail-grid {
+  display: grid; grid-template-columns: minmax(220px, 0.75fr) 2fr;
+  gap: 16px; align-items: stretch;
+}
+.detail-fit { display: flex; flex-direction: column; justify-content: center; }
+.fit-large {
+  width: max-content; max-width: 100%; border-radius: 8px;
+  padding: 8px 12px; font-size: 22px; font-weight: 900; margin-bottom: 12px;
+}
+.fit-copy { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.detail-spec-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;
+}
+.detail-spec {
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+  background: rgba(255,255,255,.025); min-height: 78px;
+}
+.detail-spec span { display: block; font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+.detail-spec strong { display: inline; font-size: 18px; font-weight: 900; color: var(--text); }
+.detail-spec em { font-style: normal; color: var(--dim); font-size: 11px; margin-left: 4px; }
+
+.variant-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.variant-chip {
+  border: 1px solid var(--line); background: transparent; color: var(--text);
+  border-radius: 8px; padding: 8px 10px; cursor: pointer; text-align: left;
+  font-size: 13px; font-weight: 800; min-width: 112px;
+}
+.variant-chip span { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; font-weight: 600; }
+.variant-chip.on { border-color: var(--orange); color: var(--orange); background: rgba(255,92,0,.1); }
+.variant-chip:hover:not(.on) { border-color: #3a3a3f; }
+
+.similar-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px;
+}
+.similar-card {
+  border: 1px solid var(--line); background: rgba(255,255,255,.025); color: var(--text);
+  border-radius: 8px; padding: 12px; text-align: left; cursor: pointer;
+}
+.similar-card:hover { border-color: rgba(255,92,0,.35); }
+.similar-model { display: block; font-size: 14px; font-weight: 900; margin-bottom: 5px; }
+.similar-meta, .similar-spec { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
 /* ── 비교 뷰 */
 .chips-bar {
@@ -951,6 +1196,8 @@ button { font-family: inherit; }
   .main { padding: 24px 16px 44px; }
   .main-title { font-size: 32px; }
   .card-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
+  .detail-hero, .detail-grid { grid-template-columns: 1fr; }
+  .detail-img { min-height: 220px; }
   .panel { padding: 16px; border-radius: 14px; }
   .spec-table { font-size: 13px; }
   .spec-table th, .spec-table td { padding: 9px 8px; }
@@ -966,6 +1213,7 @@ button { font-family: inherit; }
   .main-title { font-size: 29px; }
   .view-tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; margin-bottom: 16px; }
   .view-tab { flex: 1; justify-content: center; padding: 8px 12px; }
+  .tab-detail { display: none; }
   .card-grid { grid-template-columns: 1fr; }
   .bike-card { border-radius: 12px; }
   .card-img { height: 128px; }
@@ -973,6 +1221,12 @@ button { font-family: inherit; }
   .brand-mark { width: 42px; height: 42px; }
   .card-footer { gap: 12px; }
   .card-btn { min-width: 76px; }
+  .detail-summary { padding: 16px; border-radius: 14px; }
+  .detail-title { font-size: 30px; }
+  .detail-price { font-size: 22px; }
+  .detail-actions { flex-direction: column; }
+  .detail-action { width: 100%; }
+  .detail-spec-grid, .similar-grid { grid-template-columns: 1fr; }
   .chips-bar { gap: 6px; }
   .chip { max-width: 100%; }
   .chip-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
