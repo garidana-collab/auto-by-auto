@@ -33,8 +33,41 @@ const CAT_GRADIENT = {
 
 const CATEGORY_ORDER = ['미니/입문', '스쿠터', '네이키드', '스포츠', '클래식', '어드벤처', '크루저', '투어러']
 
+const BRAND_MARKS = {
+  honda: 'H',
+  yamaha: 'Y',
+  kawasaki: 'K',
+  bmw: 'BMW',
+  harley: 'HD',
+  suzuki: 'S',
+  ktm: 'KTM',
+  ducati: 'D',
+  triumph: 'T',
+  royalenfield: 'RE',
+  vespa: 'V',
+}
+
+function isKnownValue(v) {
+  return v !== null && v !== undefined && Number.isFinite(v)
+}
+
+function isKnownPrice(v) {
+  return isKnownValue(v) && v > 0
+}
+
+function formatShortSpec(label, value, unit = '') {
+  if (!isKnownValue(value)) return label ? `${label}정보 없음` : '정보 없음'
+  return `${label}${value}${unit}`
+}
+
+function formatPrice(value) {
+  if (!isKnownPrice(value)) return '정보 없음'
+  return `${Math.round(value / 10000).toLocaleString()}만원`
+}
+
 // 시트고 적합 등급 계산
 function getFitLabel(seatHeight, inseam) {
+  if (!isKnownValue(seatHeight)) return { text: '정보 없음', cls: 'fit-unknown' }
   if (seatHeight <= inseam * 0.95) return { text: '편안', cls: 'fit-good' }
   if (seatHeight <= inseam)        return { text: '적합', cls: 'fit-ok'   }
   return                                  { text: '발끝', cls: 'fit-tip'  }
@@ -84,11 +117,12 @@ export default function App() {
       if (selDisp.length) {
         const match = selDisp.some(id => {
           const cat = DISP_CATS.find(c => c.id === id)
+          if (!cat || !isKnownValue(b.displacement)) return false
           return b.displacement >= cat.min && b.displacement <= cat.max
         })
         if (!match) return false
       }
-      if (b.seatHeight > maxSeatHeight) return false
+      if (isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
       return true
     })
   }, [searchQuery, selCats, selLic, selDisp, maxSeatHeight])
@@ -142,8 +176,12 @@ export default function App() {
   const extremes = useMemo(() => {
     const out = {}
     SPECS.forEach(spec => {
-      const vals = comparedBikes.map(b => b[spec.key])
-      out[spec.key] = { max: Math.max(...vals), min: Math.min(...vals) }
+      const vals = comparedBikes
+        .map(b => b[spec.key])
+        .filter(v => spec.key === 'priceKRW' ? isKnownPrice(v) : isKnownValue(v))
+      out[spec.key] = vals.length
+        ? { max: Math.max(...vals), min: Math.min(...vals) }
+        : { max: null, min: null }
     })
     return out
   }, [comparedBikes])
@@ -151,9 +189,10 @@ export default function App() {
   // ── 레이더 데이터
   const radarData = useMemo(() => RADAR_KEYS.map(key => {
     const spec = SPECS.find(s => s.key === key)
-    const all  = BIKES.map(b => b[key])
+    const all  = BIKES.map(b => b[key]).filter(isKnownValue)
     const mn = Math.min(...all), mx = Math.max(...all)
     const norm = v => {
+      if (!isKnownValue(v)) return null
       const t = mx === mn ? 0.5 : (v - mn) / (mx - mn)
       return Math.round((spec.higherBetter === false ? 1 - t : t) * 100)
     }
@@ -342,7 +381,7 @@ export default function App() {
                             <span className="year-num">{yr}년식</span>
                             <span className={`fit-badge ${fit.cls}`}>{fit.text}</span>
                             <span className="year-price">
-                              {Math.round(bike.priceKRW / 10000)}만원
+                              {formatPrice(bike.priceKRW)}
                             </span>
                             <span className="year-check">{isOn ? '✓' : '+'}</span>
                           </button>
@@ -417,14 +456,22 @@ export default function App() {
 
                     {/* 정보 */}
                     <div className="card-body">
+                      <div className="brand-mark" aria-label={`${brand?.name ?? '브랜드'} 로고 자리`}>
+                        {brand?.logo
+                          ? <img src={brand.logo} alt="" />
+                          : <span>{BRAND_MARKS[bike.brand] ?? brand?.name?.slice(0, 2) ?? '?'}</span>
+                        }
+                      </div>
                       <div className="card-model">{bike.model}</div>
                       <div className="card-meta">{brand?.name} · {bike.year}년식</div>
                       <div className="card-specs">
-                        <span>{bike.displacement}cc</span>
-                        <span>{bike.power}hp</span>
-                        <span>시트고 {bike.seatHeight}mm</span>
+                        <span>{formatShortSpec('', bike.displacement, 'cc')}</span>
+                        <span>{formatShortSpec('', bike.power, 'hp')}</span>
+                        <span>{formatShortSpec('시트고 ', bike.seatHeight, 'mm')}</span>
                       </div>
-                      <div className="card-price">{Math.round(bike.priceKRW / 10000)}만원</div>
+                      <div className={`card-price ${isKnownPrice(bike.priceKRW) ? '' : 'unknown'}`}>
+                        {formatPrice(bike.priceKRW)}
+                      </div>
                     </div>
 
                     {/* 푸터 */}
@@ -536,7 +583,8 @@ export default function App() {
                               const v   = b[spec.key]
                               const ext = extremes[spec.key]
                               let cls   = ''
-                              if (spec.higherBetter !== null && ext.max !== ext.min) {
+                              const known = spec.key === 'priceKRW' ? isKnownPrice(v) : isKnownValue(v)
+                              if (known && spec.higherBetter !== null && ext.max !== null && ext.max !== ext.min) {
                                 if (spec.higherBetter ? v === ext.max : v === ext.min) cls = 'best'
                                 else if (spec.higherBetter ? v === ext.min : v === ext.max) cls = 'worst'
                               }
@@ -728,6 +776,7 @@ button { font-family: inherit; }
 .fit-good { background: rgba(31,182,166,.15); color: #1FB6A6; }
 .fit-ok   { background: rgba(255,92,0,.12);  color: var(--orange); }
 .fit-tip  { background: rgba(220,180,0,.12); color: #C8A000; }
+.fit-unknown { background: rgba(138,138,146,.12); color: var(--muted); }
 
 .empty-msg { font-size: 12px; color: var(--dim); text-align: center; padding: 20px 0; }
 
@@ -793,7 +842,16 @@ button { font-family: inherit; }
 .card-emoji { font-size: 38px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
 .card-photo { width: 100%; height: 100%; object-fit: cover; }
 
-.card-body { padding: 12px 12px 8px; flex: 1; }
+.card-body { padding: 12px 60px 8px 12px; flex: 1; position: relative; }
+.brand-mark {
+  position: absolute; top: 12px; right: 12px;
+  width: 38px; height: 38px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.78); font-size: 11px; font-weight: 900;
+  letter-spacing: 0; overflow: hidden;
+}
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
 .card-model { font-size: 14px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
 .card-meta  { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 .card-specs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
@@ -802,6 +860,7 @@ button { font-family: inherit; }
   padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line);
 }
 .card-price { font-size: 13px; font-weight: 700; color: var(--orange); }
+.card-price.unknown { color: var(--muted); }
 
 .card-footer {
   padding: 8px 12px 12px;
@@ -876,4 +935,48 @@ button { font-family: inherit; }
 .lg.best { color: var(--orange); }
 
 .foot { text-align: center; color: var(--dim); font-size: 11px; margin-top: 28px; }
+
+@media (max-width: 860px) {
+  .aba-root { display: block; min-height: 100vh; }
+  .sidebar {
+    width: 100%; min-width: 0; height: auto; position: relative;
+    border-right: none; border-bottom: 1px solid var(--line);
+    overflow: visible;
+  }
+  .sidebar-logo { padding: 16px 18px 14px; }
+  .sf-section { padding: 14px 16px; }
+  .sf-section.flex1 {
+    max-height: 280px; overflow-y: auto;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .main { padding: 24px 16px 44px; }
+  .main-title { font-size: 32px; }
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
+  .panel { padding: 16px; border-radius: 14px; }
+  .spec-table { font-size: 13px; }
+  .spec-table th, .spec-table td { padding: 9px 8px; }
+}
+
+@media (max-width: 520px) {
+  .search-wrap { padding: 10px 16px; }
+  .lic-group { flex-wrap: wrap; }
+  .lic-btn { min-width: 78px; }
+  .main { padding: 20px 12px 36px; }
+  .main-header { margin-bottom: 16px; }
+  .main-eyebrow { margin-bottom: 10px; }
+  .main-title { font-size: 29px; }
+  .view-tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; margin-bottom: 16px; }
+  .view-tab { flex: 1; justify-content: center; padding: 8px 12px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .bike-card { border-radius: 12px; }
+  .card-img { height: 128px; }
+  .card-body { padding-right: 68px; }
+  .brand-mark { width: 42px; height: 42px; }
+  .card-footer { gap: 12px; }
+  .card-btn { min-width: 76px; }
+  .chips-bar { gap: 6px; }
+  .chip { max-width: 100%; }
+  .chip-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-row { flex-direction: column; gap: 6px; }
+}
 `
