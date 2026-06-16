@@ -9,9 +9,9 @@ export const BRANDS = [
   { id: 'suzuki',       name: 'Suzuki',          logo: '/logos/suzuki.png'      },
   { id: 'ktm',          name: 'KTM',             logo: '/logos/ktm.png'         },
   { id: 'ducati',       name: 'Ducati',          logo: '/logos/ducati.png'      },
-  { id: 'triumph',      name: 'Triumph',         logo: '/logos/triumph.png'},
-  { id: 'royalenfield', name: 'Royal Enfield',   logo: '/logos/royal.png'},
-  { id: 'vespa',        name: 'Vespa',           logo: '/logos/vespa.png'},
+  { id: 'triumph',      name: 'Triumph',         logo: '/logos/triumph.png'    },
+  { id: 'royalenfield', name: 'Royal Enfield',   logo: '/logos/royal.png'      },
+  { id: 'vespa',        name: 'Vespa',           logo: '/logos/vespa.png'      },
 ]
 
 // ─── 바이크 제원 ──────────────────────────────────────────────────────────────

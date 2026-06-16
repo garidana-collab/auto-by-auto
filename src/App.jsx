@@ -482,7 +482,6 @@ export default function App() {
                         onClick={() => {
                           if (isFull) return
                           toggleCompare(bike.id)
-                          if (!isOn) setViewMode('compare')
                         }}
                       >
                         {isOn ? '✓ 비교 중' : '+ 비교'}
