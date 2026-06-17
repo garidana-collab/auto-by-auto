@@ -259,6 +259,9 @@ export default function App() {
     setSelCats([]); setSelLic('전체'); setSelDisp([])
     setRiderHeight(170); setLegType('normal')
   }
+  function resetCompared() {
+    setCompared([])
+  }
   const hasFilter = selCats.length > 0 || selLic !== '전체' || selDisp.length > 0
     || riderHeight !== 170 || legType !== 'normal'
   const totalCount = filtered.length
@@ -474,6 +477,14 @@ export default function App() {
             {compared.length > 0 && (
               <span className="tab-badge">{compared.length}</span>
             )}
+          </button>
+          <button
+            className="compare-reset"
+            onClick={resetCompared}
+            disabled={compared.length === 0}
+            aria-label="선택된 비교군 초기화"
+          >
+            초기화
           </button>
         </div>
 
@@ -978,7 +989,7 @@ button { font-family: inherit; }
 .main-title .hl { color: var(--orange); }
 
 /* ── 뷰 탭 */
-.view-tabs { display: flex; gap: 6px; margin-bottom: 24px; }
+.view-tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 24px; }
 .view-tab {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;
@@ -1001,6 +1012,19 @@ button { font-family: inherit; }
 }
 .view-tab:not(.on) .tab-badge {
   background: var(--orange); color: #fff;
+}
+.compare-reset {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 34px; padding: 8px 12px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.035);
+  color: var(--muted); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all .15s;
+}
+.compare-reset:hover:not(:disabled) {
+  border-color: rgba(255,92,0,.45); color: var(--orange); background: rgba(255,92,0,.08);
+}
+.compare-reset:disabled {
+  opacity: .35; cursor: not-allowed;
 }
 
 /* ── 카드 그리드 */
