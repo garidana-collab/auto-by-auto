@@ -31,6 +31,17 @@ const CAT_GRADIENT = {
   '투어러':   'linear-gradient(135deg, #0a1a2e 0%, #00101e 100%)',
 }
 
+const CAT_COLOR = {
+  '미니/입문': '#38d273',
+  '스쿠터': '#48a8ff',
+  '네이키드': '#d9a323',
+  '스포츠': '#ff4d5a',
+  '클래식': '#d6b84a',
+  '어드벤처': '#32c67a',
+  '크루저': '#b66cff',
+  '투어러': '#55b6ff',
+}
+
 const CATEGORY_ORDER = ['미니/입문', '스쿠터', '네이키드', '스포츠', '클래식', '어드벤처', '크루저', '투어러']
 
 const BRAND_MARKS = {
@@ -490,7 +501,10 @@ export default function App() {
                     {/* 이미지 영역 */}
                     <div
                       className="card-img"
-                      style={{ background: CAT_GRADIENT[bike.category] }}
+                      style={{
+                        background: CAT_GRADIENT[bike.category],
+                        '--cat-color': CAT_COLOR[bike.category],
+                      }}
                     >
                       <span className="card-cat-label">{bike.category}</span>
                       {bike.image
@@ -546,7 +560,10 @@ export default function App() {
             <section className="detail-hero">
               <div
                 className="detail-img"
-                style={{ background: CAT_GRADIENT[selectedBike.category] }}
+                style={{
+                  background: CAT_GRADIENT[selectedBike.category],
+                  '--cat-color': CAT_COLOR[selectedBike.category],
+                }}
               >
                 <span className="card-cat-label">{selectedBike.category}</span>
                 {selectedBike.image
@@ -1007,8 +1024,15 @@ button { font-family: inherit; }
 }
 .card-cat-label {
   position: absolute; top: 8px; left: 10px;
-  font-size: 9px; font-weight: 700; color: rgba(255,255,255,.5);
-  letter-spacing: .1em; text-transform: uppercase;
+  z-index: 1; max-width: calc(100% - 20px);
+  font-size: 10px; font-weight: 800; color: #fff;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 8px 5px 9px; border-radius: 6px;
+  background: rgba(8,8,10,.76);
+  border: 1px solid color-mix(in srgb, var(--cat-color, #fff) 72%, rgba(255,255,255,.18));
+  box-shadow: inset 3px 0 0 var(--cat-color, rgba(255,255,255,.45)), 0 6px 14px rgba(0,0,0,.24);
+  backdrop-filter: blur(6px);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .card-emoji { font-size: 38px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
 .card-photo { width: 100%; height: 100%; object-fit: cover; }
