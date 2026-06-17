@@ -149,6 +149,10 @@ _ReSharper*/
 # OS
 # --------------------------------------------------------------------------
 
+# folders
+Docs/
+*.jsonl
+
 # Windows
 Thumbs.db
 ehthumbs.db
