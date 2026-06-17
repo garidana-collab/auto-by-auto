@@ -163,14 +163,14 @@ export const BIKES = [
    category: '미니/입문', license: '원동기',
    displacement: 125, power: 9.9, torque: 9.6, weight: 102,
    seatHeight: 785, fuelEconomy: 55, tankCapacity: 7.4,
-   topSpeed: 92, priceKRW: 0, image: '/bikes/kawasaki/z125pro-2023.jpg'
+   topSpeed: 92, priceKRW: 3950000, image: '/bikes/kawasaki/z125pro-2023.jpg'
   },
   {
    id: 'ninja500-2025', brand: 'kawasaki', model: 'Ninja 500', year: 2025,
    category: '스포츠', license: '소형이륜',
-   displacement: 451, power: null, torque: null, weight: null,
-   seatHeight: null, fuelEconomy: null, tankCapacity: null,
-   topSpeed: null, priceKRW: 9350000, image: '/bikes/kawasaki/ninja500-2025.jpg'
+   displacement: 451, power: 45, torque: 42.6, weight: 171,
+   seatHeight: 785, fuelEconomy: 22, tankCapacity: 14,
+   topSpeed: 198, priceKRW: 9350000, image: '/bikes/kawasaki/ninja500-2025.jpg'
   },
   {
    id: 'ninja650-2022', brand: 'kawasaki', model: 'Ninja 650', year: 2022,
@@ -294,9 +294,9 @@ export const BIKES = [
   {
     id: 'z500-2025', brand: 'kawasaki', model: 'Z500', year: 2025,
     category: '네이키드', license: '소형이륜',
-    displacement: 451, power: null, torque: null, weight: null,
-    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: 0, image: '/bikes/kawasaki/z500-2025.png'
+    displacement: 451, power: 51, torque: 42.6, weight: 167,
+    seatHeight: 784, fuelEconomy: 24, tankCapacity: 14,
+    topSpeed: 195, priceKRW: 8475000, image: '/bikes/kawasaki/z500-2025.png'
   },
   {
   id: 'z650rs-2022', brand: 'kawasaki', model: 'Z650RS', year: 2022,
@@ -337,14 +337,14 @@ export const BIKES = [
   id: 'z1100-2025', brand: 'kawasaki', model: 'Z1100', year: 2025,
   category: '네이키드', license: '소형이륜',
   displacement: 1099, power: 134, torque: 112, weight: 200,
-  seatHeight: 815, fuelEconomy: null, tankCapacity: 17,
-  topSpeed: 254, priceKRW: 0, image: '/bikes/kawasaki/z1100-2025.jpeg'
+  seatHeight: 815, fuelEconomy: 18, tankCapacity: 17,
+  topSpeed: 254, priceKRW: 16940000, image: '/bikes/kawasaki/z1100-2025.jpeg'
 },
 {
   id: 'ninja1100sx-2025', brand: 'kawasaki', model: 'Ninja 1100SX', year: 2025,
   category: '투어러', license: '소형이륜',
   displacement: 1099, power: 134, torque: 112, weight: 200,
-  seatHeight: 815, fuelEconomy: null, tankCapacity: 17,
+  seatHeight: 815, fuelEconomy: 18.6, tankCapacity: 17,
   topSpeed: 254, priceKRW: 22716000, image: '/bikes/kawasaki/ninja1100sx-2025.webp'
 },
 
