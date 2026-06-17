@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 16일 (3차 DEV 세션)
+> 마지막 업데이트: 2026년 6월 17일 (Yamaha 데이터 확장 세션)
 
 ---
 
@@ -94,80 +94,86 @@ auto-by-auto/
 - **반응형 보완**: 상세 탭의 히어로 영역, 제원 그리드, 액션 버튼이 모바일에서 1열로 정리되도록 CSS 추가
 - **검증 완료**: `npm.cmd run build` 성공, 로컬 브라우저에서 상세 탭 전환 및 비교 버튼 동작 확인
 
+#### 6단계 — Yamaha 기종 데이터 대폭 확장 (2026-06-17)
+- **Yamaha 스포츠 계열 확장**: YZF-R125, YZF-R3, YZF-R6, YZF-R7, YZF-R1, YZF-R1M 추가/보강
+- **R1/R1M 연식별 데이터 추가**: 1998, 2002, 2004, 2007, 2009, 2012, 2015, 2020, 2025 주요 세대 등록
+- **Yamaha 네이키드 계열 확장**: MT-01, MT-03, MT-07, MT-09, MT-10, MT-125, MT-15, MT-25 추가
+- **Yamaha 나머지 계열 확장**: NMAX, XMAX, TMAX, Aerox, Tricity, XSR, XT, Tenere, Super Tenere, Tracer, Niken, FJR, Bolt, V Star, VMAX 추가
+- **불확실 데이터 처리 기준 적용**: 공식/일관 출처가 부족한 최고속도, 연비, 한국 중고시세, 일부 출력/토크는 `null`로 유지
+- **이미지 에셋 일부 추가**: R1/R1M 및 MT 계열 이미지 파일이 `public/bikes/yamaha/`에 추가됨
+- **검증 완료**: Yamaha 데이터 확장 후 `npm.cmd run build` 성공
+
 ---
 
 ## 현재 데이터 현황
 
 > ⚠️ 현재 데이터는 AI 학습 데이터 기반 추정값으로, 실제 제조사 공식 스펙과 다를 수 있음.  
-> 프로토타입 단계이며, 서비스화 시 공식 스펙시트 기반 검증 필요.
+> 2026-06-17 Yamaha 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
 
 ### 등록된 브랜드 (11개)
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa
 
-### 등록된 기종 (66개)
+### 등록된 기종 (121개)
 
-| 브랜드 | 모델 | 연식 | 카테고리 |
-|--------|------|------|----------|
-| Honda | GROM | 2017, 2022 | 미니/입문 |
-| Honda | PCX 125 | 2021, 2023 | 스쿠터 |
-| Honda | CBR300R | 2022 | 스포츠 |
-| Honda | Rebel 500 | 2023 | 크루저 |
-| Honda | CB500X | 2023 | 어드벤처 |
-| Honda | CB650R | 2023 | 네이키드 |
-| Honda | NC750X | 2023 | 어드벤처 |
-| Honda | Gold Wing | 2021 | 투어러 |
-| Yamaha | NMAX 125 | 2023 | 스쿠터 |
-| Yamaha | XMAX 300 | 2023 | 스쿠터 |
-| Yamaha | YZF-R3 | 2023 | 스포츠 |
-| Yamaha | MT-03 | 2020, 2023 | 네이키드 |
-| Yamaha | XSR700 | 2022 | 클래식 |
-| Yamaha | Tenere 700 | 2023 | 어드벤처 |
-| Yamaha | Tracer 9 GT | 2022 | 투어러 |
-| Kawasaki | Z125 PRO | 2022, 2023 | 미니/입문 |
-| Kawasaki | Ninja 500 | 2025 | 스포츠 |
-| Kawasaki | Ninja 650 | 2022 | 스포츠 |
-| Kawasaki | Eliminator 500 | 2023 | 크루저 |
-| Kawasaki | Ninja 400 | 2023 | 스포츠 |
-| Kawasaki | Ninja ZX-4RR | 2023 | 스포츠 |
-| Kawasaki | Z650 | 2023 | 네이키드 |
-| Kawasaki | Z650RS | 2022 | 클래식 |
-| Kawasaki | Z900 | 2019, 2021, 2025 | 네이키드 |
-| Kawasaki | Z900RS | 2022 | 클래식 |
-| Kawasaki | Z900RS SE | 2025 | 클래식 |
-| Kawasaki | Z500 | 2025 | 네이키드 |
-| Kawasaki | Z1100 | 2025 | 네이키드 |
-| Kawasaki | Versys 650 | 2023 | 어드벤처 |
-| Kawasaki | Versys 1000 SE | 2023 | 어드벤처 |
-| Kawasaki | Ninja ZX-6R | 2023, 2025 | 스포츠 |
-| Kawasaki | Ninja ZX-10R | 2025 | 스포츠 |
-| Kawasaki | Ninja H2 SX SE | 2022 | 투어러 |
-| Kawasaki | Ninja 1100SX | 2025 | 투어러 |
-| Kawasaki | Vulcan S | 2023 | 크루저 |
-| Kawasaki | Eliminator | 2024 | 크루저 |
-| Kawasaki | W800 | 2022 | 클래식 |
-| Kawasaki | MEGURO S1 | 2025 | 클래식 |
-| BMW | G310R | 2022 | 네이키드 |
-| BMW | F900R | 2023 | 네이키드 |
-| BMW | R1250GS | 2022 | 어드벤처 |
-| BMW | S1000R | 2023 | 네이키드 |
-| Harley-Davidson | Iron 883 | 2020 | 크루저 |
-| Harley-Davidson | Sportster S | 2022 | 크루저 |
-| Suzuki | GSX-S125 | 2023 | 미니/입문 |
-| Suzuki | SV650 | 2023 | 네이키드 |
-| Suzuki | V-Strom 650 | 2023 | 어드벤처 |
-| Suzuki | Burgman 400 | 2023 | 스쿠터 |
-| Suzuki | GSX-8S | 2023 | 네이키드 |
-| KTM | Duke 390 | 2023 | 네이키드 |
-| KTM | Adventure 390 | 2023 | 어드벤처 |
-| KTM | Duke 790 | 2023 | 네이키드 |
-| Ducati | Scrambler Icon | 2023 | 클래식 |
-| Ducati | Monster 937 | 2023 | 네이키드 |
-| Triumph | Trident 660 | 2023 | 네이키드 |
-| Triumph | Street Scrambler | 2022 | 클래식 |
-| Royal Enfield | Meteor 350 | 2023 | 크루저 |
-| Royal Enfield | Himalayan 411 | 2023 | 어드벤처 |
-| Vespa | Primavera 125 | 2023 | 스쿠터 |
-| Vespa | GTS 300 HPE | 2023 | 스쿠터 |
+| 브랜드 | 등록 대수 | 비고 |
+|--------|----------:|------|
+| Yamaha | 62 | 2026-06-17 기준 집중 확장 완료 |
+| Honda | 10 | 기존 데이터 유지 |
+| Kawasaki | 27 | 기존 데이터 유지 |
+| BMW Motorrad | 4 | 기존 데이터 유지 |
+| Harley-Davidson | 2 | 기존 데이터 유지 |
+| Suzuki | 5 | 기존 데이터 유지 |
+| KTM | 3 | 기존 데이터 유지 |
+| Ducati | 2 | 기존 데이터 유지 |
+| Triumph | 2 | 기존 데이터 유지 |
+| Royal Enfield | 2 | 기존 데이터 유지 |
+| Vespa | 2 | 기존 데이터 유지 |
+
+### Yamaha 등록 현황 (62개)
+
+| 카테고리 | 모델 | 연식 |
+|----------|------|------|
+| 스쿠터 | NMAX 125 | 2023 |
+| 스쿠터 | NMAX 155 | 2021 |
+| 스쿠터 | XMAX 125 | 2021 |
+| 스쿠터 | XMAX 250 Tech MAX | 2020 |
+| 스쿠터 | XMAX 300 | 2023 |
+| 스쿠터 | XMAX 400 | 2020 |
+| 스쿠터 | TMAX 530 | 2017 |
+| 스쿠터 | TMAX 560 Tech MAX | 2022 |
+| 스쿠터 | Aerox 155 | 2022 |
+| 스쿠터 | Tricity 300 | 2020 |
+| 스포츠 | YZF-R125 | 2023 |
+| 스포츠 | YZF-R3 | 2023 |
+| 스포츠 | YZF-R6 | 2020 |
+| 스포츠 | YZF-R7 | 2022 |
+| 스포츠 | YZF-R1 | 1998, 2002, 2004, 2007, 2009, 2012, 2015, 2020, 2025 |
+| 스포츠 | YZF-R1M | 2015, 2020, 2025 |
+| 네이키드 | MT-01 | 2005 |
+| 네이키드 | MT-03 | 2006, 2020, 2023, 2025 |
+| 네이키드 | MT-07 | 2014, 2021, 2025 |
+| 네이키드 | MT-09 | 2014, 2021, 2024 |
+| 네이키드 | MT-10 | 2016, 2022, 2025 |
+| 네이키드 | MT-125 | 2023 |
+| 네이키드 | MT-15 | 2023 |
+| 네이키드 | MT-25 | 2023 |
+| 클래식 | XSR125 | 2023 |
+| 클래식 | XSR700 | 2022 |
+| 클래식 | XSR900 | 2022 |
+| 클래식 | XSR900 GP | 2024 |
+| 어드벤처 | XT225 Serow | 2007 |
+| 어드벤처 | XT250 | 2023 |
+| 어드벤처 | XT660Z Tenere | 2016 |
+| 어드벤처 | Tenere 700 | 2023, 2025 |
+| 어드벤처 | Super Tenere ES | 2024 |
+| 투어러 | Tracer 700 | 2020 |
+| 투어러 | Tracer 9 GT | 2022, 2025 |
+| 투어러 | Niken GT | 2019 |
+| 투어러 | FJR1300A | 2016 |
+| 크루저 | Bolt | 2014 |
+| 크루저 | V Star 950 | 2009 |
+| 크루저 | V Star 1300 | 2007 |
+| 크루저 | VMAX | 2009 |
 
 ### 제원 항목 (9종)
 배기량 / 최고출력 / 토크 / 공차중량 / 시트고 / 연비 / 연료탱크 / 최고속도 / 중고시세
