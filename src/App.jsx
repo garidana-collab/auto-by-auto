@@ -85,6 +85,22 @@ function getFitLabel(seatHeight, inseam) {
   return                                  { text: '발끝', cls: 'fit-tip'  }
 }
 
+function buildRadarData(targetBikes) {
+  return RADAR_KEYS.map(key => {
+    const spec = SPECS.find(s => s.key === key)
+    const all  = BIKES.map(b => b[key]).filter(isKnownValue)
+    const mn = Math.min(...all), mx = Math.max(...all)
+    const norm = v => {
+      if (!isKnownValue(v)) return null
+      const t = mx === mn ? 0.5 : (v - mn) / (mx - mn)
+      return Math.round((spec.higherBetter === false ? 1 - t : t) * 100)
+    }
+    const row = { spec: spec.label }
+    targetBikes.forEach((b, i) => { row[`bike${i}`] = norm(b[key]) })
+    return row
+  })
+}
+
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -92,6 +108,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('')
 
   // 보조 필터
+  const [selBrands, setSelBrands] = useState([])
   const [selCats, setSelCats] = useState([])
   const [selLic,  setSelLic]  = useState('전체')
   const [selDisp, setSelDisp] = useState([])
@@ -126,6 +143,7 @@ export default function App() {
         const brandName = brand ? brand.name.toLowerCase() : ''
         if (!b.model.toLowerCase().includes(q) && !brandName.includes(q)) return false
       }
+      if (selBrands.length && !selBrands.includes(b.brand)) return false
       if (selCats.length && !selCats.includes(b.category)) return false
       if (selLic === '원동기'   && b.license !== '원동기')   return false
       if (selLic === '소형이륜' && b.license !== '소형이륜') return false
@@ -140,7 +158,7 @@ export default function App() {
       if (!q && isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
       return true
     })
-  }, [searchQuery, selCats, selLic, selDisp, maxSeatHeight])
+  }, [searchQuery, selBrands, selCats, selLic, selDisp, maxSeatHeight])
 
   // ── 카드 뷰용 정렬 (카테고리→브랜드→모델→연식)
   const sortedFiltered = useMemo(() =>
@@ -231,19 +249,10 @@ export default function App() {
   }, [comparedBikes])
 
   // ── 레이더 데이터
-  const radarData = useMemo(() => RADAR_KEYS.map(key => {
-    const spec = SPECS.find(s => s.key === key)
-    const all  = BIKES.map(b => b[key]).filter(isKnownValue)
-    const mn = Math.min(...all), mx = Math.max(...all)
-    const norm = v => {
-      if (!isKnownValue(v)) return null
-      const t = mx === mn ? 0.5 : (v - mn) / (mx - mn)
-      return Math.round((spec.higherBetter === false ? 1 - t : t) * 100)
-    }
-    const row = { spec: spec.label }
-    comparedBikes.forEach((b, i) => { row[`bike${i}`] = norm(b[key]) })
-    return row
-  }), [comparedBikes])
+  const radarData = useMemo(() => buildRadarData(comparedBikes), [comparedBikes])
+  const selectedRadarData = useMemo(() =>
+    selectedBike ? buildRadarData([selectedBike]) : [],
+  [selectedBike])
 
   // ── 드릴다운 핸들러
   function handleBrandClick(id) {
@@ -256,13 +265,13 @@ export default function App() {
 
   // ── 필터 초기화
   function resetFilters() {
-    setSelCats([]); setSelLic('전체'); setSelDisp([])
+    setSelBrands([]); setSelCats([]); setSelLic('전체'); setSelDisp([])
     setRiderHeight(170); setLegType('normal')
   }
   function resetCompared() {
     setCompared([])
   }
-  const hasFilter = selCats.length > 0 || selLic !== '전체' || selDisp.length > 0
+  const hasFilter = selBrands.length > 0 || selCats.length > 0 || selLic !== '전체' || selDisp.length > 0
     || riderHeight !== 170 || legType !== 'normal'
   const totalCount = filtered.length
 
@@ -276,9 +285,9 @@ export default function App() {
       <aside className="sidebar">
 
         <div className="sidebar-logo">
-          <span className="logo-aba">ABA</span>
-          <span className="logo-sep">·</span>
-          <span className="logo-sub">기종 정보</span>
+          <span className="logo-wordmark">
+            오토<span>바이</span>오토
+          </span>
         </div>
 
         {/* 검색창 */}
@@ -305,7 +314,22 @@ export default function App() {
             )}
           </div>
 
-          <div className="sf-label">장르</div>
+          <div className="sf-label">브랜드</div>
+          <div className="brand-filter-grid">
+            {BRANDS.map(brand => (
+              <button
+                key={brand.id}
+                className={`brand-filter-chip ${selBrands.includes(brand.id) ? 'on' : ''}`}
+                onClick={() => setSelBrands(prev =>
+                  prev.includes(brand.id) ? prev.filter(id => id !== brand.id) : [...prev, brand.id]
+                )}
+              >
+                {brand.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="sf-label mt14">장르</div>
           <div className="cat-grid">
             {ALL_CATEGORIES.map(cat => (
               <button
@@ -446,7 +470,9 @@ export default function App() {
       <main className="main">
 
         <div className="main-header">
-          <div className="main-eyebrow">기종 정보 · AUTO by AUTO</div>
+          <div className="main-eyebrow">
+            AUTO BY AUTO <span>by @4rr.4r4r</span>
+          </div>
           <h1 className="main-title">
             어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
           </h1>
@@ -584,57 +610,100 @@ export default function App() {
               </div>
 
               <div className="detail-summary">
-                <div className="detail-brand-row">
-                  <div className="brand-mark detail-mark" aria-label={`${selectedBrand?.name ?? '브랜드'} 로고 자리`}>
-                    {selectedBrand?.logo
-                      ? <img src={selectedBrand.logo} alt="" />
-                      : <span>{BRAND_MARKS[selectedBike.brand] ?? selectedBrand?.name?.slice(0, 2) ?? '?'}</span>
-                    }
+                <div className="detail-summary-main">
+                  <div className="detail-brand-row">
+                    <div className="brand-mark detail-mark" aria-label={`${selectedBrand?.name ?? '브랜드'} 로고 자리`}>
+                      {selectedBrand?.logo
+                        ? <img src={selectedBrand.logo} alt="" />
+                        : <span>{BRAND_MARKS[selectedBike.brand] ?? selectedBrand?.name?.slice(0, 2) ?? '?'}</span>
+                      }
+                    </div>
+                    <div>
+                      <div className="detail-brand">{selectedBrand?.name}</div>
+                      <h2 className="detail-title">{selectedBike.model}</h2>
+                      <div className="detail-meta">{selectedBike.year}년식 · {selectedBike.license}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="detail-brand">{selectedBrand?.name}</div>
-                    <h2 className="detail-title">{selectedBike.model}</h2>
-                    <div className="detail-meta">{selectedBike.year}년식 · {selectedBike.license}</div>
+
+                  <div className="detail-price">{formatPrice(selectedBike.priceKRW)}</div>
+
+                  <div className="detail-actions">
+                    {(() => {
+                      const isOn = compared.includes(selectedBike.id)
+                      const isFull = compared.length >= 3 && !isOn
+                      return (
+                        <button
+                          className={`detail-action ${isOn ? 'on' : ''}`}
+                          disabled={isFull}
+                          onClick={() => toggleCompare(selectedBike.id)}
+                        >
+                          {isOn ? '비교에서 제거' : isFull ? '비교 최대 3개' : '비교에 추가'}
+                        </button>
+                      )
+                    })()}
+                    <button className="detail-action ghost" onClick={() => setViewMode('browse')}>
+                      탐색으로 돌아가기
+                    </button>
                   </div>
                 </div>
 
-                <div className="detail-price">{formatPrice(selectedBike.priceKRW)}</div>
+                <aside className="detail-inline-tools">
+                  <div className="detail-tool-block detail-years-block">
+                    <div className="panel-label">동일 모델 연식</div>
+                    <div className="variant-row detail-variants">
+                      {sameModelBikes.map(b => (
+                        <button
+                          key={b.id}
+                          className={`variant-chip ${b.id === selectedBike.id ? 'on' : ''}`}
+                          onClick={() => openBikeDetail(b.id)}
+                        >
+                          {b.year}년식
+                          <span>{formatPrice(b.priceKRW)}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
-                <div className="detail-actions">
-                  {(() => {
-                    const isOn = compared.includes(selectedBike.id)
-                    const isFull = compared.length >= 3 && !isOn
-                    return (
-                      <button
-                        className={`detail-action ${isOn ? 'on' : ''}`}
-                        disabled={isFull}
-                        onClick={() => toggleCompare(selectedBike.id)}
-                      >
-                        {isOn ? '비교에서 제거' : isFull ? '비교 최대 3개' : '비교에 추가'}
-                      </button>
-                    )
-                  })()}
-                  <button className="detail-action ghost" onClick={() => setViewMode('browse')}>
-                    탐색으로 돌아가기
-                  </button>
-                </div>
+                  <div className="detail-tool-block detail-fit-inline">
+                    <div className="panel-label">내 체형 기준</div>
+                    {(() => {
+                      const fit = getFitLabel(selectedBike.seatHeight, inseam)
+                      return (
+                        <div className="fit-inline-row">
+                          <div className={`fit-large fit-mini ${fit.cls}`}>{fit.text}</div>
+                          <div className="fit-copy">
+                            추정 인심 {inseam}mm · 시트고 {formatShortSpec('', selectedBike.seatHeight, 'mm')}
+                          </div>
+                        </div>
+                      )
+                    })()}
+                  </div>
+                </aside>
               </div>
             </section>
 
             <section className="detail-grid">
-              <div className="panel detail-fit">
-                <div className="panel-label">내 체형 기준</div>
-                {(() => {
-                  const fit = getFitLabel(selectedBike.seatHeight, inseam)
-                  return (
-                    <>
-                      <div className={`fit-large ${fit.cls}`}>{fit.text}</div>
-                      <div className="fit-copy">
-                        추정 인심 {inseam}mm 기준으로 시트고 {formatShortSpec('', selectedBike.seatHeight, 'mm')} 기종입니다.
-                      </div>
-                    </>
-                  )
-                })()}
+              <div className="panel detail-radar">
+                <div className="panel-label">해당 모델 제원 그래프</div>
+                <ResponsiveContainer width="100%" height={260}>
+                  <RadarChart data={selectedRadarData} outerRadius="72%">
+                    <PolarGrid stroke="#2a2a2e" />
+                    <PolarAngleAxis
+                      dataKey="spec"
+                      tick={{ fill: '#9a9aa0', fontSize: 11 }}
+                    />
+                    <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
+                    <Radar
+                      name={`${selectedBike.model} '${String(selectedBike.year).slice(2)}`}
+                      dataKey="bike0"
+                      stroke={COLORS[0]}
+                      fill={COLORS[0]}
+                      fillOpacity={0.2}
+                      strokeWidth={2}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
+                <div className="radar-note">전체 등록 모델 기준 0-100 정규화</div>
               </div>
 
               <div className="panel">
@@ -648,22 +717,6 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </section>
-
-            <section className="panel">
-              <div className="panel-label">동일 모델 연식</div>
-              <div className="variant-row">
-                {sameModelBikes.map(b => (
-                  <button
-                    key={b.id}
-                    className={`variant-chip ${b.id === selectedBike.id ? 'on' : ''}`}
-                    onClick={() => openBikeDetail(b.id)}
-                  >
-                    {b.year}년식
-                    <span>{formatPrice(b.priceKRW)}</span>
-                  </button>
-                ))}
               </div>
             </section>
 
@@ -844,12 +897,14 @@ button { font-family: inherit; }
   overflow-y: auto; display: flex; flex-direction: column;
 }
 .sidebar-logo {
-  display: flex; align-items: baseline; gap: 7px;
+  display: flex; align-items: baseline;
   padding: 20px 18px 16px; border-bottom: 1px solid var(--line);
 }
-.logo-aba { font-size: 17px; font-weight: 900; color: var(--orange); letter-spacing: -.02em; }
-.logo-sep { color: var(--line); }
-.logo-sub { font-size: 12px; color: var(--muted); font-weight: 500; }
+.logo-wordmark {
+  font-size: 17px; font-weight: 900; color: var(--text); letter-spacing: 0;
+  line-height: 1; white-space: nowrap;
+}
+.logo-wordmark span { color: var(--orange); }
 
 .search-wrap {
   display: flex; align-items: center; gap: 8px;
@@ -889,6 +944,20 @@ button { font-family: inherit; }
 }
 .sf-label.mt14 { margin-top: 14px; }
 .sf-val { color: var(--orange); font-size: 11px; font-weight: 700; }
+
+.brand-filter-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px;
+}
+.brand-filter-chip {
+  min-width: 0; font-size: 11px; padding: 5px 7px; border-radius: 8px;
+  border: 1px solid var(--line); background: transparent; color: var(--muted);
+  cursor: pointer; font-weight: 600; text-align: left; transition: all .12s;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.brand-filter-chip.on {
+  border-color: var(--orange); color: var(--orange); background: rgba(255,92,0,.1);
+}
+.brand-filter-chip:hover:not(.on) { border-color: #3a3a3f; color: var(--text); }
 
 .cat-grid { display: flex; flex-wrap: wrap; gap: 5px; }
 .cat-chip {
@@ -979,8 +1048,11 @@ button { font-family: inherit; }
 
 .main-header { margin-bottom: 20px; }
 .main-eyebrow {
-  font-size: 10px; letter-spacing: .22em; font-weight: 700;
+  font-size: 13px; letter-spacing: .14em; font-weight: 900;
   color: var(--orange); text-transform: uppercase; margin-bottom: 12px;
+}
+.main-eyebrow span {
+  color: var(--muted); font-size: 11px; letter-spacing: .08em; font-weight: 800;
 }
 .main-title {
   font-size: clamp(28px, 5vw, 42px); font-weight: 800;
@@ -1107,13 +1179,42 @@ button { font-family: inherit; }
 .detail-emoji { font-size: 70px; filter: drop-shadow(0 6px 18px rgba(0,0,0,.45)); }
 .detail-summary {
   background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
-  padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px;
+  padding: 22px; display: grid; grid-template-columns: minmax(260px, 1fr) minmax(240px, .62fr);
+  gap: 18px; align-items: stretch;
+}
+.detail-summary-main {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-width: 0;
 }
 .detail-brand-row { display: flex; gap: 14px; align-items: flex-start; }
 .detail-mark { position: static; flex-shrink: 0; width: 48px; height: 48px; }
 .detail-brand { font-size: 13px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
 .detail-title { font-size: clamp(28px, 4vw, 44px); line-height: 1; font-weight: 900; letter-spacing: 0; }
 .detail-meta { margin-top: 8px; font-size: 13px; color: var(--muted); }
+.detail-inline-tools {
+  display: flex; flex-direction: column; gap: 12px; min-width: 0; min-height: 0;
+}
+.detail-tool-block {
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px;
+  background: rgba(255,255,255,.025); min-height: 0;
+}
+.detail-years-block {
+  flex: 1 1 auto; max-height: 160px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.22) transparent;
+}
+.detail-years-block::-webkit-scrollbar { width: 6px; }
+.detail-years-block::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.22); border-radius: 999px;
+}
+.detail-years-block::-webkit-scrollbar-track { background: transparent; }
+.detail-fit-inline {
+  flex: 0 0 auto; min-width: 0;
+}
+.detail-variants { gap: 6px; }
+.detail-variants .variant-chip {
+  min-width: 92px; padding: 7px 9px; font-size: 12px;
+}
+.fit-inline-row { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fit-mini { margin-bottom: 0; padding: 7px 10px; font-size: 18px; flex-shrink: 0; }
 .detail-price { font-size: 26px; font-weight: 900; color: var(--orange); }
 .detail-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .detail-action {
@@ -1128,10 +1229,11 @@ button { font-family: inherit; }
 .detail-action.ghost:hover { border-color: #3a3a3f; color: var(--text); }
 
 .detail-grid {
-  display: grid; grid-template-columns: minmax(220px, 0.75fr) 2fr;
+  display: grid; grid-template-columns: minmax(260px, .9fr) 2fr;
   gap: 16px; align-items: stretch;
 }
 .detail-fit { display: flex; flex-direction: column; justify-content: center; }
+.detail-radar { min-height: 340px; }
 .fit-large {
   width: max-content; max-width: 100%; border-radius: 8px;
   padding: 8px 12px; font-size: 22px; font-weight: 900; margin-bottom: 12px;
@@ -1247,6 +1349,8 @@ button { font-family: inherit; }
   .main-title { font-size: 32px; }
   .card-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 10px; }
   .detail-hero, .detail-grid { grid-template-columns: 1fr; }
+  .detail-summary { grid-template-columns: 1fr; }
+  .detail-inline-tools { flex-direction: column; }
   .detail-img { min-height: 220px; }
   .panel { padding: 16px; border-radius: 14px; }
   .spec-table { font-size: 13px; }
@@ -1272,7 +1376,12 @@ button { font-family: inherit; }
   .card-footer { gap: 12px; }
   .card-btn { min-width: 76px; }
   .detail-summary { padding: 16px; border-radius: 14px; }
+  .detail-brand-row { gap: 10px; }
   .detail-title { font-size: 30px; }
+  .detail-inline-tools { gap: 8px; }
+  .detail-tool-block { padding: 10px; }
+  .detail-variants .variant-chip { flex: 1 1 96px; min-width: 0; }
+  .fit-inline-row { align-items: flex-start; flex-direction: column; gap: 8px; }
   .detail-price { font-size: 22px; }
   .detail-actions { flex-direction: column; }
   .detail-action { width: 100%; }
