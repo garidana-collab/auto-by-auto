@@ -5,7 +5,7 @@ import {
 } from 'recharts'
 
 import { BRANDS, BIKES, ALL_CATEGORIES } from './data/bikes'
-import { SPECS, RADAR_KEYS, COLORS, fmtVal } from './data/specs'
+import { SPECS, RADAR_KEYS, COLORS, fmtVal, getSpecScore } from './data/specs'
 
 // ─── 상수 ─────────────────────────────────────────────────────────────────────
 
@@ -88,7 +88,7 @@ function getFitLabel(seatHeight, inseam) {
 function buildRadarData(targetBikes) {
   return RADAR_KEYS.map(key => {
     const spec = SPECS.find(s => s.key === key)
-    const all  = BIKES.map(b => b[key]).filter(isKnownValue)
+    const all  = BIKES.map(b => getSpecScore(spec, b)).filter(isKnownValue)
     const mn = Math.min(...all), mx = Math.max(...all)
     const norm = v => {
       if (!isKnownValue(v)) return null
@@ -96,7 +96,7 @@ function buildRadarData(targetBikes) {
       return Math.round((spec.higherBetter === false ? 1 - t : t) * 100)
     }
     const row = { spec: spec.label }
-    targetBikes.forEach((b, i) => { row[`bike${i}`] = norm(b[key]) })
+    targetBikes.forEach((b, i) => { row[`bike${i}`] = norm(getSpecScore(spec, b)) })
     return row
   })
 }
@@ -114,6 +114,7 @@ export default function App() {
   const [selDisp, setSelDisp] = useState([])
 
   // 체형 필터
+  const [bodyFilterEnabled, setBodyFilterEnabled] = useState(true)
   const [riderHeight, setRiderHeight] = useState(170)
   const [legType,     setLegType]     = useState('normal')
 
@@ -155,10 +156,10 @@ export default function App() {
         })
         if (!match) return false
       }
-      if (!q && isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
+      if (bodyFilterEnabled && isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
       return true
     })
-  }, [searchQuery, selBrands, selCats, selLic, selDisp, maxSeatHeight])
+  }, [searchQuery, selBrands, selCats, selLic, selDisp, bodyFilterEnabled, maxSeatHeight])
 
   // ── 카드 뷰용 정렬 (카테고리→브랜드→모델→연식)
   const sortedFiltered = useMemo(() =>
@@ -239,7 +240,7 @@ export default function App() {
     const out = {}
     SPECS.forEach(spec => {
       const vals = comparedBikes
-        .map(b => b[spec.key])
+        .map(b => getSpecScore(spec, b))
         .filter(v => spec.key === 'priceKRW' ? isKnownPrice(v) : isKnownValue(v))
       out[spec.key] = vals.length
         ? { max: Math.max(...vals), min: Math.min(...vals) }
@@ -266,13 +267,14 @@ export default function App() {
   // ── 필터 초기화
   function resetFilters() {
     setSelBrands([]); setSelCats([]); setSelLic('전체'); setSelDisp([])
+    setBodyFilterEnabled(true)
     setRiderHeight(170); setLegType('normal')
   }
   function resetCompared() {
     setCompared([])
   }
   const hasFilter = selBrands.length > 0 || selCats.length > 0 || selLic !== '전체' || selDisp.length > 0
-    || riderHeight !== 170 || legType !== 'normal'
+    || !bodyFilterEnabled || riderHeight !== 170 || legType !== 'normal'
   const totalCount = filtered.length
 
   // ─── RENDER ──────────────────────────────────────────────────────────────
@@ -289,6 +291,56 @@ export default function App() {
             오토<span>바이</span>오토
           </span>
         </div>
+
+        {/* 체형 필터 */}
+        <section className={`sf-section body-section ${bodyFilterEnabled ? '' : 'off'}`}>
+          <div className="sf-heading-row">
+            <span className="sf-heading">내 체형</span>
+            <label className="filter-toggle">
+              <input
+                type="checkbox"
+                checked={bodyFilterEnabled}
+                onChange={e => setBodyFilterEnabled(e.target.checked)}
+              />
+              <span>적용</span>
+            </label>
+          </div>
+
+          <div className="sf-label">
+            키
+            <span className="sf-val">{riderHeight}cm</span>
+          </div>
+          <input type="range" min={150} max={195} step={1}
+            value={riderHeight}
+            onChange={e => setRiderHeight(Number(e.target.value))}
+            className="aba-slider"
+            disabled={!bodyFilterEnabled}
+          />
+          <div className="slider-ends"><span>150cm</span><span>195cm</span></div>
+
+          <div className="sf-label mt14">다리 길이</div>
+          <div className="lic-group">
+            {[['short','짧은 편'], ['normal','보통'], ['long','긴 편']].map(([val, label]) => (
+              <button
+                key={val}
+                className={`lic-btn ${legType === val ? 'on' : ''}`}
+                onClick={() => setLegType(val)}
+                disabled={!bodyFilterEnabled}
+              >{label}</button>
+            ))}
+          </div>
+
+          <div className="height-info">
+            {bodyFilterEnabled ? (
+              <>
+                추정 인심 <strong>{inseam}mm</strong><br />
+                권장 시트고 <strong>~{maxSeatHeight}mm 이하</strong>
+              </>
+            ) : (
+              <>체형 조건 없이 전체 모델을 표시합니다</>
+            )}
+          </div>
+        </section>
 
         {/* 검색창 */}
         <div className="search-wrap">
@@ -367,38 +419,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* 체형 필터 */}
-        <section className="sf-section">
-          <div className="sf-heading">내 체형</div>
-
-          <div className="sf-label">
-            키
-            <span className="sf-val">{riderHeight}cm</span>
-          </div>
-          <input type="range" min={150} max={195} step={1}
-            value={riderHeight}
-            onChange={e => setRiderHeight(Number(e.target.value))}
-            className="aba-slider"
-          />
-          <div className="slider-ends"><span>150cm</span><span>195cm</span></div>
-
-          <div className="sf-label mt14">다리 길이</div>
-          <div className="lic-group">
-            {[['short','짧은 편'], ['normal','보통'], ['long','긴 편']].map(([val, label]) => (
-              <button
-                key={val}
-                className={`lic-btn ${legType === val ? 'on' : ''}`}
-                onClick={() => setLegType(val)}
-              >{label}</button>
-            ))}
-          </div>
-
-          <div className="height-info">
-            추정 인심 <strong>{inseam}mm</strong><br />
-            권장 시트고 <strong>~{maxSeatHeight}mm 이하</strong>
-          </div>
-        </section>
-
         {/* 브랜드 드릴다운 */}
         <section className="sf-section flex1">
           <div className="sf-heading-row">
@@ -471,7 +491,7 @@ export default function App() {
 
         <div className="main-header">
           <div className="main-eyebrow">
-            AUTO BY AUTO <span>by @4rr.4r4r</span>
+            AUTO BY AUTO v0.7.0 <span>by @4rr.4r4r</span>
           </div>
           <h1 className="main-title">
             어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
@@ -712,7 +732,7 @@ export default function App() {
                   {SPECS.map(spec => (
                     <div key={spec.key} className="detail-spec">
                       <span>{spec.label}</span>
-                      <strong>{fmtVal(spec, selectedBike[spec.key])}</strong>
+                      <strong>{fmtVal(spec, selectedBike[spec.key], selectedBike)}</strong>
                       <em>{spec.unit}</em>
                     </div>
                   ))}
@@ -825,7 +845,7 @@ export default function App() {
                               <span className="td-unit">{spec.unit}</span>
                             </td>
                             {comparedBikes.map(b => {
-                              const v   = b[spec.key]
+                              const v   = getSpecScore(spec, b)
                               const ext = extremes[spec.key]
                               let cls   = ''
                               const known = spec.key === 'priceKRW' ? isKnownPrice(v) : isKnownValue(v)
@@ -835,7 +855,7 @@ export default function App() {
                               }
                               return (
                                 <td key={b.id} className={`td-val ${cls}`}>
-                                  {fmtVal(spec, v)}
+                                  {fmtVal(spec, b[spec.key], b)}
                                   {cls === 'best' && <span className="badge">▲</span>}
                                 </td>
                               )
@@ -975,9 +995,39 @@ button { font-family: inherit; }
   cursor: pointer; font-weight: 500; text-align: center; transition: all .12s;
 }
 .lic-btn.on { border-color: var(--orange); color: var(--orange); background: rgba(255,92,0,.1); }
+.lic-btn:disabled {
+  opacity: .45; cursor: not-allowed;
+}
+
+.body-section {
+  background: rgba(255,92,0,.035);
+  border-bottom: 1px solid rgba(255,92,0,.14);
+}
+.body-section.off {
+  background: transparent;
+}
+.body-section.off .sf-label,
+.body-section.off .slider-ends {
+  opacity: .55;
+}
+.filter-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 11px; font-weight: 800;
+  cursor: pointer; user-select: none;
+}
+.filter-toggle input {
+  width: 14px; height: 14px; margin: 0;
+  accent-color: var(--orange); cursor: pointer;
+}
+.filter-toggle span {
+  line-height: 1;
+}
 
 .aba-slider {
   width: 100%; accent-color: var(--orange); cursor: pointer; margin: 2px 0 4px; display: block;
+}
+.aba-slider:disabled {
+  opacity: .45; cursor: not-allowed;
 }
 .slider-ends {
   display: flex; justify-content: space-between; font-size: 10px; color: var(--dim); margin-top: 2px;
