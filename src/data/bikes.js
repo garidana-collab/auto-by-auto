@@ -33,70 +33,70 @@ export const BIKES = [
     category: '미니/입문', license: '원동기',
     displacement: 124,  power: 9.7,  torque: 10.8, weight: 102,
     seatHeight: 761,  fuelEconomy: 62, tankCapacity: 6.0,
-    topSpeed: 90,   priceKRW: 3200000,
+    topSpeed: 90,   priceKRW: 3200000, image: '/bikes/honda/grom-2022.webp'
   },
   {
     id: 'grom-2017', brand: 'honda', model: 'GROM', year: 2017,
     category: '미니/입문', license: '원동기',
     displacement: 125,  power: 9.6,  torque: 11.0, weight: 104,
     seatHeight: 760,  fuelEconomy: 60, tankCapacity: 5.5,
-    topSpeed: 88,   priceKRW: 2500000,
+    topSpeed: 88,   priceKRW: 2500000, image: '/bikes/honda/grom-2017.jpg'
   },
   {
     id: 'pcx125-2023', brand: 'honda', model: 'PCX 125', year: 2023,
     category: '스쿠터', license: '원동기',
     displacement: 125,  power: 12.3, torque: 11.8, weight: 132,
     seatHeight: 764,  fuelEconomy: 48, tankCapacity: 8.1,
-    topSpeed: 105,  priceKRW: 2900000,
+    topSpeed: 105,  priceKRW: 2900000, image: '/bikes/honda/pcx125-2023.webp'
   },
   {
     id: 'pcx125-2021', brand: 'honda', model: 'PCX 125', year: 2021,
     category: '스쿠터', license: '원동기',
     displacement: 125,  power: 12.0, torque: 11.5, weight: 131,
     seatHeight: 764,  fuelEconomy: 47, tankCapacity: 8.1,
-    topSpeed: 102,  priceKRW: 2500000,
+    topSpeed: 102,  priceKRW: 2500000, image: '/bikes/honda/pcx125-2021.webp'
   },
   {
     id: 'cbr300r-2022', brand: 'honda', model: 'CBR300R', year: 2022,
     category: '스포츠', license: '소형이륜',
     displacement: 286,  power: 30,   torque: 27,   weight: 163,
     seatHeight: 785,  fuelEconomy: 30, tankCapacity: 13.0,
-    topSpeed: 160,  priceKRW: 4800000,
+    topSpeed: 160,  priceKRW: 4800000, image: '/bikes/honda/cbr300r-2022.webp'
   },
   {
     id: 'cb500x-2023', brand: 'honda', model: 'CB500X', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 471,  power: 47,   torque: 43,   weight: 197,
     seatHeight: 830,  fuelEconomy: 24, tankCapacity: 17.5,
-    topSpeed: 170,  priceKRW: 8500000,
+    topSpeed: 170,  priceKRW: 8500000,  image: '/bikes/honda/cb500x-2023.jpg'
   },
   {
     id: 'rebel500-2023', brand: 'honda', model: 'Rebel 500', year: 2023,
     category: '크루저', license: '소형이륜',
     displacement: 471,  power: 46,   torque: 43,   weight: 191,
     seatHeight: 738,  fuelEconomy: 25, tankCapacity: 11.1,
-    topSpeed: 165,  priceKRW: 7800000,
+    topSpeed: 165,  priceKRW: 7800000,  image: '/bikes/honda/rebel500-2023.webp'
   },
   {
     id: 'cb650r-2023', brand: 'honda', model: 'CB650R', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 64,   weight: 202,
     seatHeight: 810,  fuelEconomy: 22, tankCapacity: 15.4,
-    topSpeed: 210,  priceKRW: 9800000,
+    topSpeed: 210,  priceKRW: 9800000,  image: '/bikes/honda/cb650r-2023.jpg'
   },
   {
     id: 'nc750x-2023', brand: 'honda', model: 'NC750X', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 745,  power: 58,   torque: 69,   weight: 214,
     seatHeight: 800,  fuelEconomy: 28, tankCapacity: 14.1,
-    topSpeed: 185,  priceKRW: 10500000,
+    topSpeed: 185,  priceKRW: 10500000,  image: '/bikes/honda/nc750x-2023.webp'
   },
   {
     id: 'goldwing-2021', brand: 'honda', model: 'Gold Wing', year: 2021,
     category: '투어러', license: '소형이륜',
     displacement: 1833, power: 126,  torque: 170,  weight: 365,
     seatHeight: 745,  fuelEconomy: 16, tankCapacity: 21.1,
-    topSpeed: 200,  priceKRW: 28000000,
+    topSpeed: 200,  priceKRW: 28000000,  image: '/bikes/honda/goldwing-2021.webp'
   },
 
   // ── Yamaha ────────────────────────────────────────────────────────────────
@@ -105,35 +105,35 @@ export const BIKES = [
     category: '스쿠터', license: '원동기',
     displacement: 125,  power: 11.5, torque: 11.7, weight: 131,
     seatHeight: 765,  fuelEconomy: 50, tankCapacity: 7.1,
-    topSpeed: 100,  priceKRW: 3100000,
+    topSpeed: 100,  priceKRW: 3100000, image: '/bikes/yamaha/nmax125-2023.jpg'
   },
   {
     id: 'xmax300-2023', brand: 'yamaha', model: 'XMAX 300', year: 2023,
     category: '스쿠터', license: '소형이륜',
     displacement: 292,  power: 28,   torque: 29,   weight: 177,
     seatHeight: 795,  fuelEconomy: 32, tankCapacity: 13.0,
-    topSpeed: 145,  priceKRW: 6200000,
+    topSpeed: 145,  priceKRW: 6200000, image: '/bikes/yamaha/xmax300-2023.webp'
   },
   {
     id: 'r3-2023', brand: 'yamaha', model: 'YZF-R3', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 321,  power: 42,   torque: 29.6, weight: 169,
     seatHeight: 780,  fuelEconomy: 30, tankCapacity: 14.0,
-    topSpeed: 182,  priceKRW: 5700000,
+    topSpeed: 182,  priceKRW: 5700000, image: '/bikes/yamaha/r3-2023.jpg'
   },
   {
     id: 'mt03-2023', brand: 'yamaha', model: 'MT-03', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 321,  power: 42,   torque: 29.6, weight: 168,
     seatHeight: 780,  fuelEconomy: 30, tankCapacity: 14.0,
-    topSpeed: 180,  priceKRW: 5200000,
+    topSpeed: 180,  priceKRW: 5200000, image: '/bikes/yamaha/mt03-2023.webp'
   },
   {
     id: 'mt03-2020', brand: 'yamaha', model: 'MT-03', year: 2020,
     category: '네이키드', license: '소형이륜',
     displacement: 321,  power: 42,   torque: 29.6, weight: 167,
     seatHeight: 780,  fuelEconomy: 29, tankCapacity: 14.0,
-    topSpeed: 178,  priceKRW: 4200000,
+    topSpeed: 178,  priceKRW: 4200000, image: '/bikes/yamaha/mt03-2020.jpg'
   },
   {
     id: 'xsr700-2022', brand: 'yamaha', model: 'XSR700', year: 2022,
@@ -147,14 +147,14 @@ export const BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 689,  power: 72,   torque: 68,   weight: 204,
     seatHeight: 875,  fuelEconomy: 25, tankCapacity: 16.0,
-    topSpeed: 200,  priceKRW: 12000000,
+    topSpeed: 200,  priceKRW: 12000000, image: '/bikes/yamaha/tenere700.jpg'
   },
   {
     id: 'tracer9gt-2022', brand: 'yamaha', model: 'Tracer 9 GT', year: 2022,
     category: '투어러', license: '소형이륜',
     displacement: 890,  power: 119,  torque: 93,   weight: 220,
     seatHeight: 820,  fuelEconomy: 21, tankCapacity: 18.0,
-    topSpeed: 225,  priceKRW: 18000000,
+    topSpeed: 225,  priceKRW: 18000000, image: '/bikes/yamaha/tracer9gt-2022.webp'
   },
 
   // ── Kawasaki ──────────────────────────────────────────────────────────────
