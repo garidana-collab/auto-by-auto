@@ -96,7 +96,7 @@ export const BIKES = [
     category: '투어러', license: '소형이륜',
     displacement: 1833, power: 126,  torque: 170,  weight: 365,
     seatHeight: 745,  fuelEconomy: 16, tankCapacity: 21.1,
-    topSpeed: 200,  priceKRW: 28000000,  image: '/bikes/honda/goldwing-2021.webp'
+    topSpeed: 200,  priceKRW: 28000000,  image: '/bikes/honda/goldwing-2021.jpg'
   },
 
   // ── Yamaha ────────────────────────────────────────────────────────────────
@@ -147,7 +147,7 @@ export const BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 689,  power: 72,   torque: 68,   weight: 204,
     seatHeight: 875,  fuelEconomy: 25, tankCapacity: 16.0,
-    topSpeed: 200,  priceKRW: 12000000, image: '/bikes/yamaha/tenere700.jpg'
+    topSpeed: 200,  priceKRW: 12000000, image: '/bikes/yamaha/tenere700-2023.jpg'
   },
   {
     id: 'tracer9gt-2022', brand: 'yamaha', model: 'Tracer 9 GT', year: 2022,
@@ -296,7 +296,7 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 451, power: null, torque: null, weight: null,
     seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: 0, image: '/bikes/kawasaki/z500-2025.jpg'
+    topSpeed: null, priceKRW: 0, image: '/bikes/kawasaki/z500-2025.png'
   },
   {
   id: 'z650rs-2022', brand: 'kawasaki', model: 'Z650RS', year: 2022,
