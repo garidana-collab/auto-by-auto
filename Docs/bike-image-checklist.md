@@ -29,28 +29,28 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Yamaha
 
-> 2026-06-17 기준: R1/R1M 및 MT 계열 이미지를 일부 수집 완료.  
+> 2026-06-17 기준: 등록 62개 중 58개 이미지를 연결 완료.
 > 체크는 `public/bikes/yamaha/`에 파일이 있는지를 기준으로 표시합니다.
 
 ### Yamaha - 스쿠터
 
 - [x] 2023 NMAX 125 (`nmax125-2023`)
-- [ ] 2021 NMAX 155 (`nmax155-2021`)
-- [ ] 2021 XMAX 125 (`xmax125-2021`)
+- [x] 2021 NMAX 155 (`nmax155-2021`)
+- [x] 2021 XMAX 125 (`xmax125-2021`)
 - [ ] 2020 XMAX 250 Tech MAX (`xmax250-2020`)
 - [x] 2023 XMAX 300 (`xmax300-2023`)
-- [ ] 2020 XMAX 400 (`xmax400-2020`)
-- [ ] 2017 TMAX 530 (`tmax530-2017`)
-- [ ] 2022 TMAX 560 Tech MAX (`tmax560-2022`)
-- [ ] 2022 Aerox 155 (`aerox155-2022`)
-- [ ] 2020 Tricity 300 (`tricity300-2020`)
+- [x] 2020 XMAX 400 (`xmax400-2020`)
+- [x] 2017 TMAX 530 (`tmax530-2017`)
+- [x] 2022 TMAX 560 Tech MAX (`tmax560-2022`)
+- [x] 2022 Aerox 155 (`aerox155-2022`)
+- [x] 2020 Tricity 300 (`tricity300-2020`)
 
 ### Yamaha - 스포츠
 
-- [ ] 2023 YZF-R125 (`r125-2023`)
+- [x] 2023 YZF-R125 (`r125-2023`)
 - [x] 2023 YZF-R3 (`r3-2023`)
-- [x] 2020 YZF-R6 (`r6-2020`) - 파일 있음, `bikes.js` 연결 확인 필요
-- [ ] 2022 YZF-R7 (`r7-2022`)
+- [x] 2020 YZF-R6 (`r6-2020`)
+- [x] 2022 YZF-R7 (`r7-2022`)
 - [x] 1998 YZF-R1 (`r1-1998`)
 - [x] 2002 YZF-R1 (`r1-2002`)
 - [x] 2004 YZF-R1 (`r1-2004`)
@@ -70,7 +70,7 @@ public/bikes/yamaha/mt03-2023.jpg
 - [x] 2023 MT-125 (`mt125-2023`)
 - [x] 2023 MT-15 (`mt15-2023`)
 - [x] 2023 MT-25 (`mt25-2023`)
-- [ ] 2006 MT-03 (`mt03-2006`)
+- [x] 2006 MT-03 (`mt03-2006`)
 - [x] 2020 MT-03 (`mt03-2020`)
 - [x] 2023 MT-03 (`mt03-2023`)
 - [x] 2025 MT-03 (`mt03-2025`)
@@ -86,25 +86,25 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ### Yamaha - 클래식 / 어드벤처 / 투어러 / 크루저
 
-- [ ] 2023 XSR125 (`xsr125-2023`)
+- [x] 2023 XSR125 (`xsr125-2023`)
 - [x] 2022 XSR700 (`xsr700-2022`)
-- [ ] 2022 XSR900 (`xsr900-2022`)
-- [ ] 2024 XSR900 GP (`xsr900gp-2024`)
+- [x] 2022 XSR900 (`xsr900-2022`)
+- [x] 2024 XSR900 GP (`xsr900gp-2024`)
 - [ ] 2007 XT225 Serow (`xt225-2007`)
 - [ ] 2023 XT250 (`xt250-2023`)
 - [ ] 2016 XT660Z Tenere (`xt660z-2016`)
 - [x] 2023 Tenere 700 (`tenere700-2023`)
-- [ ] 2025 Tenere 700 (`tenere700-2025`)
-- [ ] 2024 Super Tenere ES (`supertenere-2024`)
-- [ ] 2020 Tracer 700 (`tracer700-2020`)
+- [x] 2025 Tenere 700 (`tenere700-2025`)
+- [x] 2024 Super Tenere ES (`supertenere-2024`)
+- [x] 2020 Tracer 700 (`tracer700-2020`)
 - [x] 2022 Tracer 9 GT (`tracer9gt-2022`)
-- [ ] 2025 Tracer 9 GT (`tracer9gt-2025`)
-- [ ] 2019 Niken GT (`nikengt-2019`)
-- [ ] 2016 FJR1300A (`fjr1300a-2016`)
-- [ ] 2014 Bolt (`bolt-2014`)
-- [ ] 2009 V Star 950 (`vstar950-2009`)
-- [ ] 2007 V Star 1300 (`vstar1300-2007`)
-- [ ] 2009 VMAX (`vmax-2009`)
+- [x] 2025 Tracer 9 GT (`tracer9gt-2025`)
+- [x] 2019 Niken GT (`nikengt-2019`)
+- [x] 2016 FJR1300A (`fjr1300a-2016`)
+- [x] 2014 Bolt (`bolt-2014`)
+- [x] 2009 V Star 950 (`vstar950-2009`)
+- [x] 2007 V Star 1300 (`vstar1300-2007`)
+- [x] 2009 VMAX (`vmax-2009`)
 
 ## Kawasaki
 
@@ -138,10 +138,36 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## BMW Motorrad
 
-- [ ] 2023 F900R (`f900r-2023`) 0
-- [ ] 2022 G310R (`g310r-2022`) 0
-- [ ] 2022 R1250GS (`r1250gs-2022`) 0
-- [ ] 2023 S1000R (`s1000r-2023`) 0
+> 2026-06-17 기준: 등록 28개 이미지 연결 완료.
+
+- [x] 2022 G 310 RR (`g310rr-2022`)
+- [x] 2024 G 310 RR (`g310rr-2024`)
+- [x] 2010 S 1000 RR (`s1000rr-2010`)
+- [x] 2012 S 1000 RR (`s1000rr-2012`)
+- [x] 2015 S 1000 RR (`s1000rr-2015`)
+- [x] 2019 S 1000 RR (`s1000rr-2019`)
+- [x] 2023 S 1000 RR (`s1000rr-2023`)
+- [x] 2025 S 1000 RR (`s1000rr-2025`)
+- [x] 2021 M 1000 RR (`m1000rr-2021`)
+- [x] 2023 M 1000 RR (`m1000rr-2023`)
+- [x] 2025 M 1000 RR (`m1000rr-2025`)
+- [x] 2017 G 310 R (`g310r-2017`)
+- [x] 2022 G310R (`g310r-2022`)
+- [x] 2024 G 310 R (`g310r-2024`)
+- [x] 2020 F 900 R (`f900r-2020`)
+- [x] 2023 F900R (`f900r-2023`)
+- [x] 2025 F 900 R (`f900r-2025`)
+- [x] 2022 R1250GS (`r1250gs-2022`)
+- [x] 2014 S 1000 R (`s1000r-2014`)
+- [x] 2017 S 1000 R (`s1000r-2017`)
+- [x] 2021 S 1000 R (`s1000r-2021`)
+- [x] 2023 S1000R (`s1000r-2023`)
+- [x] 2025 S 1000 R (`s1000r-2025`)
+- [x] 2023 M 1000 R (`m1000r-2023`)
+- [x] 2025 M 1000 R (`m1000r-2025`)
+- [x] 2024 R 12 nineT (`r12ninet-2024`)
+- [x] 2025 R 12 nineT (`r12ninet-2025`)
+- [x] 2025 R 1300 R (`r1300r-2025`)
 
 ## Harley-Davidson
 
@@ -164,8 +190,21 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Ducati
 
-- [ ] 2023 Monster 937 (`monster937-2023`) 0
-- [ ] 2023 Scrambler Icon (`scrambler803-2023`) 0
+> 2026-06-17 기준: 등록 13개 이미지 연결 완료.
+
+- [x] 2023 Monster 937 (`monster937-2023`)
+- [x] 2023 Scrambler Icon (`scrambler803-2023`)
+- [x] 2025 Hypermotard 698 Mono (`hypermotard698mono-2025`)
+- [x] 2025 Panigale V2 (`panigalev2-2025`)
+- [x] 2025 Panigale V2 S (`panigalev2s-2025`)
+- [x] 2025 Panigale V4 (`panigalev4-2025`)
+- [x] 2025 Panigale V4 S (`panigalev4s-2025`)
+- [x] 2025 Panigale V4 R (`panigalev4r-2025`)
+- [x] 2025 Panigale V4 Tricolore (`panigalev4tricolore-2025`)
+- [x] 2025 Streetfighter V4 (`streetfighterv4-2025`)
+- [x] 2025 Multistrada V2 (`multistradav2-2025`)
+- [x] 2025 Multistrada V4 (`multistradav4-2025`)
+- [x] 2025 Diavel V4 (`diavelv4-2025`)
 
 ## Triumph
 

@@ -77,10 +77,34 @@
   - `npm.cmd run build` 성공
   - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
-## version 0.7.0 — 예정
-- [ ] Yamaha 확장 데이터 공식 스펙시트 기준 2차 검수
-- [ ] Yamaha 이미지 누락 항목 수집 및 `image` 필드 연결
-- [ ] 다른 브랜드도 Yamaha와 같은 방식으로 연식별/계열별 확장
+## version 0.7.0 — BMW/Ducati 데이터 확장 및 이미지 연결
+> 2026-06-17 | 파일: `src/data/bikes.js`, `public/bikes/bmw/*`, `public/bikes/ducati/*`, `public/bikes/yamaha/*`
+
+- BMW Motorrad 데이터 확장:
+  - 스포츠: G 310 RR, S 1000 RR, M 1000 RR
+  - 네이키드: G 310 R, F 900 R, S 1000 R, M 1000 R, R 12 nineT, R 1300 R
+  - 기존 R1250GS 포함 BMW 총 28개 등록
+- BMW 주요 모델은 연식별 데이터를 추가:
+  - S 1000 RR: 2010, 2012, 2015, 2019, 2023, 2025
+  - M 1000 RR: 2021, 2023, 2025
+  - S 1000 R: 2014, 2017, 2021, 2023, 2025
+- Ducati 데이터 확장:
+  - Hypermotard 698 Mono
+  - Panigale V2 / V2 S / V4 / V4 S / V4 R / V4 Tricolore
+  - Streetfighter V4, Multistrada V2, Multistrada V4, Diavel V4
+  - 기존 Scrambler Icon, Monster 937 포함 Ducati 총 13개 등록
+- 이미지 연결:
+  - BMW 등록 기종 28/28개 `image` 필드 연결 완료
+  - Ducati 등록 기종 13/13개 `image` 필드 연결 완료
+  - Yamaha는 추가 이미지 파일 반영으로 58/62개 연결 상태
+- Yamaha 일부 제원 보강:
+  - 다수 모델의 연비, 중량, 이미지 경로를 `null`에서 실제 값/에셋 경로로 보강
+  - 공식 확인이 어려운 한국 중고시세 및 일부 최고속도는 `null` 유지
+
+## version 0.8.0 — 예정
+- [ ] Yamaha 미연결 이미지 4종 수집 및 `image` 필드 연결
+- [ ] Yamaha/BMW/Ducati 확장 데이터 공식 스펙시트 기준 2차 검수
+- [ ] Suzuki, KTM, Triumph 등 남은 브랜드도 Yamaha/BMW/Ducati와 같은 방식으로 연식별/계열별 확장
 - [ ] Vercel 배포 및 도메인 연결
 - [ ] 모바일 UI 세부 QA 및 터치 동선 개선
 - [ ] 상세 탭 추천 기준 고도화

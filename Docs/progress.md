@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 17일 (Yamaha 데이터 확장 세션)
+> 마지막 업데이트: 2026년 6월 17일 (BMW/Ducati 데이터 확장 세션)
 
 ---
 
@@ -103,28 +103,36 @@ auto-by-auto/
 - **이미지 에셋 일부 추가**: R1/R1M 및 MT 계열 이미지 파일이 `public/bikes/yamaha/`에 추가됨
 - **검증 완료**: Yamaha 데이터 확장 후 `npm.cmd run build` 성공
 
+#### 7단계 — BMW/Ducati 기종 데이터 확장 및 이미지 연결 (2026-06-17)
+- **BMW Motorrad 데이터 확장**: G 310 RR, G 310 R, F 900 R, S 1000 RR, M 1000 RR, S 1000 R, M 1000 R, R 12 nineT, R 1300 R 계열 추가/보강
+- **BMW 연식별 데이터 추가**: S 1000 RR(2010~2025 주요 세대), M 1000 RR(2021/2023/2025), S 1000 R(2014/2017/2021/2023/2025) 등 등록
+- **Ducati 2025 라인업 확장**: Hypermotard 698 Mono, Panigale V2/V2 S, Panigale V4/V4 S/V4 R/V4 Tricolore, Streetfighter V4, Multistrada V2/V4, Diavel V4 추가
+- **이미지 에셋 연결**: BMW 28개, Ducati 13개 등록 기종 모두 `image` 필드와 `public/bikes/{brand}/` 에셋 연결 완료
+- **Yamaha 보강 포함**: Yamaha 다수 모델 이미지 연결 및 일부 연비/중량/제원 `null` 값 보강
+- **불확실 데이터 처리 기준 유지**: 한국 중고시세 및 공식 확인이 어려운 일부 최고속도는 `null` 유지
+
 ---
 
 ## 현재 데이터 현황
 
 > ⚠️ 현재 데이터는 AI 학습 데이터 기반 추정값으로, 실제 제조사 공식 스펙과 다를 수 있음.  
-> 2026-06-17 Yamaha 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
+> 2026-06-17 Yamaha/BMW/Ducati 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
 
 ### 등록된 브랜드 (11개)
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa
 
-### 등록된 기종 (121개)
+### 등록된 기종 (156개)
 
 | 브랜드 | 등록 대수 | 비고 |
 |--------|----------:|------|
 | Yamaha | 62 | 2026-06-17 기준 집중 확장 완료 |
 | Honda | 10 | 기존 데이터 유지 |
 | Kawasaki | 27 | 기존 데이터 유지 |
-| BMW Motorrad | 4 | 기존 데이터 유지 |
+| BMW Motorrad | 28 | 2026-06-17 기준 연식별 데이터 확장 및 이미지 연결 완료 |
 | Harley-Davidson | 2 | 기존 데이터 유지 |
 | Suzuki | 5 | 기존 데이터 유지 |
 | KTM | 3 | 기존 데이터 유지 |
-| Ducati | 2 | 기존 데이터 유지 |
+| Ducati | 13 | 2026-06-17 기준 2025 라인업 확장 및 이미지 연결 완료 |
 | Triumph | 2 | 기존 데이터 유지 |
 | Royal Enfield | 2 | 기존 데이터 유지 |
 | Vespa | 2 | 기존 데이터 유지 |
@@ -175,6 +183,47 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 크루저 | V Star 1300 | 2007 |
 | 크루저 | VMAX | 2009 |
 
+### BMW Motorrad 등록 현황 (28개)
+
+| 카테고리 | 모델 | 연식 |
+|----------|------|------|
+| 스포츠 | G 310 RR | 2022, 2024 |
+| 스포츠 | S 1000 RR | 2010, 2012, 2015, 2019, 2023, 2025 |
+| 스포츠 | M 1000 RR | 2021, 2023, 2025 |
+| 네이키드 | G 310 R / G310R | 2017, 2022, 2024 |
+| 네이키드 | F 900 R / F900R | 2020, 2023, 2025 |
+| 어드벤처 | R1250GS | 2022 |
+| 네이키드 | S 1000 R / S1000R | 2014, 2017, 2021, 2023, 2025 |
+| 네이키드 | M 1000 R | 2023, 2025 |
+| 네이키드 | R 12 nineT | 2024, 2025 |
+| 네이키드 | R 1300 R | 2025 |
+
+### Ducati 등록 현황 (13개)
+
+| 카테고리 | 모델 | 연식 |
+|----------|------|------|
+| 클래식 | Scrambler Icon | 2023 |
+| 네이키드 | Monster 937 | 2023 |
+| 슈퍼모토 | Hypermotard 698 Mono | 2025 |
+| 스포츠 | Panigale V2 | 2025 |
+| 스포츠 | Panigale V2 S | 2025 |
+| 스포츠 | Panigale V4 | 2025 |
+| 스포츠 | Panigale V4 S | 2025 |
+| 스포츠 | Panigale V4 R | 2025 |
+| 스포츠 | Panigale V4 Tricolore | 2025 |
+| 네이키드 | Streetfighter V4 | 2025 |
+| 어드벤처 | Multistrada V2 | 2025 |
+| 어드벤처 | Multistrada V4 | 2025 |
+| 크루저 | Diavel V4 | 2025 |
+
+### 이미지 연결 현황
+
+| 브랜드 | 이미지 연결 | 비고 |
+|--------|------------:|------|
+| Yamaha | 58 / 62 | `xmax250-2020`, `xt225-2007`, `xt250-2023`, `xt660z-2016` 미연결 |
+| BMW Motorrad | 28 / 28 | 등록 기종 전체 연결 완료 |
+| Ducati | 13 / 13 | 등록 기종 전체 연결 완료 |
+
 ### 제원 항목 (9종)
 배기량 / 최고출력 / 토크 / 공차중량 / 시트고 / 연비 / 연료탱크 / 최고속도 / 중고시세
 
@@ -183,13 +232,14 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 ## 다음 단계 계획
 
 ### 단기 (바로 가능)
-- [ ] 실제 바이크 이미지 URL 수집 및 bikes.js에 추가
+- [ ] Yamaha 미연결 이미지 4종 수집 및 `bikes.js` 연결
+- [ ] BMW/Ducati 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Vercel 배포 (GitHub 연동으로 빠르게 가능)
 - [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
 
 ### 중기
 - [ ] 데이터 정확성 검증 (제조사 공식 스펙시트 대조)
-- [ ] 기종 수 추가 확대 (국내 인기 모델 위주)
+- [ ] Suzuki, KTM, Triumph 등 남은 브랜드도 연식별/계열별 확장
 - [ ] 모바일 UI 세부 QA 및 터치 동선 개선
 - [ ] 상세 탭에서 같은 카테고리/비슷한 배기량 추천 기준 고도화
 
