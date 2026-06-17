@@ -140,7 +140,7 @@ export const BIKES = [
     category: '클래식', license: '소형이륜',
     displacement: 689,  power: 75,   torque: 68,   weight: 193,
     seatHeight: 835,  fuelEconomy: 25, tankCapacity: 13.0,
-    topSpeed: 200,  priceKRW: 9200000,
+    topSpeed: 200,  priceKRW: 9200000, image: '/bikes/yamaha/xsr700-2022.jpg'
   },
   {
     id: 'tenere700-2023', brand: 'yamaha', model: 'Tenere 700', year: 2023,
@@ -354,28 +354,28 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 313,  power: 34,   torque: 28,   weight: 158,
     seatHeight: 785,  fuelEconomy: 32, tankCapacity: 11.0,
-    topSpeed: 160,  priceKRW: 5900000,
+    topSpeed: 160,  priceKRW: 5900000, image: '/bikes/bmw/g310r-2022.jpg'
   },
   {
     id: 'f900r-2023', brand: 'bmw', model: 'F900R', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 895,  power: 105,  torque: 92,   weight: 210,
     seatHeight: 815,  fuelEconomy: 20, tankCapacity: 13.0,
-    topSpeed: 215,  priceKRW: 15500000,
+    topSpeed: 215,  priceKRW: 15500000, image: '/bikes/bmw/f900r-2023.jpg'
   },
   {
     id: 'r1250gs-2022', brand: 'bmw', model: 'R1250GS', year: 2022,
     category: '어드벤처', license: '소형이륜',
     displacement: 1254, power: 136,  torque: 143,  weight: 249,
     seatHeight: 850,  fuelEconomy: 20, tankCapacity: 20.0,
-    topSpeed: 220,  priceKRW: 19500000,
+    topSpeed: 220,  priceKRW: 19500000, image: '/bikes/bmw/r1250gs-2022.webp'
   },
   {
     id: 's1000r-2023', brand: 'bmw', model: 'S1000R', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 165,  torque: 114,  weight: 199,
     seatHeight: 820,  fuelEconomy: 18, tankCapacity: 16.5,
-    topSpeed: 250,  priceKRW: 26000000,
+    topSpeed: 250,  priceKRW: 26000000, image: '/bikes/bmw/s1000r-2023.webp'
   },
 
   // ── Harley-Davidson ───────────────────────────────────────────────────────
@@ -384,14 +384,14 @@ export const BIKES = [
     category: '크루저', license: '소형이륜',
     displacement: 883,  power: 50,   torque: 70,   weight: 256,
     seatHeight: 760,  fuelEconomy: 22, tankCapacity: 12.5,
-    topSpeed: 170,  priceKRW: 9500000,
+    topSpeed: 170,  priceKRW: 9500000, image: '/bikes/harley/iron883-2020.jpg'
   },
   {
     id: 'sportster-2022', brand: 'harley', model: 'Sportster S', year: 2022,
     category: '크루저', license: '소형이륜',
     displacement: 1252, power: 121,  torque: 127,  weight: 228,
     seatHeight: 755,  fuelEconomy: 18, tankCapacity: 11.8,
-    topSpeed: 200,  priceKRW: 18000000,
+    topSpeed: 200,  priceKRW: 18000000, image: '/bikes/harley/sportsters-2022.webp'
   },
 
   // ── Suzuki ────────────────────────────────────────────────────────────────
@@ -400,35 +400,35 @@ export const BIKES = [
     category: '미니/입문', license: '원동기',
     displacement: 125,  power: 15,   torque: 11.2, weight: 134,
     seatHeight: 800,  fuelEconomy: 40, tankCapacity: 11.0,
-    topSpeed: 110,  priceKRW: 3200000,
+    topSpeed: 110,  priceKRW: 3200000, image: '/bikes/suzuki/gsxs125-2023.jpg'
   },
   {
     id: 'sv650-2023', brand: 'suzuki', model: 'SV650', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 645,  power: 73,   torque: 64,   weight: 197,
     seatHeight: 785,  fuelEconomy: 24, tankCapacity: 14.5,
-    topSpeed: 195,  priceKRW: 8200000,
+    topSpeed: 195,  priceKRW: 8200000, image: '/bikes/suzuki/sv650-2023.jpg'
   },
   {
     id: 'vstrom650-2023', brand: 'suzuki', model: 'V-Strom 650', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 645,  power: 69,   torque: 62,   weight: 216,
     seatHeight: 850,  fuelEconomy: 22, tankCapacity: 20.0,
-    topSpeed: 200,  priceKRW: 10500000,
+    topSpeed: 200,  priceKRW: 10500000, image: '/bikes/suzuki/vstrom650-2023.webp'
   },
   {
     id: 'burgman400-2023', brand: 'suzuki', model: 'Burgman 400', year: 2023,
     category: '스쿠터', license: '소형이륜',
     displacement: 400,  power: 35,   torque: 35,   weight: 220,
     seatHeight: 775,  fuelEconomy: 28, tankCapacity: 13.5,
-    topSpeed: 145,  priceKRW: 8500000,
+    topSpeed: 145,  priceKRW: 8500000, image: '/bikes/suzuki/burgman400-2023.jpg'
   },
   {
     id: 'gsx8s-2023', brand: 'suzuki', model: 'GSX-8S', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 776,  power: 83,   torque: 78,   weight: 202,
     seatHeight: 810,  fuelEconomy: 22, tankCapacity: 14.5,
-    topSpeed: 210,  priceKRW: 12000000,
+    topSpeed: 210,  priceKRW: 12000000, image: '/bikes/suzuki/gsx8s-2023.webp'
   },
 
   // ── KTM ───────────────────────────────────────────────────────────────────
@@ -437,21 +437,21 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 373,  power: 43,   torque: 37,   weight: 163,
     seatHeight: 830,  fuelEconomy: 28, tankCapacity: 13.4,
-    topSpeed: 167,  priceKRW: 6700000,
+    topSpeed: 167,  priceKRW: 6700000, image: '/bikes/ktm/duke390-2023.jpg'
   },
   {
     id: 'adventure390-2023', brand: 'ktm', model: 'Adventure 390', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 373,  power: 43,   torque: 37,   weight: 178,
     seatHeight: 855,  fuelEconomy: 27, tankCapacity: 14.5,
-    topSpeed: 155,  priceKRW: 7800000,
+    topSpeed: 155,  priceKRW: 7800000, image: '/bikes/ktm/adventure390-2023.jpg'
   },
   {
     id: 'duke790-2023', brand: 'ktm', model: 'Duke 790', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 799,  power: 105,  torque: 87,   weight: 189,
     seatHeight: 825,  fuelEconomy: 22, tankCapacity: 14.0,
-    topSpeed: 220,  priceKRW: 13500000,
+    topSpeed: 220,  priceKRW: 13500000, image: '/bikes/ktm/duke790-2023.png'
   },
 
   // ── Ducati ────────────────────────────────────────────────────────────────
@@ -460,14 +460,14 @@ export const BIKES = [
     category: '클래식', license: '소형이륜',
     displacement: 803,  power: 73,   torque: 67,   weight: 189,
     seatHeight: 790,  fuelEconomy: 22, tankCapacity: 15.0,
-    topSpeed: 190,  priceKRW: 13500000,
+    topSpeed: 190,  priceKRW: 13500000, image: '/bikes/ducati/scramblericon-2023.jpeg'
   },
   {
     id: 'monster937-2023', brand: 'ducati', model: 'Monster 937', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 937,  power: 111,  torque: 93,   weight: 188,
     seatHeight: 820,  fuelEconomy: 20, tankCapacity: 14.5,
-    topSpeed: 240,  priceKRW: 19000000,
+    topSpeed: 240,  priceKRW: 19000000, image: '/bikes/ducati/monster937.jpeg'
   },
 
   // ── Triumph ───────────────────────────────────────────────────────────────
@@ -476,14 +476,14 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 660,  power: 81,   torque: 64,   weight: 189,
     seatHeight: 805,  fuelEconomy: 23, tankCapacity: 14.5,
-    topSpeed: 200,  priceKRW: 12500000,
+    topSpeed: 200,  priceKRW: 12500000, image: '/bikes/triumph/trident660-2023.jpg'
   },
   {
     id: 'streetscrambler-2022', brand: 'triumph', model: 'Street Scrambler', year: 2022,
     category: '클래식', license: '소형이륜',
     displacement: 900,  power: 65,   torque: 80,   weight: 213,
     seatHeight: 760,  fuelEconomy: 20, tankCapacity: 15.0,
-    topSpeed: 175,  priceKRW: 15000000,
+    topSpeed: 175,  priceKRW: 15000000, image: '/bikes/triumph/streetscrambler-2022.webp'
   },
 
   // ── Royal Enfield ─────────────────────────────────────────────────────────
@@ -492,14 +492,14 @@ export const BIKES = [
     category: '크루저', license: '소형이륜',
     displacement: 349,  power: 20,   torque: 27,   weight: 191,
     seatHeight: 765,  fuelEconomy: 32, tankCapacity: 15.0,
-    topSpeed: 130,  priceKRW: 5800000,
+    topSpeed: 130,  priceKRW: 5800000, image: '/bikes/royal/meteor350-2023.jpg'
   },
   {
     id: 'himalayan-2023', brand: 'royalenfield', model: 'Himalayan 411', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 411,  power: 24,   torque: 32,   weight: 199,
     seatHeight: 800,  fuelEconomy: 30, tankCapacity: 15.0,
-    topSpeed: 140,  priceKRW: 6500000,
+    topSpeed: 140,  priceKRW: 6500000, image: '/bikes/royal/himalayan411-2023.webp'
   },
 
   // ── Vespa ─────────────────────────────────────────────────────────────────
@@ -508,14 +508,14 @@ export const BIKES = [
     category: '스쿠터', license: '원동기',
     displacement: 125,  power: 9.6,  torque: 10.4, weight: 115,
     seatHeight: 790,  fuelEconomy: 45, tankCapacity: 7.5,
-    topSpeed: 95,   priceKRW: 4200000,
+    topSpeed: 95,   priceKRW: 4200000, image: '/bikes/vespa/primavera125-2023.webp'
   },
   {
     id: 'gts300-2023', brand: 'vespa', model: 'GTS 300 HPE', year: 2023,
     category: '스쿠터', license: '소형이륜',
     displacement: 278,  power: 24,   torque: 26,   weight: 160,
     seatHeight: 800,  fuelEconomy: 35, tankCapacity: 8.5,
-    topSpeed: 135,  priceKRW: 7800000,
+    topSpeed: 135,  priceKRW: 7800000, image: '/bikes/vespa/gts300hpe-2023.jpg'
   },
 ]
 

@@ -70,6 +70,7 @@ function getFitLabel(seatHeight, inseam) {
   if (!isKnownValue(seatHeight)) return { text: '정보 없음', cls: 'fit-unknown' }
   if (seatHeight <= inseam * 0.95) return { text: '편안', cls: 'fit-good' }
   if (seatHeight <= inseam)        return { text: '적합', cls: 'fit-ok'   }
+  if (seatHeight > inseam * 1.05)  return { text: '높음', cls: 'fit-high' }
   return                                  { text: '발끝', cls: 'fit-tip'  }
 }
 
@@ -125,7 +126,7 @@ export default function App() {
         })
         if (!match) return false
       }
-      if (isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
+      if (!q && isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
       return true
     })
   }, [searchQuery, selCats, selLic, selDisp, maxSeatHeight])
@@ -940,6 +941,7 @@ button { font-family: inherit; }
 .fit-good { background: rgba(31,182,166,.15); color: #1FB6A6; }
 .fit-ok   { background: rgba(255,92,0,.12);  color: var(--orange); }
 .fit-tip  { background: rgba(220,180,0,.12); color: #C8A000; }
+.fit-high { background: rgba(230,57,70,.16); color: #ff4d5a; }
 .fit-unknown { background: rgba(138,138,146,.12); color: var(--muted); }
 
 .empty-msg { font-size: 12px; color: var(--dim); text-align: center; padding: 20px 0; }
