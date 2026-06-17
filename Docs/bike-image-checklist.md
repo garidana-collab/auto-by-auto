@@ -70,46 +70,46 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## BMW Motorrad
 
-- [ ] 2023 F900R (`f900r-2023`)
-- [ ] 2022 G310R (`g310r-2022`)
-- [ ] 2022 R1250GS (`r1250gs-2022`)
-- [ ] 2023 S1000R (`s1000r-2023`)
+- [ ] 2023 F900R (`f900r-2023`) 0
+- [ ] 2022 G310R (`g310r-2022`) 0
+- [ ] 2022 R1250GS (`r1250gs-2022`) 0
+- [ ] 2023 S1000R (`s1000r-2023`) 0
 
 ## Harley-Davidson
 
-- [ ] 2020 Iron 883 (`iron883-2020`)
-- [ ] 2022 Sportster S (`sportster-2022`)
+- [ ] 2020 Iron 883 (`iron883-2020`) 0
+- [ ] 2022 Sportster S (`sportster-2022`) 0
 
 ## Suzuki
 
-- [ ] 2023 Burgman 400 (`burgman400-2023`)
-- [ ] 2023 GSX-8S (`gsx8s-2023`)
-- [ ] 2023 GSX-S125 (`gsxs125-2023`)
-- [ ] 2023 SV650 (`sv650-2023`)
-- [ ] 2023 V-Strom 650 (`vstrom650-2023`)
+- [ ] 2023 Burgman 400 (`burgman400-2023`) 0
+- [ ] 2023 GSX-8S (`gsx8s-2023`) 0
+- [ ] 2023 GSX-S125 (`gsxs125-2023`) 0
+- [ ] 2023 SV650 (`sv650-2023`) 0
+- [ ] 2023 V-Strom 650 (`vstrom650-2023`) 0
 
 ## KTM
 
-- [ ] 2023 Adventure 390 (`adventure390-2023`)
-- [ ] 2023 Duke 390 (`duke390-2023`)
-- [ ] 2023 Duke 790 (`duke790-2023`)
+- [ ] 2023 Adventure 390 (`adventure390-2023`) 0
+- [ ] 2023 Duke 390 (`duke390-2023`) 0
+- [ ] 2023 Duke 790 (`duke790-2023`) 0
 
 ## Ducati
 
-- [ ] 2023 Monster 937 (`monster937-2023`)
-- [ ] 2023 Scrambler Icon (`scrambler803-2023`)
+- [ ] 2023 Monster 937 (`monster937-2023`) 0
+- [ ] 2023 Scrambler Icon (`scrambler803-2023`) 0
 
 ## Triumph
 
-- [ ] 2022 Street Scrambler (`streetscrambler-2022`)
-- [ ] 2023 Trident 660 (`trident660-2023`)
+- [ ] 2022 Street Scrambler (`streetscrambler-2022`) 0
+- [ ] 2023 Trident 660 (`trident660-2023`) 0
 
 ## Royal Enfield
 
-- [ ] 2023 Himalayan 411 (`himalayan-2023`)
-- [ ] 2023 Meteor 350 (`meteor350-2023`)
+- [ ] 2023 Himalayan 411 (`himalayan-2023`) 0
+- [ ] 2023 Meteor 350 (`meteor350-2023`) 0
 
 ## Vespa
 
-- [ ] 2023 GTS 300 HPE (`gts300-2023`)
+- [ ] 2023 GTS 300 HPE (`gts300-2023`) 0
 - [ ] 2023 Primavera 125 (`primavera125-2023`)
