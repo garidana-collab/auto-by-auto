@@ -40,33 +40,33 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Kawasaki
 
-- [ ] 2024 Eliminator (`eliminator-2024`)
-- [ ] 2023 Eliminator 500 (`eliminator500-2023`)
-- [ ] 2025 MEGURO S1 (`meguros1-2025`)
-- [ ] 2025 Ninja 1100SX (`ninja1100sx-2025`)
-- [ ] 2023 Ninja 400 (`ninja400-2023`)
-- [ ] 2025 Ninja 500 (`ninja500-2025`)
-- [ ] 2022 Ninja 650 (`ninja650-2022`)
-- [ ] 2022 Ninja H2 SX SE (`h2sxse-2022`)
-- [ ] 2025 Ninja ZX-10R (`zx10r-2025`)
-- [ ] 2023 Ninja ZX-4RR (`zx4rr-2023`)
-- [ ] 2025 Ninja ZX-6R (`zx6r-2025`)
-- [ ] 2023 Ninja ZX-6R (`zx6r-2023`)
-- [ ] 2023 Versys 1000 SE (`versys1000se-2023`)
-- [ ] 2023 Versys 650 (`versys650-2023`)
-- [ ] 2023 Vulcan S (`vulcans-2023`)
-- [ ] 2022 W800 (`w800-2022`)
-- [ ] 2025 Z1100 (`z1100-2025`)
-- [ ] 2023 Z125 PRO (`z125pro-2023`)
-- [ ] 2022 Z125 PRO (`z125-2022`)
-- [ ] 2025 Z500 (`z500-2025`)
-- [ ] 2023 Z650 (`z650-2023`)
-- [ ] 2022 Z650RS (`z650rs-2022`)
-- [ ] 2025 Z900 (`z900-2025`)
-- [ ] 2021 Z900 (`z900-2021`)
-- [ ] 2019 Z900 (`z900-2019`)
-- [ ] 2022 Z900RS (`z900rs-2022`)
-- [ ] 2025 Z900RS SE (`z900rsse-2025`)
+- [ ] 2024 Eliminator (`eliminator-2024`) 0
+- [ ] 2023 Eliminator 500 (`eliminator500-2023`) 0
+- [ ] 2025 MEGURO S1 (`meguros1-2025`) 0    
+- [ ] 2025 Ninja 1100SX (`ninja1100sx-2025`) 0
+- [ ] 2023 Ninja 400 (`ninja400-2023`) 0
+- [ ] 2025 Ninja 500 (`ninja500-2025`) 0
+- [ ] 2022 Ninja 650 (`ninja650-2022`) 0
+- [ ] 2022 Ninja H2 SX SE (`h2sxse-2022`) 0  
+- [ ] 2025 Ninja ZX-10R (`zx10r-2025`) 0
+- [ ] 2023 Ninja ZX-4RR (`zx4rr-2023`) 0
+- [ ] 2025 Ninja ZX-6R (`zx6r-2025`) 0
+- [ ] 2023 Ninja ZX-6R (`zx6r-2023`) 0
+- [ ] 2023 Versys 1000 SE (`versys1000se-2023`) 0
+- [ ] 2023 Versys 650 (`versys650-2023`) 0
+- [ ] 2023 Vulcan S (`vulcans-2023`) 0
+- [ ] 2022 W800 (`w800-2022`) 0
+- [ ] 2025 Z1100 (`z1100-2025`) 0
+- [ ] 2023 Z125 PRO (`z125pro-2023`) 0
+- [ ] 2022 Z125 PRO (`z125-2022`) 0
+- [ ] 2025 Z500 (`z500-2025`) 0
+- [ ] 2023 Z650 (`z650-2023`) 0
+- [ ] 2022 Z650RS (`z650rs-2022`) 0
+- [ ] 2025 Z900 (`z900-2025`) 0
+- [ ] 2021 Z900 (`z900-2021`) 0
+- [ ] 2019 Z900 (`z900-2019`) 0
+- [ ] 2022 Z900RS (`z900rs-2022`) 0
+- [ ] 2025 Z900RS SE (`z900rsse-2025`) 0 
 
 ## BMW Motorrad
 

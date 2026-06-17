@@ -163,189 +163,189 @@ export const BIKES = [
    category: '미니/입문', license: '원동기',
    displacement: 125, power: 9.9, torque: 9.6, weight: 102,
    seatHeight: 785, fuelEconomy: 55, tankCapacity: 7.4,
-   topSpeed: 92, priceKRW: 0,
+   topSpeed: 92, priceKRW: 0, image: '/bikes/kawasaki/z125pro-2023.jpg'
   },
   {
    id: 'ninja500-2025', brand: 'kawasaki', model: 'Ninja 500', year: 2025,
    category: '스포츠', license: '소형이륜',
    displacement: 451, power: null, torque: null, weight: null,
    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-   topSpeed: null, priceKRW: 9350000,
+   topSpeed: null, priceKRW: 9350000, image: '/bikes/kawasaki/ninja500-2025.jpg'
   },
   {
    id: 'ninja650-2022', brand: 'kawasaki', model: 'Ninja 650', year: 2022,
    category: '스포츠', license: '소형이륜',
    displacement: 649, power: 68, torque: 64, weight: 193,
    seatHeight: 790, fuelEconomy: 24, tankCapacity: 15.0,
-   topSpeed: 200, priceKRW: 11550000,
+   topSpeed: 200, priceKRW: 11550000, image: '/bikes/kawasaki/ninja650-2022.jpg'
   },
   {
     id: 'z125-2022', brand: 'kawasaki', model: 'Z125 PRO', year: 2022,
     category: '미니/입문', license: '원동기',
     displacement: 125,  power: 9.9,  torque: 9.6,  weight: 102,
     seatHeight: 785,  fuelEconomy: 55, tankCapacity: 7.4,
-    topSpeed: 92,   priceKRW: 2800000,
+    topSpeed: 92,   priceKRW: 2800000, image: '/bikes/kawasaki/z125pro-2022.jpg'
   },
   {
     id: 'eliminator500-2023', brand: 'kawasaki', model: 'Eliminator 500', year: 2023,
     category: '크루저', license: '소형이륜',
     displacement: 451,  power: 45,   torque: 42,   weight: 177,
     seatHeight: 705,  fuelEconomy: 26, tankCapacity: 11.5,
-    topSpeed: 160,  priceKRW: 7500000,
+    topSpeed: 160,  priceKRW: 7500000, image: '/bikes/kawasaki/eliminator500-2023.webp'
   },
   {
     id: 'ninja400-2023', brand: 'kawasaki', model: 'Ninja 400', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 399,  power: 45,   torque: 38,   weight: 168,
     seatHeight: 785,  fuelEconomy: 27, tankCapacity: 14.0,
-    topSpeed: 193,  priceKRW: 6800000,
+    topSpeed: 193,  priceKRW: 6800000, image: '/bikes/kawasaki/ninja400-2023.jpg'
   },
   {
    id: 'zx4rr-2023', brand: 'kawasaki', model: 'Ninja ZX-4RR', year: 2023,
    category: '스포츠', license: '소형이륜',
    displacement: 399, power: 77, torque: 39, weight: 189,
    seatHeight: 800, fuelEconomy: 22, tankCapacity: 15.0,
-   topSpeed: 220, priceKRW: 16500000,
+   topSpeed: 220, priceKRW: 16500000, image: '/bikes/kawasaki/zx4rr-2023.webp'
   },
   {
     id: 'z650-2023', brand: 'kawasaki', model: 'Z650', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 649,  power: 68,   torque: 64,   weight: 187,
     seatHeight: 790,  fuelEconomy: 23, tankCapacity: 15.0,
-    topSpeed: 195,  priceKRW: 8800000,
+    topSpeed: 195,  priceKRW: 8800000, image: '/bikes/kawasaki/z650-2023.jpg'
   },
   {
     id: 'z900-2021', brand: 'kawasaki', model: 'Z900', year: 2021,
     category: '네이키드', license: '소형이륜',
     displacement: 948,  power: 125,  torque: 98.6, weight: 212,
     seatHeight: 820,  fuelEconomy: 18, tankCapacity: 17.0,
-    topSpeed: 240,  priceKRW: 9800000,
+    topSpeed: 240,  priceKRW: 9800000, image: '/bikes/kawasaki/z900-2021.jpg'
   },
   {
     id: 'z900-2019', brand: 'kawasaki', model: 'Z900', year: 2019,
     category: '네이키드', license: '소형이륜',
     displacement: 948,  power: 125,  torque: 98.6, weight: 210,
     seatHeight: 820,  fuelEconomy: 17, tankCapacity: 17.0,
-    topSpeed: 238,  priceKRW: 7500000,
+    topSpeed: 238,  priceKRW: 7500000, image: '/bikes/kawasaki/z900-2019.jpg'
   },
   {
     id: 'versys650-2023', brand: 'kawasaki', model: 'Versys 650', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 649, power: 69, torque: 61, weight: 219,
     seatHeight: 845, fuelEconomy: 22, tankCapacity: 21.0,
-    topSpeed: 200, priceKRW: 13970000,
+    topSpeed: 200, priceKRW: 13970000, image: '/bikes/kawasaki/versys650-2023.jpg'
   },
   {
     id: 'zx6r-2023', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 636,  power: 130,  torque: 70.8, weight: 193,
     seatHeight: 830,  fuelEconomy: 18, tankCapacity: 17.0,
-    topSpeed: 255,  priceKRW: 13500000,
+    topSpeed: 255,  priceKRW: 13500000, image: '/bikes/kawasaki/zx6r-2023.jpg'
   },
   {
     id: 'zx6r-2025', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 636, power: 124, torque: 69, weight: 198,
     seatHeight: 830, fuelEconomy: 18, tankCapacity: 17.0,
-    topSpeed: 250, priceKRW: 19910000,
+    topSpeed: 250, priceKRW: 19910000, image: '/bikes/kawasaki/zx6r-2025.png'
   },
   {
     id: 'zx10r-2025', brand: 'kawasaki', model: 'Ninja ZX-10R', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 998, power: 203, torque: 114.9, weight: 207,
     seatHeight: 835, fuelEconomy: 14, tankCapacity: 17.0,
-    topSpeed: 300, priceKRW: 31900000,
+    topSpeed: 300, priceKRW: 31900000, image: '/bikes/kawasaki/zx10r-2025.png'
   },
   {
     id: 'h2sxse-2022', brand: 'kawasaki', model: 'Ninja H2 SX SE', year: 2022,
     category: '투어러', license: '소형이륜',
     displacement: 998, power: 200, torque: 137, weight: 266,
     seatHeight: 820, fuelEconomy: 15, tankCapacity: 19.0,
-    topSpeed: 300, priceKRW: 45100000,
+    topSpeed: 300, priceKRW: 45100000, image: '/bikes/kawasaki/ninjah2sxse-2022.jpg'
   },
   {
     id: 'versys1000se-2023', brand: 'kawasaki', model: 'Versys 1000 SE', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 1043, power: 120, torque: 102, weight: 255,
     seatHeight: 840, fuelEconomy: 18, tankCapacity: 21.0,
-    topSpeed: 220, priceKRW: 24200000,
+    topSpeed: 220, priceKRW: 24200000, image: '/bikes/kawasaki/versys1000se-2023.jpg'
   },
   {
     id: 'vulcans-2023', brand: 'kawasaki', model: 'Vulcan S', year: 2023,
     category: '크루저', license: '소형이륜',
     displacement: 649, power: 61, torque: 63, weight: 229,
     seatHeight: 705, fuelEconomy: 25, tankCapacity: 14.0,
-    topSpeed: 180, priceKRW: 12100000,
+    topSpeed: 180, priceKRW: 12100000, image: '/bikes/kawasaki/vulcans-2023.jpg'
   },
   {
     id: 'eliminator-2024', brand: 'kawasaki', model: 'Eliminator', year: 2024,
     category: '크루저', license: '소형이륜',
     displacement: 451, power: 45, torque: 42.6, weight: 176,
     seatHeight: 735, fuelEconomy: 30, tankCapacity: 13.0,
-    topSpeed: 170, priceKRW: 8900000,
+    topSpeed: 170, priceKRW: 8900000, image: '/bikes/kawasaki/eliminator-2024.jpg'
   },
   {
     id: 'w800-2022', brand: 'kawasaki', model: 'W800', year: 2022,
     category: '클래식', license: '소형이륜',
     displacement: 773, power: 48, torque: 62.9, weight: 225,
     seatHeight: 790, fuelEconomy: 20, tankCapacity: 14.0,
-    topSpeed: 170, priceKRW: 15400000,
+    topSpeed: 170, priceKRW: 15400000, image: '/bikes/kawasaki/w800-2022.webp'
   },
   {
     id: 'z500-2025', brand: 'kawasaki', model: 'Z500', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 451, power: null, torque: null, weight: null,
     seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: 0,
+    topSpeed: null, priceKRW: 0, image: '/bikes/kawasaki/z500-2025.jpg'
   },
   {
   id: 'z650rs-2022', brand: 'kawasaki', model: 'Z650RS', year: 2022,
   category: '클래식', license: '소형이륜',
   displacement: 649, power: 68, torque: 64, weight: 187,
   seatHeight: 820, fuelEconomy: 23, tankCapacity: 12.0,
-  topSpeed: 188, priceKRW: 13200000,
+  topSpeed: 188, priceKRW: 13200000, image: '/bikes/kawasaki/z650rs-2022.jpg'
 },
 {
   id: 'z900-2025', brand: 'kawasaki', model: 'Z900', year: 2025,
   category: '네이키드', license: '소형이륜',
   displacement: 948, power: 125, torque: 98.6, weight: 212,
   seatHeight: 830, fuelEconomy: 18, tankCapacity: 17.0,
-  topSpeed: 240, priceKRW: 17450000,
+  topSpeed: 240, priceKRW: 17450000, image: '/bikes/kawasaki/z900-2025.png'
 },
 {
   id: 'z900rs-2022', brand: 'kawasaki', model: 'Z900RS', year: 2022,
   category: '클래식', license: '소형이륜',
   displacement: 948, power: 111, torque: 98.5, weight: 215,
   seatHeight: 800, fuelEconomy: 20, tankCapacity: 17.0,
-  topSpeed: 220, priceKRW: 18590000,
+  topSpeed: 220, priceKRW: 18590000, image: '/bikes/kawasaki/z900rs-2022.jpeg'
 },
 {
   id: 'z900rsse-2025', brand: 'kawasaki', model: 'Z900RS SE', year: 2025,
   category: '클래식', license: '소형이륜',
   displacement: 948, power: 111, torque: 98.5, weight: 215,
   seatHeight: 800, fuelEconomy: 20, tankCapacity: 17.0,
-  topSpeed: 220, priceKRW: 25960000,
+  topSpeed: 220, priceKRW: 25960000, image: '/bikes/kawasaki/z900rsse-2025.png'
 },
 {
   id: 'meguros1-2025', brand: 'kawasaki', model: 'MEGURO S1', year: 2025,
   category: '클래식', license: '소형이륜',
   displacement: 232, power: 18, torque: 19, weight: 143,
   seatHeight: 740, fuelEconomy: 35, tankCapacity: 12.0,
-  topSpeed: 120, priceKRW: 9900000,
+  topSpeed: 120, priceKRW: 9900000, image: '/bikes/kawasaki/meguros1-2025.webp'
 },
 {
   id: 'z1100-2025', brand: 'kawasaki', model: 'Z1100', year: 2025,
   category: '네이키드', license: '소형이륜',
   displacement: 1099, power: 134, torque: 112, weight: 200,
   seatHeight: 815, fuelEconomy: null, tankCapacity: 17,
-  topSpeed: 254, priceKRW: 0,
+  topSpeed: 254, priceKRW: 0, image: '/bikes/kawasaki/z1100-2025.jpeg'
 },
 {
   id: 'ninja1100sx-2025', brand: 'kawasaki', model: 'Ninja 1100SX', year: 2025,
   category: '투어러', license: '소형이륜',
   displacement: 1099, power: 134, torque: 112, weight: 200,
   seatHeight: 815, fuelEconomy: null, tankCapacity: 17,
-  topSpeed: 254, priceKRW: 22716000,
+  topSpeed: 254, priceKRW: 22716000, image: '/bikes/kawasaki/ninja1100sx-2025.webp'
 },
 
   // ── BMW ───────────────────────────────────────────────────────────────────
