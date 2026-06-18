@@ -56,6 +56,10 @@ const BRAND_MARKS = {
   triumph: 'T',
   royalenfield: 'RE',
   vespa: 'V',
+  indian: 'IM',
+  aprilia: 'A',
+  husqvarna: 'H',
+  mvagusta: 'MV',
 }
 
 function isKnownValue(v) {
@@ -289,7 +293,7 @@ export default function App() {
           <span className="logo-wordmark">
             오토<span>바이</span>오토
           </span>
-          <span className="logo-version">v0.7.0</span>
+          <span className="logo-version">v0.8.0</span>
         </div>
 
         {/* 체형 필터 */}

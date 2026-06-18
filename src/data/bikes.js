@@ -12,6 +12,10 @@ export const BRANDS = [
   { id: 'triumph',      name: 'Triumph',         logo: '/logos/triumph.png'    },
   { id: 'royalenfield', name: 'Royal Enfield',   logo: '/logos/royal.png'      },
   { id: 'vespa',        name: 'Vespa',           logo: '/logos/vespa.png'      },
+  { id: 'indian',       name: 'Indian Motorcycle', logo: null                  },
+  { id: 'aprilia',      name: 'Aprilia',         logo: null                    },
+  { id: 'husqvarna',    name: 'Husqvarna',       logo: null                    },
+  { id: 'mvagusta',     name: 'MV Agusta',       logo: null                    },
 ]
 
 // ─── 바이크 제원 ──────────────────────────────────────────────────────────────
@@ -1959,6 +1963,133 @@ const RAW_BIKES = [
     seatHeight: 800,  fuelEconomy: 35, tankCapacity: 8.5,
     topSpeed: 135,  priceKRW: 7800000, image: '/bikes/vespa/gts300hpe-2023.jpg'
   },
+
+  // ── Indian Motorcycle ─────────────────────────────────────────────────────
+  {
+    id: 'scoutbobber-2023', brand: 'indian', model: 'Scout Bobber', year: 2023,
+    category: '크루저', license: '소형이륜',
+    displacement: 1133, power: 100,  torque: 98,   weight: 251,
+    seatHeight: 649,  fuelEconomy: 18, tankCapacity: 12.5,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+  {
+    id: 'ftr1200-2023', brand: 'indian', model: 'FTR 1200', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1203, power: 120,  torque: 118,  weight: 233,
+    seatHeight: 780,  fuelEconomy: 18, tankCapacity: 13.0,
+    topSpeed: 210,  priceKRW: null, image: null
+  },
+  {
+    id: 'chiefdarkhorse-2023', brand: 'indian', model: 'Chief Dark Horse', year: 2023,
+    category: '크루저', license: '소형이륜',
+    displacement: 1890, power: null, torque: 162,  weight: 304,
+    seatHeight: 662,  fuelEconomy: 17, tankCapacity: 15.1,
+    topSpeed: 180,  priceKRW: null, image: null
+  },
+  {
+    id: 'challengerdarkhorse-2023', brand: 'indian', model: 'Challenger Dark Horse', year: 2023,
+    category: '투어러', license: '소형이륜',
+    displacement: 1768, power: 122,  torque: 178,  weight: 381,
+    seatHeight: 672,  fuelEconomy: 16, tankCapacity: 22.7,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+
+  // ── Aprilia ───────────────────────────────────────────────────────────────
+  {
+    id: 'rs457-2025', brand: 'aprilia', model: 'RS 457', year: 2025,
+    category: '스포츠', license: '소형이륜',
+    displacement: 457,  power: 47,   torque: 43.5, weight: 175,
+    seatHeight: 800,  fuelEconomy: 25, tankCapacity: 13.0,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+  {
+    id: 'rs660-2025', brand: 'aprilia', model: 'RS 660', year: 2025,
+    category: '스포츠', license: '소형이륜',
+    displacement: 659,  power: 105,  torque: 70,   weight: 183,
+    seatHeight: 820,  fuelEconomy: 20, tankCapacity: 15.0,
+    topSpeed: 240,  priceKRW: null, image: null
+  },
+  {
+    id: 'tuono660-2025', brand: 'aprilia', model: 'Tuono 660', year: 2025,
+    category: '네이키드', license: '소형이륜',
+    displacement: 659,  power: 100,  torque: 67,   weight: 183,
+    seatHeight: 820,  fuelEconomy: 20, tankCapacity: 15.0,
+    topSpeed: 225,  priceKRW: null, image: null
+  },
+  {
+    id: 'tuareg660-2024', brand: 'aprilia', model: 'Tuareg 660', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 659,  power: 80,   torque: 70,   weight: 204,
+    seatHeight: 860,  fuelEconomy: 22, tankCapacity: 18.0,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+  {
+    id: 'rsv4factory-2025', brand: 'aprilia', model: 'RSV4 Factory', year: 2025,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1099, power: 220,  torque: 125,  weight: 202,
+    seatHeight: 845,  fuelEconomy: 14, tankCapacity: 17.9,
+    topSpeed: 305,  priceKRW: null, image: null
+  },
+
+  // ── Husqvarna ─────────────────────────────────────────────────────────────
+  {
+    id: 'svartpilen401-2024', brand: 'husqvarna', model: 'Svartpilen 401', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 398.6, power: 44,   torque: 39,   weight: 172,
+    seatHeight: 820,  fuelEconomy: 29, tankCapacity: 13.0,
+    topSpeed: 160,  priceKRW: null, image: null
+  },
+  {
+    id: 'vitpilen401-2024', brand: 'husqvarna', model: 'Vitpilen 401', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 398.6, power: 44,   torque: 39,   weight: 171,
+    seatHeight: 820,  fuelEconomy: 29, tankCapacity: 13.0,
+    topSpeed: 165,  priceKRW: null, image: null
+  },
+  {
+    id: 'norden901-2024', brand: 'husqvarna', model: 'Norden 901', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 889,  power: 105,  torque: 100,  weight: 220,
+    seatHeight: 854,  fuelEconomy: 22, tankCapacity: 19.0,
+    topSpeed: 200,  priceKRW: null, image: null
+  },
+  {
+    id: '701supermoto-2024', brand: 'husqvarna', model: '701 Supermoto', year: 2024,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 692.7, power: 74,   torque: 73.5, weight: 160,
+    seatHeight: 890,  fuelEconomy: 24, tankCapacity: 13.0,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+
+  // ── MV Agusta ─────────────────────────────────────────────────────────────
+  {
+    id: 'brutale800rr-2023', brand: 'mvagusta', model: 'Brutale 800 RR', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 798,  power: 140,  torque: 87,   weight: 175,
+    seatHeight: 830,  fuelEconomy: 17, tankCapacity: 16.5,
+    topSpeed: 244,  priceKRW: null, image: null
+  },
+  {
+    id: 'dragster800rr-2023', brand: 'mvagusta', model: 'Dragster 800 RR', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 798,  power: 140,  torque: 87,   weight: 175,
+    seatHeight: 845,  fuelEconomy: 17, tankCapacity: 16.5,
+    topSpeed: 244,  priceKRW: null, image: null
+  },
+  {
+    id: 'superveloce800-2023', brand: 'mvagusta', model: 'Superveloce 800', year: 2023,
+    category: '스포츠', license: '소형이륜',
+    displacement: 798,  power: 147,  torque: 88,   weight: 197,
+    seatHeight: 830,  fuelEconomy: 16, tankCapacity: 16.5,
+    topSpeed: 240,  priceKRW: null, image: null
+  },
+  {
+    id: 'turismoveloce800-2023', brand: 'mvagusta', model: 'Turismo Veloce 800', year: 2023,
+    category: '투어러', license: '소형이륜',
+    displacement: 798,  power: 110,  torque: 84,   weight: 211,
+    seatHeight: 850,  fuelEconomy: 18, tankCapacity: 21.5,
+    topSpeed: 230,  priceKRW: null, image: null
+  },
 ]
 
 function isKnownNumber(value) {
@@ -1997,6 +2128,10 @@ function estimateReferencePriceKRW(bike) {
     kawasaki: 0.5,
     ktm: 0.5,
     vespa: 1,
+    indian: 2,
+    aprilia: 2,
+    husqvarna: 1,
+    mvagusta: 4,
   }
   baseMillion += brandPremium[bike.brand] ?? 0
 
