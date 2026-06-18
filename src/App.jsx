@@ -5,7 +5,7 @@ import {
 } from 'recharts'
 
 import { BRANDS, BIKES, ALL_CATEGORIES } from './data/bikes'
-import { SPECS, RADAR_KEYS, COLORS, fmtVal, getSpecScore } from './data/specs'
+import { SPECS, RADAR_KEYS, COLORS, fmtVal, getSpecScore, formatPriceBandKRW } from './data/specs'
 
 // ─── 상수 ─────────────────────────────────────────────────────────────────────
 
@@ -72,8 +72,7 @@ function formatShortSpec(label, value, unit = '') {
 }
 
 function formatPrice(value) {
-  if (!isKnownPrice(value)) return '정보 없음'
-  return `${Math.round(value / 10000).toLocaleString()}만원`
+  return formatPriceBandKRW(value)
 }
 
 // 시트고 적합 등급 계산

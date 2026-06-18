@@ -2,7 +2,7 @@
 //
 // higherBetter:
 //   true  — 높을수록 좋음 (출력, 토크, 연비 등급, 최고속도 등급)
-//   false — 낮을수록 좋음 (무게, 가격)
+//   false — 낮을수록 좋음 (무게, 가격대)
 //   null  — 우열 없음 (배기량, 시트고)
 
 export const SPECS = [
@@ -14,7 +14,7 @@ export const SPECS = [
   { key: 'fuelEconomy',  label: '연비',     unit: '',     higherBetter: true  },
   { key: 'tankCapacity', label: '연료탱크', unit: 'L',    higherBetter: true  },
   { key: 'topSpeed',     label: '최고속도', unit: '',     higherBetter: true  },
-  { key: 'priceKRW',     label: '중고시세', unit: '만원', higherBetter: false },
+  { key: 'priceKRW',     label: '가격대',   unit: '만원', higherBetter: false },
 ]
 
 // 레이더 차트에 표시할 항목 키
@@ -32,6 +32,22 @@ function isKnownNumber(v) {
 function gradeLabel(score) {
   if (!isKnownNumber(score)) return '정보 없음'
   return GRADE_LABELS[Math.max(1, Math.min(6, Math.round(score))) - 1]
+}
+
+export function formatPriceBandKRW(value) {
+  if (!isKnownNumber(value) || value <= 0) return '정보 없음'
+
+  const priceManwon = Math.round(value / 10000)
+  if (priceManwon <= 500) return '100 - 500만원대'
+
+  const padding =
+    priceManwon <= 1000 ? 250 :
+    priceManwon <= 2000 ? 500 :
+    750
+  const lower = Math.max(100, Math.floor((priceManwon - padding) / 500) * 500)
+  const upper = Math.max(500, Math.ceil((priceManwon + padding) / 500) * 500)
+
+  return `${lower.toLocaleString()} - ${upper.toLocaleString()}만원대`
 }
 
 function fuelEconomyGrade(value) {
@@ -116,6 +132,6 @@ export function fmtVal(spec, v, bike = null) {
   if (spec.key === 'topSpeed') return gradeLabel(topSpeedGrade(estimateTopSpeed(bike ?? { topSpeed: v })))
   if (v === null || v === undefined || Number.isNaN(v)) return '정보 없음'
   if (spec.key === 'priceKRW' && v <= 0) return '정보 없음'
-  if (spec.key === 'priceKRW') return Math.round(v / 10000).toLocaleString() + '만'
+  if (spec.key === 'priceKRW') return formatPriceBandKRW(v)
   return v.toLocaleString()
 }

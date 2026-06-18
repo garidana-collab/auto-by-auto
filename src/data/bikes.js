@@ -23,9 +23,9 @@ export const BRANDS = [
 // 항목: id, brand, model, year, category, license,
 //       displacement(cc), power(hp), torque(Nm), weight(kg),
 //       seatHeight(mm), fuelEconomy(km/L), tankCapacity(L),
-//       topSpeed(km/h), priceKRW(원)
+//       topSpeed(km/h), priceKRW(원, 가격대 산정용 참조값)
 
-export const BIKES = [
+const RAW_BIKES = [
 
   // ── Honda ─────────────────────────────────────────────────────────────────
   {
@@ -98,6 +98,468 @@ export const BIKES = [
     seatHeight: 745,  fuelEconomy: 16, tankCapacity: 21.1,
     topSpeed: 200,  priceKRW: 28000000,  image: '/bikes/honda/goldwing-2021.jpg'
   },
+  {
+    id: 'supercubc125-2019', brand: 'honda', model: 'Super Cub C125', year: 2019,
+    category: '미니/입문', license: '원동기',
+    displacement: 125,  power: 9.7,  torque: 10.4, weight: 110,
+    seatHeight: 780,  fuelEconomy: 65, tankCapacity: 3.7,
+    topSpeed: 95,   priceKRW: 2800000, image: '/bikes/honda/supercubc125-2019.jpg'
+  },
+  {
+    id: 'supercubc125-2023', brand: 'honda', model: 'Super Cub C125', year: 2023,
+    category: '미니/입문', license: '원동기',
+    displacement: 125,  power: 9.7,  torque: 10.4, weight: 110,
+    seatHeight: 780,  fuelEconomy: 65, tankCapacity: 3.7,
+    topSpeed: 95,   priceKRW: 4200000, image: '/bikes/honda/supercubc125-2023.webp'
+  },
+  {
+    id: 'monkey125-2019', brand: 'honda', model: 'Monkey 125', year: 2019,
+    category: '미니/입문', license: '원동기',
+    displacement: 125,  power: 9.2,  torque: 11.0, weight: 107,
+    seatHeight: 776,  fuelEconomy: 60, tankCapacity: 5.6,
+    topSpeed: 90,   priceKRW: 3000000, image: '/bikes/honda/monkey125-2023.webp'
+  },
+  {
+    id: 'monkey125-2023', brand: 'honda', model: 'Monkey 125', year: 2023,
+    category: '미니/입문', license: '원동기',
+    displacement: 124,  power: 9.3,  torque: 11.0, weight: 104,
+    seatHeight: 776,  fuelEconomy: 60, tankCapacity: 5.6,
+    topSpeed: 90,   priceKRW: 4500000, image: '/bikes/honda/monkey125-2023.webp'
+  },
+  {
+    id: 'dax125-2023', brand: 'honda', model: 'Dax 125', year: 2023,
+    category: '미니/입문', license: '원동기',
+    displacement: 124,  power: 9.3,  torque: 10.8, weight: 107,
+    seatHeight: 775,  fuelEconomy: 60, tankCapacity: 3.8,
+    topSpeed: 90,   priceKRW: 4500000, image: '/bikes/honda/dax125-2023.jpg'
+  },
+  {
+    id: 'cb125r-2023', brand: 'honda', model: 'CB125R', year: 2023,
+    category: '네이키드', license: '원동기',
+    displacement: 125,  power: 15.0, torque: 11.6, weight: 130,
+    seatHeight: 816,  fuelEconomy: 45, tankCapacity: 10.1,
+    topSpeed: 110,  priceKRW: 5200000, image: '/bikes/honda/cb125r-2023.jpg'
+  },
+  {
+    id: 'adv160-2023', brand: 'honda', model: 'ADV160', year: 2023,
+    category: '스쿠터', license: '소형이륜',
+    displacement: 157,  power: 15.8, torque: 14.7, weight: 133,
+    seatHeight: 780,  fuelEconomy: 45, tankCapacity: 8.1,
+    topSpeed: 115,  priceKRW: 4500000, image: '/bikes/honda/adv160-2023.jpg'
+  },
+  {
+    id: 'forza350-2023', brand: 'honda', model: 'Forza 350', year: 2023,
+    category: '스쿠터', license: '소형이륜',
+    displacement: 330,  power: 29.0, torque: 31.5, weight: 184,
+    seatHeight: 780,  fuelEconomy: 30, tankCapacity: 11.7,
+    topSpeed: 137,  priceKRW: 8500000, image: '/bikes/honda/forza350-2023.jpg'
+  },
+  {
+    id: 'forza750-2021', brand: 'honda', model: 'Forza 750', year: 2021,
+    category: '스쿠터', license: '소형이륜',
+    displacement: 745,  power: 58,   torque: 69,   weight: 235,
+    seatHeight: 790,  fuelEconomy: 27, tankCapacity: 13.2,
+    topSpeed: 170,  priceKRW: 13000000, image: '/bikes/honda/forza750-2021.webp'
+  },
+  {
+    id: 'xadv750-2021', brand: 'honda', model: 'X-ADV 750', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 745,  power: 58,   torque: 69,   weight: 236,
+    seatHeight: 820,  fuelEconomy: 27, tankCapacity: 13.2,
+    topSpeed: 170,  priceKRW: 14000000, image: '/bikes/honda/xadv750-2021.png'
+  },
+  {
+    id: 'xadv750-2025', brand: 'honda', model: 'X-ADV 750', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 745,  power: 58,   torque: 69,   weight: 237,
+    seatHeight: 820,  fuelEconomy: 27, tankCapacity: 13.2,
+    topSpeed: 170,  priceKRW: 19000000, image: '/bikes/honda/xadv750-2025.jpg'
+  },
+  {
+    id: 'crf250l-2012', brand: 'honda', model: 'CRF250L', year: 2012,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 249,  power: 23,   torque: 22,   weight: 144,
+    seatHeight: 875,  fuelEconomy: 32, tankCapacity: 7.7,
+    topSpeed: 130,  priceKRW: 3500000, image: '/bikes/honda/crf250l-2012.jpg'
+  },
+  {
+    id: 'crf250l-2021', brand: 'honda', model: 'CRF250L', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 249,  power: 24,   torque: 23,   weight: 140,
+    seatHeight: 880,  fuelEconomy: 34, tankCapacity: 7.8,
+    topSpeed: 130,  priceKRW: 5200000, image: '/bikes/honda/crf250l-2021.jpg'
+  },
+  {
+    id: 'crf300l-2021', brand: 'honda', model: 'CRF300L', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 286,  power: 27,   torque: 26.6, weight: 142,
+    seatHeight: 880,  fuelEconomy: 33, tankCapacity: 7.8,
+    topSpeed: 132,  priceKRW: 6500000, image: '/bikes/honda/crf300l-2021.jpg'
+  },
+  {
+    id: 'crf300l-2025', brand: 'honda', model: 'CRF300L', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 286,  power: 27,   torque: 26.6, weight: 142,
+    seatHeight: 880,  fuelEconomy: 33, tankCapacity: 7.8,
+    topSpeed: 132,  priceKRW: 7800000, image: '/bikes/honda/crf300l-2025.jpg'
+  },
+  {
+    id: 'cbr250rr-1990', brand: 'honda', model: 'CBR250RR', year: 1990,
+    category: '스포츠', license: '소형이륜',
+    displacement: 249,  power: 45,   torque: 24.5, weight: 158,
+    seatHeight: 725,  fuelEconomy: 22, tankCapacity: 13.0,
+    topSpeed: 190,  priceKRW: 4500000, image: '/bikes/honda/cbr250rr-1990.jpg'
+  },
+  {
+    id: 'cbr250rr-2017', brand: 'honda', model: 'CBR250RR', year: 2017,
+    category: '스포츠', license: '소형이륜',
+    displacement: 249,  power: 38.7, torque: 23.3, weight: 165,
+    seatHeight: 790,  fuelEconomy: 27, tankCapacity: 14.5,
+    topSpeed: 180,  priceKRW: 6500000, image: '/bikes/honda/cbr250rr-2017.png'
+  },
+  {
+    id: 'cbr250rr-2023', brand: 'honda', model: 'CBR250RR', year: 2023,
+    category: '스포츠', license: '소형이륜',
+    displacement: 249,  power: 42,   torque: 25,   weight: 168,
+    seatHeight: 790,  fuelEconomy: 27, tankCapacity: 14.5,
+    topSpeed: 185,  priceKRW: 8500000, image: '/bikes/honda/cbr250rr-2023.webp'
+  },
+  {
+    id: 'cbr400rr-1990', brand: 'honda', model: 'CBR400RR', year: 1990,
+    category: '스포츠', license: '소형이륜',
+    displacement: 399,  power: 59,   torque: 39,   weight: 179,
+    seatHeight: 765,  fuelEconomy: 18, tankCapacity: 15.0,
+    topSpeed: 220,  priceKRW: 5500000, image: '/bikes/honda/cbr400rr-1990.webp'
+  },
+  {
+    id: 'vfr400r-1989', brand: 'honda', model: 'VFR400R', year: 1989,
+    category: '스포츠', license: '소형이륜',
+    displacement: 399,  power: 59,   torque: 39,   weight: 182,
+    seatHeight: 755,  fuelEconomy: 18, tankCapacity: 15.0,
+    topSpeed: 210,  priceKRW: 6500000, image: '/bikes/honda/vfr400r-1989.jpg'
+  },
+  {
+    id: 'cbr500r-2024', brand: 'honda', model: 'CBR500R', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 471,  power: 47,   torque: 43,   weight: 192,
+    seatHeight: 785,  fuelEconomy: 28, tankCapacity: 17.1,
+    topSpeed: 180,  priceKRW: 9500000, image: '/bikes/honda/cbr500r-2024.jpg'
+  },
+  {
+    id: 'cbr600rr-2003', brand: 'honda', model: 'CBR600RR', year: 2003,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599,  power: 117,  torque: 66,   weight: 199,
+    seatHeight: 820,  fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 255,  priceKRW: 5500000, image: '/bikes/honda/cbr600rr-2003.jpg'
+  },
+  {
+    id: 'cbr600rr-2007', brand: 'honda', model: 'CBR600RR', year: 2007,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599,  power: 118,  torque: 66,   weight: 184,
+    seatHeight: 820,  fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 260,  priceKRW: 6500000, image: '/bikes/honda/cbr600rr-2007.jpg'
+  },
+  {
+    id: 'cbr600rr-2013', brand: 'honda', model: 'CBR600RR', year: 2013,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599,  power: 118,  torque: 66,   weight: 186,
+    seatHeight: 820,  fuelEconomy: 17, tankCapacity: 18.1,
+    topSpeed: 260,  priceKRW: 8000000, image: '/bikes/honda/cbr600rr-2013.jpg'
+  },
+  {
+    id: 'cbr600rr-2024', brand: 'honda', model: 'CBR600RR', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599,  power: 121,  torque: 63,   weight: 193,
+    seatHeight: 820,  fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 260,  priceKRW: 18000000, image: '/bikes/honda/cbr600rr-2024.webp'
+  },
+  {
+    id: 'cbr900rr-1992', brand: 'honda', model: 'CBR900RR FireBlade', year: 1992,
+    category: '스포츠', license: '소형이륜',
+    displacement: 893,  power: 122,  torque: 88,   weight: 206,
+    seatHeight: 800,  fuelEconomy: 15, tankCapacity: 18.0,
+    topSpeed: 260,  priceKRW: 6000000, image: '/bikes/honda/cbr900rrfireblade-1992.jpg'
+  },
+  {
+    id: 'cbr954rr-2002', brand: 'honda', model: 'CBR954RR FireBlade', year: 2002,
+    category: '스포츠', license: '소형이륜',
+    displacement: 954,  power: 154,  torque: 105,  weight: 195,
+    seatHeight: 815,  fuelEconomy: 15, tankCapacity: 18.0,
+    topSpeed: 280,  priceKRW: 6500000, image: '/bikes/honda/cbr954rrfireblade-2002.jpg'
+  },
+  {
+    id: 'cbr1000rr-2004', brand: 'honda', model: 'CBR1000RR Fireblade', year: 2004,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 172,  torque: 115,  weight: 205,
+    seatHeight: 831,  fuelEconomy: 15, tankCapacity: 18.0,
+    topSpeed: 286,  priceKRW: 7000000, image: '/bikes/honda/cbr1000rrfireblade-2004.jpg'
+  },
+  {
+    id: 'cbr1000rr-2008', brand: 'honda', model: 'CBR1000RR Fireblade', year: 2008,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999,  power: 178,  torque: 112,  weight: 199,
+    seatHeight: 820,  fuelEconomy: 15, tankCapacity: 17.7,
+    topSpeed: 286,  priceKRW: 8500000, image: '/bikes/honda/cbr1000rrfireblade-2008.jpg'
+  },
+  {
+    id: 'cbr1000rr-2017', brand: 'honda', model: 'CBR1000RR Fireblade', year: 2017,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999,  power: 189,  torque: 114,  weight: 196,
+    seatHeight: 820,  fuelEconomy: 16, tankCapacity: 16.0,
+    topSpeed: 299,  priceKRW: 14000000, image: '/bikes/honda/cbr1000rrfireblade-2017.jpg'
+  },
+  {
+    id: 'cbr1000rrr-2020', brand: 'honda', model: 'CBR1000RR-R Fireblade SP', year: 2020,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1000, power: 214,  torque: 113,  weight: 201,
+    seatHeight: 830,  fuelEconomy: 14, tankCapacity: 16.1,
+    topSpeed: 299,  priceKRW: 28000000, image: '/bikes/honda/cbr1000rrrfirebladesp-2020.jpg'
+  },
+  {
+    id: 'cbr1000rrr-2024', brand: 'honda', model: 'CBR1000RR-R Fireblade SP', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1000, power: 215,  torque: 113,  weight: 201,
+    seatHeight: 830,  fuelEconomy: 14, tankCapacity: 16.1,
+    topSpeed: 299,  priceKRW: 42000000, image: '/bikes/honda/cbr1000rrrfirebladesp-2024.jpg'
+  },
+  {
+    id: 'cb400sf-1992', brand: 'honda', model: 'CB400 Super Four', year: 1992,
+    category: '네이키드', license: '소형이륜',
+    displacement: 399,  power: 53,   torque: 37,   weight: 189,
+    seatHeight: 760,  fuelEconomy: 22, tankCapacity: 18.0,
+    topSpeed: 180,  priceKRW: 4000000, image: '/bikes/honda/cb400superfour-1999.jpg'
+  },
+  {
+    id: 'cb400sf-1999', brand: 'honda', model: 'CB400 Super Four', year: 1999,
+    category: '네이키드', license: '소형이륜',
+    displacement: 399,  power: 53,   torque: 38,   weight: 188,
+    seatHeight: 760,  fuelEconomy: 22, tankCapacity: 18.0,
+    topSpeed: 185,  priceKRW: 4500000, image: '/bikes/honda/cb400superfour-1999.jpg'
+  },
+  {
+    id: 'cb400sf-2008', brand: 'honda', model: 'CB400 Super Four', year: 2008,
+    category: '네이키드', license: '소형이륜',
+    displacement: 399,  power: 53,   torque: 38,   weight: 194,
+    seatHeight: 755,  fuelEconomy: 24, tankCapacity: 18.0,
+    topSpeed: 185,  priceKRW: 6500000, image: '/bikes/honda/cb400superfour-2008.jpg'
+  },
+  {
+    id: 'cb400sf-2018', brand: 'honda', model: 'CB400 Super Four', year: 2018,
+    category: '네이키드', license: '소형이륜',
+    displacement: 399,  power: 56,   torque: 39,   weight: 201,
+    seatHeight: 755,  fuelEconomy: 24, tankCapacity: 18.0,
+    topSpeed: 185,  priceKRW: 9000000, image: '/bikes/honda/cb400superfour-2018.jpg'
+  },
+  {
+    id: 'hornet600-1998', brand: 'honda', model: 'CB600F Hornet', year: 1998,
+    category: '네이키드', license: '소형이륜',
+    displacement: 599,  power: 95,   torque: 65,   weight: 198,
+    seatHeight: 790,  fuelEconomy: 18, tankCapacity: 16.0,
+    topSpeed: 225,  priceKRW: 3500000, image: '/bikes/honda/cb600fhornet-2007.webp'
+  },
+  {
+    id: 'hornet600-2007', brand: 'honda', model: 'CB600F Hornet', year: 2007,
+    category: '네이키드', license: '소형이륜',
+    displacement: 599,  power: 102,  torque: 64,   weight: 198,
+    seatHeight: 800,  fuelEconomy: 18, tankCapacity: 19.0,
+    topSpeed: 225,  priceKRW: 4500000, image: '/bikes/honda/cb600fhornet-2007.webp'
+  },
+  {
+    id: 'cb750hornet-2023', brand: 'honda', model: 'CB750 Hornet', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 755,  power: 90.5, torque: 75,   weight: 190,
+    seatHeight: 795,  fuelEconomy: 23, tankCapacity: 15.2,
+    topSpeed: 205,  priceKRW: 11000000, image: '/bikes/honda/cb750hornet-2023.jpg'
+  },
+  {
+    id: 'cb750hornet-2025', brand: 'honda', model: 'CB750 Hornet', year: 2025,
+    category: '네이키드', license: '소형이륜',
+    displacement: 755,  power: 90.5, torque: 75,   weight: 192,
+    seatHeight: 795,  fuelEconomy: 23, tankCapacity: 15.2,
+    topSpeed: 205,  priceKRW: 12500000, image: '/bikes/honda/cb750hornet-2025.jpg'
+  },
+  {
+    id: 'cb1000r-2008', brand: 'honda', model: 'CB1000R', year: 2008,
+    category: '네이키드', license: '소형이륜',
+    displacement: 998,  power: 123,  torque: 100,  weight: 217,
+    seatHeight: 825,  fuelEconomy: 16, tankCapacity: 17.0,
+    topSpeed: 230,  priceKRW: 6500000, image: '/bikes/honda/cb1000r-2008.jpg'
+  },
+  {
+    id: 'cb1000r-2018', brand: 'honda', model: 'CB1000R', year: 2018,
+    category: '네이키드', license: '소형이륜',
+    displacement: 998,  power: 143,  torque: 104,  weight: 212,
+    seatHeight: 830,  fuelEconomy: 17, tankCapacity: 16.2,
+    topSpeed: 240,  priceKRW: 13000000, image: '/bikes/honda/cb1000r-2018.jpg'
+  },
+  {
+    id: 'cb1000r-2021', brand: 'honda', model: 'CB1000R', year: 2021,
+    category: '네이키드', license: '소형이륜',
+    displacement: 998,  power: 143,  torque: 104,  weight: 213,
+    seatHeight: 830,  fuelEconomy: 17, tankCapacity: 16.2,
+    topSpeed: 240,  priceKRW: 15000000, image: '/bikes/honda/cb1000r-2021.jpg'
+  },
+  {
+    id: 'cb1000hornetsp-2025', brand: 'honda', model: 'CB1000 Hornet SP', year: 2025,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1000, power: 155,  torque: 107,  weight: 212,
+    seatHeight: 809,  fuelEconomy: 17, tankCapacity: 17.0,
+    topSpeed: 250,  priceKRW: 18000000, image: '/bikes/honda/cb1000hornetsp-2025.jpg'
+  },
+  {
+    id: 'xrv750-1990', brand: 'honda', model: 'XRV750 Africa Twin', year: 1990,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 742,  power: 61,   torque: 63,   weight: 220,
+    seatHeight: 860,  fuelEconomy: 18, tankCapacity: 23.0,
+    topSpeed: 180,  priceKRW: 6000000, image: '/bikes/honda/xrv750africatwin-1990.jpg'
+  },
+  {
+    id: 'xrv750-1996', brand: 'honda', model: 'XRV750 Africa Twin', year: 1996,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 742,  power: 61,   torque: 63,   weight: 230,
+    seatHeight: 860,  fuelEconomy: 18, tankCapacity: 23.0,
+    topSpeed: 180,  priceKRW: 6500000, image: '/bikes/honda/xrv750africatwin-1996.jpg'
+  },
+  {
+    id: 'crf1000l-2016', brand: 'honda', model: 'CRF1000L Africa Twin', year: 2016,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 998,  power: 94,   torque: 98,   weight: 232,
+    seatHeight: 850,  fuelEconomy: 20, tankCapacity: 18.8,
+    topSpeed: 200,  priceKRW: 11000000, image: '/bikes/honda/crf1000lafricatwin-2016.png'
+  },
+  {
+    id: 'crf1100l-2020', brand: 'honda', model: 'CRF1100L Africa Twin', year: 2020,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1084, power: 101,  torque: 105,  weight: 226,
+    seatHeight: 850,  fuelEconomy: 21, tankCapacity: 18.8,
+    topSpeed: 200,  priceKRW: 15000000, image: '/bikes/honda/crf1100lafricatwin-2020.jpg'
+  },
+  {
+    id: 'crf1100ladv-2024', brand: 'honda', model: 'Africa Twin Adventure Sports', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1084, power: 101,  torque: 112,  weight: 243,
+    seatHeight: 835,  fuelEconomy: 21, tankCapacity: 24.8,
+    topSpeed: 200,  priceKRW: 24000000, image: '/bikes/honda/africatwin-2024.jpg'
+  },
+  {
+    id: 'crf1100ladv-2025', brand: 'honda', model: 'Africa Twin Adventure Sports', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1084, power: 101,  torque: 112,  weight: 243,
+    seatHeight: 835,  fuelEconomy: 21, tankCapacity: 24.8,
+    topSpeed: 200,  priceKRW: 26000000, image: '/bikes/honda/africatwin-2025.jpg'
+  },
+  {
+    id: 'xl750transalp-2023', brand: 'honda', model: 'XL750 Transalp', year: 2023,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 755,  power: 90.5, torque: 75,   weight: 208,
+    seatHeight: 850,  fuelEconomy: 23, tankCapacity: 16.9,
+    topSpeed: 195,  priceKRW: 14000000, image: '/bikes/honda/xl750transalp-2023.jpg'
+  },
+  {
+    id: 'xl750transalp-2025', brand: 'honda', model: 'XL750 Transalp', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 755,  power: 90.5, torque: 75,   weight: 208,
+    seatHeight: 850,  fuelEconomy: 23, tankCapacity: 16.9,
+    topSpeed: 195,  priceKRW: 16000000, image: '/bikes/honda/xl750translap-2025.jpg'
+  },
+  {
+    id: 'rebel250-2017', brand: 'honda', model: 'Rebel 250', year: 2017,
+    category: '크루저', license: '소형이륜',
+    displacement: 234,  power: 26,   torque: 22,   weight: 170,
+    seatHeight: 690,  fuelEconomy: 32, tankCapacity: 11.2,
+    topSpeed: 130,  priceKRW: 4200000, image: '/bikes/honda/rebel250-2017.jpg'
+  },
+  {
+    id: 'rebel1100-2021', brand: 'honda', model: 'Rebel 1100', year: 2021,
+    category: '크루저', license: '소형이륜',
+    displacement: 1084, power: 86,   torque: 98,   weight: 223,
+    seatHeight: 700,  fuelEconomy: 20, tankCapacity: 13.6,
+    topSpeed: 180,  priceKRW: 14000000, image: '/bikes/honda/rebel1100-2021.jpg'
+  },
+  {
+    id: 'rebel1100-2024', brand: 'honda', model: 'Rebel 1100', year: 2024,
+    category: '크루저', license: '소형이륜',
+    displacement: 1084, power: 86,   torque: 98,   weight: 223,
+    seatHeight: 700,  fuelEconomy: 20, tankCapacity: 13.6,
+    topSpeed: 180,  priceKRW: 16500000, image: '/bikes/honda/rebel1100-2024.jpg'
+  },
+  {
+    id: 'rebel1100t-2025', brand: 'honda', model: 'Rebel 1100T', year: 2025,
+    category: '크루저', license: '소형이륜',
+    displacement: 1084, power: 86,   torque: 98,   weight: 238,
+    seatHeight: 710,  fuelEconomy: 20, tankCapacity: 13.6,
+    topSpeed: 180,  priceKRW: 19000000, image: '/bikes/honda/rebel1100t-2025.jpg'
+  },
+  {
+    id: 'nc750x-2016', brand: 'honda', model: 'NC750X', year: 2016,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 745,  power: 54,   torque: 68,   weight: 220,
+    seatHeight: 830,  fuelEconomy: 28, tankCapacity: 14.1,
+    topSpeed: 180,  priceKRW: 6500000, image: '/bikes/honda/cn750x-2016.jpg'
+  },
+  {
+    id: 'nc750x-2025', brand: 'honda', model: 'NC750X', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 745,  power: 58,   torque: 69,   weight: 214,
+    seatHeight: 802,  fuelEconomy: 28, tankCapacity: 14.1,
+    topSpeed: 185,  priceKRW: 13000000, image: '/bikes/honda/nc750x-2025.jpg'
+  },
+  {
+    id: 'vfr800-1998', brand: 'honda', model: 'VFR800F', year: 1998,
+    category: '투어러', license: '소형이륜',
+    displacement: 782,  power: 109,  torque: 80,   weight: 213,
+    seatHeight: 805,  fuelEconomy: 18, tankCapacity: 21.5,
+    topSpeed: 240,  priceKRW: 4500000, image: '/bikes/honda/vfr800f-1998.jpg'
+  },
+  {
+    id: 'vfr800-2014', brand: 'honda', model: 'VFR800F', year: 2014,
+    category: '투어러', license: '소형이륜',
+    displacement: 782,  power: 104,  torque: 75,   weight: 242,
+    seatHeight: 789,  fuelEconomy: 19, tankCapacity: 21.5,
+    topSpeed: 235,  priceKRW: 8500000, image: '/bikes/honda/vfr800f-2014.jpg'
+  },
+  {
+    id: 'vfr1200f-2010', brand: 'honda', model: 'VFR1200F', year: 2010,
+    category: '투어러', license: '소형이륜',
+    displacement: 1237, power: 170,  torque: 129,  weight: 267,
+    seatHeight: 815,  fuelEconomy: 15, tankCapacity: 18.5,
+    topSpeed: 250,  priceKRW: 8000000, image: '/bikes/honda/vfr1200f-2010.jpg'
+  },
+  {
+    id: 'goldwing-1975', brand: 'honda', model: 'Gold Wing GL1000', year: 1975,
+    category: '투어러', license: '소형이륜',
+    displacement: 999,  power: 78,   torque: 85,   weight: 295,
+    seatHeight: 810,  fuelEconomy: 15, tankCapacity: 19.0,
+    topSpeed: 193,  priceKRW: 7000000, image: '/bikes/honda/goldwinggl1000-1975.jpg'
+  },
+  {
+    id: 'goldwing-1988', brand: 'honda', model: 'Gold Wing GL1500', year: 1988,
+    category: '투어러', license: '소형이륜',
+    displacement: 1520, power: 100,  torque: 150,  weight: 360,
+    seatHeight: 740,  fuelEconomy: 14, tankCapacity: 23.0,
+    topSpeed: 180,  priceKRW: 8000000, image: '/bikes/honda/goldwinggl1500-1988.png'
+  },
+  {
+    id: 'goldwing-2001', brand: 'honda', model: 'Gold Wing GL1800', year: 2001,
+    category: '투어러', license: '소형이륜',
+    displacement: 1832, power: 118,  torque: 167,  weight: 363,
+    seatHeight: 740,  fuelEconomy: 15, tankCapacity: 25.0,
+    topSpeed: 200,  priceKRW: 11000000, image: '/bikes/honda/goldwinggl1800-2001.png'
+  },
+  {
+    id: 'goldwing-2018', brand: 'honda', model: 'Gold Wing', year: 2018,
+    category: '투어러', license: '소형이륜',
+    displacement: 1833, power: 124,  torque: 170,  weight: 365,
+    seatHeight: 745,  fuelEconomy: 16, tankCapacity: 21.1,
+    topSpeed: 200,  priceKRW: 23000000, image: '/bikes/honda/goldwing-2018.jpg'
+  },
+  {
+    id: 'goldwing-2025', brand: 'honda', model: 'Gold Wing Tour', year: 2025,
+    category: '투어러', license: '소형이륜',
+    displacement: 1833, power: 126,  torque: 170,  weight: 390,
+    seatHeight: 745,  fuelEconomy: 16, tankCapacity: 21.1,
+    topSpeed: 200,  priceKRW: 42000000, image: '/bikes/honda/goldwingtour-2025.jpg'
+  },
 
   // ── Yamaha ────────────────────────────────────────────────────────────────
   {
@@ -119,70 +581,70 @@ export const BIKES = [
     category: '스쿠터', license: '소형이륜',
     displacement: 155,  power: 15.3, torque: 14.0, weight: 131,
     seatHeight: 765,  fuelEconomy: 43.5, tankCapacity: 7.1,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/nmax155-2021.png'
+    topSpeed: null, priceKRW: 2000000 , image: '/bikes/yamaha/nmax155-2021.png'
   },
   {
     id: 'xmax125-2021', brand: 'yamaha', model: 'XMAX 125', year: 2021,
     category: '스쿠터', license: '원동기',
     displacement: 125,  power: 14.1, torque: 12.0, weight: 175,
     seatHeight: 795,  fuelEconomy: 37.0, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/xmax125-2021.webp'
+    topSpeed: null, priceKRW: 1500000 , image: '/bikes/yamaha/xmax125-2021.webp'
   },
   {
     id: 'xmax250-2020', brand: 'yamaha', model: 'XMAX 250 Tech MAX', year: 2020,
     category: '스쿠터', license: '소형이륜',
     displacement: 249,  power: 22.5, torque: 24.3, weight: 179,
     seatHeight: 800,  fuelEconomy: 32.3, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: 2000000 , image: null
   },
   {
     id: 'xmax400-2020', brand: 'yamaha', model: 'XMAX 400', year: 2020,
     category: '스쿠터', license: '소형이륜',
     displacement: 395,  power: 32.9, torque: 36.0, weight: 210,
     seatHeight: 800,  fuelEconomy: 23.9, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/xmax400-2020.webp'
+    topSpeed: null, priceKRW: 3000000 , image: '/bikes/yamaha/xmax400-2020.webp'
   },
   {
     id: 'tmax530-2017', brand: 'yamaha', model: 'TMAX 530', year: 2017,
     category: '스쿠터', license: '소형이륜',
     displacement: 530,  power: 45.3, torque: 53.0, weight: 213,
     seatHeight: 800,  fuelEconomy: 13, tankCapacity: 15.0,
-    topSpeed: 160,  priceKRW: null, image: '/bikes/yamaha/tmax530-2017.jpg'
+    topSpeed: 160,  priceKRW: 4000000, image: '/bikes/yamaha/tmax530-2017.jpg'
   },
   {
     id: 'tmax560-2022', brand: 'yamaha', model: 'TMAX 560 Tech MAX', year: 2022,
     category: '스쿠터', license: '소형이륜',
     displacement: 562,  power: 47.6, torque: 55.7, weight: 220,
     seatHeight: 800,  fuelEconomy: 20, tankCapacity: 15.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/tmax560techmax-2022.jpeg'
+    topSpeed: null, priceKRW: 6000000, image: '/bikes/yamaha/tmax560techmax-2022.jpeg'
   },
   {
     id: 'aerox155-2022', brand: 'yamaha', model: 'Aerox 155', year: 2022,
     category: '스쿠터', license: '소형이륜',
     displacement: 155,  power: 15.1, torque: 13.9, weight: 126,
     seatHeight: 790,  fuelEconomy: 35, tankCapacity: 5.5,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/aerox155-2022.png'
+    topSpeed: null, priceKRW: 2000000, image: '/bikes/yamaha/aerox155-2022.png'
   },
   {
     id: 'tricity300-2020', brand: 'yamaha', model: 'Tricity 300', year: 2020,
     category: '스쿠터', license: '소형이륜',
     displacement: 292,  power: 27.1, torque: 29.0, weight: 239,
     seatHeight: 795,  fuelEconomy: 30, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/tricity300-2020.jpeg'
+    topSpeed: null, priceKRW: 3000000, image: '/bikes/yamaha/tricity300-2020.jpeg'
   },
   {
     id: 'r125-2023', brand: 'yamaha', model: 'YZF-R125', year: 2023,
     category: '스포츠', license: '원동기',
     displacement: 125,  power: 15.0, torque: 11.5, weight: 144,
     seatHeight: 820,  fuelEconomy: 33.3, tankCapacity: 11.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/r125-2023.jpeg'
+    topSpeed: null, priceKRW: 2500000, image: '/bikes/yamaha/r125-2023.jpeg'
   },
   {
     id: 'r7-2022', brand: 'yamaha', model: 'YZF-R7', year: 2022,
     category: '스포츠', license: '소형이륜',
     displacement: 689,  power: 73.4, torque: 67.0, weight: 188,
     seatHeight: 835,  fuelEconomy: 23, tankCapacity: 13.0,
-    topSpeed: 224,  priceKRW: null, image: '/bikes/yamaha/r7-2022.jpg'
+    topSpeed: 224,  priceKRW: 7000000, image: '/bikes/yamaha/r7-2022.jpg'
   },
   {
     id: 'r3-2023', brand: 'yamaha', model: 'YZF-R3', year: 2023,
@@ -196,126 +658,126 @@ export const BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 599,  power: 117,  torque: 61.7, weight: 190,
     seatHeight: 851,  fuelEconomy: 18, tankCapacity: 17.0,
-    topSpeed: 257,  priceKRW: null, image: '/bikes/yamaha/r6-2020.webp'
+    topSpeed: 257,  priceKRW: 8000000, image: '/bikes/yamaha/r6-2020.webp'
   },
   {
     id: 'r1-1998', brand: 'yamaha', model: 'YZF-R1', year: 1998,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 150,  torque: 108, weight: 193,
     seatHeight: 815,  fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 270,  priceKRW: null, image: '/bikes/yamaha/r1-1998.webp'
+    topSpeed: 270,  priceKRW: 4000000, image: '/bikes/yamaha/r1-1998.webp'
   },
   {
     id: 'r1-2002', brand: 'yamaha', model: 'YZF-R1', year: 2002,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 152,  torque: 105, weight: 193,
     seatHeight: 820,  fuelEconomy: 15, tankCapacity: 17.0,
-    topSpeed: 275,  priceKRW: null, image: '/bikes/yamaha/r1-2002.jpg'
+    topSpeed: 275,  priceKRW: 5000000, image: '/bikes/yamaha/r1-2002.jpg'
   },
   {
     id: 'r1-2004', brand: 'yamaha', model: 'YZF-R1', year: 2004,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 172,  torque: 107, weight: 190,
     seatHeight: 835,  fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 288,  priceKRW: null, image: '/bikes/yamaha/r1-2004.jpg'
+    topSpeed: 288,  priceKRW: 5000000, image: '/bikes/yamaha/r1-2004.jpg'
   },
   {
     id: 'r1-2007', brand: 'yamaha', model: 'YZF-R1', year: 2007,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 180,  torque: 113, weight: 200,
     seatHeight: 835,  fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 285,  priceKRW: null, image: '/bikes/yamaha/r1-2007.jpg'
+    topSpeed: 285,  priceKRW: 7000000, image: '/bikes/yamaha/r1-2007.jpg'
   },
   {
     id: 'r1-2009', brand: 'yamaha', model: 'YZF-R1', year: 2009,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 182,  torque: 116, weight: 206,
     seatHeight: 835,  fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 285,  priceKRW: null, image: '/bikes/yamaha/r1-2009.jpg'
+    topSpeed: 285,  priceKRW: 7000000, image: '/bikes/yamaha/r1-2009.jpg'
   },
   {
     id: 'r1-2012', brand: 'yamaha', model: 'YZF-R1', year: 2012,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 182,  torque: 116, weight: 206,
     seatHeight: 835,  fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 285,  priceKRW: null, image: '/bikes/yamaha/r1-2012.jpg'
+    topSpeed: 285,  priceKRW: 10000000, image: '/bikes/yamaha/r1-2012.jpg'
   },
   {
     id: 'r1-2015', brand: 'yamaha', model: 'YZF-R1', year: 2015,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 112, weight: 199,
     seatHeight: 855,  fuelEconomy: 16, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1-2015.jpg'
+    topSpeed: 299,  priceKRW: 13000000, image: '/bikes/yamaha/r1-2015.jpg'
   },
   {
     id: 'r1m-2015', brand: 'yamaha', model: 'YZF-R1M', year: 2015,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 112, weight: 200,
     seatHeight: 855,  fuelEconomy: 15, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1m-2015.jpg'
+    topSpeed: 299,  priceKRW: 13000000, image: '/bikes/yamaha/r1m-2015.jpg'
   },
   {
     id: 'r1-2020', brand: 'yamaha', model: 'YZF-R1', year: 2020,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 113, weight: 201,
     seatHeight: 855,  fuelEconomy: 13, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1-2020.webp'
+    topSpeed: 299,  priceKRW: 16000000, image: '/bikes/yamaha/r1-2020.webp'
   },
   {
     id: 'r1m-2020', brand: 'yamaha', model: 'YZF-R1M', year: 2020,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 113, weight: 202,
     seatHeight: 855,  fuelEconomy: 13, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1m-2020.webp'
+    topSpeed: 299,  priceKRW: 16000000, image: '/bikes/yamaha/r1m-2020.webp'
   },
   {
     id: 'r1-2025', brand: 'yamaha', model: 'YZF-R1', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 113, weight: 203,
     seatHeight: 856,  fuelEconomy: 13, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1-2025.jpg'
+    topSpeed: 299,  priceKRW: 30000000, image: '/bikes/yamaha/r1-2025.jpg'
   },
   {
     id: 'r1m-2025', brand: 'yamaha', model: 'YZF-R1M', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 199,  torque: 113, weight: 204,
     seatHeight: 856,  fuelEconomy: 13, tankCapacity: 17.0,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/yamaha/r1m-2025.jpg'
+    topSpeed: 299,  priceKRW: 30000000, image: '/bikes/yamaha/r1m-2025.jpg'
   },
   {
     id: 'mt01-2005', brand: 'yamaha', model: 'MT-01', year: 2005,
     category: '네이키드', license: '소형이륜',
     displacement: 1670, power: 89,   torque: 150.3, weight: 265,
     seatHeight: 825,  fuelEconomy: 15.4, tankCapacity: 15.0,
-    topSpeed: 210,  priceKRW: null, image: '/bikes/yamaha/mt01-2005.jpg'
+    topSpeed: 210,  priceKRW: 5000000, image: '/bikes/yamaha/mt01-2005.jpg'
   },
   {
     id: 'mt125-2023', brand: 'yamaha', model: 'MT-125', year: 2023,
     category: '네이키드', license: '원동기',
     displacement: 125,  power: 15,   torque: 11.5, weight: 142,
     seatHeight: 810,  fuelEconomy: 47.6, tankCapacity: 10.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt125-2023.jpg'
+    topSpeed: null, priceKRW: 2500000, image: '/bikes/yamaha/mt125-2023.jpg'
   },
   {
     id: 'mt15-2023', brand: 'yamaha', model: 'MT-15', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 155,  power: 18.4, torque: 14.1, weight: 141,
     seatHeight: 810,  fuelEconomy: 45.5, tankCapacity: 10.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt15-2023.jpg'
+    topSpeed: null, priceKRW: 3000000, image: '/bikes/yamaha/mt15-2023.jpg'
   },
   {
     id: 'mt25-2023', brand: 'yamaha', model: 'MT-25', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 250,  power: 35.5, torque: 23.6, weight: 165,
     seatHeight: 780,  fuelEconomy: 27.0, tankCapacity: 14.3,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt25-2023.jpg'
+    topSpeed: null, priceKRW: 3000000, image: '/bikes/yamaha/mt25-2023.jpg'
   },
   {
     id: 'mt03-2006', brand: 'yamaha', model: 'MT-03', year: 2006,
     category: '네이키드', license: '소형이륜',
     displacement: 659,  power: 48,   torque: 58.4, weight: 192,
     seatHeight: null, fuelEconomy: 20.0, tankCapacity: 15.0,
-    topSpeed: 163,  priceKRW: null, image: '/bikes/yamaha/mt03-2006.jpeg'
+    topSpeed: 163,  priceKRW: 3000000, image: '/bikes/yamaha/mt03-2006.jpeg'
   },
   {
     id: 'mt03-2023', brand: 'yamaha', model: 'MT-03', year: 2023,
@@ -336,70 +798,70 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 321,  power: 42,   torque: 29.5, weight: 168,
     seatHeight: 780,  fuelEconomy: 26.3, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt03-2025.jpg'
+    topSpeed: null, priceKRW: 6000000, image: '/bikes/yamaha/mt03-2025.jpg'
   },
   {
     id: 'mt07-2014', brand: 'yamaha', model: 'MT-07', year: 2014,
     category: '네이키드', license: '소형이륜',
     displacement: 689,  power: 74,   torque: 68,   weight: 179,
     seatHeight: 805,  fuelEconomy: 24.2, tankCapacity: 14.0,
-    topSpeed: 229,  priceKRW: null, image: '/bikes/yamaha/mt07-2014.jpg'
+    topSpeed: 229,  priceKRW: 4000000, image: '/bikes/yamaha/mt07-2014.jpg'
   },
   {
     id: 'mt07-2021', brand: 'yamaha', model: 'MT-07', year: 2021,
     category: '네이키드', license: '소형이륜',
     displacement: 689,  power: 73.4, torque: 67,   weight: 184,
     seatHeight: 805,  fuelEconomy: 24.2, tankCapacity: 14.0,
-    topSpeed: 229,  priceKRW: null, image: '/bikes/yamaha/mt07-2021.webp'
+    topSpeed: 229,  priceKRW: 7000000, image: '/bikes/yamaha/mt07-2021.webp'
   },
   {
     id: 'mt07-2025', brand: 'yamaha', model: 'MT-07', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 689,  power: 73.4, torque: 67,   weight: 183,
     seatHeight: 805,  fuelEconomy: 24.2, tankCapacity: 14.0,
-    topSpeed: 229,  priceKRW: null, image: '/bikes/yamaha/mt07-2025.jpg'
+    topSpeed: 229,  priceKRW: 10000000, image: '/bikes/yamaha/mt07-2025.jpg'
   },
   {
     id: 'mt09-2014', brand: 'yamaha', model: 'MT-09', year: 2014,
     category: '네이키드', license: '소형이륜',
     displacement: 847,  power: 115,  torque: 87.5, weight: 188,
     seatHeight: 815,  fuelEconomy: 20.0, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt09-2014.png'
+    topSpeed: null, priceKRW: 7000000, image: '/bikes/yamaha/mt09-2014.png'
   },
   {
     id: 'mt09-2021', brand: 'yamaha', model: 'MT-09', year: 2021,
     category: '네이키드', license: '소형이륜',
     displacement: 890,  power: 119,  torque: 93,   weight: 189,
     seatHeight: 825,  fuelEconomy: 20.0, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt09-2021.png'
+    topSpeed: null, priceKRW: 11000000, image: '/bikes/yamaha/mt09-2021.png'
   },
   {
     id: 'mt09-2024', brand: 'yamaha', model: 'MT-09', year: 2024,
     category: '네이키드', license: '소형이륜',
     displacement: 890,  power: 119,  torque: 93,   weight: 193,
     seatHeight: 825,  fuelEconomy: 20.0, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt09-2024.webp'
+    topSpeed: null, priceKRW: 14000000, image: '/bikes/yamaha/mt09-2024.webp'
   },
   {
     id: 'mt10-2016', brand: 'yamaha', model: 'MT-10', year: 2016,
     category: '네이키드', license: '소형이륜',
     displacement: 998,  power: 158,  torque: 111,  weight: 210,
     seatHeight: 825,  fuelEconomy: 14.6, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt10-2016.jpg'
+    topSpeed: null, priceKRW: 10000000, image: '/bikes/yamaha/mt10-2016.jpg'
   },
   {
     id: 'mt10-2022', brand: 'yamaha', model: 'MT-10', year: 2022,
     category: '네이키드', license: '소형이륜',
     displacement: 998,  power: 166,  torque: 112,  weight: 212,
     seatHeight: 835,  fuelEconomy: 14.6, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt10-2022.jpg'
+    topSpeed: null, priceKRW: 17000000, image: '/bikes/yamaha/mt10-2022.jpg'
   },
   {
     id: 'mt10-2025', brand: 'yamaha', model: 'MT-10', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 998,  power: 166,  torque: 112,  weight: 212,
     seatHeight: 835,  fuelEconomy: 14.6, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/mt10-2025.jpg'
+    topSpeed: null, priceKRW: 24000000, image: '/bikes/yamaha/mt10-2025.jpg'
   },
   {
     id: 'xsr700-2022', brand: 'yamaha', model: 'XSR700', year: 2022,
@@ -413,42 +875,42 @@ export const BIKES = [
     category: '클래식', license: '원동기',
     displacement: 125,  power: 15.0, torque: 11.5, weight: 140,
     seatHeight: 815,  fuelEconomy: 47.6, tankCapacity: 10.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/xsr125-2023.jpg'
+    topSpeed: null, priceKRW: 3500000, image: '/bikes/yamaha/xsr125-2023.jpg'
   },
   {
     id: 'xsr900-2022', brand: 'yamaha', model: 'XSR900', year: 2022,
     category: '클래식', license: '소형이륜',
     displacement: 890,  power: 117,  torque: 94,   weight: 193,
     seatHeight: 810,  fuelEconomy: 20.0, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/xsr900-2022.webp'
+    topSpeed: null, priceKRW: 12000000, image: '/bikes/yamaha/xsr900-2022.webp'
   },
   {
     id: 'xsr900gp-2024', brand: 'yamaha', model: 'XSR900 GP', year: 2024,
     category: '클래식', license: '소형이륜',
     displacement: 890,  power: 119,  torque: 93,   weight: 200,
     seatHeight: 835,  fuelEconomy: 20.0, tankCapacity: 14.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/xsr900gp-2024.webp'
+    topSpeed: null, priceKRW: 14000000, image: '/bikes/yamaha/xsr900gp-2024.webp'
   },
   {
     id: 'xt225-2007', brand: 'yamaha', model: 'XT225 Serow', year: 2007,
     category: '어드벤처', license: '소형이륜',
     displacement: 223,  power: 20,   torque: 19,   weight: 121,
     seatHeight: 810,  fuelEconomy: 34.0, tankCapacity: 8.7,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: 2000000, image: null
   },
   {
     id: 'xt250-2023', brand: 'yamaha', model: 'XT250', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 249,  power: null, torque: null, weight: 132,
     seatHeight: 830,  fuelEconomy: 32.3, tankCapacity: 9.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: 5000000, image: null
   },
   {
     id: 'xt660z-2016', brand: 'yamaha', model: 'XT660Z Tenere', year: 2016,
     category: '어드벤처', license: '소형이륜',
     displacement: 660,  power: 47,   torque: 58,   weight: 206,
     seatHeight: 895,  fuelEconomy: 22.2, tankCapacity: 23.0,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: 5000000, image: null
   },
   {
     id: 'tenere700-2023', brand: 'yamaha', model: 'Tenere 700', year: 2023,
@@ -462,21 +924,21 @@ export const BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 689,  power: 72,   torque: 68,   weight: 205,
     seatHeight: 875,  fuelEconomy: 23.8, tankCapacity: 16.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/tenere700-2025.jpeg'
+    topSpeed: null, priceKRW: 12000000, image: '/bikes/yamaha/tenere700-2025.jpeg'
   },
   {
     id: 'supertenere-2024', brand: 'yamaha', model: 'Super Tenere ES', year: 2024,
     category: '어드벤처', license: '소형이륜',
     displacement: 1199, power: 108.5, torque: 114.1, weight: 261,
     seatHeight: 845,  fuelEconomy: 17.9, tankCapacity: 23.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/supertenerees-2024.jpg'
+    topSpeed: null, priceKRW: 24000000, image: '/bikes/yamaha/supertenerees-2024.jpg'
   },
   {
     id: 'tracer700-2020', brand: 'yamaha', model: 'Tracer 700', year: 2020,
     category: '투어러', license: '소형이륜',
     displacement: 689,  power: 73.8, torque: 68,   weight: 196,
     seatHeight: 840,  fuelEconomy: 27.0, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/tracer700-2020.jpeg'
+    topSpeed: null, priceKRW: 7000000, image: '/bikes/yamaha/tracer700-2020.jpeg'
   },
   {
     id: 'tracer9gt-2022', brand: 'yamaha', model: 'Tracer 9 GT', year: 2022,
@@ -490,49 +952,49 @@ export const BIKES = [
     category: '투어러', license: '소형이륜',
     displacement: 890,  power: 119,  torque: 93,   weight: 223,
     seatHeight: 845,  fuelEconomy: 20.0, tankCapacity: 19.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/tracer9gt-2025.jpeg'
+    topSpeed: null, priceKRW: 18000000, image: '/bikes/yamaha/tracer9gt-2025.jpeg'
   },
   {
     id: 'nikengt-2019', brand: 'yamaha', model: 'Niken GT', year: 2019,
     category: '투어러', license: '소형이륜',
     displacement: 847,  power: 115,  torque: 87.5, weight: 267,
     seatHeight: 820,  fuelEconomy: 17.2, tankCapacity: 18.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/nikengt-2019.jpeg'
+    topSpeed: null, priceKRW: 10000000, image: '/bikes/yamaha/nikengt-2019.jpeg'
   },
   {
     id: 'fjr1300a-2016', brand: 'yamaha', model: 'FJR1300A', year: 2016,
     category: '투어러', license: '소형이륜',
     displacement: 1298, power: 141.5, torque: 134.4, weight: 291,
     seatHeight: 805,  fuelEconomy: 16.1, tankCapacity: 25.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/fjr1300a-2016.jpg'
+    topSpeed: null, priceKRW: 14000000, image: '/bikes/yamaha/fjr1300a-2016.jpg'
   },
   {
     id: 'bolt-2014', brand: 'yamaha', model: 'Bolt', year: 2014,
     category: '크루저', license: '소형이륜',
     displacement: 942,  power: null, torque: null, weight: 245,
     seatHeight: 691,  fuelEconomy: 21.7, tankCapacity: 12.1,
-    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/bolt-2014.jpeg'
+    topSpeed: null, priceKRW: 9000000, image: '/bikes/yamaha/bolt-2014.jpeg'
   },
   {
     id: 'vstar950-2009', brand: 'yamaha', model: 'V Star 950', year: 2009,
     category: '크루저', license: '소형이륜',
     displacement: 942,  power: 50,   torque: 78.9, weight: 278,
     seatHeight: 673,  fuelEconomy: 20.0, tankCapacity: 16.7,
-    topSpeed: 145,  priceKRW: null, image: '/bikes/yamaha/vstar950-2009.jpeg'
+    topSpeed: 145,  priceKRW: 5000000, image: '/bikes/yamaha/vstar950-2009.jpeg'
   },
   {
     id: 'vstar1300-2007', brand: 'yamaha', model: 'V Star 1300', year: 2007,
     category: '크루저', license: '소형이륜',
     displacement: 1304, power: 72.5, torque: 110.9, weight: 303,
     seatHeight: 715,  fuelEconomy: 17.9, tankCapacity: 18.5,
-    topSpeed: 203,  priceKRW: null, image: '/bikes/yamaha/vstar1300-2007.jpeg'
+    topSpeed: 203,  priceKRW: 7000000, image: '/bikes/yamaha/vstar1300-2007.jpeg'
   },
   {
     id: 'vmax-2009', brand: 'yamaha', model: 'VMAX', year: 2009,
     category: '크루저', license: '소형이륜',
     displacement: 1679, power: 197,  torque: 166.8, weight: 310,
     seatHeight: 775,  fuelEconomy: 11.5, tankCapacity: 15.0,
-    topSpeed: 220,  priceKRW: null, image: '/bikes/yamaha/vmax-2009.jpeg'
+    topSpeed: 220,  priceKRW: 9000000, image: '/bikes/yamaha/vmax-2009.jpeg'
   },
 
   // ── Kawasaki ──────────────────────────────────────────────────────────────
@@ -626,6 +1088,125 @@ export const BIKES = [
     displacement: 636, power: 124, torque: 69, weight: 198,
     seatHeight: 830, fuelEconomy: 18, tankCapacity: 17.0,
     topSpeed: 250, priceKRW: 19910000, image: '/bikes/kawasaki/zx6r-2025.png'
+  },
+  {
+    id: 'gpz900r-1984', brand: 'kawasaki', model: 'GPZ900R Ninja', year: 1984,
+    category: '스포츠', license: '소형이륜',
+    displacement: 908, power: 115, torque: 85, weight: 228,
+    seatHeight: 780, fuelEconomy: 16, tankCapacity: 22.0,
+    topSpeed: 243, priceKRW: 5500000, image: '/bikes/kawasaki/gpz900r-1984.jpg'
+  },
+  {
+    id: 'gpz1000rx-1986', brand: 'kawasaki', model: 'GPZ1000RX', year: 1986,
+    category: '스포츠', license: '소형이륜',
+    displacement: 997, power: 125, torque: 99, weight: 238,
+    seatHeight: 790, fuelEconomy: 15, tankCapacity: 21.0,
+    topSpeed: 260, priceKRW: 5000000, image: '/bikes/kawasaki/gpz1000rx-1986.jpg'
+  },
+  {
+    id: 'zx10tomcat-1988', brand: 'kawasaki', model: 'ZX-10 Tomcat', year: 1988,
+    category: '스포츠', license: '소형이륜',
+    displacement: 997, power: 135, torque: 102, weight: 245,
+    seatHeight: 790, fuelEconomy: 17, tankCapacity: 20.8,
+    topSpeed: 269, priceKRW: 5500000, image: null
+  },
+  {
+    id: 'zzr600-1990', brand: 'kawasaki', model: 'ZZR600 / ZX-6', year: 1990,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599, power: 99, torque: 64, weight: 195,
+    seatHeight: 780, fuelEconomy: 18, tankCapacity: 18.0,
+    topSpeed: 246, priceKRW: 3500000, image: null
+  },
+  {
+    id: 'zzr1100-1990', brand: 'kawasaki', model: 'ZZR1100 / ZX-11', year: 1990,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1052, power: 147, torque: 110, weight: 257,
+    seatHeight: 780, fuelEconomy: 14, tankCapacity: 24.0,
+    topSpeed: 283, priceKRW: 6500000, image: null
+  },
+  {
+    id: 'zxr400-1991', brand: 'kawasaki', model: 'ZXR400', year: 1991,
+    category: '스포츠', license: '소형이륜',
+    displacement: 398, power: 64, torque: 36.3, weight: 159,
+    seatHeight: 760, fuelEconomy: 20, tankCapacity: 16.0,
+    topSpeed: 225, priceKRW: 4500000, image: null
+  },
+  {
+    id: 'zxr750-1991', brand: 'kawasaki', model: 'ZXR750', year: 1991,
+    category: '스포츠', license: '소형이륜',
+    displacement: 749, power: 121, torque: 76, weight: 205,
+    seatHeight: 780, fuelEconomy: 16, tankCapacity: 19.0,
+    topSpeed: 260, priceKRW: 5500000, image: null
+  },
+  {
+    id: 'zx6r-1995', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 1995,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599, power: 100, torque: 60, weight: 206,
+    seatHeight: 810, fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 248, priceKRW: 3500000, image: '/bikes/kawasaki/ninjazx6r-1995.jpg'
+  },
+  {
+    id: 'zx7r-1996', brand: 'kawasaki', model: 'Ninja ZX-7R', year: 1996,
+    category: '스포츠', license: '소형이륜',
+    displacement: 748, power: 122, torque: 76, weight: 203,
+    seatHeight: 790, fuelEconomy: 15, tankCapacity: 18.0,
+    topSpeed: 260, priceKRW: 6500000, image: null
+  },
+  {
+    id: 'zx6r-1998', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 1998,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599, power: 108, torque: 60, weight: 202,
+    seatHeight: 813, fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 251, priceKRW: 4000000, image: '/bikes/kawasaki/ninjazx6r-1998.webp'
+  },
+  {
+    id: 'zx9r-1998', brand: 'kawasaki', model: 'Ninja ZX-9R', year: 1998,
+    category: '스포츠', license: '소형이륜',
+    displacement: 899, power: 143, torque: 100, weight: 215,
+    seatHeight: 810, fuelEconomy: 15, tankCapacity: 19.0,
+    topSpeed: 270, priceKRW: 5500000, image: null
+  },
+  {
+    id: 'zx6r-2000', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2000,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599, power: 112, torque: 59, weight: 195,
+    seatHeight: 790, fuelEconomy: 17, tankCapacity: 18.0,
+    topSpeed: 255, priceKRW: 4500000, image: '/bikes/kawasaki/ninjazx6r-2000.webp'
+  },
+  {
+    id: 'zx12r-2000', brand: 'kawasaki', model: 'Ninja ZX-12R', year: 2000,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1199, power: 178, torque: 134, weight: 247,
+    seatHeight: 820, fuelEconomy: 13, tankCapacity: 20.0,
+    topSpeed: 300, priceKRW: 8000000, image: '/bikes/kawasaki/ninjazx12r-2000.jpg'
+  },
+  {
+    id: 'zzr1200-2002', brand: 'kawasaki', model: 'ZZR1200', year: 2002,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1164, power: 160, torque: 125, weight: 270,
+    seatHeight: 800, fuelEconomy: 14, tankCapacity: 23.0,
+    topSpeed: 280, priceKRW: 6500000, image: null
+  },
+  {
+    id: 'zzr1400-2006', brand: 'kawasaki', model: 'ZZR1400 / Ninja ZX-14', year: 2006,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1352, power: 190, torque: 154, weight: 257,
+    seatHeight: 800, fuelEconomy: 14, tankCapacity: 22.0,
+    topSpeed: 299, priceKRW: 8500000, image: null
+  },
+  {
+    id: 'zx6r-2009', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2009,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599, power: 128, torque: 66, weight: 191,
+    seatHeight: 815, fuelEconomy: 17, tankCapacity: 17.0,
+    topSpeed: 260, priceKRW: 6000000, image: '/bikes/kawasaki/ninjazx6r-2009.jpg'
+  },
+  {
+    id: 'zx14r-2012', brand: 'kawasaki', model: 'Ninja ZX-14R', year: 2012,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1441, power: 200, torque: 158, weight: 268,
+    seatHeight: 800, fuelEconomy: 14, tankCapacity: 22.0,
+    topSpeed: 299, priceKRW: 12000000, image: '/bikes/kawasaki/ninjazx14r-2012.webp'
   },
   {
     id: 'zx10r-2025', brand: 'kawasaki', model: 'Ninja ZX-10R', year: 2025,
@@ -725,6 +1306,55 @@ export const BIKES = [
   seatHeight: 815, fuelEconomy: 18.6, tankCapacity: 17,
   topSpeed: 254, priceKRW: 22716000, image: '/bikes/kawasaki/ninja1100sx-2025.webp'
 },
+{
+  id: 'klr650-2026', brand: 'kawasaki', model: 'KLR650', year: 2026,
+  category: '어드벤처', license: '소형이륜',
+  displacement: 652, power: 40, torque: 53, weight: 209,
+  seatHeight: 871, fuelEconomy: 22, tankCapacity: 23.0,
+    topSpeed: 160, priceKRW: 9500000, image: '/bikes/kawasaki/klr650-2026.png'
+},
+{
+  id: 'klx230sm-2025', brand: 'kawasaki', model: 'KLX230SM', year: 2025,
+  category: '슈퍼모토', license: '소형이륜',
+  displacement: 233, power: 18, torque: 19, weight: 137,
+  seatHeight: 843, fuelEconomy: 35, tankCapacity: 7.6,
+  topSpeed: 120, priceKRW: 6500000, image: '/bikes/kawasaki/klx230sm-2025.jpg'
+},
+{
+  id: 'ninja7hybrid-2024', brand: 'kawasaki', model: 'Ninja 7 Hybrid', year: 2024,
+  category: '스포츠', license: '소형이륜',
+  displacement: 451, power: 69, torque: 60, weight: 227,
+  seatHeight: 795, fuelEconomy: 27, tankCapacity: 14.0,
+    topSpeed: 190, priceKRW: 16000000, image: '/bikes/kawasaki/ninja7hybrid-2024.png'
+},
+{
+  id: 'z7hybrid-2024', brand: 'kawasaki', model: 'Z7 Hybrid', year: 2024,
+  category: '네이키드', license: '소형이륜',
+  displacement: 451, power: 69, torque: 60, weight: 226,
+  seatHeight: 795, fuelEconomy: 27, tankCapacity: 14.0,
+    topSpeed: 190, priceKRW: 15000000, image: '/bikes/kawasaki/z7hybrid-2024.png'
+},
+{
+  id: 'zh2-2025', brand: 'kawasaki', model: 'Z H2', year: 2025,
+  category: '네이키드', license: '소형이륜',
+  displacement: 998, power: 197, torque: 137, weight: 239,
+  seatHeight: 830, fuelEconomy: 15, tankCapacity: 19.0,
+  topSpeed: 280, priceKRW: 28000000, image: '/bikes/kawasaki/zh2-2025.jpg'
+},
+{
+  id: 'ninjah2-2025', brand: 'kawasaki', model: 'Ninja H2', year: 2025,
+  category: '스포츠', license: '소형이륜',
+  displacement: 998, power: 231, torque: 141.7, weight: 238,
+  seatHeight: 825, fuelEconomy: 14, tankCapacity: 17.0,
+    topSpeed: 299, priceKRW: 50000000, image: '/bikes/kawasaki/ninjah2-2025.png'
+},
+{
+  id: 'w230-2025', brand: 'kawasaki', model: 'W230', year: 2025,
+  category: '클래식', license: '소형이륜',
+  displacement: 233, power: 17, torque: 19, weight: 143,
+  seatHeight: 745, fuelEconomy: 35, tankCapacity: 12.0,
+  topSpeed: 125, priceKRW: 8000000, image: '/bikes/kawasaki/w230-2025.jpg'
+},
 
   // ── BMW ───────────────────────────────────────────────────────────────────
   {
@@ -732,84 +1362,84 @@ export const BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 312,  power: 34,   torque: 27.3, weight: 174,
     seatHeight: 811,  fuelEconomy: 30.3, tankCapacity: 11.0,
-    topSpeed: 160,  priceKRW: null, image: '/bikes/bmw/g310rr-2022.png'
+    topSpeed: 160,  priceKRW: 6000000, image: '/bikes/bmw/g310rr-2022.png'
   },
   {
     id: 'g310rr-2024', brand: 'bmw', model: 'G 310 RR', year: 2024,
     category: '스포츠', license: '소형이륜',
     displacement: 312,  power: 34,   torque: 27.3, weight: 174,
     seatHeight: 810,  fuelEconomy: 30.3, tankCapacity: 11.0,
-    topSpeed: 164,  priceKRW: null, image: '/bikes/bmw/g310rr-2024.jpeg'
+    topSpeed: 164,  priceKRW: 8000000, image: '/bikes/bmw/g310rr-2024.jpeg'
   },
   {
     id: 's1000rr-2010', brand: 'bmw', model: 'S 1000 RR', year: 2010,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 193,  torque: 112,  weight: 204,
     seatHeight: 820,  fuelEconomy: 17, tankCapacity: 17.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2010.jpeg'
+    topSpeed: 299,  priceKRW: 11000000, image: '/bikes/bmw/s1000rr-2010.jpeg'
   },
   {
     id: 's1000rr-2012', brand: 'bmw', model: 'S 1000 RR', year: 2012,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 193,  torque: 112,  weight: 204,
     seatHeight: 820,  fuelEconomy: 17, tankCapacity: 17.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2012.jpeg'
+    topSpeed: 299,  priceKRW: 11000000, image: '/bikes/bmw/s1000rr-2012.jpeg'
   },
   {
     id: 's1000rr-2015', brand: 'bmw', model: 'S 1000 RR', year: 2015,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 199,  torque: 113,  weight: 204,
     seatHeight: 815,  fuelEconomy: 17, tankCapacity: 17.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2015.jpeg'
+    topSpeed: 299,  priceKRW: 14000000, image: '/bikes/bmw/s1000rr-2015.jpeg'
   },
   {
     id: 's1000rr-2019', brand: 'bmw', model: 'S 1000 RR', year: 2019,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 207,  torque: 113,  weight: 197,
     seatHeight: 824,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2019.jpeg'
+    topSpeed: 299,  priceKRW: 18000000, image: '/bikes/bmw/s1000rr-2019.jpeg'
   },
   {
     id: 's1000rr-2023', brand: 'bmw', model: 'S 1000 RR', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 210,  torque: 113,  weight: 197,
     seatHeight: 824,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2023.jpeg'
+    topSpeed: 299,  priceKRW: 35000000, image: '/bikes/bmw/s1000rr-2023.jpeg'
   },
   {
     id: 's1000rr-2025', brand: 'bmw', model: 'S 1000 RR', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 210,  torque: 113,  weight: 198,
     seatHeight: 832,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 299,  priceKRW: null, image: '/bikes/bmw/s1000rr-2025.jpeg'
+    topSpeed: 299,  priceKRW: 41000000, image: '/bikes/bmw/s1000rr-2025.jpeg'
   },
   {
     id: 'm1000rr-2021', brand: 'bmw', model: 'M 1000 RR', year: 2021,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 212,  torque: 113,  weight: 192,
     seatHeight: 832,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 306,  priceKRW: null, image: '/bikes/bmw/m1000rr-2021.jpeg'
+    topSpeed: 306,  priceKRW: 29000000, image: '/bikes/bmw/m1000rr-2021.jpeg'
   },
   {
     id: 'm1000rr-2023', brand: 'bmw', model: 'M 1000 RR', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 212,  torque: 113,  weight: 193,
     seatHeight: 832,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 314,  priceKRW: null, image: '/bikes/bmw/m1000rr-2023.jpeg'
+    topSpeed: 314,  priceKRW: 35000000, image: '/bikes/bmw/m1000rr-2023.jpeg'
   },
   {
     id: 'm1000rr-2025', brand: 'bmw', model: 'M 1000 RR', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 999,  power: 218,  torque: 113,  weight: 194,
     seatHeight: 832,  fuelEconomy: 15.4, tankCapacity: 16.5,
-    topSpeed: 314,  priceKRW: null, image: '/bikes/bmw/m1000rr-2025.jpeg'
+    topSpeed: 314,  priceKRW: 41000000, image: '/bikes/bmw/m1000rr-2025.jpeg'
   },
   {
     id: 'g310r-2017', brand: 'bmw', model: 'G 310 R', year: 2017,
     category: '네이키드', license: '소형이륜',
     displacement: 313,  power: 34,   torque: 28,   weight: 158.5,
     seatHeight: 785,  fuelEconomy: 25, tankCapacity: 11.0,
-    topSpeed: 143,  priceKRW: null, image: '/bikes/bmw/g310r-2017.jpg'
+    topSpeed: 143,  priceKRW: 4000000, image: '/bikes/bmw/g310r-2017.jpg'
   },
   {
     id: 'g310r-2022', brand: 'bmw', model: 'G310R', year: 2022,
@@ -823,14 +1453,14 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 313,  power: 34,   torque: 28,   weight: 158.5,
     seatHeight: 785,  fuelEconomy: 30.3, tankCapacity: 11.0,
-    topSpeed: 144,  priceKRW: null, image: '/bikes/bmw/g310r-2024.jpeg'
+    topSpeed: 144,  priceKRW: 8000000, image: '/bikes/bmw/g310r-2024.jpeg'
   },
   {
     id: 'f900r-2020', brand: 'bmw', model: 'F 900 R', year: 2020,
     category: '네이키드', license: '소형이륜',
     displacement: 895,  power: 105,  torque: 92,   weight: 211,
     seatHeight: 815,  fuelEconomy: 23.8, tankCapacity: 13.0,
-    topSpeed: 216,  priceKRW: null, image: '/bikes/bmw/f900r-2020.jpg'
+    topSpeed: 216,  priceKRW: 10000000, image: '/bikes/bmw/f900r-2020.jpg'
   },
   {
     id: 'f900r-2023', brand: 'bmw', model: 'F900R', year: 2023,
@@ -844,7 +1474,7 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 895,  power: 105,  torque: 93,   weight: 208,
     seatHeight: 815,  fuelEconomy: 23.8, tankCapacity: 13.0,
-    topSpeed: 216,  priceKRW: null, image: '/bikes/bmw/f900r-2025.webp'
+    topSpeed: 216,  priceKRW: 19000000, image: '/bikes/bmw/f900r-2025.webp'
   },
   {
     id: 'r1250gs-2022', brand: 'bmw', model: 'R1250GS', year: 2022,
@@ -858,21 +1488,21 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 160,  torque: 112,  weight: 207,
     seatHeight: 814,  fuelEconomy: 15.9, tankCapacity: 17.5,
-    topSpeed: 261,  priceKRW: null, image: '/bikes/bmw/s1000r-2014.jpeg'
+    topSpeed: 261,  priceKRW: 11000000, image: '/bikes/bmw/s1000r-2014.jpeg'
   },
   {
     id: 's1000r-2017', brand: 'bmw', model: 'S 1000 R', year: 2017,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 165,  torque: 114,  weight: 205,
     seatHeight: 814,  fuelEconomy: 15.9, tankCapacity: 17.5,
-    topSpeed: 261,  priceKRW: null, image: '/bikes/bmw/s1000r-2017.jpeg'
+    topSpeed: 261,  priceKRW: 11000000, image: '/bikes/bmw/s1000r-2017.jpeg'
   },
   {
     id: 's1000r-2021', brand: 'bmw', model: 'S 1000 R', year: 2021,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 165,  torque: 114,  weight: 199,
     seatHeight: 830,  fuelEconomy: 16.1, tankCapacity: 16.5,
-    topSpeed: 250,  priceKRW: null, image: '/bikes/bmw/s1000r-2021.webp'
+    topSpeed: 250,  priceKRW: 19000000, image: '/bikes/bmw/s1000r-2021.webp'
   },
   {
     id: 's1000r-2023', brand: 'bmw', model: 'S1000R', year: 2023,
@@ -886,42 +1516,42 @@ export const BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 170,  torque: 114,  weight: 199,
     seatHeight: 830,  fuelEconomy: 16.1, tankCapacity: 16.5,
-    topSpeed: 250,  priceKRW: null, image: '/bikes/bmw/s1000r-2025.jpeg'
+    topSpeed: 250,  priceKRW: 31000000, image: '/bikes/bmw/s1000r-2025.jpeg'
   },
   {
     id: 'm1000r-2023', brand: 'bmw', model: 'M 1000 R', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 210,  torque: 113,  weight: 199,
     seatHeight: 840,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 280,  priceKRW: null, image: '/bikes/bmw/m1000r-2023.jpeg'
+    topSpeed: 280,  priceKRW: 33000000, image: '/bikes/bmw/m1000r-2023.jpeg'
   },
   {
     id: 'm1000r-2025', brand: 'bmw', model: 'M 1000 R', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 210,  torque: 113,  weight: 199,
     seatHeight: 840,  fuelEconomy: 15.6, tankCapacity: 16.5,
-    topSpeed: 280,  priceKRW: null, image: '/bikes/bmw/m1000r-2025.jpeg'
+    topSpeed: 280,  priceKRW: 39000000, image: '/bikes/bmw/m1000r-2025.jpeg'
   },
   {
     id: 'r12ninet-2024', brand: 'bmw', model: 'R 12 nineT', year: 2024,
     category: '네이키드', license: '소형이륜',
     displacement: 1170, power: 109,  torque: 115,  weight: 220,
     seatHeight: 795,  fuelEconomy: 19.6, tankCapacity: 16.0,
-    topSpeed: 215,  priceKRW: null, image: '/bikes/bmw/r12ninet-2024.jpeg'
+    topSpeed: 215,  priceKRW: 25000000, image: '/bikes/bmw/r12ninet-2024.jpeg'
   },
   {
     id: 'r12ninet-2025', brand: 'bmw', model: 'R 12 nineT', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 1170, power: 109,  torque: 115,  weight: 220,
     seatHeight: 795,  fuelEconomy: 19.6, tankCapacity: 16.0,
-    topSpeed: 215,  priceKRW: null, image: '/bikes/bmw/r12ninet-2025.jpeg'
+    topSpeed: 215,  priceKRW: 29000000, image: '/bikes/bmw/r12ninet-2025.jpeg'
   },
   {
     id: 'r1300r-2025', brand: 'bmw', model: 'R 1300 R', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 1300, power: 145,  torque: 149,  weight: 239,
     seatHeight: 810,  fuelEconomy: 20.8, tankCapacity: 17.0,
-    topSpeed: 225,  priceKRW: null, image: '/bikes/bmw/r1300r-2025.jpeg'
+    topSpeed: 225,  priceKRW: 35000000, image: '/bikes/bmw/r1300r-2025.jpeg'
   },
 
   // ── Harley-Davidson ───────────────────────────────────────────────────────
@@ -976,6 +1606,146 @@ export const BIKES = [
     seatHeight: 810,  fuelEconomy: 22, tankCapacity: 14.5,
     topSpeed: 210,  priceKRW: 12000000, image: '/bikes/suzuki/gsx8s-2023.webp'
   },
+  {
+    id: 'gsxr125-2023', brand: 'suzuki', model: 'GSX-R125', year: 2023,
+    category: '스포츠', license: '원동기',
+    displacement: 125,  power: 15,   torque: 11.5, weight: 134,
+    seatHeight: 785,  fuelEconomy: 43, tankCapacity: 11.0,
+    topSpeed: 120,  priceKRW: 3600000, image: '/bikes/suzuki/gsxr125-2023.jpg'
+  },
+  {
+    id: 'gsx250r-2023', brand: 'suzuki', model: 'GSX250R', year: 2023,
+    category: '스포츠', license: '소형이륜',
+    displacement: 248,  power: 24.7, torque: 23.4, weight: 181,
+    seatHeight: 790,  fuelEconomy: 32, tankCapacity: 15.0,
+    topSpeed: 145,  priceKRW: 4700000, image: '/bikes/suzuki/gsx250r-2023.jpg'
+  },
+  {
+    id: 'gsxr600-2011', brand: 'suzuki', model: 'GSX-R600', year: 2011,
+    category: '스포츠', license: '소형이륜',
+    displacement: 599,  power: 124,  torque: 69.6, weight: 187,
+    seatHeight: 810,  fuelEconomy: 16, tankCapacity: 17.0,
+    topSpeed: 253,  priceKRW: 6500000, image: '/bikes/suzuki/gsxr600-2011.jpg'
+  },
+  {
+    id: 'gsxr750-1985', brand: 'suzuki', model: 'GSX-R750', year: 1985,
+    category: '스포츠', license: '소형이륜',
+    displacement: 749,  power: 106,  torque: 73,   weight: 201,
+    seatHeight: 765,  fuelEconomy: 16, tankCapacity: 18.0,
+    topSpeed: 235,  priceKRW: 7000000, image: '/bikes/suzuki/gsxr750-1985.jpg'
+  },
+  {
+    id: 'gsxr750-2011', brand: 'suzuki', model: 'GSX-R750', year: 2011,
+    category: '스포츠', license: '소형이륜',
+    displacement: 750,  power: 148,  torque: 86,   weight: 190,
+    seatHeight: 810,  fuelEconomy: 16, tankCapacity: 17.0,
+    topSpeed: 270,  priceKRW: 7500000, image: '/bikes/suzuki/gsxr750-2011.jpg'
+  },
+  {
+    id: 'gsxr1000-2005', brand: 'suzuki', model: 'GSX-R1000', year: 2005,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999,  power: 178,  torque: 102,  weight: 201,
+    seatHeight: 810,  fuelEconomy: 15, tankCapacity: 18.0,
+    topSpeed: 286,  priceKRW: 6500000, image: '/bikes/suzuki/gsxr1000-2005.jpg'
+  },
+  {
+    id: 'gsxr1000r-2017', brand: 'suzuki', model: 'GSX-R1000R', year: 2017,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999,  power: 202,  torque: 118,  weight: 203,
+    seatHeight: 825,  fuelEconomy: 15, tankCapacity: 16.0,
+    topSpeed: 299,  priceKRW: 14500000, image: '/bikes/suzuki/gsxr1000r-2017.webp'
+  },
+  {
+    id: 'gsxr1000r-2023', brand: 'suzuki', model: 'GSX-R1000R', year: 2023,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999,  power: 202,  torque: 118,  weight: 203,
+    seatHeight: 825,  fuelEconomy: 15, tankCapacity: 16.0,
+    topSpeed: 299,  priceKRW: 22000000, image: '/bikes/suzuki/gsxr1000r-2023.jpg'
+  },
+  {
+    id: 'hayabusa-1999', brand: 'suzuki', model: 'Hayabusa', year: 1999,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1299, power: 173,  torque: 138,  weight: 250,
+    seatHeight: 805,  fuelEconomy: 14, tankCapacity: 21.0,
+    topSpeed: 312,  priceKRW: 8000000, image: '/bikes/suzuki/hayabusa-1999.jpg'
+  },
+  {
+    id: 'hayabusa-2008', brand: 'suzuki', model: 'Hayabusa', year: 2008,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1340, power: 197,  torque: 155,  weight: 260,
+    seatHeight: 805,  fuelEconomy: 15, tankCapacity: 21.0,
+    topSpeed: 299,  priceKRW: 10000000, image: '/bikes/suzuki/hayabusa-2008.jpg'
+  },
+  {
+    id: 'hayabusa-2022', brand: 'suzuki', model: 'Hayabusa', year: 2022,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1340, power: 187,  torque: 150,  weight: 264,
+    seatHeight: 800,  fuelEconomy: 15, tankCapacity: 20.0,
+    topSpeed: 299,  priceKRW: 23000000, image: '/bikes/suzuki/hayabusa-2022.webp'
+  },
+  {
+    id: 'katana-2020', brand: 'suzuki', model: 'Katana', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 999,  power: 150,  torque: 108,  weight: 215,
+    seatHeight: 825,  fuelEconomy: 18, tankCapacity: 12.0,
+    topSpeed: 240,  priceKRW: 12500000, image: '/bikes/suzuki/katana-2020.jpg'
+  },
+  {
+    id: 'gsxs1000-2016', brand: 'suzuki', model: 'GSX-S1000', year: 2016,
+    category: '네이키드', license: '소형이륜',
+    displacement: 999,  power: 145,  torque: 106,  weight: 209,
+    seatHeight: 810,  fuelEconomy: 18, tankCapacity: 17.0,
+    topSpeed: 240,  priceKRW: 8500000, image: '/bikes/suzuki/gsxs1000-2016.jpg'
+  },
+  {
+    id: 'gsxs1000-2022', brand: 'suzuki', model: 'GSX-S1000', year: 2022,
+    category: '네이키드', license: '소형이륜',
+    displacement: 999,  power: 150,  torque: 106,  weight: 214,
+    seatHeight: 810,  fuelEconomy: 17, tankCapacity: 19.0,
+    topSpeed: 240,  priceKRW: 14000000, image: '/bikes/suzuki/gsxs1000-2022.jpg'
+  },
+  {
+    id: 'gsx8r-2024', brand: 'suzuki', model: 'GSX-8R', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 776,  power: 83,   torque: 78,   weight: 205,
+    seatHeight: 810,  fuelEconomy: 22, tankCapacity: 14.0,
+    topSpeed: 215,  priceKRW: 13000000, image: '/bikes/suzuki/gsx8r-2024.png'
+  },
+  {
+    id: 'vstrom800de-2023', brand: 'suzuki', model: 'V-Strom 800DE', year: 2023,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 776,  power: 83,   torque: 78,   weight: 230,
+    seatHeight: 855,  fuelEconomy: 22.7, tankCapacity: 20.0,
+    topSpeed: 200,  priceKRW: 15000000, image: '/bikes/suzuki/vstrom800de-2023.png'
+  },
+  {
+    id: 'vstrom1050-2023', brand: 'suzuki', model: 'V-Strom 1050', year: 2023,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1037, power: 106,  torque: 100,  weight: 242,
+    seatHeight: 850,  fuelEconomy: 20, tankCapacity: 20.0,
+    topSpeed: 210,  priceKRW: 17000000, image: '/bikes/suzuki/vstrom1050-2023.jpg'
+  },
+  {
+    id: 'burgman650-2018', brand: 'suzuki', model: 'Burgman 650', year: 2018,
+    category: '스쿠터', license: '소형이륜',
+    displacement: 638,  power: 54,   torque: 62,   weight: 277,
+    seatHeight: 755,  fuelEconomy: 20, tankCapacity: 15.0,
+    topSpeed: 175,  priceKRW: 7500000, image: '/bikes/suzuki/burgman650-2018.jpg'
+  },
+  {
+    id: 'drz400sm-2023', brand: 'suzuki', model: 'DR-Z400SM', year: 2023,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 398,  power: 39,   torque: 39,   weight: 146,
+    seatHeight: 890,  fuelEconomy: 28, tankCapacity: 10.0,
+    topSpeed: 151,  priceKRW: 8500000, image: '/bikes/suzuki/drz400sm-2023.jpg'
+  },
+  {
+    id: 'boulevardm109r-2019', brand: 'suzuki', model: 'Boulevard M109R', year: 2019,
+    category: '크루저', license: '소형이륜',
+    displacement: 1783, power: 125,  torque: 160,  weight: 347,
+    seatHeight: 705,  fuelEconomy: 16, tankCapacity: 19.5,
+    topSpeed: 200,  priceKRW: 13500000, image: '/bikes/suzuki/boulevardm109r-2019.jpg'
+  },
 
   // ── KTM ───────────────────────────────────────────────────────────────────
   {
@@ -1020,77 +1790,77 @@ export const BIKES = [
     category: '슈퍼모토', license: '소형이륜',
     displacement: 659,  power: 77.5, torque: 63,   weight: 151,
     seatHeight: 904,  fuelEconomy: 20.8, tankCapacity: 12.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/hypermotard698mono-2025.jpeg'
+    topSpeed: null, priceKRW: 14000000, image: '/bikes/ducati/hypermotard698mono-2025.jpeg'
   },
   {
     id: 'panigalev2-2025', brand: 'ducati', model: 'Panigale V2', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 890,  power: 120,  torque: 93.3, weight: 179,
     seatHeight: 837,  fuelEconomy: 18.9, tankCapacity: 15.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev2-2025.jpeg'
+    topSpeed: null, priceKRW: 22000000, image: '/bikes/ducati/panigalev2-2025.jpeg'
   },
   {
     id: 'panigalev2s-2025', brand: 'ducati', model: 'Panigale V2 S', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 890,  power: 120,  torque: 93.3, weight: 176,
     seatHeight: 837,  fuelEconomy: 18.9, tankCapacity: 15.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev2s-2025.jpg'
+    topSpeed: null, priceKRW: 22000000, image: '/bikes/ducati/panigalev2s-2025.jpg'
   },
   {
     id: 'panigalev4-2025', brand: 'ducati', model: 'Panigale V4', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 1103, power: 216,  torque: 120.9, weight: 191,
     seatHeight: 850,  fuelEconomy: 15.4, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev4-2025.jpeg'
+    topSpeed: null, priceKRW: 46000000, image: '/bikes/ducati/panigalev4-2025.jpeg'
   },
   {
     id: 'panigalev4s-2025', brand: 'ducati', model: 'Panigale V4 S', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 1103, power: 216,  torque: 120.9, weight: 187,
     seatHeight: 850,  fuelEconomy: 15.4, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev4s-2025.webp'
+    topSpeed: null, priceKRW: 46000000, image: '/bikes/ducati/panigalev4s-2025.webp'
   },
   {
     id: 'panigalev4r-2025', brand: 'ducati', model: 'Panigale V4 R', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 998,  power: 218,  torque: 114.5, weight: 186.5,
     seatHeight: 855,  fuelEconomy: 13.9, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev4r-2025.jpeg'
+    topSpeed: null, priceKRW: 42000000, image: '/bikes/ducati/panigalev4r-2025.jpeg'
   },
   {
     id: 'panigalev4tricolore-2025', brand: 'ducati', model: 'Panigale V4 Tricolore', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 1103, power: 216,  torque: 120.9, weight: 188,
     seatHeight: 850,  fuelEconomy: 15.4, tankCapacity: 17.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/panigalev4tricolore-2025.jpg'
+    topSpeed: null, priceKRW: 46000000, image: '/bikes/ducati/panigalev4tricolore-2025.jpg'
   },
   {
     id: 'streetfighterv4-2025', brand: 'ducati', model: 'Streetfighter V4', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 1103, power: 214,  torque: 120.0, weight: 191,
     seatHeight: 845,  fuelEconomy: 14.1, tankCapacity: 16.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/streetfighterv4-2025.jpeg'
+    topSpeed: null, priceKRW: 44000000, image: '/bikes/ducati/streetfighterv4-2025.jpeg'
   },
   {
     id: 'multistradav2-2025', brand: 'ducati', model: 'Multistrada V2', year: 2025,
     category: '어드벤처', license: '소형이륜',
     displacement: 890,  power: 115.6, torque: 92.1, weight: 199,
     seatHeight: 830,  fuelEconomy: 18.2, tankCapacity: 19.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/multistradav2-2025.jpg'
+    topSpeed: null, priceKRW: 22000000, image: '/bikes/ducati/multistradav2-2025.jpg'
   },
   {
     id: 'multistradav4-2025', brand: 'ducati', model: 'Multistrada V4', year: 2025,
     category: '어드벤처', license: '소형이륜',
     displacement: 1158, power: 170,  torque: 124,  weight: 229,
     seatHeight: 840,  fuelEconomy: 15.2, tankCapacity: 22.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/multistradav4-2025.webp'
+    topSpeed: null, priceKRW: 38000000, image: '/bikes/ducati/multistradav4-2025.webp'
   },
   {
     id: 'diavelv4-2025', brand: 'ducati', model: 'Diavel V4', year: 2025,
     category: '크루저', license: '소형이륜',
     displacement: 1158, power: 168,  torque: 126,  weight: 223,
     seatHeight: 790,  fuelEconomy: 15.2, tankCapacity: 20.0,
-    topSpeed: null, priceKRW: null, image: '/bikes/ducati/diavelv4-2025.jpg'
+    topSpeed: null, priceKRW: 33000000, image: '/bikes/ducati/diavelv4-2025.jpg'
   },
 
   // ── Triumph ───────────────────────────────────────────────────────────────
@@ -1142,7 +1912,76 @@ export const BIKES = [
   },
 ]
 
+function isKnownNumber(value) {
+  return value !== null && value !== undefined && Number.isFinite(value)
+}
+
+function estimateReferencePriceKRW(bike) {
+  const cc = isKnownNumber(bike.displacement) ? bike.displacement : 0
+  const power = isKnownNumber(bike.power) ? bike.power : 0
+
+  let baseMillion =
+    cc <= 125 ? 3 :
+    cc <= 250 ? 4 :
+    cc <= 400 ? 6 :
+    cc <= 700 ? 10 :
+    cc <= 900 ? 14 :
+    cc <= 1000 ? 20 :
+    cc <= 1200 ? 24 :
+    28
+
+  if (power >= 210) baseMillion += 16
+  else if (power >= 170) baseMillion += 8
+  else if (power >= 130) baseMillion += 4
+  else if (power >= 100) baseMillion += 2
+
+  if (bike.category === '스포츠' && power >= 80) baseMillion += 2
+  if (bike.category === '투어러' || bike.category === '어드벤처') baseMillion += 2
+  if (bike.category === '스쿠터') baseMillion -= 1
+  if (bike.category === '크루저' || bike.category === '클래식') baseMillion += 1
+
+  const brandPremium = {
+    bmw: 3,
+    ducati: 4,
+    harley: 2,
+    triumph: 1,
+    kawasaki: 0.5,
+    ktm: 0.5,
+    vespa: 1,
+  }
+  baseMillion += brandPremium[bike.brand] ?? 0
+
+  const age = 2026 - bike.year
+  const ageFactor =
+    age <= 1 ? 1.00 :
+    age <= 3 ? 0.85 :
+    age <= 5 ? 0.70 :
+    age <= 8 ? 0.55 :
+    age <= 12 ? 0.42 :
+    age <= 16 ? 0.32 :
+    age <= 20 ? 0.24 :
+    age <= 25 ? 0.18 :
+    0.15
+
+  const floorMillion =
+    cc <= 125 ? 1.5 :
+    cc <= 400 ? 2 :
+    cc <= 700 ? 3 :
+    cc <= 1000 ? 4 :
+    5
+
+  const priceMillion = Math.max(floorMillion, baseMillion * ageFactor)
+  return Math.round((priceMillion * 1000000) / 500000) * 500000
+}
+
+export const BIKES = RAW_BIKES.map(bike => ({
+  ...bike,
+  priceKRW: isKnownNumber(bike.priceKRW) && bike.priceKRW > 0
+    ? bike.priceKRW
+    : estimateReferencePriceKRW(bike),
+}))
+
 export const ALL_CATEGORIES = [
   '미니/입문', '스쿠터', '네이키드', '스포츠',
-  '클래식', '어드벤처', '크루저', '투어러',
+  '클래식', '어드벤처', '크루저', '투어러', '슈퍼모토',
 ]
