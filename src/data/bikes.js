@@ -1553,6 +1553,55 @@ const RAW_BIKES = [
     seatHeight: 810,  fuelEconomy: 20.8, tankCapacity: 17.0,
     topSpeed: 225,  priceKRW: 35000000, image: '/bikes/bmw/r1300r-2025.jpeg'
   },
+  {
+    id: 'f900xr-2020', brand: 'bmw', model: 'F 900 XR', year: 2020,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 895,  power: 105,  torque: 92,   weight: 216,
+    seatHeight: 825,  fuelEconomy: 23.8, tankCapacity: 15.5,
+    topSpeed: 200,  priceKRW: 6500000, image: '/bikes/bmw/f900xr-2020.jpg'
+  },
+  {
+    id: 'f900xr-2025', brand: 'bmw', model: 'F 900 XR', year: 2025,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 895,  power: 105,  torque: 93,   weight: 216,
+    seatHeight: 825,  fuelEconomy: 23.8, tankCapacity: 15.5,
+    topSpeed: 200,  priceKRW: 13200000, image: '/bikes/bmw/f900xr-2025.jpg'
+  },
+  {
+    id: 's1000xr-2019', brand: 'bmw', model: 'S 1000 XR', year: 2019,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 999,  power: 165,  torque: 112,  weight: 228,
+    seatHeight: 840,  fuelEconomy: 17.2, tankCapacity: 20.0,
+    topSpeed: 250,  priceKRW: 7200000, image: '/bikes/bmw/s1000xr-2019.webp'
+  },
+  {
+    id: 's1000xr-2020', brand: 'bmw', model: 'S 1000 XR', year: 2020,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 999,  power: 165,  torque: 114,  weight: 226,
+    seatHeight: 814,  fuelEconomy: 16.1, tankCapacity: 20.0,
+    topSpeed: 257,  priceKRW: 8000000, image: '/bikes/bmw/s1000xr-2020.jpg'
+  },
+  {
+    id: 'f900gs-2024', brand: 'bmw', model: 'F 900 GS', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 895,  power: 105,  torque: 93,   weight: 219,
+    seatHeight: 850,  fuelEconomy: 23.8, tankCapacity: 14.5,
+    topSpeed: 210,  priceKRW: 17500000, image: '/bikes/bmw/f900gs-2024.jpg'
+  },
+  {
+    id: 'f900gsa-2024', brand: 'bmw', model: 'F 900 GS Adventure', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 895,  power: 105,  torque: 93,   weight: 246,
+    seatHeight: 870,  fuelEconomy: 23.8, tankCapacity: 23.0,
+    topSpeed: 210,  priceKRW: 20000000, image: '/bikes/bmw/f900gsadventure-2024.jpg'
+  },
+  {
+    id: 'r1300gs-2024', brand: 'bmw', model: 'R 1300 GS', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1300, power: 145,  torque: 149,  weight: 237,
+    seatHeight: 890,  fuelEconomy: 20.8, tankCapacity: 19.0,
+    topSpeed: 225,  priceKRW: 35700000, image: '/bikes/bmw/r1300gs-2024.jpg'
+  },
 
   // ── Harley-Davidson ───────────────────────────────────────────────────────
   {
