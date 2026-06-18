@@ -220,3 +220,40 @@ public/bikes/yamaha/mt03-2023.jpg
 
 - [ ] 2023 GTS 300 HPE (`gts300-2023`) 0
 - [ ] 2023 Primavera 125 (`primavera125-2023`) 0
+
+## Indian Motorcycle
+
+> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+
+- [ ] 2023 Scout Bobber (`scoutbobber-2023`) 0
+- [ ] 2023 FTR 1200 (`ftr1200-2023`) 0
+- [ ] 2023 Chief Dark Horse (`chiefdarkhorse-2023`) 0
+- [ ] 2023 Challenger Dark Horse (`challengerdarkhorse-2023`) 0
+
+## Aprilia
+
+> 2026-06-18 기준: 신규 등록 5개 모두 이미지 미연결.
+
+- [ ] 2025 RS 457 (`rs457-2025`) 0
+- [ ] 2025 RS 660 (`rs660-2025`) 0
+- [ ] 2025 Tuono 660 (`tuono660-2025`) 0
+- [ ] 2024 Tuareg 660 (`tuareg660-2024`) 0
+- [ ] 2025 RSV4 Factory (`rsv4factory-2025`) 0
+
+## Husqvarna
+
+> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+
+- [ ] 2024 Svartpilen 401 (`svartpilen401-2024`) 0
+- [ ] 2024 Vitpilen 401 (`vitpilen401-2024`) 0
+- [ ] 2024 Norden 901 (`norden901-2024`) 0
+- [ ] 2024 701 Supermoto (`701supermoto-2024`) 0
+
+## MV Agusta
+
+> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+
+- [ ] 2023 Brutale 800 RR (`brutale800rr-2023`) 0
+- [ ] 2023 Dragster 800 RR (`dragster800rr-2023`) 0
+- [ ] 2023 Superveloce 800 (`superveloce800-2023`) 0
+- [ ] 2023 Turismo Veloce 800 (`turismoveloce800-2023`) 0

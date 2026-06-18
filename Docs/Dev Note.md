@@ -101,16 +101,35 @@
   - 다수 모델의 연비, 중량, 이미지 경로를 `null`에서 실제 값/에셋 경로로 보강
   - 공식 확인이 어려운 한국 중고시세 및 일부 최고속도는 `null` 유지(당시 기준)
 
-## version 0.8.0 — 가격 표시 기준 변경
+## version 0.8.0 — 가격 표시 기준 변경 및 신규 브랜드 확장
+> 2026-06-18 | 파일: `src/App.jsx`, `src/data/bikes.js`, `package.json`, `package-lock.json`
+
 - 가격 기준 변경:
   - 매물 기반 중고시세 대신 제원 기반 참조 가격대를 사용
   - `priceKRW`가 비어 있는 모델은 배기량, 출력, 카테고리, 브랜드, 연식으로 참조값 자동 추정
   - UI 표기는 정확한 금액이 아니라 500만원 단위 눈금의 넓은 `a - b만원대` 형식으로 통일
+- 신규 브랜드 4개 추가:
+  - Indian Motorcycle, Aprilia, Husqvarna, MV Agusta
+- 신규 대표 기종 17개 추가:
+  - Indian Motorcycle: Scout Bobber, FTR 1200, Chief Dark Horse, Challenger Dark Horse
+  - Aprilia: RS 457, RS 660, Tuono 660, Tuareg 660, RSV4 Factory
+  - Husqvarna: Svartpilen 401, Vitpilen 401, Norden 901, 701 Supermoto
+  - MV Agusta: Brutale 800 RR, Dragster 800 RR, Superveloce 800, Turismo Veloce 800
+- 신규 브랜드 로고/이미지는 아직 미연결:
+  - `logo: null`, `image: null` 상태로 두고 기존 fallback UI 사용
+  - `src/App.jsx`의 `BRAND_MARKS`에 텍스트 마크 추가
+- 버전 동기화:
+  - 화면 표시 버전 `v0.8.0`
+  - `package.json`, `package-lock.json` 버전 `0.8.0`
+- 검증:
+  - `npm.cmd run build` 성공
+  - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
 ## version 0.8.1 — 예정
 - [ ] Yamaha 미연결 이미지 4종 수집 및 `image` 필드 연결
-- [ ] Yamaha/BMW/Ducati 확장 데이터 공식 스펙시트 기준 2차 검수
-- [ ] Suzuki, KTM, Triumph 등 남은 브랜드도 Yamaha/BMW/Ducati와 같은 방식으로 연식별/계열별 확장
+- [ ] 신규 브랜드 17개 이미지 수집 및 `image` 필드 연결
+- [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
+- [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Vercel 배포 및 도메인 연결
 - [ ] 모바일 UI 세부 QA 및 터치 동선 개선
 - [ ] 상세 탭 추천 기준 고도화

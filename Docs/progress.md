@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 17일 (BMW/Ducati 데이터 확장 세션)
+> 마지막 업데이트: 2026년 6월 18일 (v0.8.0 브랜드 확장 및 버전 갱신)
 
 ---
 
@@ -111,36 +111,45 @@ auto-by-auto/
 - **Yamaha 보강 포함**: Yamaha 다수 모델 이미지 연결 및 일부 연비/중량/제원 `null` 값 보강
 - **불확실 데이터 처리 기준 유지(당시 기준)**: 한국 중고시세 및 공식 확인이 어려운 일부 최고속도는 `null` 유지
 
-#### 8단계 — 가격 표시 기준 변경 (2026-06-18)
+#### 8단계 — 가격 표시 기준 변경 및 신규 브랜드 확장 (2026-06-18)
 - **중고시세 → 가격대 전환**: 매물 기반 중고가 대신 제원 기반 참조 가격을 사용하고, 화면에는 500만원 단위 눈금의 넓은 가격대 표시
 - **가격 공백 보정**: `priceKRW`가 비어 있는 모델은 배기량, 출력, 카테고리, 브랜드 프리미엄, 연식을 기준으로 참조값 자동 추정
 - **표시 방식 통일**: 카드/상세/비교표의 가격 표기를 `500 - 2000만원대`처럼 넓은 `a - b만원대` 형식으로 통일
+- **신규 브랜드 4개 추가**: Indian Motorcycle, Aprilia, Husqvarna, MV Agusta 추가
+- **대표 기종 17개 추가**: Indian 4개, Aprilia 5개, Husqvarna 4개, MV Agusta 4개 등록
+- **브랜드 텍스트 마크 추가**: 신규 브랜드 로고 에셋이 없는 동안 카드/상세 화면에서 텍스트 마크 fallback 사용
+- **앱 버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.8.0`으로 동기화
+- **검증 완료**: 신규 브랜드 확장 및 버전 갱신 후 `npm.cmd run build` 성공
 
 ---
 
 ## 현재 데이터 현황
 
 > ⚠️ 현재 데이터는 AI 학습 데이터 기반 추정값으로, 실제 제조사 공식 스펙과 다를 수 있음.  
-> 2026-06-17 Yamaha/BMW/Ducati 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
+> 2026-06-17 Yamaha/BMW/Ducati 확장분과 2026-06-18 신규 브랜드 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
 
-### 등록된 브랜드 (11개)
-Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa
+### 등록된 브랜드 (15개)
+Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa / Indian Motorcycle / Aprilia / Husqvarna / MV Agusta
 
-### 등록된 기종 (156개)
+### 등록된 기종 (290개)
 
 | 브랜드 | 등록 대수 | 비고 |
 |--------|----------:|------|
 | Yamaha | 62 | 2026-06-17 기준 집중 확장 완료 |
-| Honda | 10 | 기존 데이터 유지 |
-| Kawasaki | 27 | 기존 데이터 유지 |
-| BMW Motorrad | 28 | 2026-06-17 기준 연식별 데이터 확장 및 이미지 연결 완료 |
+| Honda | 76 | 2026-06-18 기준 현재 데이터 반영 |
+| Kawasaki | 51 | 2026-06-18 기준 현재 데이터 반영 |
+| BMW Motorrad | 35 | 2026-06-18 기준 연식별 데이터 확장 및 이미지 연결 완료 |
 | Harley-Davidson | 2 | 기존 데이터 유지 |
-| Suzuki | 5 | 기존 데이터 유지 |
+| Suzuki | 25 | 2026-06-18 기준 현재 데이터 반영 |
 | KTM | 3 | 기존 데이터 유지 |
 | Ducati | 13 | 2026-06-17 기준 2025 라인업 확장 및 이미지 연결 완료 |
 | Triumph | 2 | 기존 데이터 유지 |
 | Royal Enfield | 2 | 기존 데이터 유지 |
 | Vespa | 2 | 기존 데이터 유지 |
+| Indian Motorcycle | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
+| Aprilia | 5 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
+| Husqvarna | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
+| MV Agusta | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
 
 ### Yamaha 등록 현황 (62개)
 
@@ -221,6 +230,28 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 어드벤처 | Multistrada V4 | 2025 |
 | 크루저 | Diavel V4 | 2025 |
 
+### 신규 브랜드 등록 현황 (17개)
+
+| 브랜드 | 카테고리 | 모델 | 연식 |
+|--------|----------|------|------|
+| Indian Motorcycle | 크루저 | Scout Bobber | 2023 |
+| Indian Motorcycle | 네이키드 | FTR 1200 | 2023 |
+| Indian Motorcycle | 크루저 | Chief Dark Horse | 2023 |
+| Indian Motorcycle | 투어러 | Challenger Dark Horse | 2023 |
+| Aprilia | 스포츠 | RS 457 | 2025 |
+| Aprilia | 스포츠 | RS 660 | 2025 |
+| Aprilia | 네이키드 | Tuono 660 | 2025 |
+| Aprilia | 어드벤처 | Tuareg 660 | 2024 |
+| Aprilia | 스포츠 | RSV4 Factory | 2025 |
+| Husqvarna | 네이키드 | Svartpilen 401 | 2024 |
+| Husqvarna | 네이키드 | Vitpilen 401 | 2024 |
+| Husqvarna | 어드벤처 | Norden 901 | 2024 |
+| Husqvarna | 슈퍼모토 | 701 Supermoto | 2024 |
+| MV Agusta | 네이키드 | Brutale 800 RR | 2023 |
+| MV Agusta | 네이키드 | Dragster 800 RR | 2023 |
+| MV Agusta | 스포츠 | Superveloce 800 | 2023 |
+| MV Agusta | 투어러 | Turismo Veloce 800 | 2023 |
+
 ### 이미지 연결 현황
 
 | 브랜드 | 이미지 연결 | 비고 |
@@ -228,6 +259,10 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | Yamaha | 58 / 62 | `xmax250-2020`, `xt225-2007`, `xt250-2023`, `xt660z-2016` 미연결 |
 | BMW Motorrad | 28 / 28 | 등록 기종 전체 연결 완료 |
 | Ducati | 13 / 13 | 등록 기종 전체 연결 완료 |
+| Indian Motorcycle | 0 / 4 | 신규 추가, 이미지 수집 필요 |
+| Aprilia | 0 / 5 | 신규 추가, 이미지 수집 필요 |
+| Husqvarna | 0 / 4 | 신규 추가, 이미지 수집 필요 |
+| MV Agusta | 0 / 4 | 신규 추가, 이미지 수집 필요 |
 
 ### 제원 항목 (9종)
 배기량 / 최고출력 / 토크 / 공차중량 / 시트고 / 연비 / 연료탱크 / 최고속도 / 가격대
@@ -238,13 +273,14 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 ### 단기 (바로 가능)
 - [ ] Yamaha 미연결 이미지 4종 수집 및 `bikes.js` 연결
-- [ ] BMW/Ducati 확장 데이터 공식 스펙시트 기준 2차 검수
+- [ ] 신규 브랜드 17개 이미지 수집 및 `image` 필드 연결
+- [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Vercel 배포 (GitHub 연동으로 빠르게 가능)
 - [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
 
 ### 중기
 - [ ] 데이터 정확성 검증 (제조사 공식 스펙시트 대조)
-- [ ] Suzuki, KTM, Triumph 등 남은 브랜드도 연식별/계열별 확장
+- [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] 모바일 UI 세부 QA 및 터치 동선 개선
 - [ ] 상세 탭에서 같은 카테고리/비슷한 배기량 추천 기준 고도화
 
