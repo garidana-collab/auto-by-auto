@@ -1108,35 +1108,35 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 997, power: 135, torque: 102, weight: 245,
     seatHeight: 790, fuelEconomy: 17, tankCapacity: 20.8,
-    topSpeed: 269, priceKRW: 5500000, image: null
+    topSpeed: 269, priceKRW: 5500000, image: '/bikes/kawasaki/zx10tomcat-1988.jpg'
   },
   {
     id: 'zzr600-1990', brand: 'kawasaki', model: 'ZZR600 / ZX-6', year: 1990,
     category: '스포츠', license: '소형이륜',
     displacement: 599, power: 99, torque: 64, weight: 195,
     seatHeight: 780, fuelEconomy: 18, tankCapacity: 18.0,
-    topSpeed: 246, priceKRW: 3500000, image: null
+    topSpeed: 246, priceKRW: 3500000, image: '/bikes/kawasaki/zzr600-1990.webp'
   },
   {
     id: 'zzr1100-1990', brand: 'kawasaki', model: 'ZZR1100 / ZX-11', year: 1990,
     category: '스포츠', license: '소형이륜',
     displacement: 1052, power: 147, torque: 110, weight: 257,
     seatHeight: 780, fuelEconomy: 14, tankCapacity: 24.0,
-    topSpeed: 283, priceKRW: 6500000, image: null
+    topSpeed: 283, priceKRW: 6500000, image: '/bikes/kawasaki/zzr1100-1990.jpg'
   },
   {
     id: 'zxr400-1991', brand: 'kawasaki', model: 'ZXR400', year: 1991,
     category: '스포츠', license: '소형이륜',
     displacement: 398, power: 64, torque: 36.3, weight: 159,
     seatHeight: 760, fuelEconomy: 20, tankCapacity: 16.0,
-    topSpeed: 225, priceKRW: 4500000, image: null
+    topSpeed: 225, priceKRW: 4500000, image: '/bikes/kawasaki/zxr400-1991.jpg'
   },
   {
     id: 'zxr750-1991', brand: 'kawasaki', model: 'ZXR750', year: 1991,
     category: '스포츠', license: '소형이륜',
     displacement: 749, power: 121, torque: 76, weight: 205,
     seatHeight: 780, fuelEconomy: 16, tankCapacity: 19.0,
-    topSpeed: 260, priceKRW: 5500000, image: null
+    topSpeed: 260, priceKRW: 5500000, image: '/bikes/kawasaki/zxr750-1991.jpg'
   },
   {
     id: 'zx6r-1995', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 1995,
@@ -1150,7 +1150,7 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 748, power: 122, torque: 76, weight: 203,
     seatHeight: 790, fuelEconomy: 15, tankCapacity: 18.0,
-    topSpeed: 260, priceKRW: 6500000, image: null
+    topSpeed: 260, priceKRW: 6500000, image: '/bikes/kawasaki/zx7r-1996.jpg'
   },
   {
     id: 'zx6r-1998', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 1998,
@@ -1164,7 +1164,7 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 899, power: 143, torque: 100, weight: 215,
     seatHeight: 810, fuelEconomy: 15, tankCapacity: 19.0,
-    topSpeed: 270, priceKRW: 5500000, image: null
+    topSpeed: 270, priceKRW: 5500000, image: '/bikes/kawasaki/zx9r-1998.jpg'
   },
   {
     id: 'zx6r-2000', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2000,
@@ -1185,14 +1185,14 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 1164, power: 160, torque: 125, weight: 270,
     seatHeight: 800, fuelEconomy: 14, tankCapacity: 23.0,
-    topSpeed: 280, priceKRW: 6500000, image: null
+    topSpeed: 280, priceKRW: 6500000, image: '/bikes/kawasaki/zzr1200-2002.jpg'
   },
   {
     id: 'zzr1400-2006', brand: 'kawasaki', model: 'ZZR1400 / Ninja ZX-14', year: 2006,
     category: '스포츠', license: '소형이륜',
     displacement: 1352, power: 190, torque: 154, weight: 257,
     seatHeight: 800, fuelEconomy: 14, tankCapacity: 22.0,
-    topSpeed: 299, priceKRW: 8500000, image: null
+    topSpeed: 299, priceKRW: 8500000, image: '/bikes/kawasaki/zzr1400-2006.jpg'
   },
   {
     id: 'zx6r-2009', brand: 'kawasaki', model: 'Ninja ZX-6R', year: 2009,

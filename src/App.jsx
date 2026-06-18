@@ -733,7 +733,7 @@ export default function App() {
                     <div key={spec.key} className="detail-spec">
                       <span>{spec.label}</span>
                       <strong>{fmtVal(spec, selectedBike[spec.key], selectedBike)}</strong>
-                      <em>{spec.unit}</em>
+                      {spec.key !== 'priceKRW' && <em>{spec.unit}</em>}
                     </div>
                   ))}
                 </div>
