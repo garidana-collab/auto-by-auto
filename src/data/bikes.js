@@ -86,7 +86,7 @@ const RAW_BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 64,   weight: 202,
     seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
-    topSpeed: 210,  priceKRW: null, image: null
+    topSpeed: 210,  priceKRW: null, image: '/bikes/honda/cb650r-2019.jpg'
   },
   {
     id: 'cb650r-2023', brand: 'honda', model: 'CB650R', year: 2023,
@@ -100,7 +100,7 @@ const RAW_BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 63,   weight: 205,
     seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
-    topSpeed: 210,  priceKRW: null, image: null
+    topSpeed: 210,  priceKRW: null, image: '/bikes/honda/cb650r-2024.jpg'
   },
   {
     id: 'cbr650r-2019', brand: 'honda', model: 'CBR650R', year: 2019,
