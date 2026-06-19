@@ -237,7 +237,7 @@ export default function App() {
   }
 
   function scrollDetailToTop() {
-    requestAnimationFrame(() => {
+    const scroll = () => {
       const main = mainRef.current
       const detailTop = detailTopRef.current
       if (!main || !detailTop) return
@@ -246,7 +246,11 @@ export default function App() {
         top: Math.max(0, detailTop.offsetTop - 12),
         behavior: 'smooth',
       })
-    })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    requestAnimationFrame(scroll)
+    window.setTimeout(scroll, 0)
   }
 
   function openBikeDetail(id, options = {}) {
@@ -310,7 +314,7 @@ export default function App() {
           <span className="logo-wordmark">
             오토<span>바이</span>오토
           </span>
-          <span className="logo-version">v0.8.0</span>
+          <span className="logo-version">v0.8.1</span>
         </div>
 
         {/* 체형 필터 */}

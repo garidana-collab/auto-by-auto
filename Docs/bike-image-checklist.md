@@ -17,7 +17,12 @@ public/bikes/yamaha/mt03-2023.jpg
 ## Honda
 
 - [ ] 2023 CB500X (`cb500x-2023`) 0
-- [ ] 2023 CB650R (`cb650r-2023`) 0
+- [x] 2019 CB650R (`cb650r-2019`)
+- [x] 2023 CB650R (`cb650r-2023`)
+- [x] 2024 CB650R (`cb650r-2024`)
+- [x] 2019 CBR650R (`cbr650r-2019`)
+- [x] 2021 CBR650R (`cbr650r-2021`)
+- [x] 2024 CBR650R (`cbr650r-2024`)
 - [ ] 2022 CBR300R (`cbr300r-2022`) 0
 - [ ] 2021 Gold Wing (`goldwing-2021`) 0
 - [ ] 2022 GROM (`grom-2022`) 0
@@ -29,7 +34,7 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Yamaha
 
-> 2026-06-17 기준: 등록 62개 중 58개 이미지를 연결 완료.
+> 2026-06-19 기준: 등록 70개 중 69개 이미지를 연결 완료.
 > 체크는 `public/bikes/yamaha/`에 파일이 있는지를 기준으로 표시합니다.
 
 ### Yamaha - 스쿠터
@@ -90,9 +95,9 @@ public/bikes/yamaha/mt03-2023.jpg
 - [x] 2022 XSR700 (`xsr700-2022`)
 - [x] 2022 XSR900 (`xsr900-2022`)
 - [x] 2024 XSR900 GP (`xsr900gp-2024`)
-- [ ] 2007 XT225 Serow (`xt225-2007`)
-- [ ] 2023 XT250 (`xt250-2023`)
-- [ ] 2016 XT660Z Tenere (`xt660z-2016`)
+- [x] 2007 XT225 Serow (`xt225-2007`)
+- [x] 2023 XT250 (`xt250-2023`)
+- [x] 2016 XT660Z Tenere (`xt660z-2016`)
 - [x] 2023 Tenere 700 (`tenere700-2023`)
 - [x] 2025 Tenere 700 (`tenere700-2025`)
 - [x] 2024 Super Tenere ES (`supertenere-2024`)
@@ -102,6 +107,14 @@ public/bikes/yamaha/mt03-2023.jpg
 - [x] 2019 Niken GT (`nikengt-2019`)
 - [x] 2016 FJR1300A (`fjr1300a-2016`)
 - [x] 2014 Bolt (`bolt-2014`)
+- [x] 1998 Virago 125 (`virago125-1998`)
+- [x] 1988 Virago 250 (`virago250-1988`)
+- [x] 1989 Virago 535 (`virago535-1989`)
+- [x] 1984 Virago 700 (`virago700-1984`)
+- [x] 1981 Virago 750 (`virago750-1981`)
+- [x] 1982 Virago 920 (`virago920-1982`)
+- [x] 1984 Virago 1000 (`virago1000-1984`)
+- [x] 1986 Virago 1100 (`virago1100-1986`)
 - [x] 2009 V Star 950 (`vstar950-2009`)
 - [x] 2007 V Star 1300 (`vstar1300-2007`)
 - [x] 2009 VMAX (`vmax-2009`)
@@ -223,37 +236,37 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Indian Motorcycle
 
-> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+> 2026-06-19 기준: 신규 등록 4개 모두 이미지 연결 완료.
 
-- [ ] 2023 Scout Bobber (`scoutbobber-2023`) 0
-- [ ] 2023 FTR 1200 (`ftr1200-2023`) 0
-- [ ] 2023 Chief Dark Horse (`chiefdarkhorse-2023`) 0
-- [ ] 2023 Challenger Dark Horse (`challengerdarkhorse-2023`) 0
+- [x] 2023 Scout Bobber (`scoutbobber-2023`)
+- [x] 2023 FTR 1200 (`ftr1200-2023`)
+- [x] 2023 Chief Dark Horse (`chiefdarkhorse-2023`)
+- [x] 2023 Challenger Dark Horse (`challengerdarkhorse-2023`)
 
 ## Aprilia
 
-> 2026-06-18 기준: 신규 등록 5개 모두 이미지 미연결.
+> 2026-06-19 기준: 신규 등록 5개 모두 이미지 연결 완료.
 
-- [ ] 2025 RS 457 (`rs457-2025`) 0
-- [ ] 2025 RS 660 (`rs660-2025`) 0
-- [ ] 2025 Tuono 660 (`tuono660-2025`) 0
-- [ ] 2024 Tuareg 660 (`tuareg660-2024`) 0
-- [ ] 2025 RSV4 Factory (`rsv4factory-2025`) 0
+- [x] 2025 RS 457 (`rs457-2025`)
+- [x] 2025 RS 660 (`rs660-2025`)
+- [x] 2025 Tuono 660 (`tuono660-2025`)
+- [x] 2024 Tuareg 660 (`tuareg660-2024`)
+- [x] 2025 RSV4 Factory (`rsv4factory-2025`)
 
 ## Husqvarna
 
-> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+> 2026-06-19 기준: 신규 등록 4개 모두 이미지 연결 완료.
 
-- [ ] 2024 Svartpilen 401 (`svartpilen401-2024`) 0
-- [ ] 2024 Vitpilen 401 (`vitpilen401-2024`) 0
-- [ ] 2024 Norden 901 (`norden901-2024`) 0
-- [ ] 2024 701 Supermoto (`701supermoto-2024`) 0
+- [x] 2024 Svartpilen 401 (`svartpilen401-2024`)
+- [x] 2024 Vitpilen 401 (`vitpilen401-2024`)
+- [x] 2024 Norden 901 (`norden901-2024`)
+- [x] 2024 701 Supermoto (`701supermoto-2024`)
 
 ## MV Agusta
 
-> 2026-06-18 기준: 신규 등록 4개 모두 이미지 미연결.
+> 2026-06-19 기준: 신규 등록 4개 모두 이미지 연결 완료.
 
-- [ ] 2023 Brutale 800 RR (`brutale800rr-2023`) 0
-- [ ] 2023 Dragster 800 RR (`dragster800rr-2023`) 0
-- [ ] 2023 Superveloce 800 (`superveloce800-2023`) 0
-- [ ] 2023 Turismo Veloce 800 (`turismoveloce800-2023`) 0
+- [x] 2023 Brutale 800 RR (`brutale800rr-2023`)
+- [x] 2023 Dragster 800 RR (`dragster800rr-2023`)
+- [x] 2023 Superveloce 800 (`superveloce800-2023`)
+- [x] 2023 Turismo Veloce 800 (`turismoveloce800-2023`)

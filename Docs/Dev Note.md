@@ -125,9 +125,31 @@
   - `npm.cmd run build` 성공
   - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
-## version 0.8.1 — 예정
-- [ ] Yamaha 미연결 이미지 4종 수집 및 `image` 필드 연결
-- [ ] 신규 브랜드 17개 이미지 수집 및 `image` 필드 연결
+## version 0.8.1 — 이미지 에셋 연결 및 데이터 보강
+> 2026-06-19 | 파일: `src/App.jsx`, `src/data/bikes.js`, `public/bikes/*`, `public/logos/*`, `package.json`, `package-lock.json`
+
+- 신규 브랜드 이미지/로고 연결:
+  - Indian Motorcycle 4개, Aprilia 5개, Husqvarna 4개, MV Agusta 4개 대표 기종 이미지 연결 완료
+  - `public/logos/`에 Indian, Aprilia, Husqvarna, MV Agusta 로고 에셋 추가
+  - `BRANDS`의 신규 브랜드 `logo` 필드를 실제 에셋 경로로 변경
+- Yamaha 이미지 보강:
+  - XT225 Serow, XT250, XT660Z Tenere 이미지 연결
+  - Yamaha 이미지 연결 상태를 58/62개에서 69/70개로 개선
+  - 남은 미연결 항목은 XMAX 250 Tech MAX 1개
+- Yamaha Virago 계열 추가:
+  - Virago 125, 250, 535, 700, 750, 920, 1000, 1100 주요 연식 데이터 추가
+  - 각 Virago 항목 이미지 에셋 연결
+- Honda 650 계열 보강:
+  - CB650R 2019/2024, CBR650R 2019/2021/2024 데이터 추가
+  - CB650R/CBR650R 이미지 에셋 연결 완료
+- 상세 탭 UI 보완:
+  - 비슷한 기종 카드 클릭 시 상세 화면 상단으로 스크롤
+  - 카드/상세 화면 브랜드 마크 크기와 여백 조정
+- Firebase 의존성 추가:
+  - `firebase` 패키지를 dependencies에 추가
+
+## version 0.8.2 — 예정
+- [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `image` 필드 연결
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Vercel 배포 및 도메인 연결

@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 18일 (v0.8.0 브랜드 확장 및 버전 갱신)
+> 마지막 업데이트: 2026년 6월 19일 (v0.8.1 이미지 에셋 연결 및 데이터 보강)
 
 ---
 
@@ -121,6 +121,14 @@ auto-by-auto/
 - **앱 버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.8.0`으로 동기화
 - **검증 완료**: 신규 브랜드 확장 및 버전 갱신 후 `npm.cmd run build` 성공
 
+#### 9단계 — 이미지 에셋 연결 및 데이터 보강 (2026-06-19)
+- **신규 브랜드 이미지/로고 연결 완료**: Indian Motorcycle 4개, Aprilia 5개, Husqvarna 4개, MV Agusta 4개 대표 기종 이미지를 모두 `image` 필드와 연결하고 브랜드 로고 에셋을 추가
+- **Yamaha 미연결 이미지 보강**: XT225 Serow, XT250, XT660Z Tenere 이미지를 연결하고 Yamaha 미연결 이미지를 4개에서 1개로 축소
+- **Yamaha Virago 계열 추가**: Virago 125/250/535/700/750/920/1000/1100 주요 연식 데이터를 등록하고 이미지 에셋 연결
+- **Honda 650 계열 보강**: CB650R 2019/2024, CBR650R 2019/2021/2024 데이터를 추가하고 관련 이미지 연결
+- **상세 탭 UI 보완**: 비슷한 기종 카드 클릭 시 상세 화면 상단으로 스크롤되도록 개선하고 브랜드 마크 크기/여백을 조정
+- **의존성 추가**: Firebase 패키지를 의존성에 추가
+
 ---
 
 ## 현재 데이터 현황
@@ -131,12 +139,12 @@ auto-by-auto/
 ### 등록된 브랜드 (15개)
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa / Indian Motorcycle / Aprilia / Husqvarna / MV Agusta
 
-### 등록된 기종 (290개)
+### 등록된 기종 (303개)
 
 | 브랜드 | 등록 대수 | 비고 |
 |--------|----------:|------|
-| Yamaha | 62 | 2026-06-17 기준 집중 확장 완료 |
-| Honda | 76 | 2026-06-18 기준 현재 데이터 반영 |
+| Yamaha | 70 | 2026-06-19 기준 Virago 계열 및 이미지 보강 반영 |
+| Honda | 81 | 2026-06-19 기준 CB650R/CBR650R 연식 및 이미지 보강 반영 |
 | Kawasaki | 51 | 2026-06-18 기준 현재 데이터 반영 |
 | BMW Motorrad | 35 | 2026-06-18 기준 연식별 데이터 확장 및 이미지 연결 완료 |
 | Harley-Davidson | 2 | 기존 데이터 유지 |
@@ -146,12 +154,12 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | Triumph | 2 | 기존 데이터 유지 |
 | Royal Enfield | 2 | 기존 데이터 유지 |
 | Vespa | 2 | 기존 데이터 유지 |
-| Indian Motorcycle | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
-| Aprilia | 5 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
-| Husqvarna | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
-| MV Agusta | 4 | 2026-06-18 기준 신규 추가, 이미지 미연결 |
+| Indian Motorcycle | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
+| Aprilia | 5 | 2026-06-19 기준 이미지/로고 연결 완료 |
+| Husqvarna | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
+| MV Agusta | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
 
-### Yamaha 등록 현황 (62개)
+### Yamaha 등록 현황 (70개)
 
 | 카테고리 | 모델 | 연식 |
 |----------|------|------|
@@ -192,6 +200,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 투어러 | Tracer 9 GT | 2022, 2025 |
 | 투어러 | Niken GT | 2019 |
 | 투어러 | FJR1300A | 2016 |
+| 크루저 | Virago | 125(1998), 250(1988), 535(1989), 700(1984), 750(1981), 920(1982), 1000(1984), 1100(1986) |
 | 크루저 | Bolt | 2014 |
 | 크루저 | V Star 950 | 2009 |
 | 크루저 | V Star 1300 | 2007 |
@@ -230,6 +239,13 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 어드벤처 | Multistrada V4 | 2025 |
 | 크루저 | Diavel V4 | 2025 |
 
+### Honda 650 계열 보강 현황 (6개)
+
+| 카테고리 | 모델 | 연식 |
+|----------|------|------|
+| 네이키드 | CB650R | 2019, 2023, 2024 |
+| 스포츠 | CBR650R | 2019, 2021, 2024 |
+
 ### 신규 브랜드 등록 현황 (17개)
 
 | 브랜드 | 카테고리 | 모델 | 연식 |
@@ -256,13 +272,14 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 | 브랜드 | 이미지 연결 | 비고 |
 |--------|------------:|------|
-| Yamaha | 58 / 62 | `xmax250-2020`, `xt225-2007`, `xt250-2023`, `xt660z-2016` 미연결 |
+| Honda | 81 / 81 | 등록 기종 전체 연결 완료 |
+| Yamaha | 69 / 70 | `xmax250-2020` 미연결 |
 | BMW Motorrad | 28 / 28 | 등록 기종 전체 연결 완료 |
 | Ducati | 13 / 13 | 등록 기종 전체 연결 완료 |
-| Indian Motorcycle | 0 / 4 | 신규 추가, 이미지 수집 필요 |
-| Aprilia | 0 / 5 | 신규 추가, 이미지 수집 필요 |
-| Husqvarna | 0 / 4 | 신규 추가, 이미지 수집 필요 |
-| MV Agusta | 0 / 4 | 신규 추가, 이미지 수집 필요 |
+| Indian Motorcycle | 4 / 4 | 등록 기종 전체 연결 완료 |
+| Aprilia | 5 / 5 | 등록 기종 전체 연결 완료 |
+| Husqvarna | 4 / 4 | 등록 기종 전체 연결 완료 |
+| MV Agusta | 4 / 4 | 등록 기종 전체 연결 완료 |
 
 ### 제원 항목 (9종)
 배기량 / 최고출력 / 토크 / 공차중량 / 시트고 / 연비 / 연료탱크 / 최고속도 / 가격대
@@ -272,8 +289,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 ## 다음 단계 계획
 
 ### 단기 (바로 가능)
-- [ ] Yamaha 미연결 이미지 4종 수집 및 `bikes.js` 연결
-- [ ] 신규 브랜드 17개 이미지 수집 및 `image` 필드 연결
+- [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `bikes.js` 연결
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Vercel 배포 (GitHub 연동으로 빠르게 가능)
 - [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
