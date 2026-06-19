@@ -366,7 +366,7 @@ const RAW_BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 399,  power: 53,   torque: 37,   weight: 189,
     seatHeight: 760,  fuelEconomy: 22, tankCapacity: 18.0,
-    topSpeed: 180,  priceKRW: 4000000, image: '/bikes/honda/cb400superfour-1999.jpg'
+    topSpeed: 180,  priceKRW: 4000000, image: '/bikes/honda/cb400superfour-1992.jpg'
   },
   {
     id: 'cb400sf-1999', brand: 'honda', model: 'CB400 Super Four', year: 1999,
