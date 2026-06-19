@@ -12,10 +12,10 @@ export const BRANDS = [
   { id: 'triumph',      name: 'Triumph',         logo: '/logos/triumph.png'    },
   { id: 'royalenfield', name: 'Royal Enfield',   logo: '/logos/royal.png'      },
   { id: 'vespa',        name: 'Vespa',           logo: '/logos/vespa.png'      },
-  { id: 'indian',       name: 'Indian Motorcycle', logo: null                  },
-  { id: 'aprilia',      name: 'Aprilia',         logo: null                    },
-  { id: 'husqvarna',    name: 'Husqvarna',       logo: null                    },
-  { id: 'mvagusta',     name: 'MV Agusta',       logo: null                    },
+  { id: 'indian',       name: 'Indian Motorcycle', logo: '/logos/indian.png'   },
+  { id: 'aprilia',      name: 'Aprilia',         logo: '/logos/aprilia.png'    },
+  { id: 'husqvarna',    name: 'Husqvarna',       logo: '/logos/husqvarna.png'  },
+  { id: 'mvagusta',     name: 'MV Agusta',       logo: '/logos/agusta.png'     },
 ]
 
 // ─── 바이크 제원 ──────────────────────────────────────────────────────────────
@@ -82,11 +82,46 @@ const RAW_BIKES = [
     topSpeed: 165,  priceKRW: 7800000,  image: '/bikes/honda/rebel500-2023.webp'
   },
   {
+    id: 'cb650r-2019', brand: 'honda', model: 'CB650R', year: 2019,
+    category: '네이키드', license: '소형이륜',
+    displacement: 649,  power: 95,   torque: 64,   weight: 202,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
+    topSpeed: 210,  priceKRW: null, image: null
+  },
+  {
     id: 'cb650r-2023', brand: 'honda', model: 'CB650R', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 64,   weight: 202,
     seatHeight: 810,  fuelEconomy: 22, tankCapacity: 15.4,
     topSpeed: 210,  priceKRW: 9800000,  image: '/bikes/honda/cb650r-2023.jpg'
+  },
+  {
+    id: 'cb650r-2024', brand: 'honda', model: 'CB650R', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 649,  power: 95,   torque: 63,   weight: 205,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
+    topSpeed: 210,  priceKRW: null, image: null
+  },
+  {
+    id: 'cbr650r-2019', brand: 'honda', model: 'CBR650R', year: 2019,
+    category: '스포츠', license: '소형이륜',
+    displacement: 649,  power: 95,   torque: 64,   weight: 207,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
+    topSpeed: 220,  priceKRW: null, image: null
+  },
+  {
+    id: 'cbr650r-2021', brand: 'honda', model: 'CBR650R', year: 2021,
+    category: '스포츠', license: '소형이륜',
+    displacement: 649,  power: 95,   torque: 63,   weight: 208,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
+    topSpeed: 220,  priceKRW: null, image: null
+  },
+  {
+    id: 'cbr650r-2024', brand: 'honda', model: 'CBR650R', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 649,  power: 95,   torque: 63,   weight: 209,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
+    topSpeed: 220,  priceKRW: null, image: null
   },
   {
     id: 'nc750x-2023', brand: 'honda', model: 'NC750X', year: 2023,

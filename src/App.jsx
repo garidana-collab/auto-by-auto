@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, Legend,
@@ -107,6 +107,9 @@ function buildRadarData(targetBikes) {
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const mainRef = useRef(null)
+  const detailTopRef = useRef(null)
+
   // 검색
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -233,9 +236,23 @@ export default function App() {
     )
   }
 
-  function openBikeDetail(id) {
+  function scrollDetailToTop() {
+    requestAnimationFrame(() => {
+      const main = mainRef.current
+      const detailTop = detailTopRef.current
+      if (!main || !detailTop) return
+
+      main.scrollTo({
+        top: Math.max(0, detailTop.offsetTop - 12),
+        behavior: 'smooth',
+      })
+    })
+  }
+
+  function openBikeDetail(id, options = {}) {
     setSelectedBikeId(id)
     setViewMode('detail')
+    if (options.scrollToTop) scrollDetailToTop()
   }
 
   // ── 제원 표 하이라이트
@@ -491,7 +508,7 @@ export default function App() {
       </aside>
 
       {/* ── 메인 ──────────────────────────────────────────── */}
-      <main className="main">
+      <main className="main" ref={mainRef}>
 
         <div className="main-header">
           <div className="main-eyebrow">
@@ -618,7 +635,7 @@ export default function App() {
         {/* ── 상세 뷰: 단일 기종 정보 */}
         {viewMode === 'detail' && selectedBike && (
           <>
-            <section className="detail-hero">
+            <section className="detail-hero" ref={detailTopRef}>
               <div
                 className="detail-img"
                 style={{
@@ -751,7 +768,7 @@ export default function App() {
                   {similarBikes.map(b => {
                     const br = BRANDS.find(item => item.id === b.brand)
                     return (
-                      <button key={b.id} className="similar-card" onClick={() => openBikeDetail(b.id)}>
+                      <button key={b.id} className="similar-card" onClick={() => openBikeDetail(b.id, { scrollToTop: true })}>
                         <span className="similar-model">{b.model}</span>
                         <span className="similar-meta">{br?.name} · {b.year}년식</span>
                         <span className="similar-spec">{formatShortSpec('', b.displacement, 'cc')} · {formatPrice(b.priceKRW)}</span>
@@ -1192,16 +1209,16 @@ button { font-family: inherit; }
 .card-emoji { font-size: 38px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
 .card-photo { width: 100%; height: 100%; object-fit: cover; }
 
-.card-body { padding: 12px 60px 8px 12px; flex: 1; position: relative; }
+.card-body { padding: 12px 72px 8px 12px; flex: 1; position: relative; }
 .brand-mark {
   position: absolute; top: 12px; right: 12px;
-  width: 38px; height: 38px; border-radius: 9px;
+  width: 46px; height: 46px; border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
   color: rgba(255,255,255,.78); font-size: 11px; font-weight: 900;
   letter-spacing: 0; overflow: hidden;
 }
-.brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 .card-model { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
 .card-meta  { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
 .card-specs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
@@ -1244,8 +1261,14 @@ button { font-family: inherit; }
 .detail-summary-main {
   display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-width: 0;
 }
-.detail-brand-row { display: flex; gap: 14px; align-items: flex-start; }
-.detail-mark { position: static; flex-shrink: 0; width: 48px; height: 48px; }
+.detail-brand-row { display: flex; gap: 18px; align-items: flex-start; }
+.detail-mark {
+  position: static; flex-shrink: 0;
+  width: clamp(64px, 7vw, 96px);
+  height: clamp(64px, 7vw, 96px);
+  border-radius: 14px;
+}
+.detail-mark img { padding: 6px; }
 .detail-brand { font-size: 14px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
 .detail-title { font-size: 42px; line-height: 1; font-weight: 900; letter-spacing: 0; }
 .detail-meta { margin-top: 8px; font-size: 14px; color: var(--muted); }
@@ -1432,12 +1455,14 @@ button { font-family: inherit; }
   .card-grid { grid-template-columns: 1fr; }
   .bike-card { border-radius: 12px; }
   .card-img { height: 128px; }
-  .card-body { padding-right: 68px; }
-  .brand-mark { width: 42px; height: 42px; }
+  .card-body { padding-right: 76px; }
+  .brand-mark { width: 48px; height: 48px; }
   .card-footer { gap: 12px; }
   .card-btn { min-width: 76px; }
   .detail-summary { padding: 16px; border-radius: 14px; }
-  .detail-brand-row { gap: 10px; }
+  .detail-brand-row { gap: 12px; }
+  .detail-mark { width: 58px; height: 58px; border-radius: 12px; }
+  .detail-mark img { padding: 5px; }
   .detail-title { font-size: 30px; }
   .detail-inline-tools { gap: 8px; }
   .detail-tool-block { padding: 10px; }
