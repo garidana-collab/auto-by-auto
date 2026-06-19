@@ -107,21 +107,21 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 64,   weight: 207,
     seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
-    topSpeed: 220,  priceKRW: null, image: null
+    topSpeed: 220,  priceKRW: null, image: '/bikes/honda/cbr650r-2019.jpg'
   },
   {
     id: 'cbr650r-2021', brand: 'honda', model: 'CBR650R', year: 2021,
     category: '스포츠', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 63,   weight: 208,
     seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
-    topSpeed: 220,  priceKRW: null, image: null
+    topSpeed: 220,  priceKRW: null, image: '/bikes/honda/cbr650r-2021.webp'
   },
   {
     id: 'cbr650r-2024', brand: 'honda', model: 'CBR650R', year: 2024,
     category: '스포츠', license: '소형이륜',
     displacement: 649,  power: 95,   torque: 63,   weight: 209,
     seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 15.4,
-    topSpeed: 220,  priceKRW: null, image: null
+    topSpeed: 220,  priceKRW: null, image: '/bikes/honda/cbr650r-2024.webp'
   },
   {
     id: 'nc750x-2023', brand: 'honda', model: 'NC750X', year: 2023,
@@ -935,21 +935,21 @@ const RAW_BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 223,  power: 20,   torque: 19,   weight: 121,
     seatHeight: 810,  fuelEconomy: 34.0, tankCapacity: 8.7,
-    topSpeed: null, priceKRW: 2000000, image: null
+    topSpeed: null, priceKRW: 2000000, image: '/bikes/yamaha/xt225serow-2007.jpg'
   },
   {
     id: 'xt250-2023', brand: 'yamaha', model: 'XT250', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 249,  power: null, torque: null, weight: 132,
     seatHeight: 830,  fuelEconomy: 32.3, tankCapacity: 9.8,
-    topSpeed: null, priceKRW: 5000000, image: null
+    topSpeed: null, priceKRW: 5000000, image: '/bikes/yamaha/xt250-2023.jpg'
   },
   {
     id: 'xt660z-2016', brand: 'yamaha', model: 'XT660Z Tenere', year: 2016,
     category: '어드벤처', license: '소형이륜',
     displacement: 660,  power: 47,   torque: 58,   weight: 206,
     seatHeight: 895,  fuelEconomy: 22.2, tankCapacity: 23.0,
-    topSpeed: null, priceKRW: 5000000, image: null
+    topSpeed: null, priceKRW: 5000000, image: '/bikes/yamaha/xt660ztenere.jpg'
   },
   {
     id: 'tenere700-2023', brand: 'yamaha', model: 'Tenere 700', year: 2023,
@@ -1062,13 +1062,6 @@ const RAW_BIKES = [
     displacement: 1063, power: 62,   torque: 85,   weight: 239,
     seatHeight: 715,  fuelEconomy: null, tankCapacity: 16.8,
     topSpeed: 180,  priceKRW: null, image: '/bikes/yamaha/virago1100-1986.jpg'
-  },
-  {
-    id: 'virago750-1988', brand: 'yamaha', model: 'Virago 750', year: 1988,
-    category: '크루저', license: '소형이륜',
-    displacement: 748,  power: 55,   torque: null, weight: null,
-    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: null, image: null
   },
   {
     id: 'bolt-2014', brand: 'yamaha', model: 'Bolt', year: 2014,
