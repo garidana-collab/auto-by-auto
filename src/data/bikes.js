@@ -973,6 +973,69 @@ const RAW_BIKES = [
     topSpeed: null, priceKRW: 14000000, image: '/bikes/yamaha/fjr1300a-2016.jpg'
   },
   {
+    id: 'virago125-1998', brand: 'yamaha', model: 'Virago 125', year: 1998,
+    category: '크루저', license: '원동기',
+    displacement: 124,  power: 11.4, torque: 9.4,  weight: 139,
+    seatHeight: 685,  fuelEconomy: null, tankCapacity: 9.5,
+    topSpeed: 107,  priceKRW: null, image: '/bikes/yamaha/virago125-1998.jpg'
+  },
+  {
+    id: 'virago250-1988', brand: 'yamaha', model: 'Virago 250', year: 1988,
+    category: '크루저', license: '소형이륜',
+    displacement: 249,  power: 21,   torque: 20.6, weight: 147,
+    seatHeight: 685,  fuelEconomy: 34, tankCapacity: 9.5,
+    topSpeed: 121,  priceKRW: null, image: '/bikes/yamaha/virago250-1988.jpg'
+  },
+  {
+    id: 'virago535-1989', brand: 'yamaha', model: 'Virago 535', year: 1989,
+    category: '크루저', license: '소형이륜',
+    displacement: 535,  power: 41.7, torque: 46,   weight: 182,
+    seatHeight: 720,  fuelEconomy: null, tankCapacity: 13.5,
+    topSpeed: 160,  priceKRW: null, image: '/bikes/yamaha/virago535-1989.webp'
+  },
+  {
+    id: 'virago750-1981', brand: 'yamaha', model: 'Virago 750', year: 1981,
+    category: '크루저', license: '소형이륜',
+    displacement: 748,  power: 55,   torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/virago750-1981.jpg'
+  },
+  {
+    id: 'virago920-1982', brand: 'yamaha', model: 'Virago 920', year: 1982,
+    category: '크루저', license: '소형이륜',
+    displacement: 920,  power: 65,   torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/virago920-1982.jpg'
+  },
+  {
+    id: 'virago700-1984', brand: 'yamaha', model: 'Virago 700', year: 1984,
+    category: '크루저', license: '소형이륜',
+    displacement: 699,  power: null, torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/virago700-1984.jpg'
+  },
+  {
+    id: 'virago1000-1984', brand: 'yamaha', model: 'Virago 1000', year: 1984,
+    category: '크루저', license: '소형이륜',
+    displacement: 981,  power: null, torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: '/bikes/yamaha/virago1000-1984.jpg'
+  },
+  {
+    id: 'virago1100-1986', brand: 'yamaha', model: 'Virago 1100', year: 1986,
+    category: '크루저', license: '소형이륜',
+    displacement: 1063, power: 62,   torque: 85,   weight: 239,
+    seatHeight: 715,  fuelEconomy: null, tankCapacity: 16.8,
+    topSpeed: 180,  priceKRW: null, image: '/bikes/yamaha/virago1100-1986.jpg'
+  },
+  {
+    id: 'virago750-1988', brand: 'yamaha', model: 'Virago 750', year: 1988,
+    category: '크루저', license: '소형이륜',
+    displacement: 748,  power: 55,   torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
     id: 'bolt-2014', brand: 'yamaha', model: 'Bolt', year: 2014,
     category: '크루저', license: '소형이륜',
     displacement: 942,  power: null, torque: null, weight: 245,
@@ -1970,28 +2033,28 @@ const RAW_BIKES = [
     category: '크루저', license: '소형이륜',
     displacement: 1133, power: 100,  torque: 98,   weight: 251,
     seatHeight: 649,  fuelEconomy: 18, tankCapacity: 12.5,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/indian/scoutbobber-2023.webp'
   },
   {
     id: 'ftr1200-2023', brand: 'indian', model: 'FTR 1200', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 1203, power: 120,  torque: 118,  weight: 233,
     seatHeight: 780,  fuelEconomy: 18, tankCapacity: 13.0,
-    topSpeed: 210,  priceKRW: null, image: null
+    topSpeed: 210,  priceKRW: null, image: '/bikes/indian/ftr1200-2023.jpg'
   },
   {
     id: 'chiefdarkhorse-2023', brand: 'indian', model: 'Chief Dark Horse', year: 2023,
     category: '크루저', license: '소형이륜',
     displacement: 1890, power: null, torque: 162,  weight: 304,
     seatHeight: 662,  fuelEconomy: 17, tankCapacity: 15.1,
-    topSpeed: 180,  priceKRW: null, image: null
+    topSpeed: 180,  priceKRW: null, image: '/bikes/indian/chiefdarkhorse-2023.jpg'
   },
   {
     id: 'challengerdarkhorse-2023', brand: 'indian', model: 'Challenger Dark Horse', year: 2023,
     category: '투어러', license: '소형이륜',
     displacement: 1768, power: 122,  torque: 178,  weight: 381,
     seatHeight: 672,  fuelEconomy: 16, tankCapacity: 22.7,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/indian/challengerdarkhorse-2023.webp'
   },
 
   // ── Aprilia ───────────────────────────────────────────────────────────────
@@ -2000,35 +2063,35 @@ const RAW_BIKES = [
     category: '스포츠', license: '소형이륜',
     displacement: 457,  power: 47,   torque: 43.5, weight: 175,
     seatHeight: 800,  fuelEconomy: 25, tankCapacity: 13.0,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/aprilia/rs457-2025.png'
   },
   {
     id: 'rs660-2025', brand: 'aprilia', model: 'RS 660', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 659,  power: 105,  torque: 70,   weight: 183,
     seatHeight: 820,  fuelEconomy: 20, tankCapacity: 15.0,
-    topSpeed: 240,  priceKRW: null, image: null
+    topSpeed: 240,  priceKRW: null, image: '/bikes/aprilia/rs660-2025.jpg'
   },
   {
     id: 'tuono660-2025', brand: 'aprilia', model: 'Tuono 660', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 659,  power: 100,  torque: 67,   weight: 183,
     seatHeight: 820,  fuelEconomy: 20, tankCapacity: 15.0,
-    topSpeed: 225,  priceKRW: null, image: null
+    topSpeed: 225,  priceKRW: null, image: '/bikes/aprilia/tuono660-2025.jpg'
   },
   {
     id: 'tuareg660-2024', brand: 'aprilia', model: 'Tuareg 660', year: 2024,
     category: '어드벤처', license: '소형이륜',
     displacement: 659,  power: 80,   torque: 70,   weight: 204,
     seatHeight: 860,  fuelEconomy: 22, tankCapacity: 18.0,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/aprilia/tuareg660-2024.jpg'
   },
   {
     id: 'rsv4factory-2025', brand: 'aprilia', model: 'RSV4 Factory', year: 2025,
     category: '스포츠', license: '소형이륜',
     displacement: 1099, power: 220,  torque: 125,  weight: 202,
     seatHeight: 845,  fuelEconomy: 14, tankCapacity: 17.9,
-    topSpeed: 305,  priceKRW: null, image: null
+    topSpeed: 305,  priceKRW: null, image: '/bikes/aprilia/rsv4factory-2025.jpg'
   },
 
   // ── Husqvarna ─────────────────────────────────────────────────────────────
@@ -2037,28 +2100,28 @@ const RAW_BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 398.6, power: 44,   torque: 39,   weight: 172,
     seatHeight: 820,  fuelEconomy: 29, tankCapacity: 13.0,
-    topSpeed: 160,  priceKRW: null, image: null
+    topSpeed: 160,  priceKRW: null, image: '/bikes/husqvarna/svartpilen401.webp'
   },
   {
     id: 'vitpilen401-2024', brand: 'husqvarna', model: 'Vitpilen 401', year: 2024,
     category: '네이키드', license: '소형이륜',
     displacement: 398.6, power: 44,   torque: 39,   weight: 171,
     seatHeight: 820,  fuelEconomy: 29, tankCapacity: 13.0,
-    topSpeed: 165,  priceKRW: null, image: null
+    topSpeed: 165,  priceKRW: null, image: '/bikes/husqvarna/vitpilen401-2024.png'
   },
   {
     id: 'norden901-2024', brand: 'husqvarna', model: 'Norden 901', year: 2024,
     category: '어드벤처', license: '소형이륜',
     displacement: 889,  power: 105,  torque: 100,  weight: 220,
     seatHeight: 854,  fuelEconomy: 22, tankCapacity: 19.0,
-    topSpeed: 200,  priceKRW: null, image: null
+    topSpeed: 200,  priceKRW: null, image: '/bikes/husqvarna/norden901-2024.jpg'
   },
   {
     id: '701supermoto-2024', brand: 'husqvarna', model: '701 Supermoto', year: 2024,
     category: '슈퍼모토', license: '소형이륜',
     displacement: 692.7, power: 74,   torque: 73.5, weight: 160,
     seatHeight: 890,  fuelEconomy: 24, tankCapacity: 13.0,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/husqvarna/701supermoto-2024.png'
   },
 
   // ── MV Agusta ─────────────────────────────────────────────────────────────
@@ -2067,28 +2130,28 @@ const RAW_BIKES = [
     category: '네이키드', license: '소형이륜',
     displacement: 798,  power: 140,  torque: 87,   weight: 175,
     seatHeight: 830,  fuelEconomy: 17, tankCapacity: 16.5,
-    topSpeed: 244,  priceKRW: null, image: null
+    topSpeed: 244,  priceKRW: null, image: '/bikes/agusta/brutale800rr-2023.jpg'
   },
   {
     id: 'dragster800rr-2023', brand: 'mvagusta', model: 'Dragster 800 RR', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 798,  power: 140,  torque: 87,   weight: 175,
     seatHeight: 845,  fuelEconomy: 17, tankCapacity: 16.5,
-    topSpeed: 244,  priceKRW: null, image: null
+    topSpeed: 244,  priceKRW: null, image: '/bikes/agusta/dragster800rr-2023.webp'
   },
   {
     id: 'superveloce800-2023', brand: 'mvagusta', model: 'Superveloce 800', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 798,  power: 147,  torque: 88,   weight: 197,
     seatHeight: 830,  fuelEconomy: 16, tankCapacity: 16.5,
-    topSpeed: 240,  priceKRW: null, image: null
+    topSpeed: 240,  priceKRW: null, image: '/bikes/agusta/superveloce800-2023.webp'
   },
   {
     id: 'turismoveloce800-2023', brand: 'mvagusta', model: 'Turismo Veloce 800', year: 2023,
     category: '투어러', license: '소형이륜',
     displacement: 798,  power: 110,  torque: 84,   weight: 211,
     seatHeight: 850,  fuelEconomy: 18, tankCapacity: 21.5,
-    topSpeed: 230,  priceKRW: null, image: null
+    topSpeed: 230,  priceKRW: null, image: '/bikes/agusta/turismoveloce-2023.jpg'
   },
 ]
 
