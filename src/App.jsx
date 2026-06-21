@@ -44,6 +44,15 @@ const CAT_COLOR = {
 
 const CATEGORY_ORDER = ['미니/입문', '스쿠터', '네이키드', '스포츠', '클래식', '어드벤처', '크루저', '투어러']
 
+const BEGINNER_TAGS = [
+  { id: 'easy', label: '입문 친화', desc: '배기량과 무게 부담이 낮은 편' },
+  { id: 'comfort', label: '편안함', desc: '시트고가 낮거나 자세 부담이 적은 편' },
+  { id: 'light', label: '가벼움', desc: '차체가 가볍고 다루기 쉬운 편' },
+  { id: 'speedy', label: '속도감', desc: '출력이나 배기량이 높은 편' },
+  { id: 'solid', label: '묵직함', desc: '차체가 크고 안정감이 큰 편' },
+  { id: 'agile', label: '날렵함', desc: '무게 대비 출력이 좋은 편' },
+]
+
 const BRAND_MARKS = {
   honda: 'H',
   yamaha: 'Y',
@@ -88,6 +97,41 @@ function getFitLabel(seatHeight, inseam) {
   return                                  { text: '발끝', cls: 'fit-tip'  }
 }
 
+function getBeginnerTags(bike) {
+  if (!bike) return []
+
+  const cc = bike.displacement
+  const power = bike.power
+  const weight = bike.weight
+  const seat = bike.seatHeight
+  const powerWeight = isKnownValue(power) && isKnownValue(weight) && weight > 0
+    ? power / weight
+    : null
+
+  const matched = []
+  const hasEasyCc = isKnownValue(cc) && cc <= 400
+  const hasMiddleCc = isKnownValue(cc) && cc <= 700
+  const hasLowSeat = isKnownValue(seat) && seat <= 780
+  const hasFriendlySeat = isKnownValue(seat) && seat <= 820
+  const hasLightWeight = isKnownValue(weight) && weight <= 180
+  const hasMiddleWeight = isKnownValue(weight) && weight <= 210
+  const hasHeavyWeight = isKnownValue(weight) && weight >= 230
+
+  if (hasEasyCc && hasMiddleWeight && hasFriendlySeat) matched.push('easy')
+  if (hasLowSeat || (['스쿠터', '크루저', '클래식'].includes(bike.category) && hasFriendlySeat)) matched.push('comfort')
+  if (hasLightWeight || (bike.category === '미니/입문' && hasMiddleWeight)) matched.push('light')
+  if ((isKnownValue(power) && power >= 80) || (isKnownValue(cc) && cc >= 700 && bike.category !== '스쿠터')) matched.push('speedy')
+  if (hasHeavyWeight || (isKnownValue(cc) && cc >= 1000) || ['투어러', '크루저'].includes(bike.category)) matched.push('solid')
+  if (
+    (powerWeight !== null && powerWeight >= 0.32 && hasMiddleWeight) ||
+    (['스포츠', '네이키드', '슈퍼모토'].includes(bike.category) && hasMiddleCc && hasMiddleWeight)
+  ) {
+    matched.push('agile')
+  }
+
+  return BEGINNER_TAGS.filter(tag => matched.includes(tag.id))
+}
+
 function buildRadarData(targetBikes) {
   return RADAR_KEYS.map(key => {
     const spec = SPECS.find(s => s.key === key)
@@ -118,6 +162,7 @@ export default function App() {
   const [selCats, setSelCats] = useState([])
   const [selLic,  setSelLic]  = useState('전체')
   const [selDisp, setSelDisp] = useState([])
+  const [selBeginnerTags, setSelBeginnerTags] = useState([])
 
   // 체형 필터
   const [bodyFilterEnabled, setBodyFilterEnabled] = useState(true)
@@ -127,6 +172,7 @@ export default function App() {
   // 드릴다운
   const [openBrand, setOpenBrand] = useState(null)
   const [openModel, setOpenModel] = useState(null)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   // 비교 대상
   const [compared, setCompared] = useState([])
@@ -162,10 +208,14 @@ export default function App() {
         })
         if (!match) return false
       }
+      if (selBeginnerTags.length) {
+        const bikeTagIds = getBeginnerTags(b).map(tag => tag.id)
+        if (!selBeginnerTags.some(id => bikeTagIds.includes(id))) return false
+      }
       if (bodyFilterEnabled && isKnownValue(b.seatHeight) && b.seatHeight > maxSeatHeight) return false
       return true
     })
-  }, [searchQuery, selBrands, selCats, selLic, selDisp, bodyFilterEnabled, maxSeatHeight])
+  }, [searchQuery, selBrands, selCats, selLic, selDisp, selBeginnerTags, bodyFilterEnabled, maxSeatHeight])
 
   // ── 카드 뷰용 정렬 (카테고리→브랜드→모델→연식)
   const sortedFiltered = useMemo(() =>
@@ -290,14 +340,14 @@ export default function App() {
 
   // ── 필터 초기화
   function resetFilters() {
-    setSelBrands([]); setSelCats([]); setSelLic('전체'); setSelDisp([])
+    setSelBrands([]); setSelCats([]); setSelLic('전체'); setSelDisp([]); setSelBeginnerTags([])
     setBodyFilterEnabled(true)
     setRiderHeight(170); setLegType('normal')
   }
   function resetCompared() {
     setCompared([])
   }
-  const hasFilter = selBrands.length > 0 || selCats.length > 0 || selLic !== '전체' || selDisp.length > 0
+  const hasFilter = selBrands.length > 0 || selCats.length > 0 || selLic !== '전체' || selDisp.length > 0 || selBeginnerTags.length > 0
     || !bodyFilterEnabled || riderHeight !== 170 || legType !== 'normal'
   const totalCount = filtered.length
 
@@ -308,7 +358,7 @@ export default function App() {
       <style>{css}</style>
 
       {/* ── 사이드바 ──────────────────────────────────────── */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${mobileFiltersOpen ? 'mobile-open' : ''}`}>
 
         <div className="sidebar-logo">
           <span className="logo-wordmark">
@@ -318,7 +368,7 @@ export default function App() {
         </div>
 
         {/* 체형 필터 */}
-        <section className={`sf-section body-section ${bodyFilterEnabled ? '' : 'off'}`}>
+        <section className={`sf-section mobile-filter-panel body-section ${bodyFilterEnabled ? '' : 'off'}`}>
           <div className="sf-heading-row">
             <span className="sf-heading">내 체형</span>
             <label className="filter-toggle">
@@ -382,8 +432,66 @@ export default function App() {
           )}
         </div>
 
+        <div className="mobile-filter-summary">
+          <div>
+            <strong>{totalCount}종</strong>
+            <span>{hasFilter ? '필터 적용 중' : '전체 기종'}</span>
+          </div>
+          <div className="mobile-filter-actions">
+            {hasFilter && (
+              <button className="mobile-reset-btn" onClick={resetFilters}>초기화</button>
+            )}
+            <button
+              className={`mobile-filter-btn ${mobileFiltersOpen ? 'on' : ''}`}
+              onClick={() => setMobileFiltersOpen(prev => !prev)}
+            >
+              {mobileFiltersOpen ? '필터 닫기' : '필터 열기'}
+            </button>
+          </div>
+        </div>
+
+        {mobileFiltersOpen && (
+          <button
+            className="mobile-filter-backdrop"
+            aria-label="필터 닫기"
+            onClick={() => setMobileFiltersOpen(false)}
+          />
+        )}
+
+        <div className={`mobile-filter-stack ${mobileFiltersOpen ? 'open' : ''}`}>
+          <div className="mobile-sheet-head">
+            <div>
+              <strong>필터</strong>
+              <span>조건을 고르고 바로 결과를 확인하세요</span>
+            </div>
+            <button className="mobile-sheet-close" onClick={() => setMobileFiltersOpen(false)}>닫기</button>
+          </div>
+
+        <section className="sf-section beginner-section">
+          <div className="sf-heading-row">
+            <span className="sf-heading">쉬운 찾기</span>
+          </div>
+          <div className="beginner-copy">
+            제원표 대신 느낌으로 먼저 골라보세요. 여러 개를 고르면 하나라도 맞는 기종을 보여줍니다.
+          </div>
+          <div className="beginner-grid">
+            {BEGINNER_TAGS.map(tag => (
+              <button
+                key={tag.id}
+                className={`beginner-chip ${selBeginnerTags.includes(tag.id) ? 'on' : ''}`}
+                onClick={() => setSelBeginnerTags(prev =>
+                  prev.includes(tag.id) ? prev.filter(id => id !== tag.id) : [...prev, tag.id]
+                )}
+              >
+                <span>{tag.label}</span>
+                <small>{tag.desc}</small>
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* 보조 필터 */}
-        <section className="sf-section">
+        <section className="sf-section advanced-filter-section">
           <div className="sf-heading-row">
             <span className="sf-heading">필터</span>
             {hasFilter && (
@@ -509,6 +617,7 @@ export default function App() {
             )
           })}
         </section>
+        </div>
       </aside>
 
       {/* ── 메인 ──────────────────────────────────────────── */}
@@ -574,6 +683,7 @@ export default function App() {
                 const isOn   = compared.includes(bike.id)
                 const isFull = compared.length >= 3 && !isOn
                 const fit    = getFitLabel(bike.seatHeight, inseam)
+                const beginnerTags = getBeginnerTags(bike).slice(0, 3)
                 return (
                   <div
                     key={bike.id}
@@ -610,6 +720,11 @@ export default function App() {
                         <span>{formatShortSpec('', bike.power, 'hp')}</span>
                         <span>{formatShortSpec('시트고 ', bike.seatHeight, 'mm')}</span>
                       </div>
+                      {beginnerTags.length > 0 && (
+                        <div className="card-beginner-tags">
+                          {beginnerTags.map(tag => <span key={tag.id}>{tag.label}</span>)}
+                        </div>
+                      )}
                       <div className={`card-price ${isKnownPrice(bike.priceKRW) ? '' : 'unknown'}`}>
                         {formatPrice(bike.priceKRW)}
                       </div>
@@ -972,6 +1087,17 @@ button { font-family: inherit; }
 }
 .search-clear:hover { color: var(--text); }
 
+.mobile-filter-summary,
+.mobile-filter-backdrop,
+.mobile-sheet-head { display: none; }
+.mobile-filter-stack { display: contents; }
+.sidebar-logo { order: 1; }
+.body-section { order: 2; }
+.search-wrap { order: 3; }
+.beginner-section { order: 4; }
+.advanced-filter-section { order: 5; }
+.sf-section.flex1 { order: 6; }
+
 .sf-section { padding: 16px 14px 14px; border-bottom: 1px solid var(--line); }
 .sf-section.flex1 { flex: 1; border-bottom: none; }
 .sf-heading-row {
@@ -1018,6 +1144,24 @@ button { font-family: inherit; }
 .cat-chip.on { border-color: var(--orange); color: var(--orange); background: rgba(255,92,0,.1); }
 .cat-chip:hover:not(.on) { border-color: #3a3a3f; color: var(--text); }
 
+.beginner-copy {
+  color: var(--dim); font-size: 12px; line-height: 1.5; margin: -2px 0 10px;
+}
+.beginner-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px;
+}
+.beginner-chip {
+  min-width: 0; border: 1px solid var(--line); background: rgba(255,255,255,.02);
+  color: var(--muted); border-radius: 8px; padding: 8px; cursor: pointer;
+  text-align: left; transition: all .12s; display: flex; flex-direction: column; gap: 3px;
+}
+.beginner-chip span { color: var(--text); font-size: 12px; font-weight: 800; }
+.beginner-chip small { color: var(--dim); font-size: 10px; line-height: 1.35; }
+.beginner-chip.on {
+  border-color: var(--orange); background: rgba(255,92,0,.11);
+}
+.beginner-chip.on span { color: var(--orange); }
+.beginner-chip:hover:not(.on) { border-color: #3a3a3f; }
 .lic-group { display: flex; gap: 5px; }
 .lic-btn {
   flex: 1; font-size: 12px; padding: 7px 5px; border-radius: 8px;
@@ -1230,6 +1374,14 @@ button { font-family: inherit; }
   font-size: 11px; color: var(--dim); background: rgba(255,255,255,.04);
   padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line);
 }
+.card-beginner-tags {
+  display: flex; flex-wrap: wrap; gap: 4px; margin: -1px 0 7px;
+}
+.card-beginner-tags span {
+  font-size: 10px; font-weight: 800; color: #1FB6A6;
+  background: rgba(31,182,166,.11); border: 1px solid rgba(31,182,166,.22);
+  border-radius: 999px; padding: 2px 6px;
+}
 .card-price { font-size: 14px; font-weight: 700; color: var(--orange); }
 .card-price.unknown { color: var(--muted); }
 
@@ -1427,6 +1579,54 @@ button { font-family: inherit; }
   }
   .sidebar-logo { padding: 18px 18px 16px; }
   .logo-wordmark { font-size: 24px; }
+  .mobile-filter-summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 10px 16px 12px; border-bottom: 1px solid var(--line);
+    background: var(--sidebar-bg);
+  }
+  .mobile-filter-summary strong {
+    display: block; color: var(--text); font-size: 14px; font-weight: 900;
+  }
+  .mobile-filter-summary span {
+    display: block; color: var(--muted); font-size: 11px; margin-top: 2px;
+  }
+  .sidebar-logo { order: 1; }
+  .search-wrap { order: 2; }
+  .mobile-filter-summary { order: 3; }
+  .mobile-filter-stack { order: 4; }
+  .mobile-filter-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .mobile-filter-btn,
+  .mobile-reset-btn,
+  .mobile-sheet-close {
+    border: 1px solid var(--line); background: rgba(255,255,255,.03); color: var(--text);
+    border-radius: 999px; padding: 7px 10px; font-size: 12px; font-weight: 800;
+    cursor: pointer;
+  }
+  .mobile-filter-btn.on,
+  .mobile-reset-btn,
+  .mobile-sheet-close {
+    border-color: rgba(255,92,0,.35); color: var(--orange); background: rgba(255,92,0,.09);
+  }
+  .mobile-filter-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 18;
+    border: 0; padding: 0; background: rgba(0,0,0,.52);
+    backdrop-filter: blur(2px); cursor: pointer;
+  }
+  .mobile-filter-stack {
+    display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 19;
+    max-height: min(82vh, 720px); overflow-y: auto; overscroll-behavior: contain;
+    background: var(--sidebar-bg); border-top: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px 18px 0 0; box-shadow: 0 -24px 60px rgba(0,0,0,.5);
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
+  .sidebar.mobile-open .mobile-filter-stack { display: block; }
+  .mobile-sheet-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: sticky; top: 0; z-index: 1; padding: 14px 16px 12px;
+    background: rgba(13,13,15,.96); border-bottom: 1px solid var(--line);
+  }
+  .mobile-sheet-head strong { display: block; color: var(--text); font-size: 16px; font-weight: 900; }
+  .mobile-sheet-head span { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
   .sf-section { padding: 14px 16px; }
   .sf-section.flex1 {
     max-height: 280px; overflow-y: auto;
