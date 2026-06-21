@@ -149,7 +149,6 @@
   - `firebase` 패키지를 dependencies에 추가
 
 ## version 0.8.2 — 예정
-- [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `image` 필드 연결
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Vercel 배포 및 도메인 연결
