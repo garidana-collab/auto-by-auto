@@ -364,7 +364,7 @@ export default function App() {
           <span className="logo-wordmark">
             오토<span>바이</span>오토
           </span>
-          <span className="logo-version">v0.8.1</span>
+          <span className="logo-version"><v0 className="9 0"></v0></span>
         </div>
 
         {/* 체형 필터 */}
@@ -722,7 +722,9 @@ export default function App() {
                       </div>
                       {beginnerTags.length > 0 && (
                         <div className="card-beginner-tags">
-                          {beginnerTags.map(tag => <span key={tag.id}>{tag.label}</span>)}
+                          {beginnerTags.map(tag => (
+                            <span key={tag.id} className={`tag-${tag.id}`}>{tag.label}</span>
+                          ))}
                         </div>
                       )}
                       <div className={`card-price ${isKnownPrice(bike.priceKRW) ? '' : 'unknown'}`}>
@@ -1378,9 +1380,26 @@ button { font-family: inherit; }
   display: flex; flex-wrap: wrap; gap: 4px; margin: -1px 0 7px;
 }
 .card-beginner-tags span {
-  font-size: 10px; font-weight: 800; color: #1FB6A6;
-  background: rgba(31,182,166,.11); border: 1px solid rgba(31,182,166,.22);
+  font-size: 10px; font-weight: 800;
   border-radius: 999px; padding: 2px 6px;
+}
+.card-beginner-tags .tag-easy {
+  color: #ff8a3d; background: rgba(255,92,0,.12); border: 1px solid rgba(255,92,0,.28);
+}
+.card-beginner-tags .tag-comfort {
+  color: #1FB6A6; background: rgba(31,182,166,.11); border: 1px solid rgba(31,182,166,.24);
+}
+.card-beginner-tags .tag-light {
+  color: #55b6ff; background: rgba(85,182,255,.11); border: 1px solid rgba(85,182,255,.24);
+}
+.card-beginner-tags .tag-speedy {
+  color: #ff5f6d; background: rgba(255,95,109,.12); border: 1px solid rgba(255,95,109,.26);
+}
+.card-beginner-tags .tag-solid {
+  color: #b66cff; background: rgba(182,108,255,.12); border: 1px solid rgba(182,108,255,.26);
+}
+.card-beginner-tags .tag-agile {
+  color: #d6c84a; background: rgba(214,200,74,.12); border: 1px solid rgba(214,200,74,.26);
 }
 .card-price { font-size: 14px; font-weight: 700; color: var(--orange); }
 .card-price.unknown { color: var(--muted); }
