@@ -174,10 +174,43 @@
   - 390×844 모바일 뷰포트에서 필터 닫힘/열림/닫기 동작 확인
   - 브라우저 콘솔 에러 없음
 
-## version 0.8.3 — 예정
+## version 0.8.3 — Vercel 배포 및 Google Search Console SEO 기본 설정
+> 2026-06-22 | 파일: `index.html`, `public/robots.txt`, `public/sitemap.xml`, `public/site.webmanifest`, `public/googlec0e1744f23d9c3c1.html`, `Docs/SEO.md`, `Docs/progress.md`, `Docs/Dev Note.md`
+
+- Vercel 배포 주소 확인:
+  - 현재 운영 URL: `https://auto-by-auto.vercel.app/`
+- Google Search Console URL 접두어 속성 인증:
+  - 속성: `https://auto-by-auto.vercel.app/`
+  - `vercel.app` 기본 도메인은 DNS TXT 레코드 설정이 불가하므로 HTML 파일 인증 방식 사용
+  - 인증 파일 `public/googlec0e1744f23d9c3c1.html` 추가
+- 기본 SEO 메타태그 추가:
+  - title: `오토바이오토 AUTObyAUTO - 오토바이 기종 비교`
+  - description, keywords, robots, theme-color 추가
+- 공유 미리보기 메타태그 추가:
+  - Open Graph: type, url, locale, site_name, title, description, image
+  - Twitter card: card, title, description, image
+- 대표 URL 설정:
+  - canonical URL을 `https://auto-by-auto.vercel.app/`로 설정
+- 크롤링/색인 파일 추가:
+  - `public/robots.txt`에 전체 크롤링 허용 및 sitemap 위치 추가
+  - `public/sitemap.xml`에 홈페이지 URL 등록
+  - `public/site.webmanifest`에 사이트 이름, 짧은 이름, 언어, 테마 색상 등록
+- Search Console 운영 상태:
+  - 소유권 인증 완료
+  - `/robots.txt`, `/sitemap.xml` 배포 주소에서 브라우저 확인 완료
+  - sitemap 제출 후 `가져올 수 없음` 상태가 잠시 표시될 수 있으며, 파일이 브라우저에서 열리면 Google 처리 지연 가능성이 높음
+- 문서화:
+  - `Docs/SEO.md` 추가
+  - 현재 적용 내역, Search Console 절차, 커스텀 도메인 전환 체크리스트, 향후 SEO 개선 방향 정리
+- 검증:
+  - `npm.cmd run build` 성공
+  - Vite 번들 크기 경고만 발생, 빌드 실패 없음
+
+## version 0.8.4 — 예정
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
-- [ ] Vercel 배포 및 도메인 연결
+- [ ] Search Console sitemap 제출 상태 `성공` 확인 및 URL 색인 요청
+- [ ] 커스텀 도메인 구입 및 연결
 - [ ] 모바일 UI 세부 QA 및 터치 동선 추가 개선
 - [ ] 쉬운 찾기 태그 기준 및 색상 사용자 테스트
 - [ ] 상세 탭 추천 기준 고도화

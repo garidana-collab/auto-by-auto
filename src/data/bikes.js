@@ -2050,95 +2050,74 @@ const RAW_BIKES = [
 
   // ── Indian Motorcycle ─────────────────────────────────────────────────────
   {
-    id: 'scout-1920', brand: 'indian', model: 'Scout', year: 1920,
-    category: '클래식', license: '소형이륜',
-    displacement: 606,  power: null, torque: null, weight: null,
-    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: null, image: null
-  },
-  {
-    id: 'scout101-1928', brand: 'indian', model: '101 Scout', year: 1928,
-    category: '클래식', license: '소형이륜',
-    displacement: 745,  power: null, torque: null, weight: null,
-    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: null, priceKRW: null, image: null
-  },
-  {
-    id: 'chief-1948', brand: 'indian', model: 'Chief', year: 1948,
-    category: '클래식', license: '소형이륜',
-    displacement: 1212, power: null, torque: null, weight: null,
-    seatHeight: null, fuelEconomy: null, tankCapacity: null,
-    topSpeed: 137,  priceKRW: null, image: null
-  },
-  {
     id: 'chiefclassic-2014', brand: 'indian', model: 'Chief Classic', year: 2014,
     category: '크루저', license: '소형이륜',
     displacement: 1811, power: null, torque: 139,  weight: 357,
     seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/cheifclassic-2014.jpg'
   },
   {
     id: 'scout-2015', brand: 'indian', model: 'Scout', year: 2015,
     category: '크루저', license: '소형이륜',
     displacement: 1133, power: 100,  torque: 98,   weight: 253,
     seatHeight: 643,  fuelEconomy: null, tankCapacity: 12.5,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/indian/scout-2015.jpg'
   },
   {
     id: 'roadmaster-2015', brand: 'indian', model: 'Roadmaster', year: 2015,
     category: '투어러', license: '소형이륜',
     displacement: 1811, power: null, torque: 139,  weight: 421,
     seatHeight: 660,  fuelEconomy: 15.3, tankCapacity: 20.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/roadmaster-2015.webp'
   },
   {
     id: 'chiefdarkhorse-2016', brand: 'indian', model: 'Chief Dark Horse', year: 2016,
     category: '크루저', license: '소형이륜',
     displacement: 1811, power: null, torque: 139,  weight: 341,
     seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/chiefdarkhorse-2016.jpg'
   },
   {
     id: 'scoutsixty-2016', brand: 'indian', model: 'Scout Sixty', year: 2016,
     category: '크루저', license: '소형이륜',
     displacement: 999,  power: 78,   torque: 88.8, weight: 249,
     seatHeight: 643,  fuelEconomy: null, tankCapacity: 12.5,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/scoutsixty-2016.webp'
   },
   {
     id: 'chieftain-2017', brand: 'indian', model: 'Chieftain Limited', year: 2017,
     category: '투어러', license: '소형이륜',
     displacement: 1811, power: null, torque: 139,  weight: 385,
     seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/chieftainlimited-2017.jpg'
   },
   {
     id: 'springfield-2018', brand: 'indian', model: 'Springfield Dark Horse', year: 2018,
     category: '투어러', license: '소형이륜',
     displacement: 1811, power: null, torque: 139,  weight: 364,
     seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/springfielddarkhorse-2018.webp'
   },
   {
     id: 'ftr1200s-2019', brand: 'indian', model: 'FTR 1200 S', year: 2019,
     category: '네이키드', license: '소형이륜',
     displacement: 1203, power: 120,  torque: 115,  weight: 231,
     seatHeight: 840,  fuelEconomy: 13.6, tankCapacity: 12.9,
-    topSpeed: 200,  priceKRW: null, image: null
+    topSpeed: 200,  priceKRW: null, image: '/bikes/indian/ftr1200s-2019.jpg'
   },
   {
     id: 'challenger-2020', brand: 'indian', model: 'Challenger', year: 2020,
     category: '투어러', license: '소형이륜',
     displacement: 1768, power: 122,  torque: 178,  weight: 381,
     seatHeight: 672,  fuelEconomy: null, tankCapacity: 22.7,
-    topSpeed: 190,  priceKRW: null, image: null
+    topSpeed: 190,  priceKRW: null, image: '/bikes/indian/challenger-2020.jpg'
   },
   {
     id: 'superchief-2022', brand: 'indian', model: 'Super Chief Limited', year: 2022,
     category: '크루저', license: '소형이륜',
     displacement: 1890, power: null, torque: 162,  weight: 335,
     seatHeight: 665,  fuelEconomy: null, tankCapacity: 15.1,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/superchieflimited-2022.webp'
   },
   {
     id: 'scoutbobber-2023', brand: 'indian', model: 'Scout Bobber', year: 2023,
@@ -2159,7 +2138,7 @@ const RAW_BIKES = [
     category: '크루저', license: '소형이륜',
     displacement: 1890, power: null, torque: 162,  weight: 311,
     seatHeight: 686,  fuelEconomy: null, tankCapacity: 15.1,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/sportchief-2023.webp'
   },
   {
     id: 'chiefdarkhorse-2023', brand: 'indian', model: 'Chief Dark Horse', year: 2023,
@@ -2180,28 +2159,28 @@ const RAW_BIKES = [
     category: '투어러', license: '소형이륜',
     displacement: 1768, power: 122,  torque: 178,  weight: 416,
     seatHeight: 672,  fuelEconomy: null, tankCapacity: 22.7,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/pursuitdarkhorse-2023.jpg'
   },
   {
     id: 'scoutbobber-2025', brand: 'indian', model: 'Scout Bobber', year: 2025,
     category: '크루저', license: '소형이륜',
     displacement: 1250, power: 105,  torque: 109,  weight: 246,
     seatHeight: 649,  fuelEconomy: null, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/scoutbobber-2025.jpg'
   },
   {
     id: '101scout-2025', brand: 'indian', model: '101 Scout', year: 2025,
     category: '크루저', license: '소형이륜',
     displacement: 1250, power: 111,  torque: 109,  weight: 249,
     seatHeight: 654,  fuelEconomy: null, tankCapacity: 13.0,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/101scout-2025.jpg'
   },
   {
     id: 'chieftainpowerplus-2025', brand: 'indian', model: 'Chieftain PowerPlus Limited', year: 2025,
     category: '투어러', license: '소형이륜',
     displacement: 1834, power: 126,  torque: 180,  weight: 383,
     seatHeight: 673,  fuelEconomy: null, tankCapacity: 22.7,
-    topSpeed: null, priceKRW: null, image: null
+    topSpeed: null, priceKRW: null, image: '/bikes/indian/chieftainpowerpluslimited-2025.webp'
   },
 
   // ── Aprilia ───────────────────────────────────────────────────────────────

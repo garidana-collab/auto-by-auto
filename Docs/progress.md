@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 22일 (v0.8.2 초심자 탐색 태그 및 모바일 필터 UX 개선)
+> 마지막 업데이트: 2026년 6월 22일 (v0.8.3 Vercel 배포 및 Google Search Console SEO 기본 설정)
 
 ---
 
@@ -35,7 +35,13 @@
 auto-by-auto/
 ├── Docs/
 │   ├── progress.md          ← 이 파일
-│   └── Dev Note.md          ← 버전별 변경 이력
+│   ├── Dev Note.md          ← 버전별 변경 이력
+│   └── SEO.md               ← 검색 노출 설정 및 운영 가이드
+├── public/
+│   ├── robots.txt           ← 검색엔진 크롤링 및 sitemap 위치 안내
+│   ├── sitemap.xml          ← Google Search Console 제출용 sitemap
+│   ├── site.webmanifest     ← 사이트 이름/테마 메타데이터
+│   └── googlec0e1744f23d9c3c1.html ← Search Console URL 접두어 소유권 인증 파일
 ├── src/
 │   ├── main.jsx             ← React 진입점
 │   ├── App.jsx              ← 메인 UI 컴포넌트 (필터, 카드 뷰, 상세 뷰, 비교 뷰)
@@ -139,6 +145,19 @@ auto-by-auto/
 - **키/체형 필터 주력 노출 유지**: 사이트의 핵심 요소인 `내 체형` 필터는 모바일에서도 팝업 밖에 기본 노출되도록 조정
 - **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.8.2`로 동기화
 - **검증 완료**: `npm.cmd run build` 성공, 390×844 모바일 뷰포트에서 닫힘/열림/닫기 동작 및 콘솔 오류 없음 확인
+
+#### 11단계 — Vercel 배포 및 Google Search Console SEO 기본 설정 (2026-06-22)
+- **Vercel 배포 도메인 확인**: 기본 배포 주소를 `https://auto-by-auto.vercel.app/`로 사용
+- **Search Console URL 접두어 속성 인증**: `https://auto-by-auto.vercel.app/` 속성을 HTML 파일 방식으로 인증
+- **인증 파일 추가**: `public/googlec0e1744f23d9c3c1.html`을 추가해 배포 후 루트 경로에서 Google 인증 파일을 제공
+- **기본 SEO 메타태그 추가**: `index.html`에 한국어 title, description, keywords, robots, theme-color를 추가
+- **공유 미리보기 메타태그 추가**: Open Graph와 Twitter card 제목/설명/이미지/URL을 추가
+- **대표 URL 명시**: `https://auto-by-auto.vercel.app/`를 canonical URL로 설정
+- **크롤링 파일 추가**: `public/robots.txt`에 전체 크롤링 허용 및 sitemap URL을 명시
+- **사이트맵 추가**: `public/sitemap.xml`에 홈페이지 URL을 등록하고 Search Console 제출 대상으로 준비
+- **브라우저 확인 완료**: `/robots.txt`, `/sitemap.xml`이 Vercel 배포 주소에서 정상 표시됨을 확인
+- **운영 문서 추가**: `Docs/SEO.md`에 적용 내용, Search Console 절차, 향후 SEO 가이드라인을 정리
+- **검증 완료**: `npm.cmd run build` 성공, Vite 번들 크기 경고만 발생
 ---
 
 ## 현재 데이터 현황
@@ -306,7 +325,8 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 ### 단기 (바로 가능)
 - [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `bikes.js` 연결
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
-- [ ] Vercel 배포 (GitHub 연동으로 빠르게 가능)
+- [x] Vercel 배포 및 Search Console URL 접두어 소유권 인증
+- [ ] Search Console에서 `sitemap.xml` 제출 상태 재확인 및 URL 검사로 색인 생성 요청
 - [ ] 쉬운 찾기 태그 기준 및 색상 사용자 테스트
 - [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
 
@@ -319,7 +339,8 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 ### 장기 (서비스화)
 - [ ] 백엔드 / 데이터베이스 연동
-- [ ] 도메인 구입 및 연결
+- [ ] 커스텀 도메인 구입 및 연결
+- [ ] 커스텀 도메인 연결 시 canonical, sitemap, robots.txt, Search Console 속성 재설정
 - [ ] 제원 데이터 확보 전략 결정 (직접 입력 vs 사용자 기여)
 
 ---
