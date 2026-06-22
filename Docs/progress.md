@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 22일 (v0.8.3 Vercel 배포 및 Google Search Console SEO 기본 설정)
+> 마지막 업데이트: 2026년 6월 22일 (v0.9.1 체형 입력 UX 및 연비 데이터 보강)
 
 ---
 
@@ -158,6 +158,13 @@ auto-by-auto/
 - **브라우저 확인 완료**: `/robots.txt`, `/sitemap.xml`이 Vercel 배포 주소에서 정상 표시됨을 확인
 - **운영 문서 추가**: `Docs/SEO.md`에 적용 내용, Search Console 절차, 향후 SEO 가이드라인을 정리
 - **검증 완료**: `npm.cmd run build` 성공, Vite 번들 크기 경고만 발생
+
+#### 12단계 — 체형 입력 UX 및 연비 데이터 보강 (2026-06-22)
+- **인심 공식 보정**: 키 대비 인심 추정 비율을 낮춰 일반적인 체감에 더 맞도록 조정
+- **키 직접 입력 추가**: 슬라이더뿐 아니라 키 표시 영역을 클릭해 키보드로 cm 값을 입력할 수 있도록 개선
+- **연비 누락 보강**: `fuelEconomy: null`이던 51개 기종에 기존 DB 유사 제원 기반 추정 연비를 주입
+- **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.9.1`로 동기화
+- **검증 완료**: `fuelEconomy` 누락 0개 확인, `npm.cmd run build` 성공
 ---
 
 ## 현재 데이터 현황

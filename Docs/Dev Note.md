@@ -206,7 +206,28 @@
   - `npm.cmd run build` 성공
   - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
-## version 0.8.4 — 예정
+## version 0.9.1 — 체형 입력 UX 및 연비 데이터 보강
+> 2026-06-22 | 파일: `src/App.jsx`, `src/data/bikes.js`, `package.json`, `package-lock.json`, `Docs/progress.md`, `Docs/Dev Note.md`
+
+- 체형 기반 시트고 필터 보정:
+  - 인심 추정 비율을 `짧은 편 0.42 / 보통 0.45 / 긴 편 0.48`로 조정
+  - 기존 대비 170cm 보통 기준 추정 인심을 약 34mm 낮춰 대중적인 체감에 맞춤
+- 키 입력 UX 개선:
+  - 키 슬라이더 유지
+  - 키 표시 영역을 숫자 입력창으로 전환해 키보드 직접 입력 지원
+  - 입력값은 150~195cm 범위로 보정
+- 연비 데이터 보강:
+  - `fuelEconomy: null`이던 51개 기종에 유사 제원 기반 추정 연비 주입
+  - 연비 6단계 등급 계산에서 정보 없음으로 빠지는 기종 제거
+- 버전 동기화:
+  - 화면 표시 버전 `v0.9.1`
+  - `package.json`, `package-lock.json` 버전 `0.9.1`
+- 검증:
+  - `fuelEconomy` 누락 0개 확인
+  - `npm.cmd run build` 성공
+  - Vite 번들 크기 경고만 발생, 빌드 실패 없음
+
+## version 0.9.2 — 예정
 - [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Search Console sitemap 제출 상태 `성공` 확인 및 URL 색인 요청

@@ -17,7 +17,15 @@ const DISP_CATS = [
   { id: '오버리터', label: '오버리터', min: 1001, max: Infinity },
 ]
 
-const LEG_FACTOR = { short: 0.44, normal: 0.47, long: 0.50 }
+const MIN_RIDER_HEIGHT = 150
+const MAX_RIDER_HEIGHT = 195
+const DEFAULT_RIDER_HEIGHT = 170
+const LEG_FACTOR = { short: 0.42, normal: 0.45, long: 0.48 }
+
+function clampRiderHeight(value) {
+  if (!Number.isFinite(value)) return DEFAULT_RIDER_HEIGHT
+  return Math.min(MAX_RIDER_HEIGHT, Math.max(MIN_RIDER_HEIGHT, Math.round(value)))
+}
 
 // 카테고리별 카드 배경 그라디언트
 const CAT_GRADIENT = {
@@ -166,7 +174,8 @@ export default function App() {
 
   // 체형 필터
   const [bodyFilterEnabled, setBodyFilterEnabled] = useState(true)
-  const [riderHeight, setRiderHeight] = useState(170)
+  const [riderHeight, setRiderHeight] = useState(DEFAULT_RIDER_HEIGHT)
+  const [heightDraft, setHeightDraft] = useState(String(DEFAULT_RIDER_HEIGHT))
   const [legType,     setLegType]     = useState('normal')
 
   // 드릴다운
@@ -337,12 +346,25 @@ export default function App() {
   function handleModelClick(name) {
     setOpenModel(prev => prev === name ? null : name)
   }
+  function commitRiderHeight(value) {
+    const next = clampRiderHeight(Number(value))
+    setRiderHeight(next)
+    setHeightDraft(String(next))
+  }
+  function handleHeightInputChange(e) {
+    const next = e.target.value.replace(/[^\d]/g, '').slice(0, 3)
+    const numeric = Number(next)
+    setHeightDraft(next)
+    if (next !== '' && Number.isFinite(numeric) && numeric >= MIN_RIDER_HEIGHT && numeric <= MAX_RIDER_HEIGHT) {
+      setRiderHeight(numeric)
+    }
+  }
 
   // ── 필터 초기화
   function resetFilters() {
     setSelBrands([]); setSelCats([]); setSelLic('전체'); setSelDisp([]); setSelBeginnerTags([])
     setBodyFilterEnabled(true)
-    setRiderHeight(170); setLegType('normal')
+    commitRiderHeight(DEFAULT_RIDER_HEIGHT); setLegType('normal')
   }
   function resetCompared() {
     setCompared([])
@@ -364,7 +386,7 @@ export default function App() {
           <span className="logo-wordmark">
             오토<span>바이</span>오토
           </span>
-          <span className="logo-version"><v0 className="9 0"></v0></span>
+          <span className="logo-version">v0.9.1</span>
         </div>
 
         {/* 체형 필터 */}
@@ -383,15 +405,34 @@ export default function App() {
 
           <div className="sf-label">
             키
-            <span className="sf-val">{riderHeight}cm</span>
+            <span className="height-control">
+              <input
+                type="number"
+                inputMode="numeric"
+                min={MIN_RIDER_HEIGHT}
+                max={MAX_RIDER_HEIGHT}
+                step={1}
+                value={heightDraft}
+                onChange={handleHeightInputChange}
+                onBlur={e => commitRiderHeight(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') e.currentTarget.blur()
+                }}
+                onFocus={e => e.currentTarget.select()}
+                className="sf-height-input"
+                disabled={!bodyFilterEnabled}
+                aria-label="키 입력"
+              />
+              <span className="sf-val">cm</span>
+            </span>
           </div>
-          <input type="range" min={150} max={195} step={1}
+          <input type="range" min={MIN_RIDER_HEIGHT} max={MAX_RIDER_HEIGHT} step={1}
             value={riderHeight}
-            onChange={e => setRiderHeight(Number(e.target.value))}
+            onChange={e => commitRiderHeight(e.target.value)}
             className="aba-slider"
             disabled={!bodyFilterEnabled}
           />
-          <div className="slider-ends"><span>150cm</span><span>195cm</span></div>
+          <div className="slider-ends"><span>{MIN_RIDER_HEIGHT}cm</span><span>{MAX_RIDER_HEIGHT}cm</span></div>
 
           <div className="sf-label mt14">다리 길이</div>
           <div className="lic-group">
@@ -1122,6 +1163,27 @@ button { font-family: inherit; }
 }
 .sf-label.mt14 { margin-top: 14px; }
 .sf-val { color: var(--orange); font-size: 13px; font-weight: 700; }
+.height-control {
+  display: inline-flex; align-items: center; gap: 3px;
+}
+.sf-height-input {
+  width: 48px; height: 26px; border-radius: 7px;
+  border: 1px solid rgba(255,92,0,.35);
+  background: rgba(255,92,0,.08); color: var(--orange);
+  font-size: 13px; font-weight: 800; text-align: right;
+  padding: 0 6px; outline: none;
+}
+.sf-height-input:focus {
+  border-color: var(--orange); background: rgba(255,92,0,.13);
+  box-shadow: 0 0 0 2px rgba(255,92,0,.12);
+}
+.sf-height-input:disabled {
+  opacity: .5; cursor: not-allowed;
+}
+.sf-height-input::-webkit-outer-spin-button,
+.sf-height-input::-webkit-inner-spin-button {
+  margin: 0;
+}
 
 .brand-filter-grid {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px;
