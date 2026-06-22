@@ -1,0 +1,10 @@
+{
+  "name": "오토바이오토 AUTObyAUTO",
+  "short_name": "오토바이오토",
+  "description": "오토바이 기종과 바이크 제원을 비교하는 AUTObyAUTO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0f",
+  "theme_color": "#0d0d0f",
+  "lang": "ko-KR"
+}
