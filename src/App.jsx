@@ -1209,18 +1209,18 @@ button { font-family: inherit; }
 .cat-chip:hover:not(.on) { border-color: #3a3a3f; color: var(--text); }
 
 .beginner-copy {
-  color: var(--dim); font-size: 12px; line-height: 1.5; margin: -2px 0 10px;
+  color: #a2a2ad; font-size: 12px; line-height: 1.5; margin: -2px 0 10px;
 }
 .beginner-grid {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px;
 }
 .beginner-chip {
-  min-width: 0; border: 1px solid var(--line); background: rgba(255,255,255,.02);
-  color: var(--muted); border-radius: 8px; padding: 8px; cursor: pointer;
+  min-width: 0; border: 1px solid #303036; background: rgba(255,255,255,.035);
+  color: #b4b4bd; border-radius: 8px; padding: 8px; cursor: pointer;
   text-align: left; transition: all .12s; display: flex; flex-direction: column; gap: 3px;
 }
 .beginner-chip span { color: var(--text); font-size: 12px; font-weight: 800; }
-.beginner-chip small { color: var(--dim); font-size: 10px; line-height: 1.35; }
+.beginner-chip small { color: #a7a7b1; font-size: 10px; line-height: 1.35; }
 .beginner-chip.on {
   border-color: var(--orange); background: rgba(255,92,0,.11);
 }
