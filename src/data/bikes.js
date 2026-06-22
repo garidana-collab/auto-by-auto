@@ -2050,6 +2050,97 @@ const RAW_BIKES = [
 
   // ── Indian Motorcycle ─────────────────────────────────────────────────────
   {
+    id: 'scout-1920', brand: 'indian', model: 'Scout', year: 1920,
+    category: '클래식', license: '소형이륜',
+    displacement: 606,  power: null, torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'scout101-1928', brand: 'indian', model: '101 Scout', year: 1928,
+    category: '클래식', license: '소형이륜',
+    displacement: 745,  power: null, torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'chief-1948', brand: 'indian', model: 'Chief', year: 1948,
+    category: '클래식', license: '소형이륜',
+    displacement: 1212, power: null, torque: null, weight: null,
+    seatHeight: null, fuelEconomy: null, tankCapacity: null,
+    topSpeed: 137,  priceKRW: null, image: null
+  },
+  {
+    id: 'chiefclassic-2014', brand: 'indian', model: 'Chief Classic', year: 2014,
+    category: '크루저', license: '소형이륜',
+    displacement: 1811, power: null, torque: 139,  weight: 357,
+    seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'scout-2015', brand: 'indian', model: 'Scout', year: 2015,
+    category: '크루저', license: '소형이륜',
+    displacement: 1133, power: 100,  torque: 98,   weight: 253,
+    seatHeight: 643,  fuelEconomy: null, tankCapacity: 12.5,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+  {
+    id: 'roadmaster-2015', brand: 'indian', model: 'Roadmaster', year: 2015,
+    category: '투어러', license: '소형이륜',
+    displacement: 1811, power: null, torque: 139,  weight: 421,
+    seatHeight: 660,  fuelEconomy: 15.3, tankCapacity: 20.8,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'chiefdarkhorse-2016', brand: 'indian', model: 'Chief Dark Horse', year: 2016,
+    category: '크루저', license: '소형이륜',
+    displacement: 1811, power: null, torque: 139,  weight: 341,
+    seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'scoutsixty-2016', brand: 'indian', model: 'Scout Sixty', year: 2016,
+    category: '크루저', license: '소형이륜',
+    displacement: 999,  power: 78,   torque: 88.8, weight: 249,
+    seatHeight: 643,  fuelEconomy: null, tankCapacity: 12.5,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'chieftain-2017', brand: 'indian', model: 'Chieftain Limited', year: 2017,
+    category: '투어러', license: '소형이륜',
+    displacement: 1811, power: null, torque: 139,  weight: 385,
+    seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'springfield-2018', brand: 'indian', model: 'Springfield Dark Horse', year: 2018,
+    category: '투어러', license: '소형이륜',
+    displacement: 1811, power: null, torque: 139,  weight: 364,
+    seatHeight: 660,  fuelEconomy: null, tankCapacity: 20.8,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'ftr1200s-2019', brand: 'indian', model: 'FTR 1200 S', year: 2019,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1203, power: 120,  torque: 115,  weight: 231,
+    seatHeight: 840,  fuelEconomy: 13.6, tankCapacity: 12.9,
+    topSpeed: 200,  priceKRW: null, image: null
+  },
+  {
+    id: 'challenger-2020', brand: 'indian', model: 'Challenger', year: 2020,
+    category: '투어러', license: '소형이륜',
+    displacement: 1768, power: 122,  torque: 178,  weight: 381,
+    seatHeight: 672,  fuelEconomy: null, tankCapacity: 22.7,
+    topSpeed: 190,  priceKRW: null, image: null
+  },
+  {
+    id: 'superchief-2022', brand: 'indian', model: 'Super Chief Limited', year: 2022,
+    category: '크루저', license: '소형이륜',
+    displacement: 1890, power: null, torque: 162,  weight: 335,
+    seatHeight: 665,  fuelEconomy: null, tankCapacity: 15.1,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
     id: 'scoutbobber-2023', brand: 'indian', model: 'Scout Bobber', year: 2023,
     category: '크루저', license: '소형이륜',
     displacement: 1133, power: 100,  torque: 98,   weight: 251,
@@ -2062,6 +2153,13 @@ const RAW_BIKES = [
     displacement: 1203, power: 120,  torque: 118,  weight: 233,
     seatHeight: 780,  fuelEconomy: 18, tankCapacity: 13.0,
     topSpeed: 210,  priceKRW: null, image: '/bikes/indian/ftr1200-2023.jpg'
+  },
+  {
+    id: 'sportchief-2023', brand: 'indian', model: 'Sport Chief', year: 2023,
+    category: '크루저', license: '소형이륜',
+    displacement: 1890, power: null, torque: 162,  weight: 311,
+    seatHeight: 686,  fuelEconomy: null, tankCapacity: 15.1,
+    topSpeed: null, priceKRW: null, image: null
   },
   {
     id: 'chiefdarkhorse-2023', brand: 'indian', model: 'Chief Dark Horse', year: 2023,
@@ -2077,8 +2175,106 @@ const RAW_BIKES = [
     seatHeight: 672,  fuelEconomy: 16, tankCapacity: 22.7,
     topSpeed: 190,  priceKRW: null, image: '/bikes/indian/challengerdarkhorse-2023.webp'
   },
+  {
+    id: 'pursuitdarkhorse-2023', brand: 'indian', model: 'Pursuit Dark Horse', year: 2023,
+    category: '투어러', license: '소형이륜',
+    displacement: 1768, power: 122,  torque: 178,  weight: 416,
+    seatHeight: 672,  fuelEconomy: null, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'scoutbobber-2025', brand: 'indian', model: 'Scout Bobber', year: 2025,
+    category: '크루저', license: '소형이륜',
+    displacement: 1250, power: 105,  torque: 109,  weight: 246,
+    seatHeight: 649,  fuelEconomy: null, tankCapacity: 13.0,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: '101scout-2025', brand: 'indian', model: '101 Scout', year: 2025,
+    category: '크루저', license: '소형이륜',
+    displacement: 1250, power: 111,  torque: 109,  weight: 249,
+    seatHeight: 654,  fuelEconomy: null, tankCapacity: 13.0,
+    topSpeed: null, priceKRW: null, image: null
+  },
+  {
+    id: 'chieftainpowerplus-2025', brand: 'indian', model: 'Chieftain PowerPlus Limited', year: 2025,
+    category: '투어러', license: '소형이륜',
+    displacement: 1834, power: 126,  torque: 180,  weight: 383,
+    seatHeight: 673,  fuelEconomy: null, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: null
+  },
 
   // ── Aprilia ───────────────────────────────────────────────────────────────
+  {
+    id: 'rs125-2006', brand: 'aprilia', model: 'RS 125', year: 2006,
+    category: '스포츠', license: '원동기',
+    displacement: 125,  power: 28.2, torque: 19.0, weight: 137,
+    seatHeight: 805,  fuelEconomy: 17.0, tankCapacity: 14.0,
+    topSpeed: 160,  priceKRW: null, image: '/bikes/aprilia/rs125-2006.jpg'
+  },
+  {
+    id: 'rs125-2025', brand: 'aprilia', model: 'RS 125', year: 2025,
+    category: '스포츠', license: '원동기',
+    displacement: 124.2, power: 15,   torque: 11.2, weight: 144,
+    seatHeight: 820,  fuelEconomy: 36.9, tankCapacity: 14.5,
+    topSpeed: null, priceKRW: null, image: '/bikes/aprilia/rs125-2025.jpg'
+  },
+  {
+    id: 'rs250-1998', brand: 'aprilia', model: 'RS 250', year: 1998,
+    category: '스포츠', license: '소형이륜',
+    displacement: 249,  power: 72,   torque: 39,   weight: 162,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 19.5,
+    topSpeed: 209,  priceKRW: null, image: '/bikes/aprilia/rs250-1998.webp'
+  },
+  {
+    id: 'rsvmille-1998', brand: 'aprilia', model: 'RSV Mille', year: 1998,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 128,  torque: 103,  weight: 210,
+    seatHeight: 825,  fuelEconomy: null, tankCapacity: 21.0,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/aprilia/rsvmille-1998.jpg'
+  },
+  {
+    id: 'rsvmille-2001', brand: 'aprilia', model: 'RSV Mille', year: 2001,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 130,  torque: 103,  weight: 210,
+    seatHeight: 825,  fuelEconomy: null, tankCapacity: 20.0,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/aprilia/rsvmille-2001.jpg'
+  },
+  {
+    id: 'rsv1000r-2004', brand: 'aprilia', model: 'RSV 1000 R', year: 2004,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 139,  torque: 90.3, weight: 214,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 18.0,
+    topSpeed: 280,  priceKRW: null, image: '/bikes/aprilia/rs1000r-2004.jpg'
+  },
+  {
+    id: 'rsv4factory-2009', brand: 'aprilia', model: 'RSV4 Factory', year: 2009,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999.6, power: 180,  torque: 115,  weight: 208,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 18.5,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/aprilia/rsv4factory-2009.jpg'
+  },
+  {
+    id: 'rsv4rf-2015', brand: 'aprilia', model: 'RSV4 RF', year: 2015,
+    category: '스포츠', license: '소형이륜',
+    displacement: 999.6, power: 201,  torque: 115,  weight: 208,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 18.5,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/aprilia/rsv4rf-2015.jpg'
+  },
+  {
+    id: 'rsv4factory-2021', brand: 'aprilia', model: 'RSV4 Factory', year: 2021,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1099, power: 217,  torque: 125,  weight: 202,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 18.5,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/aprilia/rsv4factory-2021.jpg'
+  },
+  {
+    id: 'rs660-2021', brand: 'aprilia', model: 'RS 660', year: 2021,
+    category: '스포츠', license: '소형이륜',
+    displacement: 659,  power: 100,  torque: 67,   weight: 183,
+    seatHeight: 820,  fuelEconomy: 20, tankCapacity: 15.0,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/aprilia/rs660-2021.jpg'
+  },
   {
     id: 'rs457-2025', brand: 'aprilia', model: 'RS 457', year: 2025,
     category: '스포츠', license: '소형이륜',
@@ -2147,11 +2343,144 @@ const RAW_BIKES = [
 
   // ── MV Agusta ─────────────────────────────────────────────────────────────
   {
+    id: 'f4-750s-1999', brand: 'mvagusta', model: 'F4 750 S', year: 1999,
+    category: '스포츠', license: '소형이륜',
+    displacement: 749,  power: 126,  torque: 74,   weight: 218,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 21.0,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/agusta/f4750s-1999.jpg'
+  },
+  {
+    id: 'f4-750evo3-2003', brand: 'mvagusta', model: 'F4 750 S Evo 03', year: 2003,
+    category: '스포츠', license: '소형이륜',
+    displacement: 749,  power: 136,  torque: 81,   weight: 218,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 21.0,
+    topSpeed: 275,  priceKRW: null, image: '/bikes/agusta/f4750sevo03-2003.jpg'
+  },
+  {
+    id: 'f4-1000s-2005', brand: 'mvagusta', model: 'F4 1000 S', year: 2005,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 166,  torque: 109,  weight: 220,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 21.0,
+    topSpeed: 295,  priceKRW: null, image: '/bikes/agusta/f41000s-2005.jpg'
+  },
+  {
+    id: 'f4-r312-2008', brand: 'mvagusta', model: 'F4 R 312', year: 2008,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 183,  torque: 115,  weight: 220,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 21.0,
+    topSpeed: 312,  priceKRW: null, image: '/bikes/agusta/f4r312-2008.jpg'
+  },
+  {
+    id: 'f4-2010', brand: 'mvagusta', model: 'F4', year: 2010,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 186,  torque: 114,  weight: 192,
+    seatHeight: 830,  fuelEconomy: null, tankCapacity: 17.0,
+    topSpeed: 305,  priceKRW: null, image: '/bikes/agusta/f4-2010.jpg'
+  },
+  {
+    id: 'f4rr-2011', brand: 'mvagusta', model: 'F4 RR', year: 2011,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 201,  torque: 111,  weight: 192,
+    seatHeight: 830,  fuelEconomy: null, tankCapacity: 17.0,
+    topSpeed: 297,  priceKRW: null, image: '/bikes/agusta/f4rr-2011.webp'
+  },
+  {
+    id: 'f4rc-2015', brand: 'mvagusta', model: 'F4 RC', year: 2015,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 205,  torque: 115,  weight: 193,
+    seatHeight: 830,  fuelEconomy: null, tankCapacity: 17.0,
+    topSpeed: 302,  priceKRW: null, image: '/bikes/agusta/f4rc-2015.webp'
+  },
+  {
+    id: 'f3-675-2012', brand: 'mvagusta', model: 'F3 675', year: 2012,
+    category: '스포츠', license: '소형이륜',
+    displacement: 675,  power: 126,  torque: 71,   weight: 173,
+    seatHeight: 812,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/agusta/f3675-2012.jpg'
+  },
+  {
+    id: 'f3-800-2013', brand: 'mvagusta', model: 'F3 800', year: 2013,
+    category: '스포츠', license: '소형이륜',
+    displacement: 798,  power: 148,  torque: 88,   weight: 173,
+    seatHeight: 812,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 269,  priceKRW: null, image: '/bikes/agusta/f3800-2013.webp'
+  },
+  {
+    id: 'f3-675rc-2018', brand: 'mvagusta', model: 'F3 675 RC', year: 2018,
+    category: '스포츠', license: '소형이륜',
+    displacement: 675,  power: 133,  torque: 71,   weight: 173,
+    seatHeight: 812,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/agusta/f3675rc-2018.webp'
+  },
+  {
+    id: 'f3-800rc-2018', brand: 'mvagusta', model: 'F3 800 RC', year: 2018,
+    category: '스포츠', license: '소형이륜',
+    displacement: 798,  power: 153,  torque: 88,   weight: 173,
+    seatHeight: 812,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 269,  priceKRW: null, image: '/bikes/agusta/f3800rc-2018.jpg'
+  },
+  {
+    id: 'brutale750s-2003', brand: 'mvagusta', model: 'Brutale 750 S', year: 2003,
+    category: '네이키드', license: '소형이륜',
+    displacement: 749,  power: 127,  torque: 75,   weight: 211,
+    seatHeight: 805,  fuelEconomy: null, tankCapacity: 19.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/agusta/brutale750s-2003.webp'
+  },
+  {
+    id: 'brutale910s-2005', brand: 'mvagusta', model: 'Brutale 910 S', year: 2005,
+    category: '네이키드', license: '소형이륜',
+    displacement: 909,  power: 136,  torque: 96,   weight: 210,
+    seatHeight: 805,  fuelEconomy: null, tankCapacity: 19.0,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/agusta/brutale910s-2005.jpg'
+  },
+  {
+    id: 'brutale1090rr-2010', brand: 'mvagusta', model: 'Brutale 1090 RR', year: 2010,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1078, power: 144,  torque: 112,  weight: 190,
+    seatHeight: 830,  fuelEconomy: null, tankCapacity: 23.0,
+    topSpeed: 265,  priceKRW: null, image: '/bikes/agusta/brutale1090-2010.webp'
+  },
+  {
+    id: 'brutale675-2012', brand: 'mvagusta', model: 'Brutale 675', year: 2012,
+    category: '네이키드', license: '소형이륜',
+    displacement: 675,  power: 108,  torque: 65,   weight: 183,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 16.6,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/agusta/brutale675-2012.webp'
+  },
+  {
+    id: 'brutale800-2013', brand: 'mvagusta', model: 'Brutale 800', year: 2013,
+    category: '네이키드', license: '소형이륜',
+    displacement: 798,  power: 125,  torque: 81,   weight: 183,
+    seatHeight: 810,  fuelEconomy: null, tankCapacity: 16.6,
+    topSpeed: 245,  priceKRW: null, image: '/bikes/agusta/brutale800-2013.webp'
+  },
+  {
     id: 'brutale800rr-2023', brand: 'mvagusta', model: 'Brutale 800 RR', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 798,  power: 140,  torque: 87,   weight: 175,
     seatHeight: 830,  fuelEconomy: 17, tankCapacity: 16.5,
     topSpeed: 244,  priceKRW: null, image: '/bikes/agusta/brutale800rr-2023.jpg'
+  },
+  {
+    id: 'brutale1000rr-2020', brand: 'mvagusta', model: 'Brutale 1000 RR', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 998,  power: 208,  torque: 116.5, weight: 186,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 16.0,
+    topSpeed: 300,  priceKRW: null, image: '/bikes/agusta/brutale1000rr-2020.jpg'
+  },
+  {
+    id: 'rush1000-2020', brand: 'mvagusta', model: 'Rush 1000', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 998,  power: 205,  torque: 116.5, weight: 184,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 16.0,
+    topSpeed: 300,  priceKRW: null, image: '/bikes/agusta/rush1000-2020.jpg'
+  },
+  {
+    id: 'dragster800-2014', brand: 'mvagusta', model: 'Dragster 800', year: 2014,
+    category: '네이키드', license: '소형이륜',
+    displacement: 798,  power: 125,  torque: 81,   weight: 167,
+    seatHeight: 811,  fuelEconomy: null, tankCapacity: 16.6,
+    topSpeed: 245,  priceKRW: null, image: '/bikes/agusta/dragster800-2014.jpg'
   },
   {
     id: 'dragster800rr-2023', brand: 'mvagusta', model: 'Dragster 800 RR', year: 2023,
@@ -2161,11 +2490,46 @@ const RAW_BIKES = [
     topSpeed: 244,  priceKRW: null, image: '/bikes/agusta/dragster800rr-2023.webp'
   },
   {
+    id: 'rivale800-2013', brand: 'mvagusta', model: 'Rivale 800', year: 2013,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 798,  power: 125,  torque: 84,   weight: 178,
+    seatHeight: 881,  fuelEconomy: null, tankCapacity: 13.0,
+    topSpeed: 245,  priceKRW: null, image: '/bikes/agusta/rivale800-2013.jpg'
+  },
+  {
+    id: 'stradale800-2015', brand: 'mvagusta', model: 'Stradale 800', year: 2015,
+    category: '투어러', license: '소형이륜',
+    displacement: 798,  power: 115,  torque: 78.5, weight: 181,
+    seatHeight: 870,  fuelEconomy: null, tankCapacity: 16.0,
+    topSpeed: 214,  priceKRW: null, image: '/bikes/agusta/stradale800-2015.jpg'
+  },
+  {
+    id: 'turismoveloce800-2015', brand: 'mvagusta', model: 'Turismo Veloce 800', year: 2015,
+    category: '투어러', license: '소형이륜',
+    displacement: 798,  power: 110,  torque: 80,   weight: 192,
+    seatHeight: 850,  fuelEconomy: null, tankCapacity: 22.0,
+    topSpeed: 230,  priceKRW: null, image: '/bikes/agusta/turismoveloce800-2015.jpg'
+  },
+  {
+    id: 'superveloce800-2020', brand: 'mvagusta', model: 'Superveloce 800', year: 2020,
+    category: '스포츠', license: '소형이륜',
+    displacement: 798,  power: 148,  torque: 88,   weight: 173,
+    seatHeight: 830,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/agusta/superveloce800-2020.webp'
+  },
+  {
     id: 'superveloce800-2023', brand: 'mvagusta', model: 'Superveloce 800', year: 2023,
     category: '스포츠', license: '소형이륜',
     displacement: 798,  power: 147,  torque: 88,   weight: 197,
     seatHeight: 830,  fuelEconomy: 16, tankCapacity: 16.5,
     topSpeed: 240,  priceKRW: null, image: '/bikes/agusta/superveloce800-2023.webp'
+  },
+  {
+    id: 'superveloce1000-2024', brand: 'mvagusta', model: 'Superveloce 1000 Serie Oro', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 208,  torque: 116.5, weight: 194,
+    seatHeight: 845,  fuelEconomy: null, tankCapacity: 16.0,
+    topSpeed: 300,  priceKRW: null, image: '/bikes/agusta/superveloce1000serieoro-2024.webp'
   },
   {
     id: 'turismoveloce800-2023', brand: 'mvagusta', model: 'Turismo Veloce 800', year: 2023,
