@@ -1707,6 +1707,153 @@ const RAW_BIKES = [
     topSpeed: 200,  priceKRW: 18000000, image: '/bikes/harley/sportsters-2022.webp'
   },
 
+  {
+    id: 'nightsterspecial-2026', brand: 'harley', model: 'Nightster Special', year: 2026,
+    category: '크루저', license: '소형이륜',
+    displacement: 975,  power: 91,   torque: 98,   weight: 219,
+    seatHeight: 688,  fuelEconomy: 22.1, tankCapacity: 11.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/nightsterspeical-2026.jpg'
+  },
+  {
+    id: 'streetbob-2026', brand: 'harley', model: 'Street Bob', year: 2026,
+    category: '크루저', license: '소형이륜',
+    displacement: 1923, power: 98,   torque: 163,  weight: 293,
+    seatHeight: 655,  fuelEconomy: 20.0, tankCapacity: 13.2,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/streetbob-2026.jpg'
+  },
+  {
+    id: 'lowriders-2026', brand: 'harley', model: 'Low Rider S', year: 2026,
+    category: '크루저', license: '소형이륜',
+    displacement: 1923, power: 114,  torque: 174,  weight: 304,
+    seatHeight: 686,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/lowriders-2026.jpg'
+  },
+  {
+    id: 'lowriderst-2026', brand: 'harley', model: 'Low Rider ST', year: 2026,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 114,  torque: 174,  weight: 323,
+    seatHeight: 686,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/lowriderst-2026.jpg'
+  },
+  {
+    id: 'heritageclassic-2026', brand: 'harley', model: 'Heritage Classic', year: 2026,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 98,   torque: 163,  weight: 326,
+    seatHeight: 668,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/heritageclassic-2026.jpg'
+  },
+  {
+    id: 'fatboy-2026', brand: 'harley', model: 'Fat Boy', year: 2026,
+    category: '크루저', license: '소형이륜',
+    displacement: 1923, power: 103,  torque: 171,  weight: 315,
+    seatHeight: 658,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/fatboy-2026.jpg'
+  },
+  {
+    id: 'breakout-2026', brand: 'harley', model: 'Breakout', year: 2026,
+    category: '크루저', license: '소형이륜',
+    displacement: 1923, power: 103,  torque: 171,  weight: 309,
+    seatHeight: 650,  fuelEconomy: 20.8, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/breakout-2026.jpg'
+  },
+  {
+    id: 'streetglide-2026', brand: 'harley', model: 'Street Glide', year: 2026,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 105,  torque: 176,  weight: 368,
+    seatHeight: 671,  fuelEconomy: 18.7, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/streetglide-2026.jpg'
+  },
+  {
+    id: 'roadglide-2026', brand: 'harley', model: 'Road Glide', year: 2026,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 105,  torque: 176,  weight: 380,
+    seatHeight: 676,  fuelEconomy: 18.7, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/roadglide-2026.jpg'
+  },
+  {
+    id: 'roadkingspecial-2025', brand: 'harley', model: 'Road King Special', year: 2025,
+    category: '투어러', license: '소형이륜',
+    displacement: 1868, power: 95,   torque: 165,  weight: 366,
+    seatHeight: 671,  fuelEconomy: 18.3, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/roadkingspecial-2025.webp'
+  },
+  {
+    id: 'panamerica1250special-2026', brand: 'harley', model: 'Pan America 1250 Special', year: 2026,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1252, power: 150,  torque: 127,  weight: 262,
+    seatHeight: 790,  fuelEconomy: 19.6, tankCapacity: 21.2,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/panamerica1250special-2026.webp'
+  },
+  {
+    id: 'streetbob-2018', brand: 'harley', model: 'Street Bob', year: 2018,
+    category: '크루저', license: '소형이륜',
+    displacement: 1746, power: null, torque: 149,  weight: 286,
+    seatHeight: 680,  fuelEconomy: 20.0, tankCapacity: 13.2,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/streetbob-2018.jpg'
+  },
+  {
+    id: 'fatboy-2018', brand: 'harley', model: 'Fat Boy', year: 2018,
+    category: '크루저', license: '소형이륜',
+    displacement: 1868, power: null, torque: 161,  weight: 317,
+    seatHeight: 675,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/fatboy-2018.png'
+  },
+  {
+    id: 'breakout-2018', brand: 'harley', model: 'Breakout', year: 2018,
+    category: '크루저', license: '소형이륜',
+    displacement: 1868, power: null, torque: 161,  weight: 305,
+    seatHeight: 665,  fuelEconomy: 20.0, tankCapacity: 13.2,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/breakout-2018.webp'
+  },
+  {
+    id: 'heritageclassic-2018', brand: 'harley', model: 'Heritage Classic', year: 2018,
+    category: '투어러', license: '소형이륜',
+    displacement: 1868, power: null, torque: 161,  weight: 330,
+    seatHeight: 680,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/heritageclassic-2018.jpg'
+  },
+  {
+    id: 'sportsters-2021', brand: 'harley', model: 'Sportster S', year: 2021,
+    category: '크루저', license: '소형이륜',
+    displacement: 1252, power: 121,  torque: 127,  weight: 228,
+    seatHeight: 755,  fuelEconomy: 20.0, tankCapacity: 11.8,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/sportsters-2021.jpg'
+  },
+  {
+    id: 'panamerica1250special-2021', brand: 'harley', model: 'Pan America 1250 Special', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1252, power: 150,  torque: 127,  weight: 258,
+    seatHeight: 813,  fuelEconomy: 19.6, tankCapacity: 21.2,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/panamerica1250special-2021.jpg'
+  },
+  {
+    id: 'lowriders-2022', brand: 'harley', model: 'Low Rider S', year: 2022,
+    category: '크루저', license: '소형이륜',
+    displacement: 1923, power: 103,  torque: 169,  weight: 308,
+    seatHeight: 710,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/lowriders-2022.jpg'
+  },
+  {
+    id: 'lowriderst-2022', brand: 'harley', model: 'Low Rider ST', year: 2022,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 103,  torque: 169,  weight: 327,
+    seatHeight: 720,  fuelEconomy: 20.0, tankCapacity: 18.9,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/lowriderst-2022.png'
+  },
+  {
+    id: 'streetglide-2024', brand: 'harley', model: 'Street Glide', year: 2024,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 105,  torque: 176,  weight: 368,
+    seatHeight: 671,  fuelEconomy: 18.7, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/streetglide-2024.webp'
+  },
+  {
+    id: 'roadglide-2024', brand: 'harley', model: 'Road Glide', year: 2024,
+    category: '투어러', license: '소형이륜',
+    displacement: 1923, power: 105,  torque: 176,  weight: 380,
+    seatHeight: 676,  fuelEconomy: 18.7, tankCapacity: 22.7,
+    topSpeed: null, priceKRW: null, image: '/bikes/harley/roadglide-2024.jpg'
+  },
   // ── Suzuki ────────────────────────────────────────────────────────────────
   {
     id: 'gsxs125-2023', brand: 'suzuki', model: 'GSX-S125', year: 2023,
@@ -2596,3 +2743,7 @@ export const ALL_CATEGORIES = [
   '미니/입문', '스쿠터', '네이키드', '스포츠',
   '클래식', '어드벤처', '크루저', '투어러', '슈퍼모토',
 ]
+
+
+
+
