@@ -184,8 +184,32 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Harley-Davidson
 
-- [ ] 2020 Iron 883 (`iron883-2020`) 0
-- [ ] 2022 Sportster S (`sportster-2022`) 0
+> 2026-06-24 기준: 등록 23개 이미지 연결 완료.
+> `nightsterspeical-2026`은 현재 파일명 오타를 기준으로 연결되어 있습니다.
+
+- [x] 2020 Iron 883 (`iron883-2020`)
+- [x] 2021 Sportster S (`sportsters-2021`)
+- [x] 2022 Sportster S (`sportster-2022`)
+- [x] 2026 Nightster Special (`nightsterspecial-2026`)
+- [x] 2018 Street Bob (`streetbob-2018`)
+- [x] 2026 Street Bob (`streetbob-2026`)
+- [x] 2022 Low Rider S (`lowriders-2022`)
+- [x] 2026 Low Rider S (`lowriders-2026`)
+- [x] 2022 Low Rider ST (`lowriderst-2022`)
+- [x] 2026 Low Rider ST (`lowriderst-2026`)
+- [x] 2018 Heritage Classic (`heritageclassic-2018`)
+- [x] 2026 Heritage Classic (`heritageclassic-2026`)
+- [x] 2018 Fat Boy (`fatboy-2018`)
+- [x] 2026 Fat Boy (`fatboy-2026`)
+- [x] 2018 Breakout (`breakout-2018`)
+- [x] 2026 Breakout (`breakout-2026`)
+- [x] 2024 Street Glide (`streetglide-2024`)
+- [x] 2026 Street Glide (`streetglide-2026`)
+- [x] 2024 Road Glide (`roadglide-2024`)
+- [x] 2026 Road Glide (`roadglide-2026`)
+- [x] 2025 Road King Special (`roadkingspecial-2025`)
+- [x] 2021 Pan America 1250 Special (`panamerica1250special-2021`)
+- [x] 2026 Pan America 1250 Special (`panamerica1250special-2026`)
 
 ## Suzuki
 
@@ -270,3 +294,4 @@ public/bikes/yamaha/mt03-2023.jpg
 - [x] 2023 Dragster 800 RR (`dragster800rr-2023`)
 - [x] 2023 Superveloce 800 (`superveloce800-2023`)
 - [x] 2023 Turismo Veloce 800 (`turismoveloce800-2023`)
+

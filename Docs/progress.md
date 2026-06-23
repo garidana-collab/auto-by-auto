@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 22일 (v0.9.1 체형 입력 UX 및 연비 데이터 보강)
+> 마지막 업데이트: 2026년 6월 24일 (v0.9.2 Harley-Davidson 대표/세대 변화 기종 확장 및 이미지 연결)
 
 ---
 
@@ -165,17 +165,25 @@ auto-by-auto/
 - **연비 누락 보강**: `fuelEconomy: null`이던 51개 기종에 기존 DB 유사 제원 기반 추정 연비를 주입
 - **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.9.1`로 동기화
 - **검증 완료**: `fuelEconomy` 누락 0개 확인, `npm.cmd run build` 성공
+
+#### 13단계 — Harley-Davidson 대표/세대 변화 기종 확장 및 이미지 연결 (2026-06-24)
+- **Harley-Davidson 최신 대표 기종 확장**: Nightster Special, Street Bob, Low Rider S, Low Rider ST, Heritage Classic, Fat Boy, Breakout, Street Glide, Road Glide, Road King Special, Pan America 1250 Special 추가
+- **유의미한 변화 연식 추가**: 2018 Softail 통합 플랫폼, 2021 Revolution Max 계열, 2022 Low Rider 117ci/ST 전환, 2024 Street/Road Glide 대개편 연식만 선별 등록
+- **Harley 이미지 연결 완료**: 등록된 Harley-Davidson 23개 전 항목을 `public/bikes/harley/` 실제 파일과 연결
+- **BMW Adventure/XR 계열 정리 반영**: F 900 XR/S 1000 XR은 1년 단위 중복을 줄이고 변화 연식 중심으로 유지, F 900 GS/F 900 GS Adventure/R 1300 GS 추가 및 이미지 연결
+- **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.9.2`로 동기화
+- **검증 완료**: Harley 이미지 경로 누락 0개 확인, `npm.cmd run build` 성공
 ---
 
 ## 현재 데이터 현황
 
 > ⚠️ 현재 데이터는 AI 학습 데이터 기반 추정값으로, 실제 제조사 공식 스펙과 다를 수 있음.  
-> 2026-06-17 Yamaha/BMW/Ducati 확장분과 2026-06-18 신규 브랜드 확장분은 공개 스펙을 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
+> 2026-06-17 이후 Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장분은 공개 스펙과 제조사 페이지를 대조해 채웠지만, 서비스화 전 제조사 공식 스펙시트 기준 재검증 필요.
 
 ### 등록된 브랜드 (15개)
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa / Indian Motorcycle / Aprilia / Husqvarna / MV Agusta
 
-### 등록된 기종 (302개)
+### 등록된 기종 (372개)
 
 | 브랜드 | 등록 대수 | 비고 |
 |--------|----------:|------|
@@ -183,17 +191,17 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | Honda | 80 | 2026-06-22 기준 현재 데이터 반영 |
 | Kawasaki | 51 | 2026-06-22 기준 현재 데이터 반영 |
 | BMW Motorrad | 35 | 2026-06-22 기준 이미지 연결 완료 |
-| Harley-Davidson | 2 | 기존 데이터 유지 |
+| Harley-Davidson | 23 | 2026-06-24 기준 대표/세대 변화 기종 확장 및 이미지 연결 완료 |
 | Suzuki | 25 | 2026-06-22 기준 현재 데이터 반영 |
 | KTM | 3 | 기존 데이터 유지 |
 | Ducati | 13 | 2026-06-17 기준 2025 라인업 확장 및 이미지 연결 완료 |
 | Triumph | 2 | 기존 데이터 유지 |
 | Royal Enfield | 2 | 기존 데이터 유지 |
 | Vespa | 2 | 기존 데이터 유지 |
-| Indian Motorcycle | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
-| Aprilia | 5 | 2026-06-19 기준 이미지/로고 연결 완료 |
+| Indian Motorcycle | 19 | 2026-06-24 기준 현재 데이터 반영 및 이미지 연결 완료 |
+| Aprilia | 15 | 2026-06-24 기준 현재 데이터 반영 및 이미지 연결 완료 |
 | Husqvarna | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
-| MV Agusta | 4 | 2026-06-19 기준 이미지/로고 연결 완료 |
+| MV Agusta | 28 | 2026-06-24 기준 현재 데이터 반영 및 이미지 연결 완료 |
 
 ### Yamaha 등록 현황 (70개)
 
@@ -262,6 +270,24 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 어드벤처 | F 900 GS Adventure | 2024 |
 | 어드벤처 | R 1300 GS | 2024 |
 
+### Harley-Davidson 등록 현황 (23개)
+
+| 카테고리 | 모델 | 연식 |
+|----------|------|------|
+| 크루저 | Iron 883 | 2020 |
+| 크루저 | Sportster S | 2021, 2022 |
+| 크루저 | Nightster Special | 2026 |
+| 크루저 | Street Bob | 2018, 2026 |
+| 크루저 | Low Rider S | 2022, 2026 |
+| 투어러 | Low Rider ST | 2022, 2026 |
+| 투어러 | Heritage Classic | 2018, 2026 |
+| 크루저 | Fat Boy | 2018, 2026 |
+| 크루저 | Breakout | 2018, 2026 |
+| 투어러 | Street Glide | 2024, 2026 |
+| 투어러 | Road Glide | 2024, 2026 |
+| 투어러 | Road King Special | 2025 |
+| 어드벤처 | Pan America 1250 Special | 2021, 2026 |
+
 ### Ducati 등록 현황 (13개)
 
 | 카테고리 | 모델 | 연식 |
@@ -287,7 +313,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 | 네이키드 | CB650R | 2019, 2023, 2024 |
 | 스포츠 | CBR650R | 2019, 2021, 2024 |
 
-### 신규 브랜드 등록 현황 (17개)
+### 신규 브랜드 대표 등록 현황 (요약)
 
 | 브랜드 | 카테고리 | 모델 | 연식 |
 |--------|----------|------|------|
@@ -315,12 +341,19 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 |--------|------------:|------|
 | Honda | 80 / 80 | 등록 기종 전체 연결 완료 |
 | Yamaha | 69 / 70 | `xmax250-2020` 미연결 |
+| Kawasaki | 51 / 51 | 등록 기종 전체 연결 완료 |
 | BMW Motorrad | 35 / 35 | 등록 기종 전체 연결 완료 |
+| Harley-Davidson | 23 / 23 | 등록 기종 전체 연결 완료 |
+| Suzuki | 25 / 25 | 등록 기종 전체 연결 완료 |
+| KTM | 3 / 3 | 등록 기종 전체 연결 완료 |
 | Ducati | 13 / 13 | 등록 기종 전체 연결 완료 |
-| Indian Motorcycle | 4 / 4 | 등록 기종 전체 연결 완료 |
-| Aprilia | 5 / 5 | 등록 기종 전체 연결 완료 |
+| Triumph | 2 / 2 | 등록 기종 전체 연결 완료 |
+| Royal Enfield | 2 / 2 | 등록 기종 전체 연결 완료 |
+| Vespa | 2 / 2 | 등록 기종 전체 연결 완료 |
+| Indian Motorcycle | 19 / 19 | 등록 기종 전체 연결 완료 |
+| Aprilia | 15 / 15 | 등록 기종 전체 연결 완료 |
 | Husqvarna | 4 / 4 | 등록 기종 전체 연결 완료 |
-| MV Agusta | 4 / 4 | 등록 기종 전체 연결 완료 |
+| MV Agusta | 28 / 28 | 등록 기종 전체 연결 완료 |
 
 ### 제원 항목 (9종)
 배기량 / 최고출력 / 토크 / 공차중량 / 시트고 / 연비 / 연료탱크 / 최고속도 / 가격대
@@ -331,7 +364,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 ### 단기 (바로 가능)
 - [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `bikes.js` 연결
-- [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
+- [ ] Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [x] Vercel 배포 및 Search Console URL 접두어 소유권 인증
 - [ ] Search Console에서 `sitemap.xml` 제출 상태 재확인 및 URL 검사로 색인 생성 요청
 - [ ] 쉬운 찾기 태그 기준 및 색상 사용자 테스트
@@ -339,7 +372,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 
 ### 중기
 - [ ] 데이터 정확성 검증 (제조사 공식 스펙시트 대조)
-- [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
+- [ ] Suzuki, KTM, Triumph, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [x] 모바일 필터 접힘/하단 시트 UX 1차 개선
 - [ ] 모바일 UI 세부 QA 및 터치 동선 추가 개선
 - [ ] 상세 탭에서 같은 카테고리/비슷한 배기량 추천 기준 고도화
@@ -366,3 +399,5 @@ cd ~/Documents/Github/auto-by-auto
 npm run dev
 # → http://localhost:5173
 ```
+
+

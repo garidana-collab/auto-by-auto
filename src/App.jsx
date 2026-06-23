@@ -386,7 +386,7 @@ export default function App() {
           <span className="logo-wordmark">
             오토<span>바이</span>오토
           </span>
-          <span className="logo-version">v0.9.1</span>
+          <span className="logo-version">v0.9.2</span>
         </div>
 
         {/* 체형 필터 */}
@@ -1763,3 +1763,4 @@ button { font-family: inherit; }
   .legend-row { flex-direction: column; gap: 6px; }
 }
 `
+

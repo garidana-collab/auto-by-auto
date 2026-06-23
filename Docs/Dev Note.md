@@ -227,11 +227,36 @@
   - `npm.cmd run build` 성공
   - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
-## version 0.9.2 — 예정
-- [ ] Yamaha/BMW/Ducati/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
-- [ ] Suzuki, KTM, Triumph, Harley-Davidson, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
+## version 0.9.2 — Harley-Davidson 대표/세대 변화 기종 확장 및 이미지 연결
+> 2026-06-24 | 파일: `src/data/bikes.js`, `public/bikes/harley/*`, `Docs/progress.md`, `Docs/Dev Note.md`, `Docs/bike-image-checklist.md`, `src/App.jsx`, `package.json`, `package-lock.json`
+
+- Harley-Davidson 데이터 확장:
+  - 기존 Iron 883, Sportster S 포함 Harley-Davidson 총 23개 등록
+  - 최신 대표 기종 추가: Nightster Special, Street Bob, Low Rider S, Low Rider ST, Heritage Classic, Fat Boy, Breakout, Street Glide, Road Glide, Road King Special, Pan America 1250 Special
+  - 주요 변화 연식 추가: 2018 Softail 통합 플랫폼, 2021 Revolution Max 계열, 2022 Low Rider 117ci/ST 전환, 2024 Street/Road Glide 대개편
+- Harley-Davidson 이미지 연결:
+  - 등록 기종 23/23개 `image` 필드 연결 완료
+  - 실제 파일 확장자와 불일치하던 `fatboy-2018`, `breakout-2018`, `lowriderst-2022`, `streetglide-2024`, `roadkingspecial-2025`, `panamerica1250special-2026` 경로 정리
+  - `nightsterspeical-2026.jpg`는 현재 파일명 오타를 그대로 따라 연결
+- BMW Adventure/XR 계열 보강 반영:
+  - F 900 XR, S 1000 XR, F 900 GS, F 900 GS Adventure, R 1300 GS 추가
+  - F 900 XR/S 1000 XR은 1년 단위 중복 대신 유의미한 변화 연식만 유지
+- 데이터 현황 갱신:
+  - 전체 등록 기종 372개 기준으로 브랜드별 대수와 이미지 연결 현황 재정리
+- 버전 동기화:
+  - 화면 표시 버전 `v0.9.2`
+  - `package.json`, `package-lock.json` 버전 `0.9.2`
+- 검증:
+  - Harley-Davidson 이미지 경로 누락 0개 확인
+  - `npm.cmd run build` 성공
+  - Vite 번들 크기 경고만 발생, 빌드 실패 없음
+
+## version 0.9.3 — 예정
+- [ ] Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
+- [ ] Suzuki, KTM, Triumph, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Search Console sitemap 제출 상태 `성공` 확인 및 URL 색인 요청
 - [ ] 커스텀 도메인 구입 및 연결
 - [ ] 모바일 UI 세부 QA 및 터치 동선 추가 개선
 - [ ] 쉬운 찾기 태그 기준 및 색상 사용자 테스트
 - [ ] 상세 탭 추천 기준 고도화
+
