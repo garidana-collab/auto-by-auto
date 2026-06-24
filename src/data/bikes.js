@@ -2033,11 +2033,81 @@ const RAW_BIKES = [
 
   // ── KTM ───────────────────────────────────────────────────────────────────
   {
+    id: 'duke125-2011', brand: 'ktm', model: 'Duke 125', year: 2011,
+    category: '네이키드', license: '원동기',
+    displacement: 125,  power: 15,   torque: 12,   weight: 137,
+    seatHeight: 800,  fuelEconomy: 35, tankCapacity: 11.0,
+    topSpeed: 120,  priceKRW: null, image: '/bikes/ktm/duke125-2011.jpg'
+  },
+  {
+    id: 'duke200-2012', brand: 'ktm', model: 'Duke 200', year: 2012,
+    category: '네이키드', license: '소형이륜',
+    displacement: 199.5, power: 25.5, torque: 19.3, weight: 150,
+    seatHeight: 810,  fuelEconomy: 30, tankCapacity: 10.2,
+    topSpeed: 136,  priceKRW: null, image: '/bikes/ktm/duke200-2012.jpg'
+  },
+  {
+    id: 'duke390-2013', brand: 'ktm', model: 'Duke 390', year: 2013,
+    category: '네이키드', license: '소형이륜',
+    displacement: 373,  power: 44,   torque: 35,   weight: 150,
+    seatHeight: 800,  fuelEconomy: 29, tankCapacity: 11.0,
+    topSpeed: 170,  priceKRW: null, image: '/bikes/ktm/duke390-2013.webp'
+  },
+  {
+    id: 'duke250-2015', brand: 'ktm', model: 'Duke 250', year: 2015,
+    category: '네이키드', license: '소형이륜',
+    displacement: 248.8, power: 31,   torque: 24,   weight: 146,
+    seatHeight: 830,  fuelEconomy: 30, tankCapacity: 13.4,
+    topSpeed: 148,  priceKRW: null, image: '/bikes/ktm/duke250-2015.webp'
+  },
+  {
+    id: 'duke390-2017', brand: 'ktm', model: 'Duke 390', year: 2017,
+    category: '네이키드', license: '소형이륜',
+    displacement: 373,  power: 44,   torque: 37,   weight: 163,
+    seatHeight: 830,  fuelEconomy: 29, tankCapacity: 13.4,
+    topSpeed: 170,  priceKRW: null, image: '/bikes/ktm/duke390-2017.jpg'
+  },
+  {
     id: 'duke390-2023', brand: 'ktm', model: 'Duke 390', year: 2023,
     category: '네이키드', license: '소형이륜',
     displacement: 373,  power: 43,   torque: 37,   weight: 163,
     seatHeight: 830,  fuelEconomy: 28, tankCapacity: 13.4,
     topSpeed: 167,  priceKRW: 6700000, image: '/bikes/ktm/duke390-2023.jpg'
+  },
+  {
+    id: 'duke390-2024', brand: 'ktm', model: 'Duke 390', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 399,  power: 45.3, torque: 39,   weight: 165,
+    seatHeight: 800,  fuelEconomy: 28, tankCapacity: 15.0,
+    topSpeed: 167,  priceKRW: null, image: '/bikes/ktm/duke390-2024.jpg'
+  },
+  {
+    id: 'duke690-2008', brand: 'ktm', model: 'Duke 690', year: 2008,
+    category: '네이키드', license: '소형이륜',
+    displacement: 654,  power: 65,   torque: 67,   weight: 160,
+    seatHeight: 865,  fuelEconomy: 23, tankCapacity: 13.5,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ktm/duk690-2008.webp'
+  },
+  {
+    id: 'duke690-2012', brand: 'ktm', model: 'Duke 690', year: 2012,
+    category: '네이키드', license: '소형이륜',
+    displacement: 690,  power: 67,   torque: 70,   weight: 160,
+    seatHeight: 835,  fuelEconomy: 23, tankCapacity: 14.0,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ktm/duke690-2012.jpg'
+  },
+  {
+    id: 'duke690r-2016', brand: 'ktm', model: 'Duke 690 R', year: 2016,
+    category: '네이키드', license: '소형이륜',
+    displacement: 690,  power: 73,   torque: 74,   weight: 160,
+    seatHeight: 865,  fuelEconomy: 23, tankCapacity: 14.0,
+    topSpeed: 205,  priceKRW: null, image: null
+  },
+  {
+    id: 'duke790-2018', brand: 'ktm', model: 'Duke 790', year: 2018,
+    category: '네이키드', license: '소형이륜',
+    displacement: 799,  power: 105,  torque: 87,   weight: 189,
+    seatHeight: 825,  fuelEconomy: 22, tankCapacity: 14.0,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/ktm/duke790-2018.jpg'
   },
   {
     id: 'adventure390-2023', brand: 'ktm', model: 'Adventure 390', year: 2023,
@@ -2052,6 +2122,153 @@ const RAW_BIKES = [
     displacement: 799,  power: 105,  torque: 87,   weight: 189,
     seatHeight: 825,  fuelEconomy: 22, tankCapacity: 14.0,
     topSpeed: 220,  priceKRW: 13500000, image: '/bikes/ktm/duke790-2023.png'
+  },
+  {
+    id: 'duke890r-2020', brand: 'ktm', model: 'Duke 890 R', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 890,  power: 121,  torque: 99,   weight: 186,
+    seatHeight: 834,  fuelEconomy: 22, tankCapacity: 14.0,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ktm/duke890r-2020.jpg'
+  },
+  {
+    id: 'superduke990-2005', brand: 'ktm', model: '990 Super Duke', year: 2005,
+    category: '네이키드', license: '소형이륜',
+    displacement: 999,  power: 120,  torque: 100,  weight: 199,
+    seatHeight: 855,  fuelEconomy: null, tankCapacity: 18.5,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ktm/990superduke-2005.jpg'
+  },
+  {
+    id: 'superduke990r-2012', brand: 'ktm', model: '990 Super Duke R', year: 2012,
+    category: '네이키드', license: '소형이륜',
+    displacement: 999,  power: 123,  torque: 100,  weight: 190,
+    seatHeight: 850,  fuelEconomy: null, tankCapacity: 18.5,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ktm/990superduker-2012.jpg'
+  },
+  {
+    id: 'superduke1290r-2014', brand: 'ktm', model: '1290 Super Duke R', year: 2014,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1301, power: 177,  torque: 144,  weight: 213,
+    seatHeight: 835,  fuelEconomy: null, tankCapacity: 18.0,
+    topSpeed: 289,  priceKRW: null, image: '/bikes/ktm/1290superduker-2014.jpg'
+  },
+  {
+    id: 'superduke1290r-2020', brand: 'ktm', model: '1290 Super Duke R', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1301, power: 180,  torque: 140,  weight: 209,
+    seatHeight: 835,  fuelEconomy: null, tankCapacity: 16.0,
+    topSpeed: 289,  priceKRW: null, image: '/bikes/ktm/1290superduker-2020.jpg'
+  },
+  {
+    id: 'superduke1390r-2024', brand: 'ktm', model: '1390 Super Duke R', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1350, power: 190,  torque: 145,  weight: 212,
+    seatHeight: 834,  fuelEconomy: null, tankCapacity: 17.5,
+    topSpeed: 290,  priceKRW: null, image: '/bikes/ktm/1390superduker-2024.webp'
+  },
+  {
+    id: 'rc390-2014', brand: 'ktm', model: 'RC 390', year: 2014,
+    category: '스포츠', license: '소형이륜',
+    displacement: 373,  power: 44,   torque: 35,   weight: 166,
+    seatHeight: 820,  fuelEconomy: 29, tankCapacity: 10.0,
+    topSpeed: 179,  priceKRW: null, image: '/bikes/ktm/rc390-2014.jpg'
+  },
+  {
+    id: 'rc390-2022', brand: 'ktm', model: 'RC 390', year: 2022,
+    category: '스포츠', license: '소형이륜',
+    displacement: 373,  power: 44,   torque: 37,   weight: 172,
+    seatHeight: 824,  fuelEconomy: 29, tankCapacity: 13.7,
+    topSpeed: 179,  priceKRW: null, image: '/bikes/ktm/rc390-2022.jpg'
+  },
+  {
+    id: 'rc8-2008', brand: 'ktm', model: '1190 RC8', year: 2008,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1148, power: 152,  torque: 120,  weight: 200,
+    seatHeight: 805,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 280,  priceKRW: null, image: '/bikes/ktm/1190rc8-2008.jpg'
+  },
+  {
+    id: 'rc8r-2011', brand: 'ktm', model: '1190 RC8 R', year: 2011,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1195, power: 173,  torque: 122,  weight: 200,
+    seatHeight: 805,  fuelEconomy: null, tankCapacity: 16.5,
+    topSpeed: 285,  priceKRW: null, image: '/bikes/ktm/1190rc8r-2011.webp'
+  },
+  {
+    id: 'adventure950-2003', brand: 'ktm', model: '950 Adventure', year: 2003,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 942,  power: 102,  torque: 97,   weight: 206,
+    seatHeight: 880,  fuelEconomy: 15.6, tankCapacity: 22.0,
+    topSpeed: 215,  priceKRW: null, image: '/bikes/ktm/950adventure-2003.jpg'
+  },
+  {
+    id: 'adventure990-2006', brand: 'ktm', model: '990 Adventure', year: 2006,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 999.9, power: 105, torque: 100,  weight: 209,
+    seatHeight: 860,  fuelEconomy: null, tankCapacity: 19.5,
+    topSpeed: 198,  priceKRW: null, image: '/bikes/ktm/990adventure-2006.webp'
+  },
+  {
+    id: 'adventure1190-2013', brand: 'ktm', model: '1190 Adventure', year: 2013,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1195, power: 150,  torque: 125,  weight: 230,
+    seatHeight: 860,  fuelEconomy: null, tankCapacity: 23.0,
+    topSpeed: 230,  priceKRW: null, image: '/bikes/ktm/1190adventure-2013.jpg'
+  },
+  {
+    id: 'superadventure1290-2015', brand: 'ktm', model: '1290 Super Adventure', year: 2015,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1301, power: 160,  torque: 140,  weight: 249,
+    seatHeight: 860,  fuelEconomy: null, tankCapacity: 30.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/ktm/1290superadventure-2015.webp'
+  },
+  {
+    id: 'adventure790-2019', brand: 'ktm', model: '790 Adventure', year: 2019,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 799,  power: 95,   torque: 88,   weight: 210,
+    seatHeight: 850,  fuelEconomy: 22, tankCapacity: 20.0,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ktm/790adventure-2019.webp'
+  },
+  {
+    id: 'adventure390-2020', brand: 'ktm', model: 'Adventure 390', year: 2020,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 373,  power: 43,   torque: 37,   weight: 172,
+    seatHeight: 855,  fuelEconomy: 27, tankCapacity: 14.5,
+    topSpeed: 155,  priceKRW: null, image: '/bikes/ktm/adventure390-2020.jpg'
+  },
+  {
+    id: 'adventure890r-2021', brand: 'ktm', model: '890 Adventure R', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 889,  power: 105,  torque: 100,  weight: 215,
+    seatHeight: 880,  fuelEconomy: 22, tankCapacity: 20.0,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ktm/890adventurer-2021.webp'
+  },
+  {
+    id: 'superadventure1290s-2021', brand: 'ktm', model: '1290 Super Adventure S', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1301, power: 160,  torque: 138,  weight: 245,
+    seatHeight: 849,  fuelEconomy: null, tankCapacity: 23.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/ktm/1290superadventures-2021.jpg'
+  },
+  {
+    id: 'smcr690-2019', brand: 'ktm', model: '690 SMC R', year: 2019,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 693,  power: 74,   torque: 73.5, weight: 158,
+    seatHeight: 890,  fuelEconomy: 24, tankCapacity: 13.5,
+    topSpeed: 190,  priceKRW: null, image: '/bikes/ktm/690smcr-2019.jpg'
+  },
+  {
+    id: 'enduro690r-2019', brand: 'ktm', model: '690 Enduro R', year: 2019,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 693,  power: 74,   torque: 73.5, weight: 160,
+    seatHeight: 910,  fuelEconomy: 24, tankCapacity: 13.5,
+    topSpeed: 170,  priceKRW: null, image: '/bikes/ktm/690enduror-2019.webp'
+  },
+  {
+    id: 'smcr390-2025', brand: 'ktm', model: '390 SMC R', year: 2025,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 399,  power: 45,   torque: 39,   weight: 154,
+    seatHeight: 860,  fuelEconomy: null, tankCapacity: 9.0,
+    topSpeed: 160,  priceKRW: null, image: '/bikes/ktm/390smcr-2025.png'
   },
 
   // ── Ducati ────────────────────────────────────────────────────────────────
