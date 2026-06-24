@@ -2134,35 +2134,35 @@ const RAW_BIKES = [
     id: 'superduke990-2005', brand: 'ktm', model: '990 Super Duke', year: 2005,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 120,  torque: 100,  weight: 199,
-    seatHeight: 855,  fuelEconomy: null, tankCapacity: 18.5,
+    seatHeight: 855,  fuelEconomy: 18, tankCapacity: 18.5,
     topSpeed: 240,  priceKRW: null, image: '/bikes/ktm/990superduke-2005.jpg'
   },
   {
     id: 'superduke990r-2012', brand: 'ktm', model: '990 Super Duke R', year: 2012,
     category: '네이키드', license: '소형이륜',
     displacement: 999,  power: 123,  torque: 100,  weight: 190,
-    seatHeight: 850,  fuelEconomy: null, tankCapacity: 18.5,
+    seatHeight: 850,  fuelEconomy: 17, tankCapacity: 18.5,
     topSpeed: 240,  priceKRW: null, image: '/bikes/ktm/990superduker-2012.jpg'
   },
   {
     id: 'superduke1290r-2014', brand: 'ktm', model: '1290 Super Duke R', year: 2014,
     category: '네이키드', license: '소형이륜',
     displacement: 1301, power: 177,  torque: 144,  weight: 213,
-    seatHeight: 835,  fuelEconomy: null, tankCapacity: 18.0,
+    seatHeight: 835,  fuelEconomy: 16, tankCapacity: 18.0,
     topSpeed: 289,  priceKRW: null, image: '/bikes/ktm/1290superduker-2014.jpg'
   },
   {
     id: 'superduke1290r-2020', brand: 'ktm', model: '1290 Super Duke R', year: 2020,
     category: '네이키드', license: '소형이륜',
     displacement: 1301, power: 180,  torque: 140,  weight: 209,
-    seatHeight: 835,  fuelEconomy: null, tankCapacity: 16.0,
+    seatHeight: 835,  fuelEconomy: 16, tankCapacity: 16.0,
     topSpeed: 289,  priceKRW: null, image: '/bikes/ktm/1290superduker-2020.jpg'
   },
   {
     id: 'superduke1390r-2024', brand: 'ktm', model: '1390 Super Duke R', year: 2024,
     category: '네이키드', license: '소형이륜',
     displacement: 1350, power: 190,  torque: 145,  weight: 212,
-    seatHeight: 834,  fuelEconomy: null, tankCapacity: 17.5,
+    seatHeight: 834,  fuelEconomy: 15, tankCapacity: 17.5,
     topSpeed: 290,  priceKRW: null, image: '/bikes/ktm/1390superduker-2024.webp'
   },
   {
@@ -2183,14 +2183,14 @@ const RAW_BIKES = [
     id: 'rc8-2008', brand: 'ktm', model: '1190 RC8', year: 2008,
     category: '스포츠', license: '소형이륜',
     displacement: 1148, power: 152,  torque: 120,  weight: 200,
-    seatHeight: 805,  fuelEconomy: null, tankCapacity: 16.5,
+    seatHeight: 805,  fuelEconomy: 15, tankCapacity: 16.5,
     topSpeed: 280,  priceKRW: null, image: '/bikes/ktm/1190rc8-2008.jpg'
   },
   {
     id: 'rc8r-2011', brand: 'ktm', model: '1190 RC8 R', year: 2011,
     category: '스포츠', license: '소형이륜',
     displacement: 1195, power: 173,  torque: 122,  weight: 200,
-    seatHeight: 805,  fuelEconomy: null, tankCapacity: 16.5,
+    seatHeight: 805,  fuelEconomy: 14.5, tankCapacity: 16.5,
     topSpeed: 285,  priceKRW: null, image: '/bikes/ktm/1190rc8r-2011.webp'
   },
   {
@@ -2204,21 +2204,21 @@ const RAW_BIKES = [
     id: 'adventure990-2006', brand: 'ktm', model: '990 Adventure', year: 2006,
     category: '어드벤처', license: '소형이륜',
     displacement: 999.9, power: 105, torque: 100,  weight: 209,
-    seatHeight: 860,  fuelEconomy: null, tankCapacity: 19.5,
+    seatHeight: 860,  fuelEconomy: 17, tankCapacity: 19.5,
     topSpeed: 198,  priceKRW: null, image: '/bikes/ktm/990adventure-2006.webp'
   },
   {
     id: 'adventure1190-2013', brand: 'ktm', model: '1190 Adventure', year: 2013,
     category: '어드벤처', license: '소형이륜',
     displacement: 1195, power: 150,  torque: 125,  weight: 230,
-    seatHeight: 860,  fuelEconomy: null, tankCapacity: 23.0,
+    seatHeight: 860,  fuelEconomy: 18, tankCapacity: 23.0,
     topSpeed: 230,  priceKRW: null, image: '/bikes/ktm/1190adventure-2013.jpg'
   },
   {
     id: 'superadventure1290-2015', brand: 'ktm', model: '1290 Super Adventure', year: 2015,
     category: '어드벤처', license: '소형이륜',
     displacement: 1301, power: 160,  torque: 140,  weight: 249,
-    seatHeight: 860,  fuelEconomy: null, tankCapacity: 30.0,
+    seatHeight: 860,  fuelEconomy: 17, tankCapacity: 30.0,
     topSpeed: 250,  priceKRW: null, image: '/bikes/ktm/1290superadventure-2015.webp'
   },
   {
@@ -2246,7 +2246,7 @@ const RAW_BIKES = [
     id: 'superadventure1290s-2021', brand: 'ktm', model: '1290 Super Adventure S', year: 2021,
     category: '어드벤처', license: '소형이륜',
     displacement: 1301, power: 160,  torque: 138,  weight: 245,
-    seatHeight: 849,  fuelEconomy: null, tankCapacity: 23.0,
+    seatHeight: 849,  fuelEconomy: 18, tankCapacity: 23.0,
     topSpeed: 250,  priceKRW: null, image: '/bikes/ktm/1290superadventures-2021.jpg'
   },
   {
@@ -2267,11 +2267,284 @@ const RAW_BIKES = [
     id: 'smcr390-2025', brand: 'ktm', model: '390 SMC R', year: 2025,
     category: '슈퍼모토', license: '소형이륜',
     displacement: 399,  power: 45,   torque: 39,   weight: 154,
-    seatHeight: 860,  fuelEconomy: null, tankCapacity: 9.0,
+    seatHeight: 860,  fuelEconomy: 30, tankCapacity: 9.0,
     topSpeed: 160,  priceKRW: null, image: '/bikes/ktm/390smcr-2025.png'
   },
 
   // ── Ducati ────────────────────────────────────────────────────────────────
+  {
+    id: 'multistrada1000ds-2003', brand: 'ducati', model: 'Multistrada 1000 DS', year: 2003,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 992,  power: 84,   torque: 84,   weight: 220,
+    seatHeight: 850,  fuelEconomy: 18, tankCapacity: 20.0,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/ducati/multistrada1000ds-2003.webp'
+  },
+  {
+    id: 'superbike999-2003', brand: 'ducati', model: '999', year: 2003,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 124,  torque: 102,  weight: 199,
+    seatHeight: 780,  fuelEconomy: 16, tankCapacity: 15.5,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/ducati/999-2003.webp'
+  },
+  {
+    id: 'hypermotard1100-2007', brand: 'ducati', model: 'Hypermotard 1100', year: 2007,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 1078, power: 90,   torque: 103,  weight: 179,
+    seatHeight: 845,  fuelEconomy: 18, tankCapacity: 12.4,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/ducati/hypermotard1100-2007.jpg'
+  },
+  {
+    id: 'superbike1098-2007', brand: 'ducati', model: '1098', year: 2007,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1099, power: 160,  torque: 122.6, weight: 199,
+    seatHeight: 820,  fuelEconomy: 15, tankCapacity: 15.5,
+    topSpeed: 278,  priceKRW: null, image: '/bikes/ducati/1098-2007.jpg'
+  },
+  {
+    id: 'monster696-2008', brand: 'ducati', model: 'Monster 696', year: 2008,
+    category: '네이키드', license: '소형이륜',
+    displacement: 696,  power: 80,   torque: 69,   weight: 185,
+    seatHeight: 770,  fuelEconomy: 23, tankCapacity: 15.0,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/ducati/monster696-2008.jpg'
+  },
+  {
+    id: 'superbike848-2008', brand: 'ducati', model: '848', year: 2008,
+    category: '스포츠', license: '소형이륜',
+    displacement: 849,  power: 134,  torque: 96,   weight: 194,
+    seatHeight: 830,  fuelEconomy: 17, tankCapacity: 15.5,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/ducati/848-2008.jpg'
+  },
+  {
+    id: 'streetfighter1098-2009', brand: 'ducati', model: 'Streetfighter 1098', year: 2009,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1099, power: 155,  torque: 115,  weight: 199,
+    seatHeight: 840,  fuelEconomy: 15, tankCapacity: 16.5,
+    topSpeed: 255,  priceKRW: null, image: '/bikes/ducati/streetfighter1098-2009.jpg'
+  },
+  {
+    id: 'superbike1198-2009', brand: 'ducati', model: '1198', year: 2009,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1198, power: 170,  torque: 131,  weight: 199,
+    seatHeight: 820,  fuelEconomy: 14.5, tankCapacity: 15.5,
+    topSpeed: 285,  priceKRW: null, image: '/bikes/ducati/1198-2009.jpg'
+  },
+  {
+    id: 'hypermotard796-2010', brand: 'ducati', model: 'Hypermotard 796', year: 2010,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 803,  power: 81,   torque: 75.5, weight: 187,
+    seatHeight: 825,  fuelEconomy: 21, tankCapacity: 12.4,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ducati/hypermotard796-2010.jpg'
+  },
+  {
+    id: 'monster796-2010', brand: 'ducati', model: 'Monster 796', year: 2010,
+    category: '네이키드', license: '소형이륜',
+    displacement: 803,  power: 87,   torque: 78,   weight: 187,
+    seatHeight: 800,  fuelEconomy: 21, tankCapacity: 15.0,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/ducati/monster796-2010.webp'
+  },
+  {
+    id: 'multistrada1200-2010', brand: 'ducati', model: 'Multistrada 1200', year: 2010,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1198, power: 150,  torque: 118.7, weight: 217,
+    seatHeight: 850,  fuelEconomy: 17, tankCapacity: 20.0,
+    topSpeed: 233,  priceKRW: null, image: '/bikes/ducati/multistrada1200-2010.webp'
+  },
+  {
+    id: 'diavel-2011', brand: 'ducati', model: 'Diavel', year: 2011,
+    category: '크루저', license: '소형이륜',
+    displacement: 1198, power: 162,  torque: 130.5, weight: 234,
+    seatHeight: 770,  fuelEconomy: 15, tankCapacity: 17.0,
+    topSpeed: 272,  priceKRW: null, image: '/bikes/ducati/diavel-2011.jpg'
+  },
+  {
+    id: 'streetfighter848-2012', brand: 'ducati', model: 'Streetfighter 848', year: 2012,
+    category: '네이키드', license: '소형이륜',
+    displacement: 849,  power: 132,  torque: 94,   weight: 199,
+    seatHeight: 840,  fuelEconomy: 17, tankCapacity: 16.5,
+    topSpeed: 245,  priceKRW: null, image: '/bikes/ducati/streetfighter84802912.webp'
+  },
+  {
+    id: 'panigale1199-2012', brand: 'ducati', model: '1199 Panigale', year: 2012,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1198, power: 195,  torque: 133,  weight: 188,
+    seatHeight: 825,  fuelEconomy: 14, tankCapacity: 17.0,
+    topSpeed: 286,  priceKRW: null, image: '/bikes/ducati/1198panigale-2012.jpg'
+  },
+  {
+    id: 'hypermotard821-2013', brand: 'ducati', model: 'Hypermotard 821', year: 2013,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 821,  power: 110,  torque: 89,   weight: 198,
+    seatHeight: 870,  fuelEconomy: 19, tankCapacity: 16.0,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/ducati/hypermotard821-2013.webp'
+  },
+  {
+    id: 'panigale899-2014', brand: 'ducati', model: '899 Panigale', year: 2014,
+    category: '스포츠', license: '소형이륜',
+    displacement: 898,  power: 148,  torque: 99,   weight: 193,
+    seatHeight: 830,  fuelEconomy: 17, tankCapacity: 17.0,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/ducati/899panigale-2014.jpg'
+  },
+  {
+    id: 'monster1200-2014', brand: 'ducati', model: 'Monster 1200', year: 2014,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1198, power: 135,  torque: 118,  weight: 209,
+    seatHeight: 810,  fuelEconomy: 17, tankCapacity: 17.5,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ducati/monster1200-2014.jpg'
+  },
+  {
+    id: 'monster821-2015', brand: 'ducati', model: 'Monster 821', year: 2015,
+    category: '네이키드', license: '소형이륜',
+    displacement: 821,  power: 112,  torque: 89.4, weight: 205,
+    seatHeight: 785,  fuelEconomy: 19, tankCapacity: 17.5,
+    topSpeed: 230,  priceKRW: null, image: '/bikes/ducati/monster821-2015.jpg'
+  },
+  {
+    id: 'panigale1299-2015', brand: 'ducati', model: '1299 Panigale', year: 2015,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1285, power: 205,  torque: 144.6, weight: 190,
+    seatHeight: 830,  fuelEconomy: 13.5, tankCapacity: 17.0,
+    topSpeed: 299,  priceKRW: null, image: '/bikes/ducati/1299panigale-2015.webp'
+  },
+  {
+    id: 'scramblericon-2015', brand: 'ducati', model: 'Scrambler Icon', year: 2015,
+    category: '클래식', license: '소형이륜',
+    displacement: 803,  power: 75,   torque: 68,   weight: 186,
+    seatHeight: 790,  fuelEconomy: 21, tankCapacity: 13.5,
+    topSpeed: 190,  priceKRW: null, image: '/bikes/ducati/scramblericon-2015.jpg'
+  },
+  {
+    id: 'hypermotard939-2016', brand: 'ducati', model: 'Hypermotard 939', year: 2016,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 937,  power: 113,  torque: 97.9, weight: 204,
+    seatHeight: 870,  fuelEconomy: 18, tankCapacity: 16.0,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/ducati/hypermotard939-2016.webp'
+  },
+  {
+    id: 'panigale959-2016', brand: 'ducati', model: '959 Panigale', year: 2016,
+    category: '스포츠', license: '소형이륜',
+    displacement: 955,  power: 157,  torque: 107.4, weight: 200,
+    seatHeight: 830,  fuelEconomy: 16.5, tankCapacity: 17.0,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/ducati/959panigale-2016.webp'
+  },
+  {
+    id: 'scramblersixty2-2016', brand: 'ducati', model: 'Scrambler Sixty2', year: 2016,
+    category: '클래식', license: '소형이륜',
+    displacement: 399,  power: 40,   torque: 34.3, weight: 183,
+    seatHeight: 790,  fuelEconomy: 24, tankCapacity: 14.0,
+    topSpeed: 160,  priceKRW: null, image: '/bikes/ducati/scramblersixty2-2016.jpg'
+  },
+  {
+    id: 'xdiavel-2016', brand: 'ducati', model: 'XDiavel', year: 2016,
+    category: '크루저', license: '소형이륜',
+    displacement: 1262, power: 156,  torque: 128.9, weight: 247,
+    seatHeight: 755,  fuelEconomy: 16, tankCapacity: 18.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/ducati/xdiavel-2016.webp'
+  },
+  {
+    id: 'monster797-2017', brand: 'ducati', model: 'Monster 797', year: 2017,
+    category: '네이키드', license: '소형이륜',
+    displacement: 803,  power: 75,   torque: 68.9, weight: 193,
+    seatHeight: 805,  fuelEconomy: 22, tankCapacity: 16.5,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/ducati/monster797-2017.webp'
+  },
+  {
+    id: 'multistrada950-2017', brand: 'ducati', model: 'Multistrada 950', year: 2017,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 937,  power: 113,  torque: 96.2, weight: 229,
+    seatHeight: 840,  fuelEconomy: 19, tankCapacity: 20.0,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/ducati/multistrada950-2017.jpg'
+  },
+  {
+    id: 'scramblerdesertsled-2017', brand: 'ducati', model: 'Scrambler Desert Sled', year: 2017,
+    category: '클래식', license: '소형이륜',
+    displacement: 803,  power: 75,   torque: 68,   weight: 207,
+    seatHeight: 860,  fuelEconomy: 21, tankCapacity: 13.5,
+    topSpeed: 185,  priceKRW: null, image: '/bikes/ducati/scramblerdesertsled-2017.webp'
+  },
+  {
+    id: 'multistrada1260-2018', brand: 'ducati', model: 'Multistrada 1260', year: 2018,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1262, power: 156,  torque: 136,  weight: 232,
+    seatHeight: 825,  fuelEconomy: 16, tankCapacity: 20.0,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ducati/multistrada1260-2018.jpg'
+  },
+  {
+    id: 'panigalev4-2018', brand: 'ducati', model: 'Panigale V4', year: 2018,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1103, power: 214,  torque: 124,  weight: 198,
+    seatHeight: 830,  fuelEconomy: 14.5, tankCapacity: 16.0,
+    topSpeed: 299,  priceKRW: null, image: '/bikes/ducati/panigalev4-2018.webp'
+  },
+  {
+    id: 'scrambler1100-2018', brand: 'ducati', model: 'Scrambler 1100', year: 2018,
+    category: '클래식', license: '소형이륜',
+    displacement: 1079, power: 86,   torque: 88.9, weight: 206,
+    seatHeight: 810,  fuelEconomy: 19, tankCapacity: 15.0,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/ducati/scrambler1100-2018.jpg'
+  },
+  {
+    id: 'diavel1260-2019', brand: 'ducati', model: 'Diavel 1260', year: 2019,
+    category: '크루저', license: '소형이륜',
+    displacement: 1262, power: 159,  torque: 129,  weight: 244,
+    seatHeight: 780,  fuelEconomy: 15.5, tankCapacity: 17.0,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/ducati/diavel1260-2019.jpg'
+  },
+  {
+    id: 'hypermotard950-2019', brand: 'ducati', model: 'Hypermotard 950', year: 2019,
+    category: '슈퍼모토', license: '소형이륜',
+    displacement: 937,  power: 114,  torque: 96,   weight: 200,
+    seatHeight: 870,  fuelEconomy: 18.5, tankCapacity: 14.5,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/ducati/hypermotard950-2019.jpg'
+  },
+  {
+    id: 'panigalev4r-2019', brand: 'ducati', model: 'Panigale V4 R', year: 2019,
+    category: '스포츠', license: '소형이륜',
+    displacement: 998,  power: 221,  torque: 112,  weight: 193,
+    seatHeight: 830,  fuelEconomy: 13.6, tankCapacity: 16.0,
+    topSpeed: 299,  priceKRW: null, image: '/bikes/ducati/panigalev4r-2019.jpg'
+  },
+  {
+    id: 'streetfighterv4-2020', brand: 'ducati', model: 'Streetfighter V4', year: 2020,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1103, power: 208,  torque: 123,  weight: 201,
+    seatHeight: 845,  fuelEconomy: 14.5, tankCapacity: 16.0,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/ducati/streetfighterv4-2020.jpg'
+  },
+  {
+    id: 'monster937-2021', brand: 'ducati', model: 'Monster 937', year: 2021,
+    category: '네이키드', license: '소형이륜',
+    displacement: 937,  power: 111,  torque: 93,   weight: 188,
+    seatHeight: 820,  fuelEconomy: 20, tankCapacity: 14.0,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ducati/monster937-2021.webp'
+  },
+  {
+    id: 'multistradav4-2021', brand: 'ducati', model: 'Multistrada V4', year: 2021,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1158, power: 170,  torque: 125,  weight: 240,
+    seatHeight: 840,  fuelEconomy: 15.5, tankCapacity: 22.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/ducati/multistradav4-2021.webp'
+  },
+  {
+    id: 'supersport950-2021', brand: 'ducati', model: 'SuperSport 950', year: 2021,
+    category: '스포츠', license: '소형이륜',
+    displacement: 937,  power: 110,  torque: 93,   weight: 210,
+    seatHeight: 810,  fuelEconomy: 18.5, tankCapacity: 16.0,
+    topSpeed: 240,  priceKRW: null, image: '/bikes/ducati/supersport950-2021.jpg'
+  },
+  {
+    id: 'desertx-2022', brand: 'ducati', model: 'DesertX', year: 2022,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 937,  power: 110,  torque: 92,   weight: 223,
+    seatHeight: 875,  fuelEconomy: 18.5, tankCapacity: 21.0,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/ducati/desertx-2022.webp'
+  },
+  {
+    id: 'streetfighterv2-2022', brand: 'ducati', model: 'Streetfighter V2', year: 2022,
+    category: '네이키드', license: '소형이륜',
+    displacement: 955,  power: 153,  torque: 101.4, weight: 200,
+    seatHeight: 845,  fuelEconomy: 16.5, tankCapacity: 17.0,
+    topSpeed: 260,  priceKRW: null, image: '/bikes/ducati/streetfighterv2-2022.jpg'
+  },
   {
     id: 'scrambler803-2023', brand: 'ducati', model: 'Scrambler Icon', year: 2023,
     category: '클래식', license: '소형이륜',
