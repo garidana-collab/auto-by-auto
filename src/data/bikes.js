@@ -2662,11 +2662,95 @@ const RAW_BIKES = [
     topSpeed: 130,  priceKRW: 5800000, image: '/bikes/royal/meteor350-2023.jpg'
   },
   {
+    id: 'classic350-2024', brand: 'royalenfield', model: 'Classic 350', year: 2024,
+    category: '클래식', license: '소형이륜',
+    displacement: 349,  power: 20.2, torque: 27,   weight: 195,
+    seatHeight: 805,  fuelEconomy: 35, tankCapacity: 13.0,
+    topSpeed: 115,  priceKRW: null, image: null
+  },
+  {
+    id: 'bullet350-2024', brand: 'royalenfield', model: 'Bullet 350', year: 2024,
+    category: '클래식', license: '소형이륜',
+    displacement: 349,  power: 20.2, torque: 27,   weight: 195,
+    seatHeight: 805,  fuelEconomy: 35, tankCapacity: 13.0,
+    topSpeed: 110,  priceKRW: null, image: null
+  },
+  {
+    id: 'hunter350-2023', brand: 'royalenfield', model: 'Hunter 350', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 349,  power: 20.2, torque: 27,   weight: 181,
+    seatHeight: 790,  fuelEconomy: 36, tankCapacity: 13.0,
+    topSpeed: 120,  priceKRW: null, image: null
+  },
+  {
     id: 'himalayan-2023', brand: 'royalenfield', model: 'Himalayan 411', year: 2023,
     category: '어드벤처', license: '소형이륜',
     displacement: 411,  power: 24,   torque: 32,   weight: 199,
     seatHeight: 800,  fuelEconomy: 30, tankCapacity: 15.0,
     topSpeed: 140,  priceKRW: 6500000, image: '/bikes/royal/himalayan411-2023.webp'
+  },
+  {
+    id: 'scram411-2022', brand: 'royalenfield', model: 'Scram 411', year: 2022,
+    category: '클래식', license: '소형이륜',
+    displacement: 411,  power: 24.3, torque: 32,   weight: 185,
+    seatHeight: 795,  fuelEconomy: 30, tankCapacity: 15.0,
+    topSpeed: 140,  priceKRW: null, image: null
+  },
+  {
+    id: 'himalayan450-2024', brand: 'royalenfield', model: 'Himalayan 450', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 452,  power: 40,   torque: 40,   weight: 198,
+    seatHeight: 825,  fuelEconomy: 28, tankCapacity: 17.0,
+    topSpeed: 150,  priceKRW: null, image: null
+  },
+  {
+    id: 'guerrilla450-2024', brand: 'royalenfield', model: 'Guerrilla 450', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 452,  power: 40,   torque: 40,   weight: 185,
+    seatHeight: 780,  fuelEconomy: 29.5, tankCapacity: 11.0,
+    topSpeed: 170,  priceKRW: null, image: null
+  },
+  {
+    id: 'scram440-2025', brand: 'royalenfield', model: 'Scram 440', year: 2025,
+    category: '클래식', license: '소형이륜',
+    displacement: 443,  power: 25.4, torque: 34,   weight: 196,
+    seatHeight: 795,  fuelEconomy: 30, tankCapacity: 15.0,
+    topSpeed: 140,  priceKRW: null, image: null
+  },
+  {
+    id: 'interceptor650-2023', brand: 'royalenfield', model: 'Interceptor 650', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 648,  power: 46.8, torque: 52,   weight: 218,
+    seatHeight: 804,  fuelEconomy: 23, tankCapacity: 13.7,
+    topSpeed: 170,  priceKRW: null, image: null
+  },
+  {
+    id: 'continentalgt650-2023', brand: 'royalenfield', model: 'Continental GT 650', year: 2023,
+    category: '스포츠', license: '소형이륜',
+    displacement: 648,  power: 47,   torque: 52,   weight: 214,
+    seatHeight: 804,  fuelEconomy: 23, tankCapacity: 12.5,
+    topSpeed: 170,  priceKRW: null, image: null
+  },
+  {
+    id: 'supermeteor650-2023', brand: 'royalenfield', model: 'Super Meteor 650', year: 2023,
+    category: '크루저', license: '소형이륜',
+    displacement: 648,  power: 46.4, torque: 52.3, weight: 241,
+    seatHeight: 740,  fuelEconomy: 22, tankCapacity: 15.7,
+    topSpeed: 170,  priceKRW: null, image: null
+  },
+  {
+    id: 'shotgun650-2024', brand: 'royalenfield', model: 'Shotgun 650', year: 2024,
+    category: '크루저', license: '소형이륜',
+    displacement: 648,  power: 46.4, torque: 52.3, weight: 240,
+    seatHeight: 795,  fuelEconomy: 22, tankCapacity: 13.8,
+    topSpeed: 170,  priceKRW: null, image: null
+  },
+  {
+    id: 'bear650-2025', brand: 'royalenfield', model: 'Bear 650', year: 2025,
+    category: '클래식', license: '소형이륜',
+    displacement: 648,  power: 46.8, torque: 57,   weight: 216,
+    seatHeight: 830,  fuelEconomy: 23, tankCapacity: 13.7,
+    topSpeed: 170,  priceKRW: null, image: null
   },
 
   // ── Vespa ─────────────────────────────────────────────────────────────────
