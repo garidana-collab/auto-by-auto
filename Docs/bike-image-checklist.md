@@ -279,12 +279,20 @@ public/bikes/yamaha/mt03-2023.jpg
 
 ## Husqvarna
 
-> 2026-06-19 기준: 신규 등록 4개 모두 이미지 연결 완료.
+> 2026-06-26 기준: 등록 12개 중 11개 이미지 연결 완료. `vitpilen701-2018`은 대응 이미지 파일이 없어 미연결 유지.
 
 - [x] 2024 Svartpilen 401 (`svartpilen401-2024`)
 - [x] 2024 Vitpilen 401 (`vitpilen401-2024`)
+- [x] 2016 701 Enduro (`701enduro-2016`)
+- [ ] 2018 Vitpilen 701 (`vitpilen701-2018`) - 이미지 파일 필요
+- [x] 2019 701 Enduro (`701enduro-2019`)
+- [x] 2019 Svartpilen 701 (`svartpilen701-2019`)
 - [x] 2024 Norden 901 (`norden901-2024`)
+- [x] 2023 Norden 901 Expedition (`norden901expedition-2023`)
 - [x] 2024 701 Supermoto (`701supermoto-2024`)
+- [x] 2024 701 Enduro (`701enduro-2024`)
+- [x] 2024 Svartpilen 801 (`svartpilen801-2024`)
+- [x] 2025 Vitpilen 801 (`vitpilen801-2025`)
 
 ## MV Agusta
 

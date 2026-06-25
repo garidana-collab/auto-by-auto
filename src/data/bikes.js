@@ -3185,7 +3185,7 @@ const RAW_BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 690,  power: 67,   torque: 67,   weight: 156,
     seatHeight: 910,  fuelEconomy: 24, tankCapacity: 13.0,
-    topSpeed: 170,  priceKRW: null, image: null
+    topSpeed: 170,  priceKRW: null, image: '/bikes/husqvarna/701enduro-2016.webp'
   },
   {
     id: 'vitpilen701-2018', brand: 'husqvarna', model: 'Vitpilen 701', year: 2018,
@@ -3199,14 +3199,14 @@ const RAW_BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 692.7, power: 74,   torque: 73.5, weight: 159,
     seatHeight: 925,  fuelEconomy: 24, tankCapacity: 13.0,
-    topSpeed: 170,  priceKRW: null, image: null
+    topSpeed: 170,  priceKRW: null, image: '/bikes/husqvarna/701enduro-2019.jpg'
   },
   {
     id: 'svartpilen701-2019', brand: 'husqvarna', model: 'Svartpilen 701', year: 2019,
     category: '네이키드', license: '소형이륜',
     displacement: 692.7, power: 75,   torque: 72,   weight: 166,
     seatHeight: 835,  fuelEconomy: 24, tankCapacity: 12.0,
-    topSpeed: 200,  priceKRW: null, image: null
+    topSpeed: 200,  priceKRW: null, image: '/bikes/husqvarna/svartpilen701-2019.jpg'
   },
   {
     id: 'norden901-2024', brand: 'husqvarna', model: 'Norden 901', year: 2024,
@@ -3220,7 +3220,7 @@ const RAW_BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 889,  power: 105,  torque: 100,  weight: 229,
     seatHeight: 875,  fuelEconomy: 22, tankCapacity: 19.0,
-    topSpeed: 200,  priceKRW: null, image: null
+    topSpeed: 200,  priceKRW: null, image: '/bikes/husqvarna/norden901expedition-2023.jpg'
   },
   {
     id: '701supermoto-2024', brand: 'husqvarna', model: '701 Supermoto', year: 2024,
@@ -3234,21 +3234,21 @@ const RAW_BIKES = [
     category: '어드벤처', license: '소형이륜',
     displacement: 692.7, power: 74,   torque: 73.5, weight: 159,
     seatHeight: 925,  fuelEconomy: 24, tankCapacity: 13.0,
-    topSpeed: 170,  priceKRW: null, image: null
+    topSpeed: 170,  priceKRW: null, image: '/bikes/husqvarna/701enduro-2024.jpg'
   },
   {
     id: 'svartpilen801-2024', brand: 'husqvarna', model: 'Svartpilen 801', year: 2024,
     category: '네이키드', license: '소형이륜',
     displacement: 799,  power: 105,  torque: 87,   weight: 190,
     seatHeight: 820,  fuelEconomy: 22, tankCapacity: 14.0,
-    topSpeed: 220,  priceKRW: null, image: null
+    topSpeed: 220,  priceKRW: null, image: '/bikes/husqvarna/svartpilen801-2024.webp'
   },
   {
     id: 'vitpilen801-2025', brand: 'husqvarna', model: 'Vitpilen 801', year: 2025,
     category: '네이키드', license: '소형이륜',
     displacement: 799,  power: 105,  torque: 87,   weight: 190,
     seatHeight: 820,  fuelEconomy: 22, tankCapacity: 14.0,
-    topSpeed: 220,  priceKRW: null, image: null
+    topSpeed: 220,  priceKRW: null, image: '/bikes/husqvarna/vitpilen801-2025.webp'
   },
 
   // ── MV Agusta ─────────────────────────────────────────────────────────────
