@@ -2652,6 +2652,160 @@ const RAW_BIKES = [
     seatHeight: 760,  fuelEconomy: 20, tankCapacity: 15.0,
     topSpeed: 175,  priceKRW: 15000000, image: '/bikes/triumph/streetscrambler-2022.webp'
   },
+  {
+    id: 'speed400-2024', brand: 'triumph', model: 'Speed 400', year: 2024,
+    category: '네이키드', license: '소형이륜',
+    displacement: 398,  power: 40,   torque: 37.5, weight: 170,
+    seatHeight: 790,  fuelEconomy: 28.6, tankCapacity: 13.0,
+    topSpeed: 160,  priceKRW: null, image: '/bikes/triumph/speed400-2024.jpg'
+  },
+  {
+    id: 'scrambler400x-2024', brand: 'triumph', model: 'Scrambler 400 X', year: 2024,
+    category: '클래식', license: '소형이륜',
+    displacement: 398,  power: 40,   torque: 37.5, weight: 179,
+    seatHeight: 835,  fuelEconomy: 28.6, tankCapacity: 13.0,
+    topSpeed: 145,  priceKRW: null, image: '/bikes/triumph/scrambler400x-2024.jpg'
+  },
+  {
+    id: 'daytona660-2024', brand: 'triumph', model: 'Daytona 660', year: 2024,
+    category: '스포츠', license: '소형이륜',
+    displacement: 660,  power: 95,   torque: 69,   weight: 201,
+    seatHeight: 810,  fuelEconomy: 20.4, tankCapacity: 14.0,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/triumph/daytona660-2024.jpg'
+  },
+  {
+    id: 'tigersport660-2022', brand: 'triumph', model: 'Tiger Sport 660', year: 2022,
+    category: '투어러', license: '소형이륜',
+    displacement: 660,  power: 81,   torque: 64,   weight: 206,
+    seatHeight: 835,  fuelEconomy: 22, tankCapacity: 17.2,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/triumph/tigersport660-2022.jpg'
+  },
+  {
+    id: 'streettriple675-2007', brand: 'triumph', model: 'Street Triple 675', year: 2007,
+    category: '네이키드', license: '소형이륜',
+    displacement: 675,  power: 106,  torque: 68,   weight: 189,
+    seatHeight: 800,  fuelEconomy: 18, tankCapacity: 17.4,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/triumph/streettriple675-2007.webp'
+  },
+  {
+    id: 'streettriple765rs-2023', brand: 'triumph', model: 'Street Triple 765 RS', year: 2023,
+    category: '네이키드', license: '소형이륜',
+    displacement: 765,  power: 128,  torque: 80,   weight: 188,
+    seatHeight: 836,  fuelEconomy: 18.5, tankCapacity: 15.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/triumph/streettriple765rs-2023.webp'
+  },
+  {
+    id: 'speedtriple1050-2005', brand: 'triumph', model: 'Speed Triple 1050', year: 2005,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1050, power: 131,  torque: 105,  weight: 214,
+    seatHeight: 815,  fuelEconomy: 16.5, tankCapacity: 18.0,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/triumph/speedtriple1050-2005.jpg'
+  },
+  {
+    id: 'speedtriple1050r-2016', brand: 'triumph', model: 'Speed Triple 1050 R', year: 2016,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1050, power: 138,  torque: 112,  weight: 212,
+    seatHeight: 825,  fuelEconomy: 16.5, tankCapacity: 15.5,
+    topSpeed: 250,  priceKRW: null, image: '/bikes/triumph/speedtriple1050r-2016.webp'
+  },
+  {
+    id: 'speedtriple1200rs-2021', brand: 'triumph', model: 'Speed Triple 1200 RS', year: 2021,
+    category: '네이키드', license: '소형이륜',
+    displacement: 1160, power: 177,  torque: 125,  weight: 198,
+    seatHeight: 830,  fuelEconomy: 15.5, tankCapacity: 15.5,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/triumph/speedtriple1200rs-2021.webp'
+  },
+  {
+    id: 'speedtriple1200rr-2022', brand: 'triumph', model: 'Speed Triple 1200 RR', year: 2022,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1160, power: 177,  torque: 125,  weight: 199,
+    seatHeight: 830,  fuelEconomy: 15.5, tankCapacity: 15.5,
+    topSpeed: 270,  priceKRW: null, image: '/bikes/triumph/speedtriple1200rr-2022.jpg'
+  },
+  {
+    id: 'bonnevillet100-2023', brand: 'triumph', model: 'Bonneville T100', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 900,  power: 64.1, torque: 80,   weight: 228,
+    seatHeight: 790,  fuelEconomy: 24, tankCapacity: 14.5,
+    topSpeed: 180,  priceKRW: null, image: '/bikes/triumph/bonnevillet100-2023.jpg'
+  },
+  {
+    id: 'bonnevillet120-2023', brand: 'triumph', model: 'Bonneville T120', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 1200, power: 79,   torque: 105,  weight: 236,
+    seatHeight: 790,  fuelEconomy: 22, tankCapacity: 14.5,
+    topSpeed: 190,  priceKRW: null, image: '/bikes/triumph/bonnevillet120-2023.jpg'
+  },
+  {
+    id: 'speedtwin900-2023', brand: 'triumph', model: 'Speed Twin 900', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 900,  power: 64.1, torque: 80,   weight: 216,
+    seatHeight: 765,  fuelEconomy: 24, tankCapacity: 12.0,
+    topSpeed: 180,  priceKRW: null, image: '/bikes/triumph/speedtwin900-2023.jpg'
+  },
+  {
+    id: 'speedtwin1200-2023', brand: 'triumph', model: 'Speed Twin 1200', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 1200, power: 99,   torque: 112,  weight: 216,
+    seatHeight: 809,  fuelEconomy: 20, tankCapacity: 14.5,
+    topSpeed: 210,  priceKRW: null, image: '/bikes/triumph/speedtwin1200-2023.jpg'
+  },
+  {
+    id: 'bonnevillebobber-2023', brand: 'triumph', model: 'Bonneville Bobber', year: 2023,
+    category: '크루저', license: '소형이륜',
+    displacement: 1200, power: 77,   torque: 106,  weight: 251,
+    seatHeight: 690,  fuelEconomy: 20, tankCapacity: 12.0,
+    topSpeed: 185,  priceKRW: null, image: '/bikes/triumph/bonnevilllebobber-2023.jpg'
+  },
+  {
+    id: 'thruxtonrs-2020', brand: 'triumph', model: 'Thruxton RS', year: 2020,
+    category: '스포츠', license: '소형이륜',
+    displacement: 1200, power: 103,  torque: 112,  weight: 217,
+    seatHeight: 810,  fuelEconomy: 19, tankCapacity: 14.5,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/triumph/thruxtonrs-2020.webp'
+  },
+  {
+    id: 'scrambler900-2023', brand: 'triumph', model: 'Scrambler 900', year: 2023,
+    category: '클래식', license: '소형이륜',
+    displacement: 900,  power: 65,   torque: 80,   weight: 223,
+    seatHeight: 790,  fuelEconomy: 22, tankCapacity: 12.0,
+    topSpeed: 175,  priceKRW: null, image: '/bikes/triumph/scrambler900-2023.jpg'
+  },
+  {
+    id: 'scrambler1200xe-2024', brand: 'triumph', model: 'Scrambler 1200 XE', year: 2024,
+    category: '클래식', license: '소형이륜',
+    displacement: 1200, power: 89,   torque: 110,  weight: 230,
+    seatHeight: 870,  fuelEconomy: 20, tankCapacity: 15.0,
+    topSpeed: 200,  priceKRW: null, image: '/bikes/triumph/scrambler1200xe-2024.webp'
+  },
+  {
+    id: 'tiger900rallypro-2024', brand: 'triumph', model: 'Tiger 900 Rally Pro', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 888,  power: 108,  torque: 90,   weight: 228,
+    seatHeight: 860,  fuelEconomy: 20, tankCapacity: 20.0,
+    topSpeed: 205,  priceKRW: null, image: '/bikes/triumph/tiger900rallypro-2024.jpg'
+  },
+  {
+    id: 'tiger1200rallypro-2024', brand: 'triumph', model: 'Tiger 1200 Rally Pro', year: 2024,
+    category: '어드벤처', license: '소형이륜',
+    displacement: 1160, power: 150,  torque: 130,  weight: 249,
+    seatHeight: 875,  fuelEconomy: 18, tankCapacity: 20.0,
+    topSpeed: 220,  priceKRW: null, image: '/bikes/triumph/tiger1200rallypro-2024.jpg'
+  },
+  {
+    id: 'rocket3r-2020', brand: 'triumph', model: 'Rocket 3 R', year: 2020,
+    category: '크루저', license: '소형이륜',
+    displacement: 2458, power: 165,  torque: 221,  weight: 291,
+    seatHeight: 773,  fuelEconomy: 14, tankCapacity: 18.0,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/triumph/rocket3r-2020.jpg'
+  },
+  {
+    id: 'rocket3stormr-2024', brand: 'triumph', model: 'Rocket 3 Storm R', year: 2024,
+    category: '크루저', license: '소형이륜',
+    displacement: 2458, power: 180,  torque: 225,  weight: 317,
+    seatHeight: 773,  fuelEconomy: 14, tankCapacity: 18.0,
+    topSpeed: 225,  priceKRW: null, image: '/bikes/triumph/rocket3stormr-2024.jpg'
+  },
 
   // ── Royal Enfield ─────────────────────────────────────────────────────────
   {
@@ -2736,14 +2890,14 @@ const RAW_BIKES = [
     category: '크루저', license: '소형이륜',
     displacement: 648,  power: 46.4, torque: 52.3, weight: 241,
     seatHeight: 740,  fuelEconomy: 22, tankCapacity: 15.7,
-    topSpeed: 170,  priceKRW: null, image: null
+    topSpeed: 170,  priceKRW: null, image: '/bikes/royal/supermeteor650-2023.webp'
   },
   {
     id: 'shotgun650-2024', brand: 'royalenfield', model: 'Shotgun 650', year: 2024,
     category: '크루저', license: '소형이륜',
     displacement: 648,  power: 46.4, torque: 52.3, weight: 240,
     seatHeight: 795,  fuelEconomy: 22, tankCapacity: 13.8,
-    topSpeed: 170,  priceKRW: null, image: null
+    topSpeed: 170,  priceKRW: null, image: '/bikes/royal/shotgun650-2024.jpg'
   },
   {
     id: 'bear650-2025', brand: 'royalenfield', model: 'Bear 650', year: 2025,
