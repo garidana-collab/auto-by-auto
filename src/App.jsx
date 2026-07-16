@@ -18,6 +18,12 @@ import {
   isKnownValue,
 } from './lib/bikeDisplay'
 import { HOME_PATH, getBikePath, resolveAppRoute } from './lib/bikeRoutes'
+import {
+  applyMetadata,
+  buildBikeMetadata,
+  buildHomeMetadata,
+  buildNotFoundMetadata,
+} from './lib/seo'
 import './App.css'
 
 // ─── 상수 ─────────────────────────────────────────────────────────────────────
@@ -176,6 +182,18 @@ export default function App() {
   const selectedBrand = useMemo(() =>
     BRANDS.find(br => br.id === selectedBike?.brand),
   [selectedBike])
+
+  const pageMetadata = useMemo(() => {
+    if (viewMode === 'not-found') return buildNotFoundMetadata()
+    if (viewMode === 'detail' && selectedBike) {
+      return buildBikeMetadata(selectedBike, selectedBrand, getBikePath(selectedBike))
+    }
+    return buildHomeMetadata()
+  }, [selectedBike, selectedBrand, viewMode])
+
+  useEffect(() => {
+    applyMetadata(pageMetadata)
+  }, [pageMetadata])
 
   const sameModelBikes = useMemo(() => {
     if (!selectedBike) return []
@@ -344,9 +362,17 @@ export default function App() {
           <div className="main-eyebrow">
             AUTO BY AUTO <span>by @4rr.4r4r</span>
           </div>
-          <h1 className="main-title">
-            어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
-          </h1>
+          {viewMode === 'detail'
+            ? (
+              <div className="main-title">
+                어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
+              </div>
+            )
+            : (
+              <h1 className="main-title">
+                어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
+              </h1>
+            )}
         </div>
 
         {/* 뷰 탭 */}
@@ -417,7 +443,7 @@ export default function App() {
         {viewMode === 'not-found' && (
           <div className="main-empty" role="alert">
             <div className="empty-icon">404</div>
-            <div className="empty-text">바이크 페이지를 찾을 수 없습니다</div>
+            <h1 className="empty-text">바이크 페이지를 찾을 수 없습니다</h1>
             <div className="empty-sub">주소의 브랜드와 모델 ID를 확인해 주세요.</div>
             <button className="detail-action" onClick={() => openRootView('browse')}>
               탐색으로 돌아가기

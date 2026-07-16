@@ -6,6 +6,7 @@ import {
   formatPrice,
   getFitLabel,
 } from '../lib/bikeDisplay'
+import { getBikePath, shouldHandleLinkClick } from '../lib/bikeRoutes'
 
 export default function Sidebar({
   mobileFiltersOpen,
@@ -303,10 +304,15 @@ export default function Sidebar({
                         const isOn = compared.includes(bike.id)
                         const fit = getFitLabel(bike.seatHeight, inseam)
                         return (
-                          <button
+                          <a
                             key={yr}
+                            href={getBikePath(bike)}
                             className={`year-row ${isOn ? 'on' : ''} ${selectedBike?.id === bike.id ? 'detail-on' : ''}`}
-                            onClick={() => openBikeDetail(bike.id)}
+                            onClick={event => {
+                              if (!shouldHandleLinkClick(event)) return
+                              event.preventDefault()
+                              openBikeDetail(bike.id)
+                            }}
                           >
                             <span className="year-num">{yr}년식</span>
                             <span className={`fit-badge ${fit.cls}`}>{fit.text}</span>
@@ -314,7 +320,7 @@ export default function Sidebar({
                               {formatPrice(bike.priceKRW)}
                             </span>
                             <span className="year-check">{selectedBike?.id === bike.id ? '보기' : isOn ? '✓' : '>'}</span>
-                          </button>
+                          </a>
                         )
                       })}
                     </div>

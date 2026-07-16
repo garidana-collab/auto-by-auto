@@ -7,6 +7,7 @@ import { BRANDS } from '../data/bikes'
 import { SPECS, COLORS, fmtVal } from '../data/specs'
 import { formatPrice, formatShortSpec, getFitLabel } from '../lib/bikeDisplay'
 import { BRAND_MARKS, CAT_COLOR, CAT_GRADIENT } from '../lib/bikeTheme'
+import { HOME_PATH, getBikePath, shouldHandleLinkClick } from '../lib/bikeRoutes'
 
 export default function DetailView({
   selectedBike,
@@ -53,7 +54,7 @@ export default function DetailView({
               </div>
               <div>
                 <div className="detail-brand">{selectedBrand?.name}</div>
-                <h2 className="detail-title">{selectedBike.model}</h2>
+                <h1 className="detail-title">{selectedBike.model}</h1>
                 <div className="detail-meta">{selectedBike.year}년식 · {selectedBike.license}</div>
               </div>
             </div>
@@ -68,9 +69,17 @@ export default function DetailView({
               >
                 {isCompared ? '비교에서 제거' : isCompareFull ? '비교 최대 3개' : '비교에 추가'}
               </button>
-              <button className="detail-action ghost" onClick={onBackToBrowse}>
+              <a
+                className="detail-action ghost"
+                href={HOME_PATH}
+                onClick={event => {
+                  if (!shouldHandleLinkClick(event)) return
+                  event.preventDefault()
+                  onBackToBrowse()
+                }}
+              >
                 탐색으로 돌아가기
-              </button>
+              </a>
             </div>
           </div>
 
@@ -79,14 +88,19 @@ export default function DetailView({
               <div className="panel-label">동일 모델 연식</div>
               <div className="variant-row detail-variants">
                 {sameModelBikes.map(b => (
-                  <button
+                  <a
                     key={b.id}
+                    href={getBikePath(b)}
                     className={`variant-chip ${b.id === selectedBike.id ? 'on' : ''}`}
-                    onClick={() => onOpenDetail(b.id)}
+                    onClick={event => {
+                      if (!shouldHandleLinkClick(event)) return
+                      event.preventDefault()
+                      onOpenDetail(b.id)
+                    }}
                   >
                     {b.year}년식
                     <span>{formatPrice(b.priceKRW)}</span>
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -149,11 +163,20 @@ export default function DetailView({
             {similarBikes.map(b => {
               const br = BRANDS.find(item => item.id === b.brand)
               return (
-                <button key={b.id} className="similar-card" onClick={() => onOpenDetail(b.id, { scrollToTop: true })}>
+                <a
+                  key={b.id}
+                  className="similar-card"
+                  href={getBikePath(b)}
+                  onClick={event => {
+                    if (!shouldHandleLinkClick(event)) return
+                    event.preventDefault()
+                    onOpenDetail(b.id, { scrollToTop: true })
+                  }}
+                >
                   <span className="similar-model">{b.model}</span>
                   <span className="similar-meta">{br?.name} · {b.year}년식</span>
                   <span className="similar-spec">{formatShortSpec('', b.displacement, 'cc')} · {formatPrice(b.priceKRW)}</span>
-                </button>
+                </a>
               )
             })}
           </div>

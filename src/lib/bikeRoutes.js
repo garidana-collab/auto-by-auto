@@ -6,6 +6,16 @@ export function getBikePath(bike) {
   return `/bikes/${encodeURIComponent(bike.brand)}/${encodeURIComponent(bike.id)}`
 }
 
+export function shouldHandleLinkClick(event) {
+  return event.button === 0
+    && !event.defaultPrevented
+    && !event.metaKey
+    && !event.ctrlKey
+    && !event.shiftKey
+    && !event.altKey
+    && (!event.currentTarget.target || event.currentTarget.target === '_self')
+}
+
 export function resolveAppRoute(pathname) {
   const normalizedPath = pathname.length > 1
     ? pathname.replace(/\/+$/, '')
