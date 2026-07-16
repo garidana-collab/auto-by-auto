@@ -1,6 +1,6 @@
 # AUTObyAUTO SEO Guide
 
-> 마지막 업데이트: 2026년 6월 22일
+> 마지막 업데이트: 2026년 7월 16일
 > 현재 배포 URL: `https://auto-by-auto.vercel.app/`
 
 ---
@@ -10,6 +10,195 @@
 Google에서 `오토바이오토`, `AUTObyAUTO`, `오토바이 기종 비교`, `바이크 제원 비교` 같은 검색어로 사이트를 발견할 수 있게 하는 것이 목표입니다.
 
 SEO는 한 번 설정한다고 즉시 1위에 뜨는 작업이 아니라, 검색엔진이 사이트를 크롤링하고 색인할 수 있게 만들고, 페이지 제목/설명/콘텐츠 신호를 꾸준히 명확하게 쌓는 작업입니다.
+
+---
+
+## 지금 실질적으로 진행할 작업
+
+현재 기본 메타태그, `robots.txt`, 홈페이지 sitemap, Search Console 인증까지는 적용되어 있습니다. 다음 우선순위는 **484개 바이크 상세 화면을 검색엔진이 각각 발견하고 색인할 수 있는 독립 페이지로 만드는 것**입니다.
+
+단순히 브라우저 주소만 변경해서는 충분하지 않습니다. 고유 URL, 직접 접속, 실제 링크, 페이지별 메타데이터, sitemap을 한 묶음으로 구현해야 합니다.
+
+### 우선순위 1. 바이크별 고유 URL 만들기
+
+> 진행 상태: 2026년 7월 16일 구현 완료
+
+`src/data/bikes.js`의 `brand`와 `id`를 사용해 다음 URL 규칙을 적용합니다.
+
+```txt
+/bikes/{brand}/{id}
+```
+
+예시:
+
+```txt
+/bikes/honda/cbr650r-2024
+/bikes/yamaha/mt03-2023
+/bikes/ducati/panigalev4-2025
+```
+
+구현 범위:
+
+1. React Router 등으로 상세 페이지 경로를 등록합니다.
+2. URL의 바이크 ID로 `BIKES`에서 해당 모델을 조회합니다.
+3. 존재하지 않는 브랜드 또는 ID에는 오류 안내나 404 페이지를 표시합니다.
+4. 상세 페이지에서 새로고침하거나 주소를 직접 입력해도 같은 모델이 열리게 합니다.
+5. Vercel에서 상세 경로 요청을 앱 진입점으로 전달하도록 rewrite를 설정합니다.
+
+완료 기준:
+
+- 상세 화면을 열면 주소가 해당 모델 URL로 변경됩니다.
+- 해당 주소를 새 탭에 붙여 넣거나 새로고침해도 같은 바이크가 표시됩니다.
+- 브라우저 뒤로 가기와 앞으로 가기가 정상 작동합니다.
+- 잘못된 ID를 입력했을 때 기본 바이크로 조용히 대체하지 않고 오류 상태를 보여줍니다.
+
+### 우선순위 2. 클릭 요소를 검색 가능한 링크로 변경하기
+
+현재 바이크 카드, 사이드바 연식, 연관 모델은 `onClick`으로 화면 상태만 바꿉니다. 검색봇이 상세 페이지를 발견할 수 있도록 실제 `href`를 가진 링크로 변경합니다.
+
+```jsx
+<a href={`/bikes/${bike.brand}/${bike.id}`}>
+  {bike.model}
+</a>
+```
+
+클라이언트 라우터를 사용하더라도 최종 HTML에는 `<a href="...">`가 있어야 합니다.
+
+적용 대상:
+
+- 메인 바이크 카드
+- 사이드바의 연식별 모델 항목
+- 상세 화면의 다른 연식 목록
+- 유사 바이크 목록
+- 홈 또는 탐색 화면으로 돌아가는 내비게이션
+
+완료 기준:
+
+- 마우스 오른쪽 버튼으로 상세 페이지를 새 탭에서 열 수 있습니다.
+- 브라우저에서 렌더링된 HTML에 실제 `href`가 존재합니다.
+- 모든 상세 URL이 홈페이지에서 링크를 따라 도달 가능합니다.
+
+### 우선순위 3. 페이지별 SEO 메타데이터 만들기
+
+상세 URL마다 모델 데이터에 맞춰 다음 정보를 변경합니다.
+
+- `<title>`
+- `meta description`
+- canonical URL
+- `og:url`, `og:title`, `og:description`, `og:image`
+- Twitter Card 제목, 설명, 이미지
+- 화면의 대표 제목(H1)
+
+예시:
+
+```txt
+title: 2024 혼다 CBR650R 제원·시트고·가격 | 오토바이오토
+description: 2024 혼다 CBR650R의 배기량, 출력, 시트고, 중량과 가격을 확인하고 비슷한 바이크와 비교해보세요.
+canonical: https://auto-by-auto.vercel.app/bikes/honda/cbr650r-2024
+```
+
+주의사항:
+
+- 모든 상세 페이지의 canonical을 홈페이지로 지정하면 안 됩니다.
+- `og:image`와 `twitter:image`는 상대 경로보다 전체 URL을 사용합니다.
+- 모델명, 브랜드명, 연식, 실제 표시 제원과 메타데이터가 일치해야 합니다.
+
+### 우선순위 4. sitemap 자동 생성하기
+
+현재 `public/sitemap.xml`에는 홈페이지만 있습니다. 수동으로 484개 URL을 작성하지 말고 `src/data/bikes.js`를 기준으로 빌드 전에 sitemap을 생성하는 스크립트를 추가합니다.
+
+포함 대상:
+
+- 홈페이지 1개
+- 바이크 상세 URL 484개
+- 향후 브랜드 페이지나 가이드 페이지를 추가하면 해당 URL
+
+완료 기준:
+
+- `npm run build` 전후에 최신 `BIKES` 목록으로 sitemap이 생성됩니다.
+- 모든 `<loc>`가 실제로 열리는 URL입니다.
+- 중복 URL이 없습니다.
+- 새 바이크를 추가하면 별도 수작업 없이 sitemap에도 반영됩니다.
+- 배포 후 Search Console에 sitemap을 다시 제출합니다.
+
+### 우선순위 5. 홈페이지 브랜드 신호 보강하기
+
+홈페이지에 `WebSite` JSON-LD를 추가해 검색엔진에 사이트 이름을 명확히 전달합니다.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "오토바이오토",
+  "alternateName": ["AUTObyAUTO", "오토바이 오토"],
+  "url": "https://auto-by-auto.vercel.app/"
+}
+</script>
+```
+
+함께 진행할 항목:
+
+- 홈페이지 H1 또는 대표 소개 영역에 `오토바이오토`를 자연스럽게 포함
+- 전용 favicon 추가
+- 사이트 전용 OG 대표 이미지 제작
+- `title`, H1, 로고 문구, `og:site_name`, 구조화 데이터의 브랜드 표기 통일
+
+### 우선순위 6. 정적 HTML 또는 프리렌더링 적용하기
+
+라우팅만 적용해도 URL 구조는 개선되지만, 현재 Vite SPA의 초기 HTML에는 바이크 상세 내용이 들어 있지 않습니다. 검색 안정성을 높이려면 각 상세 URL의 초기 HTML에 모델명과 핵심 제원이 포함되도록 정적 생성 또는 프리렌더링을 적용합니다.
+
+이 작업은 URL 라우팅 이후 별도 단계로 진행합니다.
+
+검증 방법:
+
+- `view-source:`에서 모델명과 핵심 설명을 확인합니다.
+- Google Search Console의 실제 URL 테스트에서 렌더링된 콘텐츠를 확인합니다.
+- 상세 URL별 title, canonical, 본문이 서로 다른지 확인합니다.
+
+### 권장 구현 순서
+
+```txt
+1. 상세 URL 규칙 확정
+2. 라우터 및 Vercel rewrite 적용
+3. 카드와 내부 이동을 실제 링크로 변경
+4. 페이지별 title/description/canonical/공유 메타 적용
+5. WebSite 구조화 데이터와 브랜드 신호 보강
+6. sitemap 자동 생성
+7. 빌드 및 직접 URL 접속 검증
+8. 배포 후 Search Console sitemap 제출과 색인 요청
+9. 정적 생성 또는 프리렌더링 적용
+```
+
+### 1차 작업에서 변경될 가능성이 높은 파일
+
+```txt
+package.json
+src/main.jsx
+src/App.jsx
+src/components/BikeCard.jsx
+src/components/Sidebar.jsx
+src/components/DetailView.jsx
+index.html
+vercel.json
+public/sitemap.xml
+scripts/generate-sitemap.mjs
+```
+
+실제 구현 방식에 따라 파일명은 달라질 수 있습니다. `public/sitemap.xml`은 생성 결과물로 관리하고, URL 생성 규칙은 한 곳에서 재사용하는 것이 좋습니다.
+
+### 지금 하지 않아도 되는 작업
+
+다음 작업은 개별 URL과 색인 구조를 완성한 뒤 진행해도 됩니다.
+
+- 모든 모델에 긴 소개 글 작성
+- 브랜드별 랜딩 페이지 제작
+- 비교 조합별 URL 생성
+- 커스텀 도메인 구매 및 이전
+- 대규모 디자인 개편
+- 광고 또는 백링크 구매
+
+현재는 검색엔진이 484개 모델을 각각 발견할 수 있게 만드는 것이 콘텐츠를 더 추가하는 것보다 우선입니다.
 
 ---
 
@@ -268,8 +457,15 @@ Some chunks are larger than 500 kB after minification.
 - [ ] Search Console sitemap 제출 상태 `성공` 확인
 - [ ] URL 검사에서 홈페이지 색인 생성 요청
 - [ ] Google `site:` 검색으로 색인 여부 확인
-- [ ] 모델별 상세 URL 라우팅 도입 검토
-- [ ] 모델별 title/description 자동 생성 검토
+- [x] `/bikes/{brand}/{id}` 상세 URL 라우팅 구현
+- [x] 상세 URL 직접 접속 및 새로고침 지원
+- [ ] 바이크 카드와 내부 이동을 실제 링크로 변경
+- [ ] 모델별 title/description/canonical 자동 생성
+- [ ] 모델별 Open Graph/Twitter Card 자동 생성
+- [ ] `WebSite` JSON-LD 추가
+- [ ] `BIKES` 기반 sitemap 자동 생성
+- [x] Vercel 상세 경로 rewrite 적용
+- [ ] 상세 페이지 초기 HTML 프리렌더링
 - [ ] 대표 OG 이미지 제작
 - [ ] 이미지 alt 텍스트 품질 개선
 - [ ] 번들 크기 및 이미지 성능 최적화

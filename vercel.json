@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/bikes/:brand/:id",
+      "destination": "/index.html"
+    }
+  ]
+}
