@@ -1,6 +1,6 @@
 # AUTObyAUTO 개발 진행 현황
 
-> 마지막 업데이트: 2026년 6월 24일 (v0.9.2 Harley-Davidson 대표/세대 변화 기종 확장 및 이미지 연결)
+> 마지막 업데이트: 2026년 8월 17일 (v0.9.3 SEO 검색 색인 기반 구축 — 상세 URL 라우팅, 페이지별 메타데이터, sitemap 자동 생성)
 
 ---
 
@@ -36,21 +36,41 @@ auto-by-auto/
 ├── Docs/
 │   ├── progress.md          ← 이 파일
 │   ├── Dev Note.md          ← 버전별 변경 이력
-│   └── SEO.md               ← 검색 노출 설정 및 운영 가이드
+│   ├── SEO.md               ← 검색 노출 설정 및 운영 가이드
+│   └── bike-image-checklist.md ← 이미지 수집/연결 체크리스트
+├── scripts/
+│   └── generate-sitemap.mjs ← BIKES 기반 sitemap 생성 (빌드 전 자동 실행)
 ├── public/
 │   ├── robots.txt           ← 검색엔진 크롤링 및 sitemap 위치 안내
-│   ├── sitemap.xml          ← Google Search Console 제출용 sitemap
+│   ├── sitemap.xml          ← 생성 파일. 직접 편집하지 않음
 │   ├── site.webmanifest     ← 사이트 이름/테마 메타데이터
-│   └── googlec0e1744f23d9c3c1.html ← Search Console URL 접두어 소유권 인증 파일
+│   ├── googlec0e1744f23d9c3c1.html ← Search Console URL 접두어 소유권 인증 파일
+│   ├── bikes/               ← 브랜드별 바이크 이미지
+│   └── logos/               ← 브랜드 로고
 ├── src/
 │   ├── main.jsx             ← React 진입점
-│   ├── App.jsx              ← 메인 UI 컴포넌트 (필터, 카드 뷰, 상세 뷰, 비교 뷰)
-│   └── data/
-│       ├── bikes.js         ← 바이크 제원 데이터 (BRANDS, BIKES, ALL_CATEGORIES)
-│       └── specs.js         ← 제원 항목 정의, 색상, 포맷터
+│   ├── App.jsx              ← 메인 컴포넌트 (라우팅, 필터 상태, 뷰 전환)
+│   ├── App.css              ← 전체 스타일
+│   ├── components/
+│   │   ├── Sidebar.jsx      ← 검색·필터·브랜드 드릴다운
+│   │   ├── BrowseView.jsx   ← 탐색 탭 카드 그리드
+│   │   ├── BikeCard.jsx     ← 바이크 카드 (상세 링크 포함)
+│   │   ├── DetailView.jsx   ← 상세 탭
+│   │   └── CompareView.jsx  ← 비교 탭 (레이더 차트, 제원 표)
+│   ├── data/
+│   │   ├── bikes.js         ← 바이크 제원 데이터 (BRANDS, BIKES, ALL_CATEGORIES)
+│   │   └── specs.js         ← 제원 항목 정의, 색상, 포맷터
+│   └── lib/
+│       ├── siteConfig.js    ← 배포 도메인 단일 정의 (SITE_URL)
+│       ├── seo.js           ← 페이지별 메타데이터 생성 및 <head> 반영
+│       ├── bikeRoutes.js    ← 상세 URL 생성/해석 규칙
+│       ├── bikeDisplay.js   ← 표시용 값 가공
+│       └── bikeTheme.js     ← 카테고리별 색상 테마
 ├── index.html
 ├── package.json
 ├── vite.config.js
+├── vercel.json              ← 상세 경로 rewrite
+├── .gitattributes
 ├── .gitignore
 ├── ABA prototype 1.jsx      ← 1차 프로토타입 (보관용)
 └── ABA prototype 2.jsx      ← 2차 프로토타입 (보관용)
@@ -173,6 +193,40 @@ auto-by-auto/
 - **BMW Adventure/XR 계열 정리 반영**: F 900 XR/S 1000 XR은 1년 단위 중복을 줄이고 변화 연식 중심으로 유지, F 900 GS/F 900 GS Adventure/R 1300 GS 추가 및 이미지 연결
 - **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.9.2`로 동기화
 - **검증 완료**: Harley 이미지 경로 누락 0개 확인, `npm.cmd run build` 성공
+
+#### 14단계 — SEO 검색 색인 기반 구축 (2026-07-16 ~ 2026-08-17, `feature/seo`)
+
+11단계에서 사이트 전체에 대한 기본 SEO(메타태그, robots.txt, 홈 sitemap, Search Console 인증)를 적용했지만, 484개 바이크 상세 화면은 여전히 주소가 하나뿐이라 검색엔진이 개별 모델을 발견할 수 없었습니다. 이 단계는 **상세 화면을 각각 독립된 색인 대상 페이지로 만드는 작업**입니다. 세부 내용과 검증 기록은 `Docs/SEO.md`의 우선순위 1~4 항목에 정리했습니다.
+
+**(1) 상세 URL 라우팅** — SEO 우선순위 1
+- **URL 규칙 도입**: `/bikes/{brand}/{id}` 형식으로 바이크마다 고유 주소 부여 (`src/lib/bikeRoutes.js`)
+- **직접 접속·새로고침 지원**: 현재 URL을 읽어 해당 상세 화면으로 시작
+- **브라우저 탐색 지원**: 뒤로 가기·앞으로 가기 시 URL에 맞춰 화면 복원
+- **잘못된 경로 처리**: 존재하지 않는 ID나 브랜드 불일치 시 기본 바이크로 대체하지 않고 404 안내 표시
+- **배포 경로 설정**: `vercel.json`에 rewrite를 추가해 상세 URL 직접 요청도 앱으로 전달
+
+**(2) 실제 링크 전환 및 페이지별 메타데이터** — SEO 우선순위 2~3
+- **클릭 요소를 링크로 변경**: 바이크 카드, 사이드바 연식, 동일 모델 연식, 비슷한 기종, 탐색 복귀를 모두 실제 `href`를 가진 `<a>`로 전환
+- **기존 동작 유지**: 일반 클릭은 화면 전환만 하고, 새 탭·`Ctrl`/`Cmd`·`Shift` 클릭은 브라우저 기본 동작을 따름. 비교 추가 버튼은 링크와 분리
+- **모델별 메타데이터 자동 생성**: title, description, canonical, Open Graph, Twitter Card를 실제 제원 기준으로 생성 (`src/lib/seo.js`)
+- **404 메타데이터**: 잘못된 경로에는 `noindex, follow` 적용 및 canonical 제거
+- **상세 H1 지정**: 상세 화면의 모델명을 페이지 대표 제목으로 사용
+
+**(3) sitemap 자동 생성 및 도메인 상수 단일화** — SEO 우선순위 4
+- **도메인 상수 단일화**: `src/lib/siteConfig.js`를 신설해 배포 도메인을 한 곳에서 정의. 커스텀 도메인 이전 시 canonical과 sitemap이 서로 다른 주소를 가리키는 사고를 구조적으로 차단
+- **sitemap 생성 스크립트 추가**: `scripts/generate-sitemap.mjs`가 `BIKES`에서 상세 URL 484개를 생성해 홈 1개 포함 총 485개를 기록
+- **URL 규칙 재사용**: 화면 링크와 동일한 `getBikePath()`를 사용해 sitemap 주소와 앱 링크의 불일치를 원천 차단
+- **검증 게이트 적용**: 중복 URL·미등록 브랜드·빈 `id`를 검사하고, 생성한 URL을 `resolveAppRoute()`에 되돌려 넣어 실제로 열리는지 역검증. 실패 시 파일을 쓰지 않고 빌드 중단
+- **빌드 파이프라인 연결**: `prebuild` 훅으로 `vite build` 이전에 자동 실행. 새 바이크를 추가하면 별도 수작업 없이 sitemap에 반영
+- **결정적 출력**: 경로 기준 정렬로 데이터 순서가 바뀌어도 결과 파일이 동일해, 커밋 diff에는 실제 추가·삭제된 URL만 남음
+
+**버전 및 검증**
+- **버전 갱신**: 화면 표시 버전, `package.json`, `package-lock.json`을 `0.9.3`으로 동기화
+- **검증 완료**: 불량 데이터 주입 시 빌드 중단 확인, XML 고유 `<loc>` 485개 확인, 무작위 상세 URL 10개 로컬 응답 200 확인, `npm.cmd run build` 성공
+
+**남은 과제**
+- 배포 후 Search Console에 갱신된 sitemap 재제출 및 색인 요청
+- 상세 페이지 초기 HTML 프리렌더링 (SEO 우선순위 6). 현재 상세 URL의 초기 HTML은 비어 있고 메타데이터도 JavaScript 실행 후에 반영되므로, 색인 확실성을 높이려면 정적 생성이 필요합니다
 ---
 
 ## 현재 데이터 현황
@@ -184,6 +238,8 @@ auto-by-auto/
 Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Ducati / Triumph / Royal Enfield / Vespa / Indian Motorcycle / Aprilia / Husqvarna / MV Agusta
 
 ### 등록된 기종 (372개)
+
+> ⚠️ 아래 수치는 2026-06-24(v0.9.2) 기준입니다. 이후 브랜드 확장이 이어져 **2026-08-17 기준 실제 등록 기종은 484개**입니다. 브랜드별 집계 재작성은 다음 데이터 작업 때 진행합니다.
 
 | 브랜드 | 등록 대수 | 비고 |
 |--------|----------:|------|
@@ -366,11 +422,17 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 - [ ] Yamaha XMAX 250 Tech MAX 이미지 수집 및 `bikes.js` 연결
 - [ ] Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [x] Vercel 배포 및 Search Console URL 접두어 소유권 인증
-- [ ] Search Console에서 `sitemap.xml` 제출 상태 재확인 및 URL 검사로 색인 생성 요청
+- [x] 바이크별 상세 URL 라우팅 및 페이지별 메타데이터 적용
+- [x] `BIKES` 기반 sitemap 자동 생성 (홈 1개 + 상세 484개)
+- [ ] `feature/seo` 브랜치 main 머지 및 프로덕션 배포
+- [ ] 배포 후 Search Console에 갱신된 sitemap 재제출 및 URL 색인 생성 요청
 - [ ] 쉬운 찾기 태그 기준 및 색상 사용자 테스트
 - [ ] 상세 탭 문구/정보 우선순위 사용자 테스트
 
 ### 중기
+- [ ] 상세 페이지 초기 HTML 프리렌더링 (SEO 우선순위 6) — 현재 상세 URL의 초기 HTML이 비어 있어 색인 확실성이 낮음
+- [ ] 홈페이지 `WebSite` JSON-LD 및 전용 OG 대표 이미지 추가 (SEO 우선순위 5)
+- [ ] `Docs/progress.md`의 데이터 현황 수치 재집계 — 현재 문서는 372개 기준이나 실제 등록 기종은 484개
 - [ ] 데이터 정확성 검증 (제조사 공식 스펙시트 대조)
 - [ ] Suzuki, KTM, Triumph, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [x] 모바일 필터 접힘/하단 시트 UX 1차 개선
@@ -380,7 +442,7 @@ Honda / Yamaha / Kawasaki / BMW Motorrad / Harley-Davidson / Suzuki / KTM / Duca
 ### 장기 (서비스화)
 - [ ] 백엔드 / 데이터베이스 연동
 - [ ] 커스텀 도메인 구입 및 연결
-- [ ] 커스텀 도메인 연결 시 canonical, sitemap, robots.txt, Search Console 속성 재설정
+- [ ] 커스텀 도메인 연결 시 `src/lib/siteConfig.js`의 `SITE_URL`, `index.html` canonical/og:url, `robots.txt`, Search Console 속성 재설정 (`Docs/SEO.md`의 전환 체크리스트 참고)
 - [ ] 제원 데이터 확보 전략 결정 (직접 입력 vs 사용자 기여)
 
 ---

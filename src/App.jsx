@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 
 import BrowseView from './components/BrowseView'
 import CompareView from './components/CompareView'
@@ -17,6 +17,13 @@ import {
   isKnownPrice,
   isKnownValue,
 } from './lib/bikeDisplay'
+import { HOME_PATH, getBikePath, resolveAppRoute } from './lib/bikeRoutes'
+import {
+  applyMetadata,
+  buildBikeMetadata,
+  buildHomeMetadata,
+  buildNotFoundMetadata,
+} from './lib/seo'
 import './App.css'
 
 // ─── 상수 ─────────────────────────────────────────────────────────────────────
@@ -38,6 +45,8 @@ const CATEGORY_ORDER = ['미니/입문', '스쿠터', '네이키드', '스포츠
 export default function App() {
   const mainRef = useRef(null)
   const detailTopRef = useRef(null)
+  const initialRouteRef = useRef(resolveAppRoute(window.location.pathname))
+  const initialRoute = initialRouteRef.current
 
   // 검색
   const [searchQuery, setSearchQuery] = useState('')
@@ -64,10 +73,35 @@ export default function App() {
   const [compared, setCompared] = useState([])
 
   // 상세 보기 대상
-  const [selectedBikeId, setSelectedBikeId] = useState('mt03-2023')
+  const [selectedBikeId, setSelectedBikeId] = useState(
+    initialRoute.type === 'bike' ? initialRoute.bike.id : 'mt03-2023',
+  )
 
-  // 뷰 모드: 'browse' | 'detail' | 'compare'
-  const [viewMode, setViewMode] = useState('browse')
+  // 뷰 모드: 'browse' | 'detail' | 'compare' | 'not-found'
+  const [viewMode, setViewMode] = useState(
+    initialRoute.type === 'bike'
+      ? 'detail'
+      : initialRoute.type === 'not-found'
+        ? 'not-found'
+        : 'browse',
+  )
+
+  useEffect(() => {
+    function syncViewWithLocation() {
+      const route = resolveAppRoute(window.location.pathname)
+
+      if (route.type === 'bike') {
+        setSelectedBikeId(route.bike.id)
+        setViewMode('detail')
+        return
+      }
+
+      setViewMode(route.type === 'home' ? 'browse' : 'not-found')
+    }
+
+    window.addEventListener('popstate', syncViewWithLocation)
+    return () => window.removeEventListener('popstate', syncViewWithLocation)
+  }, [])
 
   // ── 인심 & 권장 시트고 계산
   const inseam        = Math.round(riderHeight * LEG_FACTOR[legType] * 10)
@@ -149,6 +183,18 @@ export default function App() {
     BRANDS.find(br => br.id === selectedBike?.brand),
   [selectedBike])
 
+  const pageMetadata = useMemo(() => {
+    if (viewMode === 'not-found') return buildNotFoundMetadata()
+    if (viewMode === 'detail' && selectedBike) {
+      return buildBikeMetadata(selectedBike, selectedBrand, getBikePath(selectedBike))
+    }
+    return buildHomeMetadata()
+  }, [selectedBike, selectedBrand, viewMode])
+
+  useEffect(() => {
+    applyMetadata(pageMetadata)
+  }, [pageMetadata])
+
   const sameModelBikes = useMemo(() => {
     if (!selectedBike) return []
     return BIKES
@@ -190,9 +236,24 @@ export default function App() {
   }
 
   function openBikeDetail(id, options = {}) {
-    setSelectedBikeId(id)
+    const bike = BIKES.find(item => item.id === id)
+    if (!bike) return
+
+    const nextPath = getBikePath(bike)
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, '', nextPath)
+    }
+
+    setSelectedBikeId(bike.id)
     setViewMode('detail')
     if (options.scrollToTop) scrollDetailToTop()
+  }
+
+  function openRootView(mode = 'browse') {
+    if (window.location.pathname !== HOME_PATH) {
+      window.history.pushState({}, '', HOME_PATH)
+    }
+    setViewMode(mode)
   }
 
   // ── 제원 표 하이라이트
@@ -301,22 +362,30 @@ export default function App() {
           <div className="main-eyebrow">
             AUTO BY AUTO <span>by @4rr.4r4r</span>
           </div>
-          <h1 className="main-title">
-            어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
-          </h1>
+          {viewMode === 'detail'
+            ? (
+              <div className="main-title">
+                어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
+              </div>
+            )
+            : (
+              <h1 className="main-title">
+                어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
+              </h1>
+            )}
         </div>
 
         {/* 뷰 탭 */}
         <div className="view-tabs">
           <button
             className={`view-tab ${viewMode === 'browse' ? 'on' : ''}`}
-            onClick={() => setViewMode('browse')}
+            onClick={() => openRootView('browse')}
           >
             탐색 <span className="tab-count">{totalCount}</span>
           </button>
           <button
             className={`view-tab ${viewMode === 'detail' ? 'on' : ''}`}
-            onClick={() => setViewMode('detail')}
+            onClick={() => openBikeDetail(selectedBike.id)}
           >
             상세
             {selectedBike && (
@@ -325,7 +394,7 @@ export default function App() {
           </button>
           <button
             className={`view-tab ${viewMode === 'compare' ? 'on' : ''}`}
-            onClick={() => setViewMode('compare')}
+            onClick={() => openRootView('compare')}
           >
             비교
             {compared.length > 0 && (
@@ -367,8 +436,19 @@ export default function App() {
             detailTopRef={detailTopRef}
             onOpenDetail={openBikeDetail}
             onToggleCompare={toggleCompare}
-            onBackToBrowse={() => setViewMode('browse')}
+            onBackToBrowse={() => openRootView('browse')}
           />
+        )}
+        {/* ── 존재하지 않는 경로 */}
+        {viewMode === 'not-found' && (
+          <div className="main-empty" role="alert">
+            <div className="empty-icon">404</div>
+            <h1 className="empty-text">바이크 페이지를 찾을 수 없습니다</h1>
+            <div className="empty-sub">주소의 브랜드와 모델 ID를 확인해 주세요.</div>
+            <button className="detail-action" onClick={() => openRootView('browse')}>
+              탐색으로 돌아가기
+            </button>
+          </div>
         )}
         {/* ── 비교 뷰 */}
         {viewMode === 'compare' && (
