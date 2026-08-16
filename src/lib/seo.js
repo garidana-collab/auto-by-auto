@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://auto-by-auto.vercel.app'
+import { SITE_URL, toAbsoluteUrl } from './siteConfig.js'
 
 const HOME_METADATA = {
   title: '오토바이오토 AUTObyAUTO - 오토바이 기종 비교',
@@ -8,10 +8,9 @@ const HOME_METADATA = {
   robots: 'index, follow',
 }
 
-function toAbsoluteUrl(path) {
-  if (!path) return HOME_METADATA.image
-  if (/^https?:\/\//.test(path)) return path
-  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+// 이미지가 없는 바이크는 사이트 기본 공유 이미지로 대체합니다.
+function toShareImageUrl(path) {
+  return toAbsoluteUrl(path) ?? HOME_METADATA.image
 }
 
 export function buildHomeMetadata() {
@@ -27,7 +26,7 @@ export function buildBikeMetadata(bike, brand, path) {
     title,
     description,
     canonical: `${SITE_URL}${path}`,
-    image: toAbsoluteUrl(bike.image),
+    image: toShareImageUrl(bike.image),
     robots: 'index, follow',
   }
 }

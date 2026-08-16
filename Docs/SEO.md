@@ -1,6 +1,6 @@
 # AUTObyAUTO SEO Guide
 
-> 마지막 업데이트: 2026년 7월 16일
+> 마지막 업데이트: 2026년 8월 17일
 > 현재 배포 URL: `https://auto-by-auto.vercel.app/`
 
 ---
@@ -97,7 +97,7 @@ SEO는 한 번 설정한다고 즉시 1위에 뜨는 작업이 아니라, 검색
 
 남은 조건:
 
-- 현재 기본 필터 때문에 첫 화면에 렌더링되지 않는 바이크까지 검색엔진이 모두 발견하도록 하려면 우선순위 4의 sitemap 자동 생성이 필요합니다.
+- 현재 기본 필터 때문에 첫 화면에 렌더링되지 않는 바이크는 우선순위 4의 sitemap으로 검색엔진에 전달합니다. 2026년 8월 17일 기준 484개 상세 URL이 모두 sitemap에 포함되어 있습니다.
 - 초기 HTML 자체에 링크를 포함하려면 우선순위 6의 프리렌더링이 필요합니다.
 
 현재 바이크 카드, 사이드바 연식, 연관 모델은 `onClick`으로 화면 상태만 바꿉니다. 검색봇이 상세 페이지를 발견할 수 있도록 실제 `href`를 가진 링크로 변경합니다.
@@ -182,7 +182,47 @@ canonical: https://auto-by-auto.vercel.app/bikes/honda/cbr650r-2024
 
 ### 우선순위 4. sitemap 자동 생성하기
 
-현재 `public/sitemap.xml`에는 홈페이지만 있습니다. 수동으로 484개 URL을 작성하지 말고 `src/data/bikes.js`를 기준으로 빌드 전에 sitemap을 생성하는 스크립트를 추가합니다.
+> **완료 · 2026년 8월 17일**
+
+완료 결과:
+
+| 작업 | 적용 내용 | 구현 위치 |
+| --- | --- | --- |
+| 생성 스크립트 | `BIKES` 목록에서 상세 URL을 만들어 sitemap 작성 | `scripts/generate-sitemap.mjs` |
+| URL 규칙 재사용 | 화면 링크와 같은 `getBikePath()`를 그대로 사용해 주소 불일치 차단 | `scripts/generate-sitemap.mjs` |
+| 데이터 검증 | 중복 URL, `BRANDS`에 없는 브랜드, 빈 `id` 검사 | `scripts/generate-sitemap.mjs` |
+| 라우터 역검증 | 생성한 URL을 `resolveAppRoute()`에 되돌려 넣어 실제로 열리는지 확인 | `scripts/generate-sitemap.mjs` |
+| 빌드 중단 | 검증 실패 시 파일을 쓰지 않고 종료 코드 1로 빌드 중단 | `scripts/generate-sitemap.mjs` |
+| 빌드 연결 | `prebuild` 훅으로 `vite build` 이전에 자동 실행 | `package.json` |
+| 도메인 상수 단일화 | 배포 도메인을 한 파일에서 정의하고 SEO 코드와 스크립트가 공유 | `src/lib/siteConfig.js` |
+| 생성 결과 | 홈 1개 + 바이크 상세 484개, 총 485개 URL | `public/sitemap.xml` |
+| 줄바꿈 고정 | 생성 파일을 항상 LF로 기록하도록 지정 | `.gitattributes` |
+
+출력 형식:
+
+- 경로 기준으로 정렬해 출력하므로, `src/data/bikes.js`의 항목 순서가 바뀌어도 결과 파일은 그대로입니다. 커밋 diff에는 실제로 추가·삭제된 URL만 남습니다.
+- `changefreq`와 `priority`는 넣지 않습니다. Google이 이 두 항목을 사용하지 않는다고 밝혔기 때문에 485줄을 채워도 얻는 것이 없습니다.
+- `lastmod`는 홈에만 넣고 스크립트 상수로 관리합니다. 빌드 시각을 자동으로 넣으면 내용이 바뀌지 않았는데도 매번 수정됐다고 신고하게 되고, 커밋 diff도 계속 오염됩니다.
+- URL이 45,000개를 넘으면 경고하고, 규격 상한인 50,000개를 넘으면 빌드를 중단합니다. 그때는 sitemap을 나누고 sitemap 색인 파일을 만들어야 합니다.
+
+검증 완료:
+
+- 불량 데이터 3종(중복 바이크, 미등록 브랜드, 빈 `id`)을 주입해 3건 모두 검출되고 종료 코드 1이 반환되는지 확인
+- 검증 실패 시 기존 `public/sitemap.xml`을 덮어쓰지 않는지 확인
+- 검증 실패 상태에서 `npm run build` 실행 시 `vite build`가 시작되지 않고 `dist`가 생성되지 않는지 확인
+- 두 번 연속 실행 시 파일 해시가 동일한지 확인(결정적 출력)
+- XML 파싱 성공 및 고유 `<loc>` 485개 확인
+- `npm run preview`에서 `/sitemap.xml` 응답 200, `dist/sitemap.xml`과 `public/sitemap.xml` 일치 확인
+- sitemap에서 무작위로 뽑은 상세 URL 10개의 로컬 응답 200 확인
+- `public/robots.txt`의 `Sitemap:` 주소와 실제 생성 주소 일치 확인
+- `npm run build` 성공, `git diff --check` 통과
+
+남은 조건:
+
+- 배포 후 Search Console에 sitemap을 다시 제출해야 실제 색인 대상이 됩니다.
+- 상세 URL의 초기 HTML은 아직 비어 있습니다. 색인 확실성을 높이려면 우선순위 6의 프리렌더링이 필요합니다.
+
+수동으로 484개 URL을 작성하지 말고 `src/data/bikes.js`를 기준으로 빌드 전에 sitemap을 생성하는 스크립트를 추가합니다.
 
 포함 대상:
 
@@ -339,21 +379,25 @@ Sitemap: https://auto-by-auto.vercel.app/sitemap.xml
 
 ### 5. sitemap.xml
 
-`public/sitemap.xml`을 추가했습니다.
+`public/sitemap.xml`은 `scripts/generate-sitemap.mjs`가 생성합니다. 직접 편집하지 말고 스크립트를 수정하세요.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://auto-by-auto.vercel.app/</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-17</lastmod>
   </url>
+  <url>
+    <loc>https://auto-by-auto.vercel.app/bikes/aprilia/rs125-2006</loc>
+  </url>
+  ...
 </urlset>
 ```
 
-현재 앱은 단일 페이지 앱이므로 홈페이지 1개만 등록했습니다. 향후 모델별 상세 URL을 실제 라우팅으로 분리하면 sitemap에 각 모델 페이지를 추가해야 합니다.
+`npm run build` 시 `prebuild` 훅으로 자동 실행되므로, 새 바이크를 추가하면 별도 작업 없이 sitemap에 반영됩니다. 데이터만 고치고 결과를 확인하려면 `npm run sitemap`으로 생성 단계만 실행할 수 있습니다.
+
+2026년 8월 17일 기준 홈 1개 + 바이크 상세 484개, 총 485개 URL이 등록되어 있습니다. 자세한 동작과 검증 내용은 위의 `우선순위 4` 항목을 참고하세요.
 
 ### 6. Web Manifest
 
@@ -512,12 +556,14 @@ Some chunks are larger than 500 kB after minification.
 
 예를 들어 `https://autobyauto.com/` 같은 커스텀 도메인을 연결하면 다음을 반드시 수정해야 합니다.
 
+- `src/lib/siteConfig.js`의 `SITE_URL` — 상세 페이지 canonical, Open Graph, sitemap의 `<loc>`가 모두 이 값을 따라갑니다
 - `index.html`의 canonical URL
 - `index.html`의 `og:url`
 - `public/robots.txt`의 `Sitemap:` URL
-- `public/sitemap.xml`의 `<loc>`
 - Search Console 새 도메인 또는 URL 접두어 속성 등록
 - 기존 Vercel URL에서 커스텀 도메인으로 리다이렉트 확인
+
+`public/sitemap.xml`은 생성 파일이므로 직접 고치지 않습니다. `SITE_URL`을 바꾼 뒤 `npm run sitemap`을 실행하면 485개 URL이 한 번에 갱신됩니다.
 
 ---
 
@@ -540,7 +586,9 @@ Some chunks are larger than 500 kB after minification.
 - [x] 모델별 title/description/canonical 자동 생성
 - [x] 모델별 Open Graph/Twitter Card 자동 생성
 - [ ] `WebSite` JSON-LD 추가
-- [ ] `BIKES` 기반 sitemap 자동 생성
+- [x] `BIKES` 기반 sitemap 자동 생성
+- [x] 상세 URL 484개 sitemap 등록
+- [ ] 배포 후 Search Console에 갱신된 sitemap 재제출
 - [x] Vercel 상세 경로 rewrite 적용
 - [ ] 상세 페이지 초기 HTML 프리렌더링
 - [ ] 대표 OG 이미지 제작

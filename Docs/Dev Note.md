@@ -251,7 +251,49 @@
   - `npm.cmd run build` 성공
   - Vite 번들 크기 경고만 발생, 빌드 실패 없음
 
-## version 0.9.3 — 예정
+## version 0.9.3 — sitemap 자동 생성 및 사이트 도메인 상수 단일화
+> 2026-08-17 | 브랜치: `feature/seo` | 파일: `scripts/generate-sitemap.mjs`, `src/lib/siteConfig.js`, `src/lib/seo.js`, `package.json`, `package-lock.json`, `src/components/Sidebar.jsx`, `public/sitemap.xml`, `.gitattributes`, `Docs/SEO.md`, `Docs/Dev Note.md`
+
+- 사이트 도메인 상수 단일화:
+  - `src/lib/siteConfig.js` 신설, `SITE_URL`과 `toAbsoluteUrl()`을 한 곳에서 정의
+  - `src/lib/seo.js`의 도메인 하드코딩 제거, `siteConfig`에서 가져다 사용
+  - 이미지 없는 바이크의 기본 공유 이미지 대체 로직을 `toShareImageUrl()`로 분리 (동작 변화 없음)
+  - 커스텀 도메인 이전 시 canonical과 sitemap이 서로 다른 주소를 가리키는 사고를 구조적으로 차단
+- sitemap 생성 스크립트 추가:
+  - `scripts/generate-sitemap.mjs` 신설, `BIKES` 목록에서 상세 URL 484개 생성
+  - 화면 링크와 동일한 `getBikePath()`를 재사용해 sitemap 주소와 앱 링크의 불일치 차단
+  - 홈 1개 포함 총 485개 URL을 `public/sitemap.xml`에 기록
+  - 경로 기준 정렬 출력으로 `bikes.js` 항목 순서가 바뀌어도 결과 파일은 동일 (결정적 출력)
+  - `changefreq`/`priority` 제외, `lastmod`는 홈에만 상수로 관리
+  - URL 45,000개 초과 시 경고, 규격 상한 50,000개 초과 시 빌드 중단
+- 검증 게이트 적용:
+  - 중복 URL, `BRANDS`에 없는 브랜드, 빈 `id` 검사
+  - 생성한 URL을 `resolveAppRoute()`에 되돌려 넣어 실제로 열리는지 역검증
+  - 오류를 첫 건에서 멈추지 않고 전부 모아 출력, `BIKES` 순번(`#0` 형식) 표기
+  - 검증 실패 시 파일을 쓰지 않고 종료 코드 1 반환 → 기존 sitemap 보존
+- 빌드 파이프라인 연결:
+  - `npm run sitemap` 스크립트 추가 (생성 단계만 단독 실행용)
+  - `prebuild` 훅으로 `vite build` 이전에 자동 실행
+  - 생성 실패 시 `vite build`가 시작되지 않아 잘못된 sitemap이 배포될 경로 차단
+- 줄바꿈 처리:
+  - `.gitattributes`에 `public/sitemap.xml text eol=lf` 추가
+  - `core.autocrlf=true` 환경에서 생성할 때마다 뜨던 줄바꿈 경고 제거
+- 검증:
+  - 불량 데이터 3종 주입 시 3건 모두 검출, 종료 코드 1, 기존 sitemap 보존 확인
+  - 불량 상태에서 `npm run build` 시 `dist` 미생성 확인
+  - 두 번 연속 실행 시 파일 해시 동일 확인
+  - XML 파싱 성공, 고유 `<loc>` 485개 확인
+  - `npm run preview`에서 `/sitemap.xml` 200 응답, 무작위 상세 URL 10개 전부 200 확인
+  - `dist/sitemap.xml`과 `public/sitemap.xml` 해시 일치, `robots.txt`의 Sitemap 주소 일치 확인
+  - `npm.cmd run build` 성공, `git diff --check` 통과
+- 버전 동기화:
+  - 화면 표시 버전 `v0.9.3`
+  - `package.json`, `package-lock.json` 버전 `0.9.3`
+- 남은 작업:
+  - main 머지 및 배포 후 Search Console에 sitemap 재제출
+  - 상세 페이지 초기 HTML 프리렌더링 (SEO 우선순위 6)
+
+## version 0.9.4 — 예정
 - [ ] Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Search Console sitemap 제출 상태 `성공` 확인 및 URL 색인 요청
