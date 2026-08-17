@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 오토바이오토 파비콘. 브랜드 포인트 색 #FF5C00 + AUTObyAUTO의 A.
+       글자는 폰트 대신 도형으로 그려, 환경에 따라 렌더링이 달라지지 않게 했습니다. -->
+  <rect width="64" height="64" rx="14" fill="#FF5C00"/>
+  <path d="M17 47 L32 17 L47 47" fill="none" stroke="#FFFFFF" stroke-width="7"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 39 H40.5" fill="none" stroke="#FFFFFF" stroke-width="7"
+        stroke-linecap="round"/>
+</svg>

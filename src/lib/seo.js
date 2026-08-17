@@ -4,7 +4,7 @@ const HOME_METADATA = {
   title: '오토바이오토 AUTObyAUTO - 오토바이 기종 비교',
   description: '오토바이오토(AUTObyAUTO)에서 브랜드, 배기량, 시트고, 가격대, 제원을 기준으로 입문자에게 맞는 오토바이와 바이크 기종을 비교해보세요.',
   canonical: `${SITE_URL}/`,
-  image: `${SITE_URL}/bikes/honda/cbr650r-2024.webp`,
+  image: `${SITE_URL}/og-image.png`,
   robots: 'index, follow',
 }
 

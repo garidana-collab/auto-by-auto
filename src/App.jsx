@@ -360,7 +360,7 @@ export default function App() {
 
         <div className="main-header">
           <div className="main-eyebrow">
-            AUTO BY AUTO <span>by @4rr.4r4r</span>
+            오토바이오토 AUTObyAUTO <span>by @4rr.4r4r</span>
           </div>
           {viewMode === 'detail'
             ? (

@@ -293,7 +293,41 @@
   - main 머지 및 배포 후 Search Console에 sitemap 재제출
   - 상세 페이지 초기 HTML 프리렌더링 (SEO 우선순위 6)
 
-## version 0.9.4 — 예정
+## version 0.9.4 — 브랜드 신호 보강 (JSON-LD, 파비콘, OG 대표 이미지)
+> 2026-08-17 | 브랜치: `feature/seo` | 파일: `index.html`, `public/favicon.svg`, `public/favicon-192.png`, `public/favicon-512.png`, `public/apple-touch-icon.png`, `public/og-image.png`, `public/site.webmanifest`, `scripts/og-image.html`, `src/App.jsx`, `src/App.css`, `src/lib/seo.js`, `package.json`, `package-lock.json`, `src/components/Sidebar.jsx`, `Docs/SEO.md`, `Docs/progress.md`, `Docs/Dev Note.md`
+
+- `WebSite` 구조화 데이터 추가:
+  - `index.html`에 사이트 이름과 별칭(`AUTObyAUTO`, `오토바이 오토`)을 JSON-LD로 삽입
+  - 정적 HTML에 두어 JavaScript 실행 없이도 크롤러가 읽을 수 있게 처리
+  - `potentialAction` 검색창은 제외 (Google이 2024년 지원 중단)
+- 브랜드 표기 정리:
+  - 홈 대표 영역 문구를 `AUTO BY AUTO` → `오토바이오토 AUTObyAUTO`로 변경해 브랜드명을 본문 텍스트로 노출
+  - `.main-eyebrow`의 `text-transform: uppercase` 제거 — 그대로 두면 `AUTObyAUTO`가 `AUTOBYAUTO`로 렌더링됨
+  - H1 자체는 기존 카피를 유지
+- 전용 파비콘 추가 (기존에는 아이콘이 아예 없었음):
+  - `favicon.svg` 원본 신설. 오렌지(`#FF5C00`) 라운드 사각 + 흰 `A`
+  - `A`를 폰트 대신 도형(path)으로 그려 환경별 렌더링 차이 제거
+  - `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png`(180×180) 생성
+  - `apple-touch-icon`만 모서리를 깎지 않음 — iOS가 자체 마스킹하므로 이중으로 깎이는 것을 방지
+  - `index.html`에 `icon`, `apple-touch-icon` 링크 추가
+  - `site.webmanifest`에 `icons` 배열 신규 추가
+- OG 대표 이미지 제작:
+  - `og-image.png`(1200×630) 신설. 다크 배경 + 워드마크 + 태그라인 + 제원 칩 + 도메인
+  - 원본 템플릿을 `scripts/og-image.html`로 보관 (빌드 미포함)
+  - `index.html`의 `og:image`/`twitter:image`를 CBR650R 사진에서 대표 이미지로 교체
+  - `og:image:width`, `og:image:height`, `og:image:alt` 추가
+  - `src/lib/seo.js`의 기본 공유 이미지를 교체 — 이미지 없는 바이크 3개의 폴백도 함께 정정
+- 버전 동기화:
+  - 화면 표시 버전 `v0.9.4`
+  - `package.json`, `package-lock.json` 버전 `0.9.4`
+- 검증:
+  - JSON-LD 파싱 및 `site.webmanifest` JSON 파싱 확인
+  - 파비콘 16px 축소 후 확대 확인 — `A` 형태 판독 가능
+  - `dist`에 아이콘 4종과 OG 이미지 복사, `dist/index.html`에 메타 반영 확인
+  - 브라우저에서 탭 파비콘, 홈 문구 대소문자, 상세 진입 시 title 변경, 뒤로 가기 동작 확인
+  - `npm.cmd run build` 성공, `git diff --check` 통과
+
+## version 0.9.5 — 예정
 - [ ] Yamaha/BMW/Ducati/Harley-Davidson/신규 브랜드 확장 데이터 공식 스펙시트 기준 2차 검수
 - [ ] Suzuki, KTM, Triumph, Royal Enfield, Vespa 등 남은 브랜드도 연식별/계열별 확장
 - [ ] Search Console sitemap 제출 상태 `성공` 확인 및 URL 색인 요청

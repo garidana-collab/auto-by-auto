@@ -53,7 +53,7 @@ export default function Sidebar({
         <span className="logo-wordmark">
           오토<span>바이</span>오토
         </span>
-        <span className="logo-version">v0.9.3</span>
+        <span className="logo-version">v0.9.4</span>
       </div>
 
       <section className={`sf-section mobile-filter-panel body-section ${bodyFilterEnabled ? '' : 'off'}`}>

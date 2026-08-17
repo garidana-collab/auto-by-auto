@@ -267,7 +267,7 @@ button { font-family: inherit; }
 .main-header { margin-bottom: 20px; }
 .main-eyebrow {
   font-size: 14px; letter-spacing: 0; font-weight: 900;
-  color: var(--orange); text-transform: uppercase; margin-bottom: 12px;
+  color: var(--orange); margin-bottom: 12px;
 }
 .main-eyebrow span {
   color: var(--muted); font-size: 12px; letter-spacing: 0; font-weight: 800;

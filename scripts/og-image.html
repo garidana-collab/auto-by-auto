@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+  OG 대표 이미지(public/og-image.png)의 원본 템플릿입니다.
+  빌드에 포함되지 않습니다. 문구나 색을 바꾼 뒤 1200x630으로 스크린샷을 떠서
+  public/og-image.png를 교체하세요.
+-->
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #0d0d0f;
+        font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+        color: #f4f4f5;
+        position: relative;
+      }
+
+      /* 좌상단에서 번지는 포인트 색 광원 */
+      .glow {
+        position: absolute;
+        top: -260px;
+        left: -160px;
+        width: 900px;
+        height: 900px;
+        background: radial-gradient(circle, rgba(255, 92, 0, 0.30) 0%, rgba(255, 92, 0, 0) 62%);
+      }
+
+      .frame {
+        position: absolute;
+        inset: 0;
+        padding: 82px 88px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .eyebrow {
+        font-size: 26px;
+        font-weight: 800;
+        color: #FF5C00;
+        letter-spacing: 0.01em;
+      }
+
+      .wordmark {
+        font-size: 132px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.01em;
+      }
+      .wordmark em { font-style: normal; color: #FF5C00; }
+
+      .tagline {
+        margin-top: 26px;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: #d4d4d8;
+      }
+      .tagline b { color: #ffffff; font-weight: 900; }
+
+      .footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .chips { display: flex; gap: 12px; }
+      .chip {
+        padding: 12px 22px;
+        border: 2px solid #2a2a30;
+        border-radius: 999px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #a1a1aa;
+      }
+
+      .domain {
+        font-size: 26px;
+        font-weight: 800;
+        color: #71717a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow"></div>
+    <div class="frame">
+      <div>
+        <div class="eyebrow">AUTObyAUTO</div>
+      </div>
+
+      <div>
+        <div class="wordmark">오토<em>바이</em>오토</div>
+        <div class="tagline">
+          <b>484개 기종</b>의 제원을 한눈에 비교하고<br />
+          내 체형에 맞는 오토바이를 찾아보세요
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="chips">
+          <div class="chip">배기량</div>
+          <div class="chip">시트고</div>
+          <div class="chip">출력</div>
+          <div class="chip">가격</div>
+        </div>
+        <div class="domain">auto-by-auto.vercel.app</div>
+      </div>
+    </div>
+  </body>
+</html>
