@@ -240,6 +240,50 @@ canonical: https://auto-by-auto.vercel.app/bikes/honda/cbr650r-2024
 
 ### 우선순위 5. 홈페이지 브랜드 신호 보강하기
 
+> **완료 · 2026년 8월 17일**
+
+완료 결과:
+
+| 작업 | 적용 내용 | 구현 위치 |
+| --- | --- | --- |
+| `WebSite` 구조화 데이터 | 사이트 이름과 별칭을 정적 HTML에 삽입 | `index.html` |
+| 홈 브랜드명 노출 | 홈 대표 영역 문구를 `오토바이오토 AUTObyAUTO`로 변경해 본문 텍스트로 포함 | `src/App.jsx` |
+| 브랜드 표기 통일 | `text-transform: uppercase`를 제거해 `AUTObyAUTO` 대소문자 표기 보존 | `src/App.css` |
+| 전용 파비콘 | 오렌지 바탕 + `A` 형태. SVG 원본과 PNG 3종 | `public/favicon.svg` 외 |
+| 파비콘 연결 | `icon`, `apple-touch-icon` 링크 추가 | `index.html` |
+| 앱 아이콘 | `icons` 배열 신규 추가 (기존에 없었음) | `public/site.webmanifest` |
+| OG 대표 이미지 | 1200×630 브랜드 이미지 제작 및 교체 | `public/og-image.png` |
+| OG 이미지 메타 | `og:image:width`, `height`, `alt` 추가 | `index.html` |
+| 기본 공유 이미지 | 홈 및 이미지 없는 바이크의 폴백 이미지를 OG 대표 이미지로 변경 | `src/lib/seo.js` |
+
+파비콘 구성:
+
+| 파일 | 크기 | 용도 |
+| --- | --- | --- |
+| `favicon.svg` | 벡터 | 기본. 모던 브라우저와 검색 결과 |
+| `favicon-192.png` | 192×192 | PNG 폴백, manifest |
+| `favicon-512.png` | 512×512 | manifest 고해상도 |
+| `apple-touch-icon.png` | 180×180 | iOS 홈 화면 |
+
+- `favicon.svg`가 원본이고 PNG는 같은 좌표 규격(64 기준: 라운드 반경 14, 획 두께 7, 꼭지점 32,17)으로 렌더링한 파생물입니다.
+- SVG의 `A`는 폰트 대신 도형(path)으로 그렸습니다. 텍스트로 두면 사용자 환경에 해당 폰트가 없을 때 다르게 렌더링됩니다.
+- `apple-touch-icon.png`만 모서리를 깎지 않았습니다. iOS가 자체적으로 마스킹하므로 미리 둥글리면 모서리가 이중으로 깎입니다.
+- OG 이미지의 원본 템플릿은 `scripts/og-image.html`입니다. 빌드에 포함되지 않으며, 문구나 색을 바꿀 때 참고용으로 둡니다.
+
+검증 완료:
+
+- JSON-LD 파싱 성공 및 `@type`, `name`, `alternateName`, `url` 확인
+- 파비콘을 16px로 축소해 확대 확인 — `A` 형태 판독 가능
+- `site.webmanifest` JSON 파싱 및 `icons` 2개 확인
+- `npm run build` 후 `dist`에 아이콘 4종과 OG 이미지 복사 확인
+- `dist/index.html`에 JSON-LD 1개, icon 링크 3개, OG 이미지 메타 반영 확인
+- 브라우저에서 탭 파비콘, 홈 문구 대소문자, 상세 진입 시 title 변경, 뒤로 가기 동작 확인
+- `npm run build` 성공, `git diff --check` 통과
+
+`potentialAction` 검색창(sitelinks searchbox)은 넣지 않았습니다. Google이 2024년에 지원을 중단한 기능입니다.
+
+아래는 작업 전 계획 내용입니다.
+
 홈페이지에 `WebSite` JSON-LD를 추가해 검색엔진에 사이트 이름을 명확히 전달합니다.
 
 ```html
@@ -359,7 +403,9 @@ SNS, 메신저, 검색 미리보기 품질을 위해 다음 항목을 추가했�
 - `twitter:description`
 - `twitter:image`
 
-현재 공유 이미지는 `/bikes/honda/cbr650r-2024.webp`를 사용합니다. 향후 브랜드 전용 대표 이미지나 로고형 OG 이미지를 만드는 것이 좋습니다.
+홈페이지 공유 이미지는 브랜드 전용 `og-image.png`(1200×630)를 사용합니다. `og:image:width`, `og:image:height`, `og:image:alt`도 함께 지정했습니다. 크기를 명시하면 크롤러가 이미지를 내려받기 전에 미리보기 레이아웃을 잡을 수 있습니다.
+
+바이크 상세 페이지는 해당 모델 이미지를 사용하고, 이미지가 없는 기종은 `og-image.png`로 대체합니다.
 
 ### 4. robots.txt
 
@@ -585,13 +631,16 @@ Some chunks are larger than 500 kB after minification.
 - [x] 바이크 카드와 내부 이동을 실제 링크로 변경
 - [x] 모델별 title/description/canonical 자동 생성
 - [x] 모델별 Open Graph/Twitter Card 자동 생성
-- [ ] `WebSite` JSON-LD 추가
+- [x] `WebSite` JSON-LD 추가
 - [x] `BIKES` 기반 sitemap 자동 생성
 - [x] 상세 URL 484개 sitemap 등록
 - [ ] 배포 후 Search Console에 갱신된 sitemap 재제출
 - [x] Vercel 상세 경로 rewrite 적용
 - [ ] 상세 페이지 초기 HTML 프리렌더링
-- [ ] 대표 OG 이미지 제작
+- [x] 대표 OG 이미지 제작
+- [x] 전용 파비콘 추가 (SVG + PNG 3종)
+- [x] `site.webmanifest` 앱 아이콘 등록
+- [x] 홈 본문에 브랜드명 `오토바이오토` 노출
 - [ ] 이미지 alt 텍스트 품질 개선
 - [ ] 번들 크기 및 이미지 성능 최적화
 

@@ -35,7 +35,10 @@
       property="og:description"
       content="브랜드, 배기량, 시트고, 가격대, 제원을 한눈에 비교하고 내 몸에 맞는 오토바이를 찾아보세요."
     />
-    <meta property="og:image" content="/bikes/honda/cbr650r-2024.webp" />
+    <meta property="og:image" content="https://auto-by-auto.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="오토바이오토 AUTObyAUTO - 484개 오토바이 기종 제원 비교" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="오토바이오토 AUTObyAUTO - 오토바이 기종 비교" />
@@ -43,9 +46,26 @@
       name="twitter:description"
       content="브랜드, 배기량, 시트고, 가격대, 제원을 한눈에 비교하고 내 몸에 맞는 오토바이를 찾아보세요."
     />
-    <meta name="twitter:image" content="/bikes/honda/cbr650r-2024.webp" />
+    <meta name="twitter:image" content="https://auto-by-auto.vercel.app/og-image.png" />
 
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- 검색엔진에 사이트 이름을 명확히 전달하는 구조화 데이터.
+         정적 HTML에 두므로 JavaScript 실행 없이도 크롤러가 읽습니다. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "오토바이오토",
+        "alternateName": ["AUTObyAUTO", "오토바이 오토", "오토바이오토 AUTObyAUTO"],
+        "url": "https://auto-by-auto.vercel.app/",
+        "inLanguage": "ko-KR",
+        "description": "브랜드, 배기량, 시트고, 가격대, 제원을 기준으로 오토바이 기종을 비교하는 서비스입니다."
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
