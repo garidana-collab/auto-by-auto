@@ -369,9 +369,17 @@ export default function App() {
               </div>
             )
             : (
-              <h1 className="main-title">
-                어떤 <span className="hl">바이크</span>가<br />당신에게 맞을까
-              </h1>
+              <>
+                <h1 className="main-title">
+                  키에 맞는<br /><span className="hl">오토바이 찾기</span>
+                </h1>
+                {viewMode === 'browse' && (
+                  <p className="main-description">
+                    키와 다리 길이로 권장 시트고를 확인하고, 브랜드·배기량·무게·가격·제원을 비교해
+                    내 체형과 용도에 맞는 오토바이를 찾아보세요.
+                  </p>
+                )}
+              </>
             )}
         </div>
 

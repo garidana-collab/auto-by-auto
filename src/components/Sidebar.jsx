@@ -177,7 +177,7 @@ export default function Sidebar({
           <button className="mobile-sheet-close" onClick={() => setMobileFiltersOpen(false)}>닫기</button>
         </div>
 
-        <section className="sf-section beginner-section">
+        <section className="sf-section beginner-section" data-nosnippet>
           <div className="sf-heading-row">
             <span className="sf-heading">쉬운 찾기</span>
           </div>

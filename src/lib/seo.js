@@ -1,8 +1,8 @@
 import { SITE_URL, toAbsoluteUrl } from './siteConfig.js'
 
 const HOME_METADATA = {
-  title: '오토바이오토 AUTObyAUTO - 오토바이 기종 비교',
-  description: '오토바이오토(AUTObyAUTO)에서 브랜드, 배기량, 시트고, 가격대, 제원을 기준으로 입문자에게 맞는 오토바이와 바이크 기종을 비교해보세요.',
+  title: '키에 맞는 오토바이 찾기 : 오토바이오토 AUTObyAUTO',
+  description: '키와 다리 길이로 권장 시트고를 확인하고, 브랜드·배기량·무게·가격·제원을 비교해 내 체형과 용도에 맞는 오토바이를 찾아보세요.',
   canonical: `${SITE_URL}/`,
   image: `${SITE_URL}/og-image.png`,
   robots: 'index, follow',

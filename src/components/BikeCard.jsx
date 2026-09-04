@@ -64,7 +64,7 @@ export default function BikeCard({
             <span>{formatShortSpec('시트고 ', bike.seatHeight, 'mm')}</span>
           </div>
           {beginnerTags.length > 0 && (
-            <div className="card-beginner-tags">
+            <div className="card-beginner-tags" data-nosnippet>
               {beginnerTags.map(tag => (
                 <span key={tag.id} className={`tag-${tag.id}`}>{tag.label}</span>
               ))}
