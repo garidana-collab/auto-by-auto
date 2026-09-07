@@ -6,7 +6,7 @@ import {
   formatPrice,
   getFitLabel,
 } from '../lib/bikeDisplay'
-import { getBikePath, shouldHandleLinkClick } from '../lib/bikeRoutes'
+import { HOME_PATH, getBikePath, shouldHandleLinkClick } from '../lib/bikeRoutes'
 
 export default function Sidebar({
   mobileFiltersOpen,
@@ -46,15 +46,25 @@ export default function Sidebar({
   compared,
   selectedBike,
   openBikeDetail,
+  onNavigateHome,
 }) {
   return (
     <aside className={`sidebar ${mobileFiltersOpen ? 'mobile-open' : ''}`}>
-      <div className="sidebar-logo">
+      <a
+        className="sidebar-logo"
+        href={HOME_PATH}
+        aria-label="오토바이오토 홈으로 이동"
+        onClick={event => {
+          if (!shouldHandleLinkClick(event)) return
+          event.preventDefault()
+          onNavigateHome()
+        }}
+      >
         <span className="logo-wordmark">
           오토<span>바이</span>오토
         </span>
         <span className="logo-version">v0.9.4</span>
-      </div>
+      </a>
 
       <section className={`sf-section mobile-filter-panel body-section ${bodyFilterEnabled ? '' : 'off'}`}>
         <div className="sf-heading-row">

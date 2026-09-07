@@ -256,6 +256,16 @@ export default function App() {
     setViewMode(mode)
   }
 
+  function navigateHome() {
+    setMobileFiltersOpen(false)
+    openRootView('browse')
+
+    requestAnimationFrame(() => {
+      mainRef.current?.scrollTo({ top: 0, behavior: 'auto' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    })
+  }
+
   // ── 제원 표 하이라이트
   const extremes = useMemo(() => {
     const out = {}
@@ -354,6 +364,7 @@ export default function App() {
         compared={compared}
         selectedBike={selectedBike}
         openBikeDetail={openBikeDetail}
+        onNavigateHome={navigateHome}
       />
       {/* ── 메인 ──────────────────────────────────────────── */}
       <main className="main" ref={mainRef}>
